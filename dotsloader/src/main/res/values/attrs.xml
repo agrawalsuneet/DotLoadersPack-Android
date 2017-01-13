@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ThreeDotsLoader">
+        <attr name="loader_defaultColor" format="color" />
+        <attr name="loader_selectedColr" format="color" />
+        <attr name="loader_circleRadius" format="dimension" />
+        <attr name="loader_dotsDist" format="dimension" />
+        <attr name="loader_isSingleDir" format="boolean" />
+        <attr name="loader_animDur" format="integer" />
+    </declare-styleable>
+
+</resources>

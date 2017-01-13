@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="loader_defalut">#44ffffff</color>
+    <color name="loader_selected">#ffffff</color>
+</resources>
