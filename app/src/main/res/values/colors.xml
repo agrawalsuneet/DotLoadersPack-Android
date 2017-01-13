@@ -6,4 +6,7 @@
 
     <color name="grey_cool">#787887</color>
     <color name="white">#ffffff</color>
+
+    <color name="loader_defalut">#44ffffff</color>
+    <color name="loader_selected">#ffffff</color>
 </resources>

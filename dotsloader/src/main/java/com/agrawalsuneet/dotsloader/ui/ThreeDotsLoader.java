@@ -157,8 +157,8 @@ public class ThreeDotsLoader extends View {
         return mDefaultColor;
     }
 
-    public void setDefaultColor(int mDefaultColor) {
-        this.mDefaultColor = mDefaultColor;
+    public void setDefaultColor(int defaultColor) {
+        this.mDefaultColor = ContextCompat.getColor(getContext(),defaultColor);
         initValues();
         invalidate();
     }
@@ -167,8 +167,8 @@ public class ThreeDotsLoader extends View {
         return mSelectedColor;
     }
 
-    public void setSelectedColor(int mSelectedColor) {
-        this.mSelectedColor = mSelectedColor;
+    public void setSelectedColor(int selectedColor) {
+        this.mSelectedColor = ContextCompat.getColor(getContext(),selectedColor);
     }
 
     public int getRadius() {

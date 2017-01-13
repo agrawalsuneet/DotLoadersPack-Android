@@ -1,8 +1,10 @@
 package com.agrawalsuneet.dotsloader.dialog;
 
 import android.app.Dialog;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -44,7 +46,7 @@ public class DotsLoaderDialog extends DialogFragment {
                 .setView(mView);
 
         AlertDialog dialog = builder.create();
-        initViews();
+        initViews(dialog);
         return dialog;
     }
 
@@ -58,13 +60,15 @@ public class DotsLoaderDialog extends DialogFragment {
         this.mController = controller;
     }
 
-    private void initViews() {
+    private void initViews(AlertDialog dialog) {
         mContainerLL = (LinearLayout) mView.findViewById(R.id.dialog_container);
         mMessageTextView = (TextView) mView.findViewById(R.id.dialog_message_tv);
         mLoader = (ThreeDotsLoader) mView.findViewById(R.id.dialog_loader);
 
         if (mController.background != 0) {
-            mContainerLL.setBackgroundColor(mController.background);
+            mContainerLL.setBackgroundColor(ContextCompat.getColor(getContext(), mController.background));
+        } else {
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         }
 
         if (!TextUtils.isEmpty(mController.message)) {
@@ -76,7 +80,7 @@ public class DotsLoaderDialog extends DialogFragment {
         }
 
         if (mController.textColor != 0) {
-            mMessageTextView.setTextColor(mController.textColor);
+            mMessageTextView.setTextColor(ContextCompat.getColor(getContext(), mController.textColor));
         }
 
         if (mController.animDur != 0) {

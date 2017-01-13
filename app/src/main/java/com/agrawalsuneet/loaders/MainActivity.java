@@ -10,6 +10,8 @@ import com.agrawalsuneet.dotsloader.dialog.DotsLoaderDialog;
 
 public class MainActivity extends AppCompatActivity {
 
+    private DotsLoaderDialog mDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,11 +38,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showAlertDialog() {
-        new DotsLoaderDialog.Builder(this)
-                .setTextColor(R.color.colorAccent)
-                .setDotsDefaultColor(R.color.colorPrimary)
-                .setDotsSelectedColor(R.color.colorPrimaryDark)
+       mDialog =  new DotsLoaderDialog.Builder(this)
+                .setTextColor(R.color.white)
                 .setMessage("Loading...")
-                .show();
+                .setTextSize(24)
+                .setDotsDefaultColor(R.color.loader_defalut)
+                .setDotsSelectedColor(R.color.loader_selected)
+                .setAnimDuration(800)
+                .setDotsDistance(28)
+                .setDotsRadius(28)
+                .setIsLoadingSingleDirection(true)
+                .create();
+
+        //mDialog.setCancelable(false);
+        mDialog.show(getSupportFragmentManager(), "dialog");
     }
 }
