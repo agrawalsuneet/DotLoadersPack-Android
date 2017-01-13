@@ -13,13 +13,13 @@
     android:background="@color/grey_cool"
     tools:context="com.agrawalsuneet.loaders.MainActivity">
 
-    <com.agrawalsuneet.dotsloader.ui.ThreeDotsLoader
+    <!--<com.agrawalsuneet.dotsloader.ui.ThreeDotsLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         app:loader_circleRadius="4dp"
         app:loader_dotsDist="2dp"
-        app:loader_isSingleDir="true"/>
+        app:loader_isSingleDir="true"/>-->
 
 </LinearLayout>
