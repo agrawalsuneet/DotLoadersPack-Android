@@ -18,10 +18,11 @@ import com.agrawalsuneet.dotsloader.R;
  */
 public class ThreeDotsLoader extends View {
 
-    private int mDefaultColor, mSelectedColor;
-    private int mRadius, mDotsDist;
-    private boolean mIsSingleDir;
-    private int mAnimDur;
+    private int mDefaultColor = ContextCompat.getColor(getContext(), R.color.loader_defalut),
+            mSelectedColor = ContextCompat.getColor(getContext(), R.color.loader_selected);
+    private int mRadius = 30, mDotsDist = 15;
+    private boolean mIsSingleDir = true;
+    private int mAnimDur = 500;
 
     private float firstDotX, secondDotX, thirdDotX;
 
@@ -35,6 +36,11 @@ public class ThreeDotsLoader extends View {
     private boolean isFwdDir = true;
 
     private long logTime;
+
+    public ThreeDotsLoader(Context context) {
+        super(context);
+        initValues();
+    }
 
     public ThreeDotsLoader(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -158,7 +164,7 @@ public class ThreeDotsLoader extends View {
     }
 
     public void setDefaultColor(int defaultColor) {
-        this.mDefaultColor = ContextCompat.getColor(getContext(),defaultColor);
+        this.mDefaultColor = ContextCompat.getColor(getContext(), defaultColor);
         initValues();
         invalidate();
     }
@@ -168,7 +174,7 @@ public class ThreeDotsLoader extends View {
     }
 
     public void setSelectedColor(int selectedColor) {
-        this.mSelectedColor = ContextCompat.getColor(getContext(),selectedColor);
+        this.mSelectedColor = ContextCompat.getColor(getContext(), selectedColor);
         initValues();
         invalidate();
     }
