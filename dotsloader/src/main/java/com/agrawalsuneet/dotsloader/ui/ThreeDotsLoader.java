@@ -60,7 +60,7 @@ public class ThreeDotsLoader extends View {
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.ThreeDotsLoader, 0, 0);
         this.mDefaultColor = typedArray.getColor(R.styleable.ThreeDotsLoader_loader_defaultColor,
                 ContextCompat.getColor(getContext(), R.color.loader_defalut));
-        this.mSelectedColor = typedArray.getColor(R.styleable.ThreeDotsLoader_loader_defaultColor,
+        this.mSelectedColor = typedArray.getColor(R.styleable.ThreeDotsLoader_loader_selectedColor,
                 ContextCompat.getColor(getContext(), R.color.loader_selected));
 
         this.mRadius = dpToPx(getContext(),
@@ -169,6 +169,8 @@ public class ThreeDotsLoader extends View {
 
     public void setSelectedColor(int selectedColor) {
         this.mSelectedColor = ContextCompat.getColor(getContext(),selectedColor);
+        initValues();
+        invalidate();
     }
 
     public int getRadius() {
