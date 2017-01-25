@@ -1,5 +1,41 @@
 apply plugin: 'com.android.library'
 
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
+    }
+}
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'dotsloader'
+
+    publishedGroupId = 'com.agrawalsuneet.dotsloader'
+    libraryName = 'DotsLoader'
+    artifact = 'dotsloader'
+
+    libraryDescription = 'A replacement for default android progress bar with a customizable dots loader'
+
+    siteUrl = 'https://github.com/agrawalsuneet/DotsLoader'
+    gitUrl = 'https://github.com/agrawalsuneet/DotsLoader.git'
+
+    libraryVersion = '1.0'
+
+    developerId = 'agrawalsuneet'
+    developerName = 'Suneet Agrawal'
+    developerEmail = 'agrawalsuneet@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -22,3 +58,6 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:25.1.0'
 }
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
