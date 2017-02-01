@@ -47,8 +47,8 @@ bintray {
 
     configurations = ['archives']
     pkg {
-        repo = 'DotsLoader'
-        name = 'DotsLoader'
+        repo = 'dotsloader'
+        name = 'dotsloader'
         desc = 'a replacement of default android material progressbar with dots loader'
         websiteUrl = 'https://bintray.com/agrawalsuneet/dotsloader/dotsloader'
         vcsUrl = 'https://github.com/agrawalsuneet/DotsLoader'
@@ -58,7 +58,7 @@ bintray {
         version {
             desc = 'a replacement of default android material progressbar with dots loader'
             gpg {
-                sign = true //Determines whether to GPG sign the files. The default is false
+                sign = false //Determines whether to GPG sign the files. The default is false
                 passphrase = properties.getProperty("bintray.gpg.password")
                 //Optional. The passphrase for GPG signing'
             }
