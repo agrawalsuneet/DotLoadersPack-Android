@@ -1,6 +1,6 @@
 apply plugin: 'com.github.dcendents.android-maven'
 
-group = 'com.agrawalsuneet.dotsloader'                               // Maven Group ID for the artifact
+group = 'com.agrawalsuneet.androidlibs'                               // Maven Group ID for the artifact
 
 install {
     repositories.mavenInstaller {
@@ -8,7 +8,7 @@ install {
         pom {
             project {
                 packaging 'aar'
-                groupId 'com.agrawalsuneet.dotsloader'
+                groupId 'com.agrawalsuneet.androidlibs'
                 artifactId 'dotsloader'
                 version '0.1'
 

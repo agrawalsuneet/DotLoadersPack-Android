@@ -47,10 +47,10 @@ bintray {
 
     configurations = ['archives']
     pkg {
-        repo = 'dotsloader'
+        repo = 'androidlibs'
         name = 'dotsloader'
         desc = 'a replacement of default android material progressbar with dots loader'
-        websiteUrl = 'https://bintray.com/agrawalsuneet/dotsloader/dotsloader'
+        websiteUrl = 'https://bintray.com/agrawalsuneet/androidlibs/dotsloader'
         vcsUrl = 'https://github.com/agrawalsuneet/DotsLoader'
         licenses = 'The Apache Software License, Version 2.0'
         publish = true
