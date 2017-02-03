@@ -1,5 +1,6 @@
 # DotsLoader
 > Android dotsloader
+
 > A replacement of default android material progressbar with dots loader
 
 ### DotsLoader
