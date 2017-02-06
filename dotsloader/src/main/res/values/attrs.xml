@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="ThreeDotsLoader">
+    <declare-styleable name="DotsLoader">
+        <attr name="loader_noOfDots" format="integer" />
         <attr name="loader_defaultColor" format="color" />
         <attr name="loader_selectedColor" format="color" />
         <attr name="loader_circleRadius" format="dimension" />

@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.agrawalsuneet.dotsloader.R;
 import com.agrawalsuneet.dotsloader.dialog.helper.LoaderController;
-import com.agrawalsuneet.dotsloader.ui.ThreeDotsLoader;
+import com.agrawalsuneet.dotsloader.ui.DotsLoader;
 
 /**
  * Created by Suneet on 13/01/17.
@@ -28,7 +28,7 @@ public class DotsLoaderDialog extends DialogFragment {
     private TextView mMessageTextView;
     private LoaderController mController;
     private LinearLayout mContainerLL;
-    private ThreeDotsLoader mLoader;
+    private DotsLoader mLoader;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,7 +63,7 @@ public class DotsLoaderDialog extends DialogFragment {
     private void initViews(AlertDialog dialog) {
         mContainerLL = (LinearLayout) mView.findViewById(R.id.dialog_container);
         mMessageTextView = (TextView) mView.findViewById(R.id.dialog_message_tv);
-        mLoader = (ThreeDotsLoader) mView.findViewById(R.id.dialog_loader);
+        mLoader = (DotsLoader) mView.findViewById(R.id.dialog_loader);
 
         if (mController.background != 0) {
             mContainerLL.setBackgroundColor(ContextCompat.getColor(getContext(), mController.background));

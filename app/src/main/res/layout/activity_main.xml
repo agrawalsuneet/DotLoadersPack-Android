@@ -13,17 +13,19 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.agrawalsuneet.loaders.MainActivity">
 
-   <com.agrawalsuneet.dotsloader.ui.ThreeDotsLoader
+    <com.agrawalsuneet.dotsloader.ui.DotsLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
         app:loader_circleRadius="4dp"
         app:loader_dotsDist="2dp"
-        app:loader_isSingleDir="true" />
+        app:loader_animDur="800"
+        app:loader_noOfDots="8"
+        app:loader_isSingleDir="false" />
 
 
-    <com.agrawalsuneet.dotsloader.ui.ThreeDotsLoader
+    <!--<com.agrawalsuneet.dotsloader.ui.ThreeDotsLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
@@ -57,6 +59,6 @@
         app:loader_defaultColor="@color/purple_default"
         app:loader_dotsDist="3dp"
         app:loader_isSingleDir="true"
-        app:loader_selectedColor="@color/purple_selected" />
+        app:loader_selectedColor="@color/purple_selected" />-->
 
 </LinearLayout>

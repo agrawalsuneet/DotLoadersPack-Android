@@ -16,15 +16,17 @@ import com.agrawalsuneet.dotsloader.R;
 /**
  * Created by Suneet on 13/01/17.
  */
-public class ThreeDotsLoader extends View {
+public class DotsLoader extends View {
 
     private int mDefaultColor = ContextCompat.getColor(getContext(), R.color.loader_defalut),
             mSelectedColor = ContextCompat.getColor(getContext(), R.color.loader_selected);
     private int mRadius = 30, mDotsDist = 15;
     private boolean mIsSingleDir = true;
     private int mAnimDur = 500;
+    private int mNoOfDots = 3;
 
-    private float firstDotX, secondDotX, thirdDotX;
+    //private float firstDotX, secondDotX, thirdDotX;
+    private float[] dotsXCorArr;
 
     private Paint mDefaultCirclePaint, mSelectedCirclePaint;
 
@@ -37,17 +39,17 @@ public class ThreeDotsLoader extends View {
 
     private long logTime;
 
-    public ThreeDotsLoader(Context context) {
+    public DotsLoader(Context context) {
         super(context);
         initValues();
     }
 
-    public ThreeDotsLoader(Context context, AttributeSet attrs) {
+    public DotsLoader(Context context, AttributeSet attrs) {
         super(context, attrs);
         initAttributes(attrs);
     }
 
-    public ThreeDotsLoader(Context context, AttributeSet attrs, int defStyleAttr) {
+    public DotsLoader(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initAttributes(attrs);
     }
@@ -56,36 +58,51 @@ public class ThreeDotsLoader extends View {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
-        width = (6 * mRadius) + (2 * mDotsDist);
+        width = (2 * mNoOfDots * mRadius) + ((mNoOfDots - 1) * mDotsDist);
         height = (2 * mRadius);
         setMeasuredDimension(width, height);
     }
 
     private void initAttributes(AttributeSet attrs) {
 
-        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.ThreeDotsLoader, 0, 0);
-        this.mDefaultColor = typedArray.getColor(R.styleable.ThreeDotsLoader_loader_defaultColor,
+        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.DotsLoader, 0, 0);
+
+        this.mNoOfDots = typedArray.getInt(R.styleable.DotsLoader_loader_noOfDots, 3);
+
+        this.mDefaultColor = typedArray.getColor(R.styleable.DotsLoader_loader_defaultColor,
                 ContextCompat.getColor(getContext(), R.color.loader_defalut));
-        this.mSelectedColor = typedArray.getColor(R.styleable.ThreeDotsLoader_loader_selectedColor,
+        this.mSelectedColor = typedArray.getColor(R.styleable.DotsLoader_loader_selectedColor,
                 ContextCompat.getColor(getContext(), R.color.loader_selected));
 
         this.mRadius = dpToPx(getContext(),
-                typedArray.getDimensionPixelSize(R.styleable.ThreeDotsLoader_loader_circleRadius, 30));
+                typedArray.getDimensionPixelSize(R.styleable.DotsLoader_loader_circleRadius, 30));
         this.mDotsDist = dpToPx(getContext(),
-                typedArray.getDimensionPixelSize(R.styleable.ThreeDotsLoader_loader_dotsDist, 15));
+                typedArray.getDimensionPixelSize(R.styleable.DotsLoader_loader_dotsDist, 15));
 
-        this.mIsSingleDir = typedArray.getBoolean(R.styleable.ThreeDotsLoader_loader_isSingleDir, false);
-        this.mAnimDur = typedArray.getInt(R.styleable.ThreeDotsLoader_loader_animDur, 500);
+        this.mIsSingleDir = typedArray.getBoolean(R.styleable.DotsLoader_loader_isSingleDir, false);
+        this.mAnimDur = typedArray.getInt(R.styleable.DotsLoader_loader_animDur, 500);
         typedArray.recycle();
 
         initValues();
     }
 
     private void initValues() {
-        firstDotX = mRadius;
-        secondDotX = mDotsDist + (3 * mRadius);
-        thirdDotX = (2 * mDotsDist) + (5 * mRadius);
+        //firstDotX = mRadius;
+        //secondDotX = mDotsDist + (3 * mRadius);
+        //thirdDotX = (2 * mDotsDist) + (5 * mRadius);
 
+        if (mNoOfDots < 1) {
+            mNoOfDots = 3;
+        }
+
+        dotsXCorArr = new float[mNoOfDots];
+
+        //init X cordinates for all dots
+        for (int i = 0; i < mNoOfDots; i++) {
+            dotsXCorArr[i] = (i * mDotsDist) + (((i * 2) + 1) * mRadius);
+        }
+
+        //init paints for drawing dots
         mDefaultCirclePaint = new Paint();
         mDefaultCirclePaint.setAntiAlias(true);
         mDefaultCirclePaint.setStyle(Paint.Style.FILL);
@@ -109,13 +126,13 @@ public class ThreeDotsLoader extends View {
 
                     if ((System.currentTimeMillis() - logTime) >= mAnimDur) {
 
-                        if (mIsSingleDir && selectedDotPos == 3) {
+                        if (mIsSingleDir && selectedDotPos == mNoOfDots) {
                             selectedDotPos = 1;
                         } else if (mIsSingleDir) {
                             selectedDotPos++;
                         } else if (!mIsSingleDir && isFwdDir) {
                             selectedDotPos++;
-                            if (selectedDotPos == 3) {
+                            if (selectedDotPos == mNoOfDots) {
                                 isFwdDir = !isFwdDir;
                             }
                         } else if (!mIsSingleDir && !isFwdDir) {
@@ -134,9 +151,9 @@ public class ThreeDotsLoader extends View {
     }
 
     private void drawCircle(Canvas canvas) {
-        canvas.drawCircle(firstDotX, mRadius, mRadius, selectedDotPos == 1 ? mSelectedCirclePaint : mDefaultCirclePaint);
-        canvas.drawCircle(secondDotX, mRadius, mRadius, selectedDotPos == 2 ? mSelectedCirclePaint : mDefaultCirclePaint);
-        canvas.drawCircle(thirdDotX, mRadius, mRadius, selectedDotPos == 3 ? mSelectedCirclePaint : mDefaultCirclePaint);
+        for (int i = 0; i < mNoOfDots; i++) {
+            canvas.drawCircle(dotsXCorArr[i], mRadius, mRadius, i + 1 == selectedDotPos ? mSelectedCirclePaint : mDefaultCirclePaint);
+        }
     }
 
     public void startAnimation() {
@@ -205,6 +222,16 @@ public class ThreeDotsLoader extends View {
 
     public void setIsSingleDir(boolean mIsSingleDir) {
         this.mIsSingleDir = mIsSingleDir;
+        initValues();
+        invalidate();
+    }
+
+    public int getmNoOfDots() {
+        return mNoOfDots;
+    }
+
+    public void setNoOfDots(int noOfDots) {
+        this.mNoOfDots = mNoOfDots;
         initValues();
         invalidate();
     }
