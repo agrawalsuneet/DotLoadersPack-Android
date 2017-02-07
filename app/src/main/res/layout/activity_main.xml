@@ -19,10 +19,12 @@
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
         app:loader_circleRadius="4dp"
+        app:loader_selectedRadius="8dp"
         app:loader_dotsDist="2dp"
-        app:loader_animDur="100"
+        app:loader_animDur="800"
         app:loader_noOfDots="5"
-        app:loader_isSingleDir="false" />
+        app:loader_isSingleDir="false"
+        app:loader_expandOnSelect="true"/>
 
 
     <!--<com.agrawalsuneet.dotsloader.ui.ThreeDotsLoader
