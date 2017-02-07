@@ -25,7 +25,6 @@ public class DotsLoader extends View {
     private int mAnimDur = 500;
     private int mNoOfDots = 3;
 
-    //private float firstDotX, secondDotX, thirdDotX;
     private float[] dotsXCorArr;
 
     private Paint mDefaultCirclePaint, mSelectedCirclePaint;
@@ -87,12 +86,11 @@ public class DotsLoader extends View {
     }
 
     private void initValues() {
-        //firstDotX = mRadius;
-        //secondDotX = mDotsDist + (3 * mRadius);
-        //thirdDotX = (2 * mDotsDist) + (5 * mRadius);
 
         if (mNoOfDots < 1) {
             mNoOfDots = 3;
+        } else if (mNoOfDots == 1){
+            shouldAnimate = false;
         }
 
         dotsXCorArr = new float[mNoOfDots];
@@ -152,7 +150,8 @@ public class DotsLoader extends View {
 
     private void drawCircle(Canvas canvas) {
         for (int i = 0; i < mNoOfDots; i++) {
-            canvas.drawCircle(dotsXCorArr[i], mRadius, mRadius, i + 1 == selectedDotPos ? mSelectedCirclePaint : mDefaultCirclePaint);
+            canvas.drawCircle(dotsXCorArr[i], mRadius, mRadius,
+                    i + 1 == selectedDotPos ? mSelectedCirclePaint : mDefaultCirclePaint);
         }
     }
 
