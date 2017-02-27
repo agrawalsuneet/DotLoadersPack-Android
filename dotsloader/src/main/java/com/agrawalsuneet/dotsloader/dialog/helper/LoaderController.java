@@ -12,9 +12,10 @@ public class LoaderController implements Parcelable {
     public float textSize;
     public int textColor;
     public String message;
-    public int dotsRadius, dotsDist;
+    public int noOfDots;
+    public int dotsRadius, dotsDist, dotsSelectedRadius;
     public int dotsDefaultColor, dotsSelectedColor;
-    public boolean isLoadingSingleDir;
+    public boolean isLoadingSingleDir, isExpandOnSelect;
     public int animDur;
     public int background;
 
@@ -33,6 +34,10 @@ public class LoaderController implements Parcelable {
         this.message = message;
     }
 
+    public void setNoOfDots(int noOfDots) {
+        this.noOfDots = noOfDots;
+    }
+
     public void setDotsRadius(int dotsRadius) {
         this.dotsRadius = dotsRadius;
     }
@@ -42,21 +47,25 @@ public class LoaderController implements Parcelable {
         this.dotsDist = dotsDist;
     }
 
+    public void setDotsSelectedRadius(int dotsSelectedRadius) {
+        this.dotsSelectedRadius = dotsSelectedRadius;
+    }
 
     public void setDotsDefaultColor(int dotsDefaultColor) {
         this.dotsDefaultColor = dotsDefaultColor;
     }
 
-
     public void setDotsSelectedColor(int dotsSelectedColor) {
         this.dotsSelectedColor = dotsSelectedColor;
     }
-
 
     public void setLoadingSingleDir(boolean loadingSingleDir) {
         isLoadingSingleDir = loadingSingleDir;
     }
 
+    public void setExpandOnSelect(boolean expandOnSelect) {
+        isExpandOnSelect = expandOnSelect;
+    }
 
     public void setAnimDur(int animDur) {
         this.animDur = animDur;
@@ -71,11 +80,14 @@ public class LoaderController implements Parcelable {
         textSize = in.readFloat();
         textColor = in.readInt();
         message = in.readString();
+        noOfDots = in.readInt();
         dotsRadius = in.readInt();
         dotsDist = in.readInt();
+        dotsSelectedRadius = in.readInt();
         dotsDefaultColor = in.readInt();
         dotsSelectedColor = in.readInt();
         isLoadingSingleDir = in.readByte() != 0;
+        isExpandOnSelect = in.readByte() != 0;
         animDur = in.readInt();
         background = in.readInt();
     }
@@ -85,11 +97,14 @@ public class LoaderController implements Parcelable {
         dest.writeFloat(textSize);
         dest.writeInt(textColor);
         dest.writeString(message);
+        dest.writeInt(noOfDots);
         dest.writeInt(dotsRadius);
         dest.writeInt(dotsDist);
+        dest.writeInt(dotsSelectedRadius);
         dest.writeInt(dotsDefaultColor);
         dest.writeInt(dotsSelectedColor);
         dest.writeByte((byte) (isLoadingSingleDir ? 1 : 0));
+        dest.writeByte((byte) (isExpandOnSelect ? 1 : 0));
         dest.writeInt(animDur);
         dest.writeInt(background);
     }
