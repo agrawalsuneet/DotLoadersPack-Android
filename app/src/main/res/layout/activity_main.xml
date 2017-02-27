@@ -18,29 +18,44 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
-        app:loader_circleRadius="4dp"
-        app:loader_selectedRadius="8dp"
-        app:loader_dotsDist="2dp"
         app:loader_animDur="800"
+        app:loader_circleRadius="4dp"
+        app:loader_dotsDist="2dp"
+        app:loader_expandOnSelect="true"
+        app:loader_isSingleDir="true"
         app:loader_noOfDots="5"
+        app:loader_selectedRadius="8dp" />
+
+    <com.agrawalsuneet.dotsloader.ui.DotsLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        app:loader_animDur="100"
+        app:loader_circleRadius="4dp"
+        app:loader_dotsDist="2dp"
         app:loader_isSingleDir="false"
-        app:loader_expandOnSelect="true"/>
+        app:loader_noOfDots="8"
+        app:loader_selectedRadius="8dp" />
 
 
-    <!--<com.agrawalsuneet.dotsloader.ui.ThreeDotsLoader
+    <com.agrawalsuneet.dotsloader.ui.DotsLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
         app:loader_animDur="1000"
         app:loader_circleRadius="6dp"
+        app:loader_selectedRadius="10dp"
         app:loader_defaultColor="@color/pink_default"
         app:loader_dotsDist="3dp"
+        app:loader_expandOnSelect="true"
         app:loader_isSingleDir="false"
+        app:loader_noOfDots="6"
         app:loader_selectedColor="@color/pink_selected" />
 
 
-    <com.agrawalsuneet.dotsloader.ui.ThreeDotsLoader
+    <com.agrawalsuneet.dotsloader.ui.DotsLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
@@ -52,7 +67,7 @@
         app:loader_selectedColor="@color/blue_selected" />
 
 
-    <com.agrawalsuneet.dotsloader.ui.ThreeDotsLoader
+    <com.agrawalsuneet.dotsloader.ui.DotsLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
@@ -61,6 +76,7 @@
         app:loader_defaultColor="@color/purple_default"
         app:loader_dotsDist="3dp"
         app:loader_isSingleDir="true"
-        app:loader_selectedColor="@color/purple_selected" />-->
+        app:loader_noOfDots="8"
+        app:loader_selectedColor="@color/purple_selected" />
 
 </LinearLayout>
