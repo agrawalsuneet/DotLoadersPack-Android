@@ -30,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
         loader.setDefaultColor(R.color.loader_defalut);
         loader.setSelectedColor(R.color.loader_selected);
         loader.setIsSingleDir(true);
+        loader.setNoOfDots(5);
+        loader.setSelRadius(40);
+        loader.setExpandOnSelect(true);
         loader.setRadius(30);
         loader.setDotsDist(20);
         loader.setAnimDur(500);
@@ -57,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
     private void showAlertDialog() {
         DotsLoaderDialog dotsDialog = new DotsLoaderDialog.Builder(this)
                 .setTextColor(R.color.white)
-                .setBackground(R.color.blue_delfault)
                 .setMessage("Loading...")
                 .setTextSize(24)
                 .setDotsDefaultColor(R.color.loader_defalut)
@@ -65,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
                 .setAnimDuration(800)
                 .setDotsDistance(28)
                 .setDotsRadius(28)
+                .setDotsSelectedRadius(40)
+                .setExpandOnSelect(true)
+                .setNoOfDots(5)
                 .setIsLoadingSingleDirection(true)
                 .create();
 

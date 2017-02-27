@@ -42,7 +42,6 @@ public class LoaderController implements Parcelable {
         this.dotsRadius = dotsRadius;
     }
 
-
     public void setDotsDist(int dotsDist) {
         this.dotsDist = dotsDist;
     }
@@ -70,7 +69,6 @@ public class LoaderController implements Parcelable {
     public void setAnimDur(int animDur) {
         this.animDur = animDur;
     }
-
 
     public void setBackground(int background) {
         this.background = background;

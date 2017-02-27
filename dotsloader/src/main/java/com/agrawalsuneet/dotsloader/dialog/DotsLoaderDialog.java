@@ -23,7 +23,6 @@ import com.agrawalsuneet.dotsloader.ui.DotsLoader;
 
 public class DotsLoaderDialog extends DialogFragment {
 
-
     private View mView;
     private TextView mMessageTextView;
     private LoaderController mController;
@@ -178,7 +177,7 @@ public class DotsLoaderDialog extends DialogFragment {
         }
 
         public Builder setExpandOnSelect(boolean expandOnSelect) {
-            this.mController.setLoadingSingleDir(expandOnSelect);
+            this.mController.setExpandOnSelect(expandOnSelect);
             return this;
         }
 

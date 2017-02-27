@@ -203,8 +203,8 @@ public class DotsLoader extends View {
         return mAnimDur;
     }
 
-    public void setAnimDur(int mAnimDur) {
-        this.mAnimDur = mAnimDur;
+    public void setAnimDur(int animDur) {
+        this.mAnimDur = animDur;
         initValues();
         invalidate();
     }
@@ -233,8 +233,8 @@ public class DotsLoader extends View {
         return mRadius;
     }
 
-    public void setRadius(int mRadius) {
-        this.mRadius = mRadius;
+    public void setRadius(int radius) {
+        this.mRadius = radius;
         initValues();
         invalidate();
     }
@@ -243,8 +243,8 @@ public class DotsLoader extends View {
         return mDotsDist;
     }
 
-    public void setDotsDist(int mDotsDist) {
-        this.mDotsDist = mDotsDist;
+    public void setDotsDist(int dotsDist) {
+        this.mDotsDist = dotsDist;
         initValues();
         invalidate();
     }
@@ -253,8 +253,8 @@ public class DotsLoader extends View {
         return mIsSingleDir;
     }
 
-    public void setIsSingleDir(boolean mIsSingleDir) {
-        this.mIsSingleDir = mIsSingleDir;
+    public void setIsSingleDir(boolean isSingleDir) {
+        this.mIsSingleDir = isSingleDir;
         initValues();
         invalidate();
     }
@@ -264,7 +264,7 @@ public class DotsLoader extends View {
     }
 
     public void setNoOfDots(int noOfDots) {
-        this.mNoOfDots = mNoOfDots;
+        this.mNoOfDots = noOfDots;
         initValues();
         invalidate();
     }
