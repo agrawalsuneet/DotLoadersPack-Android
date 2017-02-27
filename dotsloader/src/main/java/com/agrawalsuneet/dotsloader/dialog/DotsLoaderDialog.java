@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.agrawalsuneet.dotsloader.R;
 import com.agrawalsuneet.dotsloader.dialog.helper.LoaderController;
-import com.agrawalsuneet.dotsloader.ui.ThreeDotsLoader;
+import com.agrawalsuneet.dotsloader.ui.DotsLoader;
 
 /**
  * Created by Suneet on 13/01/17.
@@ -23,12 +23,11 @@ import com.agrawalsuneet.dotsloader.ui.ThreeDotsLoader;
 
 public class DotsLoaderDialog extends DialogFragment {
 
-
     private View mView;
     private TextView mMessageTextView;
     private LoaderController mController;
     private LinearLayout mContainerLL;
-    private ThreeDotsLoader mLoader;
+    private DotsLoader mLoader;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,7 +62,7 @@ public class DotsLoaderDialog extends DialogFragment {
     private void initViews(AlertDialog dialog) {
         mContainerLL = (LinearLayout) mView.findViewById(R.id.dialog_container);
         mMessageTextView = (TextView) mView.findViewById(R.id.dialog_message_tv);
-        mLoader = (ThreeDotsLoader) mView.findViewById(R.id.dialog_loader);
+        mLoader = (DotsLoader) mView.findViewById(R.id.dialog_loader);
 
         if (mController.background != 0) {
             mContainerLL.setBackgroundColor(ContextCompat.getColor(getContext(), mController.background));
@@ -87,6 +86,10 @@ public class DotsLoaderDialog extends DialogFragment {
             mLoader.setAnimDur(mController.animDur);
         }
 
+        if (mController.noOfDots != 0){
+            mLoader.setNoOfDots(mController.noOfDots);
+        }
+
         if (mController.dotsDefaultColor != 0) {
             mLoader.setDefaultColor(mController.dotsDefaultColor);
         }
@@ -103,7 +106,13 @@ public class DotsLoaderDialog extends DialogFragment {
             mLoader.setRadius(mController.dotsRadius);
         }
 
+        if (mController.dotsSelectedRadius != 0) {
+            mLoader.setSelRadius(mController.dotsSelectedRadius);
+        }
+
         mLoader.setIsSingleDir(mController.isLoadingSingleDir);
+
+        mLoader.setExpandOnSelect(mController.isExpandOnSelect);
     }
 
     public static class Builder {
@@ -132,6 +141,11 @@ public class DotsLoaderDialog extends DialogFragment {
             return this;
         }
 
+        public Builder setNoOfDots(int noOfDots){
+            this.mController.setNoOfDots(noOfDots);
+            return this;
+        }
+
         public Builder setDotsRadius(int radius) {
             this.mController.setDotsRadius(radius);
             return this;
@@ -139,6 +153,11 @@ public class DotsLoaderDialog extends DialogFragment {
 
         public Builder setDotsDistance(int distance) {
             this.mController.setDotsDist(distance);
+            return this;
+        }
+
+        public Builder setDotsSelectedRadius(int selectedRadius) {
+            this.mController.setDotsSelectedRadius(selectedRadius);
             return this;
         }
 
@@ -154,6 +173,11 @@ public class DotsLoaderDialog extends DialogFragment {
 
         public Builder setIsLoadingSingleDirection(boolean isSingleDir) {
             this.mController.setLoadingSingleDir(isSingleDir);
+            return this;
+        }
+
+        public Builder setExpandOnSelect(boolean expandOnSelect) {
+            this.mController.setExpandOnSelect(expandOnSelect);
             return this;
         }
 

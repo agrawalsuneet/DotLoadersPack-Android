@@ -2,7 +2,7 @@
 
 apply plugin: 'com.jfrog.bintray'
 
-version = '0.1'
+version = '0.2'
 
 if (project.hasProperty("android")) { // Android libraries
     task sourcesJar(type: Jar) {
@@ -58,7 +58,7 @@ bintray {
         version {
             desc = 'a replacement of default android material progressbar with dots loader'
             gpg {
-                sign = false //Determines whether to GPG sign the files. The default is false
+                sign = true //Determines whether to GPG sign the files. The default is false
                 passphrase = properties.getProperty("bintray.gpg.password")
                 //Optional. The passphrase for GPG signing'
             }
