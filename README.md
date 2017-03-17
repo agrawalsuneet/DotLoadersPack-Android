@@ -14,31 +14,37 @@
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-compile 'com.agrawalsuneet.androidlibs:dotsloader:0.1'
+compile(group: 'com.agrawalsuneet.androidlibs', name: 'dotsloader', version: '0.2', ext: 'aar', classifier: '')
 ```
 
 ### DotsLoader
 * Through XML
 ```
-<com.agrawalsuneet.dotsloader.ui.ThreeDotsLoader
+<com.agrawalsuneet.dotsloader.ui.DotsLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:loader_circleRadius="6dp"
-        app:loader_defaultColor="@color/blue_delfault"
-        app:loader_dotsDist="2dp"
-        app:loader_isSingleDir="true"
         app:loader_animDur="1000"
-        app:loader_selectedColor="@color/blue_selected" />
+        app:loader_noOfDots="8"
+        app:loader_circleRadius="6dp"
+        app:loader_defaultColor="@color/pink_default"
+        app:loader_selectedColor="@color/pink_selected"
+        app:loader_dotsDist="3dp"
+        app:loader_expandOnSelect="true"
+        app:loader_isSingleDir="false"
+        app:loader_selectedRadius="10dp" />
 ```
 
 *  Through Code
 ```
         LinearLayout containerLL = (LinearLayout) findViewById(R.id.container);
 
-        ThreeDotsLoader loader = new ThreeDotsLoader(MainActivity.this);
+        DotsLoader loader = new DotsLoader(MainActivity.this);
         loader.setDefaultColor(R.color.loader_defalut);
         loader.setSelectedColor(R.color.loader_selected);
         loader.setIsSingleDir(true);
+        loader.setNoOfDots(5);
+        loader.setSelRadius(40);
+        loader.setExpandOnSelect(true);
         loader.setRadius(30);
         loader.setDotsDist(20);
         loader.setAnimDur(500);
@@ -50,7 +56,6 @@ compile 'com.agrawalsuneet.androidlibs:dotsloader:0.1'
 ```
 DotsLoaderDialog dotsDialog = new DotsLoaderDialog.Builder(this)
                 .setTextColor(R.color.white)
-                .setBackground(R.color.blue_delfault)
                 .setMessage("Loading...")
                 .setTextSize(24)
                 .setDotsDefaultColor(R.color.loader_defalut)
@@ -58,6 +63,9 @@ DotsLoaderDialog dotsDialog = new DotsLoaderDialog.Builder(this)
                 .setAnimDuration(800)
                 .setDotsDistance(28)
                 .setDotsRadius(28)
+                .setDotsSelectedRadius(40)
+                .setExpandOnSelect(true)
+                .setNoOfDots(5)
                 .setIsLoadingSingleDirection(true)
                 .create();
 
