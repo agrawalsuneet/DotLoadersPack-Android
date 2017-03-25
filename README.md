@@ -4,7 +4,7 @@
 > A replacement of default android material progressbar with dots loader
 
 ### DotsLoader
-![loaders](https://cloud.githubusercontent.com/assets/12999622/22540869/ad0d5c24-e948-11e6-8d8a-873ff19e5985.gif)
+![loaders](https://cloud.githubusercontent.com/assets/12999622/24325203/bc34912e-11b9-11e7-9983-4b3fdd39276c.gif)
 
 ### DotsLoader Dialog
 ![dialog](https://cloud.githubusercontent.com/assets/12999622/22540867/a7c15658-e948-11e6-81a4-533b48f7d0d3.gif)
