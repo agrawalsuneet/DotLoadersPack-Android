@@ -10,7 +10,7 @@ install {
                 packaging 'aar'
                 groupId 'com.agrawalsuneet.androidlibs'
                 artifactId 'dotsloader'
-                version '0.1'
+                version '0.2'
 
                 // Add your description here
                 name 'dotsloader'
