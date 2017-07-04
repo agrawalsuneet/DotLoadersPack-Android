@@ -41,7 +41,6 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:25.1.0'
     javadocDeps 'com.android.support:support-annotations:25.1.0'
 }
 

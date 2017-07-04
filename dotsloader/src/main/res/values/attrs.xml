@@ -11,6 +11,7 @@
         <attr name="loader_animDur" format="integer" />
         <attr name="loader_expandOnSelect" format="boolean" />
         <attr name="loader_selectedRadius" format="dimension" />
+        <attr name="loader_bigCircleRadius" format="dimension" />
     </declare-styleable>
 
 </resources>

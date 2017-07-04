@@ -3,7 +3,6 @@ package com.agrawalsuneet.dotsloader.ui;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Paint;
-import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -14,8 +13,8 @@ import com.agrawalsuneet.dotsloader.R;
  */
 public abstract class DotsLoader extends View {
 
-    protected int mDefaultColor = ContextCompat.getColor(getContext(), R.color.loader_defalut),
-            mSelectedColor = ContextCompat.getColor(getContext(), R.color.loader_selected);
+    protected int mDefaultColor = getResources().getColor(R.color.loader_defalut),
+            mSelectedColor = getResources().getColor(R.color.loader_selected);
 
     protected int mRadius = 30;
     protected int mSelRadius = 38;
@@ -54,17 +53,14 @@ public abstract class DotsLoader extends View {
     }
 
 
-
     protected void initAttributes(AttributeSet attrs) {
 
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.DotsLoader, 0, 0);
 
-
-
         this.mDefaultColor = typedArray.getColor(R.styleable.DotsLoader_loader_defaultColor,
-                ContextCompat.getColor(getContext(), R.color.loader_defalut));
+                getResources().getColor(R.color.loader_defalut));
         this.mSelectedColor = typedArray.getColor(R.styleable.DotsLoader_loader_selectedColor,
-                ContextCompat.getColor(getContext(), R.color.loader_selected));
+                getResources().getColor(R.color.loader_selected));
 
         this.mRadius = typedArray.getDimensionPixelSize(R.styleable.DotsLoader_loader_circleRadius, 30);
 
@@ -72,6 +68,7 @@ public abstract class DotsLoader extends View {
 
         this.mAnimDur = typedArray.getInt(R.styleable.DotsLoader_loader_animDur, 500);
         this.mExpandOnSelect = typedArray.getBoolean(R.styleable.DotsLoader_loader_expandOnSelect, false);
+
         typedArray.recycle();
     }
 
@@ -102,7 +99,7 @@ public abstract class DotsLoader extends View {
     }
 
     public void setDefaultColor(int defaultColor) {
-        this.mDefaultColor = ContextCompat.getColor(getContext(), defaultColor);
+        this.mDefaultColor = getResources().getColor(defaultColor);
         initValues();
         invalidate();
     }
@@ -112,7 +109,7 @@ public abstract class DotsLoader extends View {
     }
 
     public void setSelectedColor(int selectedColor) {
-        this.mSelectedColor = ContextCompat.getColor(getContext(), selectedColor);
+        this.mSelectedColor = getResources().getColor(selectedColor);
         initValues();
         invalidate();
     }

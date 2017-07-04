@@ -57,11 +57,6 @@ public class LinearDotsLoader extends DotsLoader {
     @Override
     protected void initValues() {
 
-        if (mNoOfDots < 1) {
-            mNoOfDots = 3;
-        } else if (mNoOfDots == 1) {
-            shouldAnimate = false;
-        }
 
         diffRadius = mSelRadius - mRadius;
 
