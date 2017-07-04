@@ -15,6 +15,7 @@ import com.agrawalsuneet.dotsloader.R;
 public class CircularDotsLoader extends DotsLoader {
 
     private final int mNoOfDots = 8;
+    private final float SIN_45 = 0.7071f;
 
     private int mBigCircleRadius = 60;
 
@@ -53,6 +54,30 @@ public class CircularDotsLoader extends DotsLoader {
     @Override
     protected void initValues() {
 
+        float sin45Radius = SIN_45 * mBigCircleRadius;
+
+        dotsXCorArr = new float[mNoOfDots];
+        dotsYCorArr = new float[mNoOfDots];
+
+        for (int i = 0; i < mNoOfDots; i++) {
+            dotsXCorArr[i] = dotsYCorArr[i] = mBigCircleRadius + mRadius;
+        }
+
+        dotsXCorArr[1] = dotsXCorArr[1] + sin45Radius;
+        dotsXCorArr[2] = dotsXCorArr[2] + mBigCircleRadius;
+        dotsXCorArr[3] = dotsXCorArr[3] + sin45Radius;
+
+        dotsXCorArr[5] = dotsXCorArr[5] - sin45Radius;
+        dotsXCorArr[6] = dotsXCorArr[6] - mBigCircleRadius;
+        dotsXCorArr[7] = dotsXCorArr[7] - sin45Radius;
+
+        dotsYCorArr[0] = dotsYCorArr[0] + mBigCircleRadius;
+        dotsYCorArr[1] = dotsYCorArr[1] + sin45Radius;
+        dotsYCorArr[3] = dotsYCorArr[3] - sin45Radius;
+
+        dotsYCorArr[4] = dotsYCorArr[4] - mBigCircleRadius;
+        dotsYCorArr[5] = dotsYCorArr[5] - sin45Radius;
+        dotsYCorArr[7] = dotsYCorArr[7] + sin45Radius;
 
         //init paints for drawing dots
         defaultCirclePaint = new Paint();
@@ -86,5 +111,9 @@ public class CircularDotsLoader extends DotsLoader {
         super.onDraw(canvas);
 
         canvas.drawCircle(mBigCircleRadius + mRadius, mBigCircleRadius + mRadius, mBigCircleRadius, defaultCirclePaint);
+
+        for (int i = 0; i < mNoOfDots; i++) {
+            canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], mRadius, selectedCirclePaint);
+        }
     }
 }
