@@ -23,6 +23,8 @@ public class LinearDotsLoader extends DotsLoader {
 
     private boolean isFwdDir = true;
 
+    protected boolean mExpandOnSelect = false;
+
     public LinearDotsLoader(Context context) {
         super(context);
         initValues();
@@ -48,6 +50,7 @@ public class LinearDotsLoader extends DotsLoader {
         this.mDotsDist = typedArray.getDimensionPixelSize(R.styleable.DotsLoader_loader_dotsDist, 15);
 
         this.mIsSingleDir = typedArray.getBoolean(R.styleable.DotsLoader_loader_isSingleDir, false);
+        this.mExpandOnSelect = typedArray.getBoolean(R.styleable.DotsLoader_loader_expandOnSelect, false);
 
         typedArray.recycle();
 
@@ -180,6 +183,16 @@ public class LinearDotsLoader extends DotsLoader {
 
     public void setIsSingleDir(boolean isSingleDir) {
         this.mIsSingleDir = isSingleDir;
+        initValues();
+        invalidate();
+    }
+
+    public boolean isExpandOnSelect() {
+        return mExpandOnSelect;
+    }
+
+    public void setExpandOnSelect(boolean expandOnSelect) {
+        this.mExpandOnSelect = expandOnSelect;
         initValues();
         invalidate();
     }

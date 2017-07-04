@@ -21,8 +21,6 @@ public abstract class DotsLoader extends View {
 
     protected int mAnimDur = 500;
 
-    protected boolean mExpandOnSelect = false;
-
     protected float[] dotsXCorArr;
 
     protected Paint defaultCirclePaint, selectedCirclePaint;
@@ -67,7 +65,6 @@ public abstract class DotsLoader extends View {
         this.mSelRadius = typedArray.getDimensionPixelSize(R.styleable.DotsLoader_loader_selectedRadius, mRadius + 10);
 
         this.mAnimDur = typedArray.getInt(R.styleable.DotsLoader_loader_animDur, 500);
-        this.mExpandOnSelect = typedArray.getBoolean(R.styleable.DotsLoader_loader_expandOnSelect, false);
 
         typedArray.recycle();
     }
@@ -120,16 +117,6 @@ public abstract class DotsLoader extends View {
 
     public void setRadius(int radius) {
         this.mRadius = radius;
-        initValues();
-        invalidate();
-    }
-
-    public boolean isExpandOnSelect() {
-        return mExpandOnSelect;
-    }
-
-    public void setExpandOnSelect(boolean expandOnSelect) {
-        this.mExpandOnSelect = expandOnSelect;
         initValues();
         invalidate();
     }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.os.Handler;
 import android.util.AttributeSet;
 
 import com.agrawalsuneet.dotsloader.R;
@@ -54,6 +55,9 @@ public class CircularDotsLoader extends DotsLoader {
     @Override
     protected void initValues() {
 
+        selectedDotPos = 5;
+        mAnimDur = 100;
+
         float sin45Radius = SIN_45 * mBigCircleRadius;
 
         dotsXCorArr = new float[mNoOfDots];
@@ -96,24 +100,44 @@ public class CircularDotsLoader extends DotsLoader {
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
-        if (mExpandOnSelect) {
-            width = (2 * mBigCircleRadius) + (2 * mSelRadius);
-            height = width;
-        } else {
-            width = (2 * mBigCircleRadius) + (2 * mRadius);
-            height = width;
-        }
-        setMeasuredDimension(width, height);
+        width = (2 * mBigCircleRadius) + (2 * mRadius);
+        height = width;
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        canvas.drawCircle(mBigCircleRadius + mRadius, mBigCircleRadius + mRadius, mBigCircleRadius, defaultCirclePaint);
+        drawCircle(canvas);
+
+        if (shouldAnimate) {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    if ((System.currentTimeMillis() - logTime) >= mAnimDur) {
+
+                        selectedDotPos--;
+
+                        if (selectedDotPos == 0) {
+                            selectedDotPos = mNoOfDots;
+                        }
+
+                        invalidate();
+                        logTime = System.currentTimeMillis();
+                    }
+                }
+            }, mAnimDur);
+        }
+    }
+
+    private void drawCircle(Canvas canvas) {
+        //canvas.drawCircle(mBigCircleRadius + mRadius, mBigCircleRadius + mRadius, mBigCircleRadius, defaultCirclePaint);
 
         for (int i = 0; i < mNoOfDots; i++) {
-            canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], mRadius, selectedCirclePaint);
+            boolean isSelected = (i + 1 == selectedDotPos);
+
+            canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], mRadius, isSelected ? selectedCirclePaint : defaultCirclePaint);
         }
     }
 }

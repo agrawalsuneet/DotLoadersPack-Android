@@ -85,8 +85,8 @@
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
         app:loader_animDur="800"
-        app:loader_bigCircleRadius="60dp"
-        app:loader_circleRadius="20dp"
+        app:loader_bigCircleRadius="40dp"
+        app:loader_circleRadius="14dp"
         app:loader_selectedRadius="24dp" />
 
 </LinearLayout>
