@@ -64,8 +64,6 @@ public class LinearDotsLoader extends DotsLoader {
 
     @Override
     protected void initValues() {
-
-
         diffRadius = mSelRadius - mRadius;
 
         dotsXCorArr = new float[mNoOfDots];

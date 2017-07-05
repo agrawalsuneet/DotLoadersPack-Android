@@ -136,4 +136,14 @@ public class CircularDotsLoader extends DotsLoader {
             canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], mRadius, isSelected ? selectedCirclePaint : defaultCirclePaint);
         }
     }
+
+    public int getBigCircleRadius() {
+        return mBigCircleRadius;
+    }
+
+    public void setBigCircleRadius(int bigCircleRadius) {
+        this.mBigCircleRadius = bigCircleRadius;
+        initValues();
+        invalidate();
+    }
 }
