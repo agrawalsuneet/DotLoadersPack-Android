@@ -17,7 +17,6 @@ public abstract class DotsLoader extends View {
             mSelectedColor = getResources().getColor(R.color.loader_selected);
 
     protected int mRadius = 30;
-    protected int mSelRadius = 38;
 
     protected int mAnimDur = 500;
 
@@ -30,8 +29,6 @@ public abstract class DotsLoader extends View {
     protected boolean shouldAnimate = true;
 
     protected int selectedDotPos = 1;
-
-    protected int diffRadius;
 
     protected long logTime;
 
@@ -61,8 +58,6 @@ public abstract class DotsLoader extends View {
                 getResources().getColor(R.color.loader_selected));
 
         this.mRadius = typedArray.getDimensionPixelSize(R.styleable.DotsLoader_loader_circleRadius, 30);
-
-        this.mSelRadius = typedArray.getDimensionPixelSize(R.styleable.DotsLoader_loader_selectedRadius, mRadius + 10);
 
         this.mAnimDur = typedArray.getInt(R.styleable.DotsLoader_loader_animDur, 500);
 
@@ -117,16 +112,6 @@ public abstract class DotsLoader extends View {
 
     public void setRadius(int radius) {
         this.mRadius = radius;
-        initValues();
-        invalidate();
-    }
-
-    public int getSelRadius() {
-        return mSelRadius;
-    }
-
-    public void setSelRadius(int selRadius) {
-        this.mSelRadius = selRadius;
         initValues();
         invalidate();
     }

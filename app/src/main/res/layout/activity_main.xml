@@ -87,6 +87,8 @@
         app:loader_animDur="800"
         app:loader_bigCircleRadius="40dp"
         app:loader_circleRadius="14dp"
-        app:loader_selectedRadius="24dp" />
+        app:loader_selectedRadius="24dp"
+        app:loader_selectedColor="@color/purple_selected"
+        app:loader_defaultColor="@color/purple_default"/>
 
 </LinearLayout>

@@ -54,9 +54,7 @@ public class CircularDotsLoader extends DotsLoader {
 
     @Override
     protected void initValues() {
-
         selectedDotPos = 5;
-        mAnimDur = 100;
 
         float sin45Radius = SIN_45 * mBigCircleRadius;
 
@@ -132,8 +130,6 @@ public class CircularDotsLoader extends DotsLoader {
     }
 
     private void drawCircle(Canvas canvas) {
-        //canvas.drawCircle(mBigCircleRadius + mRadius, mBigCircleRadius + mRadius, mBigCircleRadius, defaultCirclePaint);
-
         for (int i = 0; i < mNoOfDots; i++) {
             boolean isSelected = (i + 1 == selectedDotPos);
 

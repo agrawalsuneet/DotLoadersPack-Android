@@ -19,6 +19,9 @@ public class LinearDotsLoader extends DotsLoader {
     private int mNoOfDots = 3;
     private int mDotsDist = 15;
 
+    protected int mSelRadius = 38;
+    protected int diffRadius;
+
     private boolean mIsSingleDir = true;
 
     private boolean isFwdDir = true;
@@ -46,6 +49,8 @@ public class LinearDotsLoader extends DotsLoader {
 
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.DotsLoader, 0, 0);
         this.mNoOfDots = typedArray.getInt(R.styleable.DotsLoader_loader_noOfDots, 3);
+
+        this.mSelRadius = typedArray.getDimensionPixelSize(R.styleable.DotsLoader_loader_selectedRadius, mRadius + 10);
 
         this.mDotsDist = typedArray.getDimensionPixelSize(R.styleable.DotsLoader_loader_dotsDist, 15);
 
@@ -175,6 +180,16 @@ public class LinearDotsLoader extends DotsLoader {
 
     public int getNoOfDots() {
         return mNoOfDots;
+    }
+
+    public int getSelRadius() {
+        return mSelRadius;
+    }
+
+    public void setSelRadius(int selRadius) {
+        this.mSelRadius = selRadius;
+        initValues();
+        invalidate();
     }
 
     public boolean isSingleDir() {
