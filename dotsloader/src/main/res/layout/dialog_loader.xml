@@ -7,12 +7,12 @@
     android:orientation="vertical"
     android:gravity="center">
 
-    <com.agrawalsuneet.dotsloader.ui.DotsLoader
+    <com.agrawalsuneet.dotsloader.ui.LinearDotsLoader
         android:id="@+id/dialog_loader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        app:loader_circleRadius="2dp"
+        app:loader_circleRadius="3dp"
         app:loader_dotsDist="1dp"
         app:loader_isSingleDir="true"/>
 

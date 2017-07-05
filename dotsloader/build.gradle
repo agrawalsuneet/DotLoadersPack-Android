@@ -13,8 +13,9 @@ buildscript {
 }
 
 ext {
-    artifact = 'dotsloader'
-    bintrayName = 'dotsloader'
+    PUBLISH_GROUP_ID = 'com.agrawalsuneet.androidlibs'
+    PUBLISH_ARTIFACT_ID = 'dotsloader'
+    PUBLISH_VERSION = '0.3'
 }
 
 configurations {
@@ -28,8 +29,8 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 25
-        versionCode 2
-        versionName "0.2"
+        versionCode 3
+        versionName "0.3"
     }
     buildTypes {
         release {
@@ -41,11 +42,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:25.1.0'
     javadocDeps 'com.android.support:support-annotations:25.1.0'
 }
 
-task bintray {
-    apply from: '../install.gradle'
-    apply from: '../bintray.gradle'
-}
+apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'

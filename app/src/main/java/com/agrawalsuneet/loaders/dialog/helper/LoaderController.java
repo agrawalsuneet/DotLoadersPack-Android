@@ -1,4 +1,4 @@
-package com.agrawalsuneet.dotsloader.dialog.helper;
+package com.agrawalsuneet.loaders.dialog.helper;
 
 import android.os.Parcel;
 import android.os.Parcelable;
