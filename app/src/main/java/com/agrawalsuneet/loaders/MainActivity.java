@@ -7,8 +7,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 
-import com.agrawalsuneet.dotsloader.dialog.DotsLoaderDialog;
-import com.agrawalsuneet.dotsloader.ui.DotsLoader;
+import com.agrawalsuneet.loaders.dialog.DotsLoaderDialog;
+import com.agrawalsuneet.dotsloader.ui.LinearDotsLoader;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private void initView() {
         LinearLayout containerLL = (LinearLayout) findViewById(R.id.container);
 
-        DotsLoader loader = new DotsLoader(MainActivity.this);
+        LinearDotsLoader loader = new LinearDotsLoader(MainActivity.this);
         loader.setDefaultColor(R.color.loader_defalut);
         loader.setSelectedColor(R.color.loader_selected);
         loader.setIsSingleDir(true);
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 .setDotsDistance(28)
                 .setDotsRadius(28)
                 .setDotsSelectedRadius(40)
-                .setExpandOnSelect(true)
+                .setExpandOnSelect(false)
                 .setNoOfDots(5)
                 .setIsLoadingSingleDirection(true)
                 .create();
