@@ -3,10 +3,10 @@
 
 > A replacement of default android material progressbar with dots loader
 
-### DotsLoader
+### LinearDotsLoader
 ![loaders](https://cloud.githubusercontent.com/assets/12999622/24325203/bc34912e-11b9-11e7-9983-4b3fdd39276c.gif)
 
-### DotsLoader Dialog
+### Circular DotsLoader
 ![dialog](https://cloud.githubusercontent.com/assets/12999622/22540867/a7c15658-e948-11e6-81a4-533b48f7d0d3.gif)
 
 
@@ -14,13 +14,13 @@
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-compile(group: 'com.agrawalsuneet.androidlibs', name: 'dotsloader', version: '0.2', ext: 'aar', classifier: '')
+compile 'com.agrawalsuneet.androidlibs:dotsloader:0.3'
 ```
 
-### DotsLoader
+### LinearDotsLoader
 * Through XML
 ```
-<com.agrawalsuneet.dotsloader.ui.DotsLoader
+<com.agrawalsuneet.dotsloader.ui.LinearDotsLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:loader_animDur="1000"
@@ -38,7 +38,7 @@ compile(group: 'com.agrawalsuneet.androidlibs', name: 'dotsloader', version: '0.
 ```
         LinearLayout containerLL = (LinearLayout) findViewById(R.id.container);
 
-        DotsLoader loader = new DotsLoader(MainActivity.this);
+        LinearDotsLoader loader = new LinearDotsLoader(this);
         loader.setDefaultColor(R.color.loader_defalut);
         loader.setSelectedColor(R.color.loader_selected);
         loader.setIsSingleDir(true);
@@ -52,25 +52,27 @@ compile(group: 'com.agrawalsuneet.androidlibs', name: 'dotsloader', version: '0.
 ```
 
 
-### DotsLoader Dialog
+### CircularDotsLoader
+* Through XML
 ```
-DotsLoaderDialog dotsDialog = new DotsLoaderDialog.Builder(this)
-                .setTextColor(R.color.white)
-                .setMessage("Loading...")
-                .setTextSize(24)
-                .setDotsDefaultColor(R.color.loader_defalut)
-                .setDotsSelectedColor(R.color.loader_selected)
-                .setAnimDuration(800)
-                .setDotsDistance(28)
-                .setDotsRadius(28)
-                .setDotsSelectedRadius(40)
-                .setExpandOnSelect(true)
-                .setNoOfDots(5)
-                .setIsLoadingSingleDirection(true)
-                .create();
+<com.agrawalsuneet.dotsloader.ui.CircularDotsLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:loader_animDur="100"
+        app:loader_bigCircleRadius="40dp"
+        app:loader_circleRadius="12dp"
+        app:loader_selectedColor="@color/purple_selected"
+        app:loader_defaultColor="@color/purple_default"/>
+```
 
-        //dotsDialog.setCancelable(false);
-        dotsDialog.show(getSupportFragmentManager(), "dotsDialog");
+*  Through Code
+```
+CircularDotsLoader loader = new CircularDotsLoader(MainActivity.this);
+        loader.setDefaultColor(R.color.blue_delfault);
+        loader.setSelectedColor(R.color.blue_selected);
+        loader.setBigCircleRadius(80);
+        loader.setRadius(24);
+        loader.setAnimDur(300);
 ```
 
 > Please note that the above dialog will handle all the saveInstanceState callbacks and will be visible again on Activity recreation or orientation change.
