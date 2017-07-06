@@ -100,6 +100,8 @@ public class CircularDotsLoader extends DotsLoader {
 
         width = (2 * mBigCircleRadius) + (2 * mRadius);
         height = width;
+
+        setMeasuredDimension(width, height);
     }
 
     @Override
