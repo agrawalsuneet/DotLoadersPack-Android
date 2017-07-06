@@ -5,6 +5,7 @@
 
 ### LinearDotsLoader
 ![loaders](https://cloud.githubusercontent.com/assets/12999622/24325203/bc34912e-11b9-11e7-9983-4b3fdd39276c.gif)
+![dialog](https://cloud.githubusercontent.com/assets/12999622/22540867/a7c15658-e948-11e6-81a4-533b48f7d0d3.gif)
 
 ### Circular DotsLoader
 ![dialog](https://cloud.githubusercontent.com/assets/12999622/22540867/a7c15658-e948-11e6-81a4-533b48f7d0d3.gif)
@@ -75,7 +76,7 @@ CircularDotsLoader loader = new CircularDotsLoader(MainActivity.this);
         loader.setAnimDur(300);
 ```
 
-> Please note that the above dialog will handle all the saveInstanceState callbacks and will be visible again on Activity recreation or orientation change.
+> For avoiding overlapping in CircularDotsLoader, set BigCircleLoader nearly four times of dotsRadius.
 
 Feel free to drop a mail at agrawalsuneet@gmail.com if face any issue or require any additional functionality in it.
 
