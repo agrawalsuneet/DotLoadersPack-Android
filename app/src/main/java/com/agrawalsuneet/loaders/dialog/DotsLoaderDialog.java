@@ -13,7 +13,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.agrawalsuneet.dotsloader.R;
+import com.agrawalsuneet.loaders.R;
 import com.agrawalsuneet.loaders.dialog.helper.LoaderController;
 import com.agrawalsuneet.dotsloader.ui.LinearDotsLoader;
 
