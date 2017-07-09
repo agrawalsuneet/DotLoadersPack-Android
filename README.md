@@ -1,5 +1,5 @@
 # DotsLoader
-> Android dotsloader       [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=59609c26395f5900014e7fee&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/59609c26395f5900014e7fee/build/latest?branch=master)
+> Android dotsloader       [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=5961db7fc335c70001c8d324&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/5961db7fc335c70001c8d324/build/latest?branch=master)
 
 
 > A replacement of default android material progressbar with dots loader
