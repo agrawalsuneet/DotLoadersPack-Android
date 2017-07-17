@@ -3,11 +3,14 @@ package com.agrawalsuneet.dotsloader.ui;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.os.Handler;
 import android.util.AttributeSet;
 
 import com.agrawalsuneet.dotsloader.R;
+import com.agrawalsuneet.dotsloader.utils.Helper;
 
 /**
  * Created by ballu on 04/07/17.
@@ -20,7 +23,10 @@ public class CircularDotsLoader extends DotsLoader {
 
     private int mBigCircleRadius = 60;
 
+    private boolean showRunningShadow = false;
     protected float[] dotsYCorArr;
+
+    private Paint firstShadowPaint, secondShadowPaint;
 
     public CircularDotsLoader(Context context) {
         super(context);
@@ -43,9 +49,10 @@ public class CircularDotsLoader extends DotsLoader {
     protected void initAttributes(AttributeSet attrs) {
         super.initAttributes(attrs);
 
-        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.DotsLoader, 0, 0);
+        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.CircularDotsLoader, 0, 0);
 
-        this.mBigCircleRadius = typedArray.getDimensionPixelSize(R.styleable.DotsLoader_loader_bigCircleRadius, 60);
+        this.mBigCircleRadius = typedArray.getDimensionPixelSize(R.styleable.CircularDotsLoader_loader_bigCircleRadius, 60);
+        this.showRunningShadow = typedArray.getBoolean(R.styleable.CircularDotsLoader_loader_showRunningShadow, true);
 
         typedArray.recycle();
 
@@ -91,6 +98,21 @@ public class CircularDotsLoader extends DotsLoader {
         selectedCirclePaint.setAntiAlias(true);
         selectedCirclePaint.setStyle(Paint.Style.FILL);
         selectedCirclePaint.setColor(mSelectedColor);
+
+        if (showRunningShadow){
+            int firstShadowColor = Helper.adjustAlpha(mSelectedColor, 0.7f);
+            int secondShadowColor = Helper.adjustAlpha(mSelectedColor, 0.5f);
+
+            firstShadowPaint = new Paint();
+            firstShadowPaint.setAntiAlias(true);
+            firstShadowPaint.setStyle(Paint.Style.FILL);
+            firstShadowPaint.setColor(firstShadowColor);
+
+            secondShadowPaint = new Paint();
+            secondShadowPaint.setAntiAlias(true);
+            secondShadowPaint.setStyle(Paint.Style.FILL);
+            secondShadowPaint.setColor(secondShadowColor);
+        }
     }
 
 
@@ -147,5 +169,14 @@ public class CircularDotsLoader extends DotsLoader {
         this.mBigCircleRadius = bigCircleRadius;
         initValues();
         invalidate();
+    }
+
+    public boolean isShowRunningShadow() {
+        return showRunningShadow;
+    }
+
+    public void setShowRunningShadow(boolean showRunningShadow) {
+        this.showRunningShadow = showRunningShadow;
+        initValues();
     }
 }
