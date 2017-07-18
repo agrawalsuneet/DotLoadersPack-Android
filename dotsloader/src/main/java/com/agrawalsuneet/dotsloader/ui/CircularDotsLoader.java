@@ -3,8 +3,6 @@ package com.agrawalsuneet.dotsloader.ui;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.os.Handler;
 import android.util.AttributeSet;
@@ -61,7 +59,7 @@ public class CircularDotsLoader extends DotsLoader {
 
     @Override
     protected void initValues() {
-        selectedDotPos = 5;
+        //selectedDotPos = 5;
 
         float sin45Radius = SIN_45 * mBigCircleRadius;
 
@@ -80,13 +78,21 @@ public class CircularDotsLoader extends DotsLoader {
         dotsXCorArr[6] = dotsXCorArr[6] - mBigCircleRadius;
         dotsXCorArr[7] = dotsXCorArr[7] - sin45Radius;
 
-        dotsYCorArr[0] = dotsYCorArr[0] + mBigCircleRadius;
+        /*dotsYCorArr[0] = dotsYCorArr[0] + mBigCircleRadius;
         dotsYCorArr[1] = dotsYCorArr[1] + sin45Radius;
         dotsYCorArr[3] = dotsYCorArr[3] - sin45Radius;
 
         dotsYCorArr[4] = dotsYCorArr[4] - mBigCircleRadius;
         dotsYCorArr[5] = dotsYCorArr[5] - sin45Radius;
-        dotsYCorArr[7] = dotsYCorArr[7] + sin45Radius;
+        dotsYCorArr[7] = dotsYCorArr[7] + sin45Radius;*/
+
+        dotsYCorArr[0] = dotsYCorArr[0] - mBigCircleRadius;
+        dotsYCorArr[1] = dotsYCorArr[1] - sin45Radius;
+        dotsYCorArr[3] = dotsYCorArr[3] + sin45Radius;
+
+        dotsYCorArr[4] = dotsYCorArr[4] + mBigCircleRadius;
+        dotsYCorArr[5] = dotsYCorArr[5] + sin45Radius;
+        dotsYCorArr[7] = dotsYCorArr[7] - sin45Radius;
 
         //init paints for drawing dots
         defaultCirclePaint = new Paint();
@@ -99,14 +105,15 @@ public class CircularDotsLoader extends DotsLoader {
         selectedCirclePaint.setStyle(Paint.Style.FILL);
         selectedCirclePaint.setColor(mSelectedColor);
 
-        if (showRunningShadow){
+        if (showRunningShadow) {
             int firstShadowColor = Helper.adjustAlpha(mSelectedColor, 0.7f);
             int secondShadowColor = Helper.adjustAlpha(mSelectedColor, 0.5f);
 
             firstShadowPaint = new Paint();
             firstShadowPaint.setAntiAlias(true);
             firstShadowPaint.setStyle(Paint.Style.FILL);
-            firstShadowPaint.setColor(firstShadowColor);
+            //firstShadowPaint.setColor(firstShadowColor);
+            firstShadowPaint.setColor(getResources().getColor(R.color.loader_selected));
 
             secondShadowPaint = new Paint();
             secondShadowPaint.setAntiAlias(true);
@@ -139,10 +146,10 @@ public class CircularDotsLoader extends DotsLoader {
 
                     if ((System.currentTimeMillis() - logTime) >= mAnimDur) {
 
-                        selectedDotPos--;
+                        selectedDotPos++;
 
-                        if (selectedDotPos == 0) {
-                            selectedDotPos = mNoOfDots;
+                        if (selectedDotPos > mNoOfDots) {
+                            selectedDotPos = 1;
                         }
 
                         invalidate();
@@ -158,6 +165,15 @@ public class CircularDotsLoader extends DotsLoader {
             boolean isSelected = (i + 1 == selectedDotPos);
 
             canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], mRadius, isSelected ? selectedCirclePaint : defaultCirclePaint);
+
+            /*if (i + 1 == selectedDotPos) {
+                canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], mRadius, selectedCirclePaint);
+            } else if (i == selectedDotPos) {
+                canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], mRadius, firstShadowPaint);
+            } else {
+                canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], mRadius, defaultCirclePaint);
+            }*/
+
         }
     }
 
