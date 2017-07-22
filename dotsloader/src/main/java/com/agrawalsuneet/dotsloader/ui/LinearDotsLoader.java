@@ -47,15 +47,15 @@ public class LinearDotsLoader extends DotsLoader {
     protected void initAttributes(AttributeSet attrs) {
         super.initAttributes(attrs);
 
-        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.DotsLoader, 0, 0);
-        this.mNoOfDots = typedArray.getInt(R.styleable.DotsLoader_loader_noOfDots, 3);
+        TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.LinearDotsLoader, 0, 0);
+        this.mNoOfDots = typedArray.getInt(R.styleable.LinearDotsLoader_loader_noOfDots, 3);
 
-        this.mSelRadius = typedArray.getDimensionPixelSize(R.styleable.DotsLoader_loader_selectedRadius, mRadius + 10);
+        this.mSelRadius = typedArray.getDimensionPixelSize(R.styleable.LinearDotsLoader_loader_selectedRadius, mRadius + 10);
 
-        this.mDotsDist = typedArray.getDimensionPixelSize(R.styleable.DotsLoader_loader_dotsDist, 15);
+        this.mDotsDist = typedArray.getDimensionPixelSize(R.styleable.LinearDotsLoader_loader_dotsDist, 15);
 
-        this.mIsSingleDir = typedArray.getBoolean(R.styleable.DotsLoader_loader_isSingleDir, false);
-        this.mExpandOnSelect = typedArray.getBoolean(R.styleable.DotsLoader_loader_expandOnSelect, false);
+        this.mIsSingleDir = typedArray.getBoolean(R.styleable.LinearDotsLoader_loader_isSingleDir, false);
+        this.mExpandOnSelect = typedArray.getBoolean(R.styleable.LinearDotsLoader_loader_expandOnSelect, false);
 
         typedArray.recycle();
 

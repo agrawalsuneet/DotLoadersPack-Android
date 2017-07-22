@@ -21,7 +21,7 @@ public class CircularDotsLoader extends DotsLoader {
 
     private int mBigCircleRadius = 60;
 
-    private boolean showRunningShadow = false;
+    private boolean showRunningShadow = true;
     protected float[] dotsYCorArr;
 
     private Paint firstShadowPaint, secondShadowPaint;
@@ -59,8 +59,6 @@ public class CircularDotsLoader extends DotsLoader {
 
     @Override
     protected void initValues() {
-        //selectedDotPos = 5;
-
         float sin45Radius = SIN_45 * mBigCircleRadius;
 
         dotsXCorArr = new float[mNoOfDots];
@@ -77,14 +75,6 @@ public class CircularDotsLoader extends DotsLoader {
         dotsXCorArr[5] = dotsXCorArr[5] - sin45Radius;
         dotsXCorArr[6] = dotsXCorArr[6] - mBigCircleRadius;
         dotsXCorArr[7] = dotsXCorArr[7] - sin45Radius;
-
-        /*dotsYCorArr[0] = dotsYCorArr[0] + mBigCircleRadius;
-        dotsYCorArr[1] = dotsYCorArr[1] + sin45Radius;
-        dotsYCorArr[3] = dotsYCorArr[3] - sin45Radius;
-
-        dotsYCorArr[4] = dotsYCorArr[4] - mBigCircleRadius;
-        dotsYCorArr[5] = dotsYCorArr[5] - sin45Radius;
-        dotsYCorArr[7] = dotsYCorArr[7] + sin45Radius;*/
 
         dotsYCorArr[0] = dotsYCorArr[0] - mBigCircleRadius;
         dotsYCorArr[1] = dotsYCorArr[1] - sin45Radius;
@@ -112,8 +102,7 @@ public class CircularDotsLoader extends DotsLoader {
             firstShadowPaint = new Paint();
             firstShadowPaint.setAntiAlias(true);
             firstShadowPaint.setStyle(Paint.Style.FILL);
-            //firstShadowPaint.setColor(firstShadowColor);
-            firstShadowPaint.setColor(getResources().getColor(R.color.loader_selected));
+            firstShadowPaint.setColor(firstShadowColor);
 
             secondShadowPaint = new Paint();
             secondShadowPaint.setAntiAlias(true);
@@ -161,18 +150,22 @@ public class CircularDotsLoader extends DotsLoader {
     }
 
     private void drawCircle(Canvas canvas) {
+        int firstShadowPos = selectedDotPos == 1 ? 8 : selectedDotPos - 1;
+        int secondShadowPos = firstShadowPos == 1 ? 8 : firstShadowPos - 1;
+
         for (int i = 0; i < mNoOfDots; i++) {
-            boolean isSelected = (i + 1 == selectedDotPos);
+            //boolean isSelected = (i + 1 == selectedDotPos);
+            //canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], mRadius, isSelected ? selectedCirclePaint : defaultCirclePaint);
 
-            canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], mRadius, isSelected ? selectedCirclePaint : defaultCirclePaint);
-
-            /*if (i + 1 == selectedDotPos) {
+            if (i + 1 == selectedDotPos) {
                 canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], mRadius, selectedCirclePaint);
-            } else if (i == selectedDotPos) {
+            } else if (showRunningShadow && i + 1 == firstShadowPos) {
                 canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], mRadius, firstShadowPaint);
+            } else if (showRunningShadow && i + 1 == secondShadowPos) {
+                canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], mRadius, secondShadowPaint);
             } else {
                 canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], mRadius, defaultCirclePaint);
-            }*/
+            }
 
         }
     }

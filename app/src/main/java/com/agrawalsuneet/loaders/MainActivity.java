@@ -9,7 +9,6 @@ import android.widget.LinearLayout;
 
 import com.agrawalsuneet.dotsloader.ui.CircularDotsLoader;
 import com.agrawalsuneet.loaders.dialog.DotsLoaderDialog;
-import com.agrawalsuneet.dotsloader.ui.LinearDotsLoader;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //initView();
+        initView();
     }
 
     private void initView() {
@@ -43,9 +42,10 @@ public class MainActivity extends AppCompatActivity {
         CircularDotsLoader loader = new CircularDotsLoader(MainActivity.this);
         loader.setDefaultColor(R.color.blue_delfault);
         loader.setSelectedColor(R.color.blue_selected);
-        loader.setBigCircleRadius(80);
-        loader.setRadius(24);
-        loader.setAnimDur(300);
+        loader.setBigCircleRadius(116);
+        loader.setRadius(40);
+        loader.setAnimDur(100);
+        //loader.setShowRunningShadow(false);
 
         containerLL.addView(loader);
     }

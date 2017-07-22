@@ -2,13 +2,16 @@
 <resources>
 
     <declare-styleable name="DotsLoader">
-        <attr name="loader_noOfDots" format="integer" />
         <attr name="loader_defaultColor" format="color" />
         <attr name="loader_selectedColor" format="color" />
         <attr name="loader_circleRadius" format="dimension" />
+        <attr name="loader_animDur" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="LinearDotsLoader">
+        <attr name="loader_noOfDots" format="integer" />
         <attr name="loader_dotsDist" format="dimension" />
         <attr name="loader_isSingleDir" format="boolean" />
-        <attr name="loader_animDur" format="integer" />
         <attr name="loader_expandOnSelect" format="boolean" />
         <attr name="loader_selectedRadius" format="dimension" />
     </declare-styleable>
