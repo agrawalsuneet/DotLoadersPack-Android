@@ -17,8 +17,10 @@
     </declare-styleable>
 
     <declare-styleable name="CircularDotsLoader">
-        <attr name="loader_showRunningShadow" format="boolean"/>
         <attr name="loader_bigCircleRadius" format="dimension" />
+        <attr name="loader_showRunningShadow" format="boolean" />
+        <attr name="loader_firstShadowColor" format="color" />
+        <attr name="loader_secondShadowColor" format="color" />
     </declare-styleable>
 
 </resources>

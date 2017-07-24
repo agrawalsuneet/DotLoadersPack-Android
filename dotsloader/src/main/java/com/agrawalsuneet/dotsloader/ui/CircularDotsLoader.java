@@ -25,6 +25,8 @@ public class CircularDotsLoader extends DotsLoader {
     protected float[] dotsYCorArr;
 
     private Paint firstShadowPaint, secondShadowPaint;
+    private int firstShadowColor = 0,
+            secondShadowColor = 0;
 
     public CircularDotsLoader(Context context) {
         super(context);
@@ -51,6 +53,9 @@ public class CircularDotsLoader extends DotsLoader {
 
         this.mBigCircleRadius = typedArray.getDimensionPixelSize(R.styleable.CircularDotsLoader_loader_bigCircleRadius, 60);
         this.showRunningShadow = typedArray.getBoolean(R.styleable.CircularDotsLoader_loader_showRunningShadow, true);
+
+        this.mDefaultColor = typedArray.getColor(R.styleable.CircularDotsLoader_loader_firstShadowColor, 0);
+        this.mSelectedColor = typedArray.getColor(R.styleable.CircularDotsLoader_loader_secondShadowColor, 0);
 
         typedArray.recycle();
 
@@ -96,8 +101,13 @@ public class CircularDotsLoader extends DotsLoader {
         selectedCirclePaint.setColor(mSelectedColor);
 
         if (showRunningShadow) {
-            int firstShadowColor = Helper.adjustAlpha(mSelectedColor, 0.7f);
-            int secondShadowColor = Helper.adjustAlpha(mSelectedColor, 0.5f);
+            if (firstShadowColor == 0) {
+                firstShadowColor = Helper.adjustAlpha(mSelectedColor, 0.7f);
+            }
+
+            if (secondShadowColor == 0) {
+                secondShadowColor = Helper.adjustAlpha(mSelectedColor, 0.5f);
+            }
 
             firstShadowPaint = new Paint();
             firstShadowPaint.setAntiAlias(true);
