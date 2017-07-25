@@ -36,13 +36,11 @@ public class CircularDotsLoader extends DotsLoader {
     public CircularDotsLoader(Context context, AttributeSet attrs) {
         super(context, attrs);
         initAttributes(attrs);
-        initValues();
     }
 
     public CircularDotsLoader(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initAttributes(attrs);
-        initValues();
     }
 
     @Override
@@ -54,8 +52,8 @@ public class CircularDotsLoader extends DotsLoader {
         this.mBigCircleRadius = typedArray.getDimensionPixelSize(R.styleable.CircularDotsLoader_loader_bigCircleRadius, 60);
         this.showRunningShadow = typedArray.getBoolean(R.styleable.CircularDotsLoader_loader_showRunningShadow, true);
 
-        this.mDefaultColor = typedArray.getColor(R.styleable.CircularDotsLoader_loader_firstShadowColor, 0);
-        this.mSelectedColor = typedArray.getColor(R.styleable.CircularDotsLoader_loader_secondShadowColor, 0);
+        this.firstShadowColor = typedArray.getColor(R.styleable.CircularDotsLoader_loader_firstShadowColor, 0);
+        this.secondShadowColor = typedArray.getColor(R.styleable.CircularDotsLoader_loader_secondShadowColor, 0);
 
         typedArray.recycle();
 
@@ -196,6 +194,24 @@ public class CircularDotsLoader extends DotsLoader {
 
     public void setShowRunningShadow(boolean showRunningShadow) {
         this.showRunningShadow = showRunningShadow;
+        initValues();
+    }
+
+    public int getFirstShadowColor() {
+        return firstShadowColor;
+    }
+
+    public void setFirstShadowColor(int firstShadowColor) {
+        this.firstShadowColor = firstShadowColor;
+        initValues();
+    }
+
+    public int getSecondShadowColor() {
+        return secondShadowColor;
+    }
+
+    public void setSecondShadowColor(int secondShadowColor) {
+        this.secondShadowColor = secondShadowColor;
         initValues();
     }
 }
