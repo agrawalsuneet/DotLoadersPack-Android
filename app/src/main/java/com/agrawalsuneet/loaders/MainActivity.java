@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //initView();
+        initView();
     }
 
     private void initView() {
@@ -40,15 +40,16 @@ public class MainActivity extends AppCompatActivity {
         containerLL.addView(loader);*/
 
 
-        /*CircularDotsLoader loader = new CircularDotsLoader(MainActivity.this);
+        CircularDotsLoader loader = new CircularDotsLoader(MainActivity.this);
         loader.setDefaultColor(ContextCompat.getColor(this, R.color.blue_delfault));
         loader.setSelectedColor(ContextCompat.getColor(this, R.color.blue_selected));
         loader.setBigCircleRadius(116);
         loader.setRadius(40);
-        loader.setAnimDur(100);*/
+        loader.setAnimDur(2000);
+        loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.pink_selected));
         //loader.setShowRunningShadow(false);
 
-       // containerLL.addView(loader);
+        containerLL.addView(loader);
     }
 
     @Override

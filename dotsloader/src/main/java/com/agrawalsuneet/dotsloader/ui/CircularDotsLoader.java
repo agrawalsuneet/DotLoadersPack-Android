@@ -28,6 +28,8 @@ public class CircularDotsLoader extends DotsLoader {
     private int firstShadowColor = 0,
             secondShadowColor = 0;
 
+    private boolean isShadowColorSet = false;
+
     public CircularDotsLoader(Context context) {
         super(context);
         initValues();
@@ -99,11 +101,8 @@ public class CircularDotsLoader extends DotsLoader {
         selectedCirclePaint.setColor(mSelectedColor);
 
         if (showRunningShadow) {
-            if (firstShadowColor == 0) {
+            if (!isShadowColorSet) {
                 firstShadowColor = Helper.adjustAlpha(mSelectedColor, 0.7f);
-            }
-
-            if (secondShadowColor == 0) {
                 secondShadowColor = Helper.adjustAlpha(mSelectedColor, 0.5f);
             }
 
@@ -116,6 +115,8 @@ public class CircularDotsLoader extends DotsLoader {
             secondShadowPaint.setAntiAlias(true);
             secondShadowPaint.setStyle(Paint.Style.FILL);
             secondShadowPaint.setColor(secondShadowColor);
+
+            isShadowColorSet = true;
         }
     }
 
@@ -188,6 +189,12 @@ public class CircularDotsLoader extends DotsLoader {
         invalidate();
     }
 
+    @Override
+    public void setSelectedColor(int selectedColor) {
+        isShadowColorSet = false;
+        super.setSelectedColor(selectedColor);
+    }
+
     public boolean isShowRunningShadow() {
         return showRunningShadow;
     }
@@ -203,7 +210,7 @@ public class CircularDotsLoader extends DotsLoader {
 
     public void setFirstShadowColor(int firstShadowColor) {
         this.firstShadowColor = firstShadowColor;
-        initValues();
+        firstShadowPaint.setColor(firstShadowColor);
     }
 
     public int getSecondShadowColor() {
@@ -212,6 +219,6 @@ public class CircularDotsLoader extends DotsLoader {
 
     public void setSecondShadowColor(int secondShadowColor) {
         this.secondShadowColor = secondShadowColor;
-        initValues();
+        secondShadowPaint.setColor(secondShadowColor);
     }
 }
