@@ -82,7 +82,6 @@ public abstract class DotsLoader extends View {
 
     public void setAnimDur(int animDur) {
         this.mAnimDur = animDur;
-        initValues();
         invalidate();
     }
 
@@ -93,7 +92,6 @@ public abstract class DotsLoader extends View {
     public void setDefaultColor(int defaultColor) {
         this.mDefaultColor = defaultColor;
         defaultCirclePaint.setColor(defaultColor);
-        invalidate();
     }
 
     public int getSelectedColor() {
@@ -103,7 +101,6 @@ public abstract class DotsLoader extends View {
     public void setSelectedColor(int selectedColor) {
         this.mSelectedColor = selectedColor;
         selectedCirclePaint.setColor(selectedColor);
-        invalidate();
     }
 
     public int getRadius() {
@@ -113,6 +110,5 @@ public abstract class DotsLoader extends View {
     public void setRadius(int radius) {
         this.mRadius = radius;
         initValues();
-        invalidate();
     }
 }

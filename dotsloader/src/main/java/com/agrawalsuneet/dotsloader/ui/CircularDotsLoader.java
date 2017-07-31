@@ -191,7 +191,6 @@ public class CircularDotsLoader extends DotsLoader {
     public void setBigCircleRadius(int bigCircleRadius) {
         this.mBigCircleRadius = bigCircleRadius;
         initValues();
-        invalidate();
     }
 
     @Override
@@ -206,7 +205,7 @@ public class CircularDotsLoader extends DotsLoader {
 
     public void setShowRunningShadow(boolean showRunningShadow) {
         this.showRunningShadow = showRunningShadow;
-        initValues();
+        setShadowProperty();
     }
 
     public int getFirstShadowColor() {
