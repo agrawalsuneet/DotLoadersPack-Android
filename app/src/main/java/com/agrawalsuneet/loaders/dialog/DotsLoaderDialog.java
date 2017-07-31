@@ -13,9 +13,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.agrawalsuneet.dotsloader.ui.LinearDotsLoader;
 import com.agrawalsuneet.loaders.R;
 import com.agrawalsuneet.loaders.dialog.helper.LoaderController;
-import com.agrawalsuneet.dotsloader.ui.LinearDotsLoader;
 
 /**
  * Created by Suneet on 13/01/17.
@@ -110,7 +110,7 @@ public class DotsLoaderDialog extends DialogFragment {
             mLoader.setSelRadius(mController.dotsSelectedRadius);
         }
 
-        mLoader.setIsSingleDir(mController.isLoadingSingleDir);
+        mLoader.setSingleDir(mController.isLoadingSingleDir);
 
         mLoader.setExpandOnSelect(mController.isExpandOnSelect);
     }
