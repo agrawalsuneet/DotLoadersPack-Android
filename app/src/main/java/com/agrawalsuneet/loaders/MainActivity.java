@@ -16,12 +16,16 @@ public class MainActivity extends AppCompatActivity {
     private DotsLoaderDialog mDialog;
     private LinearLayout containerLL;
 
+    private boolean colorSwitch = false;
+
+    CircularDotsLoader loader;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //initView();
+        initView();
     }
 
     private void initView() {
@@ -40,14 +44,14 @@ public class MainActivity extends AppCompatActivity {
         containerLL.addView(loader);*/
 
 
-        CircularDotsLoader loader = new CircularDotsLoader(MainActivity.this);
+        loader = new CircularDotsLoader(MainActivity.this);
         loader.setDefaultColor(ContextCompat.getColor(this, R.color.blue_delfault));
         loader.setSelectedColor(ContextCompat.getColor(this, R.color.blue_selected));
         loader.setBigCircleRadius(116);
         loader.setRadius(40);
-        loader.setAnimDur(2000);
-        loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.pink_selected));
-        loader.setFirstShadowColor(ContextCompat.getColor(this, R.color.purple_selected));
+        loader.setAnimDur(1000);
+       // loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.pink_selected));
+        //loader.setFirstShadowColor(ContextCompat.getColor(this, R.color.purple_selected));
         //loader.setShowRunningShadow(false);
 
         containerLL.addView(loader);
@@ -64,7 +68,16 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.show_dialog:
-                showAlertDialog();
+                if (colorSwitch){
+                    loader.setFirstShadowColor(ContextCompat.getColor(this, R.color.pink_selected));
+                    loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.pink_default));
+                }else {
+                    loader.setFirstShadowColor(ContextCompat.getColor(this, R.color.purple_selected));
+                    loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.purple_default));
+                }
+
+                colorSwitch = !colorSwitch;
+                //showAlertDialog();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

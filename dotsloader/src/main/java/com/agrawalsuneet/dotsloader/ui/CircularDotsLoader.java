@@ -32,20 +32,23 @@ public class CircularDotsLoader extends DotsLoader {
 
     public CircularDotsLoader(Context context) {
         super(context);
-        initValues();
+        initCordinates();
+        initPaints();
     }
 
     public CircularDotsLoader(Context context, AttributeSet attrs) {
         super(context, attrs);
         initAttributes(attrs);
-        initValues();
+        initCordinates();
+        initPaints();
         setShadowProperty();
     }
 
     public CircularDotsLoader(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initAttributes(attrs);
-        initValues();
+        initCordinates();
+        initPaints();
         setShadowProperty();
     }
 
@@ -61,13 +64,15 @@ public class CircularDotsLoader extends DotsLoader {
         this.firstShadowColor = typedArray.getColor(R.styleable.CircularDotsLoader_loader_firstShadowColor, 0);
         this.secondShadowColor = typedArray.getColor(R.styleable.CircularDotsLoader_loader_secondShadowColor, 0);
 
-        isShadowColorSet = true;
+        if (firstShadowColor != 0 && secondShadowColor != 0) {
+            isShadowColorSet = true;
+        }
 
         typedArray.recycle();
     }
 
     @Override
-    protected void initValues() {
+    protected void initCordinates() {
         float sin45Radius = SIN_45 * mBigCircleRadius;
 
         dotsXCorArr = new float[mNoOfDots];
@@ -92,8 +97,11 @@ public class CircularDotsLoader extends DotsLoader {
         dotsYCorArr[4] = dotsYCorArr[4] + mBigCircleRadius;
         dotsYCorArr[5] = dotsYCorArr[5] + sin45Radius;
         dotsYCorArr[7] = dotsYCorArr[7] - sin45Radius;
+    }
 
-        //init paints for drawing dots
+    //init paints for drawing dots
+    @Override
+    protected void initPaints() {
         defaultCirclePaint = new Paint();
         defaultCirclePaint.setAntiAlias(true);
         defaultCirclePaint.setStyle(Paint.Style.FILL);
@@ -190,7 +198,7 @@ public class CircularDotsLoader extends DotsLoader {
 
     public void setBigCircleRadius(int bigCircleRadius) {
         this.mBigCircleRadius = bigCircleRadius;
-        initValues();
+        initCordinates();
     }
 
     @Override

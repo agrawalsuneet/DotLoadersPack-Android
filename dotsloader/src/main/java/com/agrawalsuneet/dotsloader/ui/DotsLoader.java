@@ -34,17 +34,14 @@ public abstract class DotsLoader extends View {
 
     public DotsLoader(Context context) {
         super(context);
-        initValues();
     }
 
     public DotsLoader(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initAttributes(attrs);
     }
 
     public DotsLoader(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initAttributes(attrs);
     }
 
 
@@ -64,7 +61,9 @@ public abstract class DotsLoader extends View {
         typedArray.recycle();
     }
 
-    protected abstract void initValues();
+    protected abstract void initCordinates();
+
+    protected abstract void initPaints();
 
     public void startAnimation() {
         shouldAnimate = true;
@@ -82,7 +81,6 @@ public abstract class DotsLoader extends View {
 
     public void setAnimDur(int animDur) {
         this.mAnimDur = animDur;
-        invalidate();
     }
 
     public int getDefaultColor() {
@@ -109,6 +107,6 @@ public abstract class DotsLoader extends View {
 
     public void setRadius(int radius) {
         this.mRadius = radius;
-        initValues();
+        initCordinates();
     }
 }

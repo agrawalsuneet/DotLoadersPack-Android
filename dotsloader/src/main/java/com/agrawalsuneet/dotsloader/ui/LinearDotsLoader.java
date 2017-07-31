@@ -30,7 +30,7 @@ public class LinearDotsLoader extends DotsLoader {
 
     public LinearDotsLoader(Context context) {
         super(context);
-        initValues();
+        initCordinates();
     }
 
     public LinearDotsLoader(Context context, AttributeSet attrs) {
@@ -59,11 +59,11 @@ public class LinearDotsLoader extends DotsLoader {
 
         typedArray.recycle();
 
-        initValues();
+        initCordinates();
     }
 
     @Override
-    protected void initValues() {
+    protected void initCordinates() {
         diffRadius = mSelRadius - mRadius;
 
         dotsXCorArr = new float[mNoOfDots];
@@ -83,6 +83,11 @@ public class LinearDotsLoader extends DotsLoader {
         selectedCirclePaint.setAntiAlias(true);
         selectedCirclePaint.setStyle(Paint.Style.FILL);
         selectedCirclePaint.setColor(mSelectedColor);
+    }
+
+    @Override
+    protected void initPaints() {
+
     }
 
     @Override
@@ -162,7 +167,7 @@ public class LinearDotsLoader extends DotsLoader {
 
     public void setDotsDist(int dotsDist) {
         this.mDotsDist = dotsDist;
-        initValues();
+        initCordinates();
         invalidate();
     }
 
@@ -172,7 +177,7 @@ public class LinearDotsLoader extends DotsLoader {
 
     public void setNoOfDots(int noOfDots) {
         this.mNoOfDots = noOfDots;
-        initValues();
+        initCordinates();
         invalidate();
     }
 
@@ -186,7 +191,7 @@ public class LinearDotsLoader extends DotsLoader {
 
     public void setSelRadius(int selRadius) {
         this.mSelRadius = selRadius;
-        initValues();
+        initCordinates();
         invalidate();
     }
 
@@ -196,7 +201,7 @@ public class LinearDotsLoader extends DotsLoader {
 
     public void setIsSingleDir(boolean isSingleDir) {
         this.mIsSingleDir = isSingleDir;
-        initValues();
+        initCordinates();
         invalidate();
     }
 
@@ -206,7 +211,7 @@ public class LinearDotsLoader extends DotsLoader {
 
     public void setExpandOnSelect(boolean expandOnSelect) {
         this.mExpandOnSelect = expandOnSelect;
-        initValues();
+        initCordinates();
         invalidate();
     }
 
