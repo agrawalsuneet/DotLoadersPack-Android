@@ -92,7 +92,7 @@ public abstract class DotsLoader extends View {
 
     public void setDefaultColor(int defaultColor) {
         this.mDefaultColor = defaultColor;
-        initValues();
+        defaultCirclePaint.setColor(defaultColor);
         invalidate();
     }
 
@@ -102,7 +102,7 @@ public abstract class DotsLoader extends View {
 
     public void setSelectedColor(int selectedColor) {
         this.mSelectedColor = selectedColor;
-        initValues();
+        selectedCirclePaint.setColor(selectedColor);
         invalidate();
     }
 

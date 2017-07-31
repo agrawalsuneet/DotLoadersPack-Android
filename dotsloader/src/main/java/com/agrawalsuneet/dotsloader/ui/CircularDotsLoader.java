@@ -38,11 +38,15 @@ public class CircularDotsLoader extends DotsLoader {
     public CircularDotsLoader(Context context, AttributeSet attrs) {
         super(context, attrs);
         initAttributes(attrs);
+        initValues();
+        setShadowProperty();
     }
 
     public CircularDotsLoader(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initAttributes(attrs);
+        initValues();
+        setShadowProperty();
     }
 
     @Override
@@ -57,9 +61,9 @@ public class CircularDotsLoader extends DotsLoader {
         this.firstShadowColor = typedArray.getColor(R.styleable.CircularDotsLoader_loader_firstShadowColor, 0);
         this.secondShadowColor = typedArray.getColor(R.styleable.CircularDotsLoader_loader_secondShadowColor, 0);
 
-        typedArray.recycle();
+        isShadowColorSet = true;
 
-        initValues();
+        typedArray.recycle();
     }
 
     @Override
@@ -99,11 +103,14 @@ public class CircularDotsLoader extends DotsLoader {
         selectedCirclePaint.setAntiAlias(true);
         selectedCirclePaint.setStyle(Paint.Style.FILL);
         selectedCirclePaint.setColor(mSelectedColor);
+    }
 
+    private void setShadowProperty() {
         if (showRunningShadow) {
             if (!isShadowColorSet) {
                 firstShadowColor = Helper.adjustAlpha(mSelectedColor, 0.7f);
                 secondShadowColor = Helper.adjustAlpha(mSelectedColor, 0.5f);
+                isShadowColorSet = true;
             }
 
             firstShadowPaint = new Paint();
@@ -115,8 +122,6 @@ public class CircularDotsLoader extends DotsLoader {
             secondShadowPaint.setAntiAlias(true);
             secondShadowPaint.setStyle(Paint.Style.FILL);
             secondShadowPaint.setColor(secondShadowColor);
-
-            isShadowColorSet = true;
         }
     }
 
@@ -191,8 +196,8 @@ public class CircularDotsLoader extends DotsLoader {
 
     @Override
     public void setSelectedColor(int selectedColor) {
-        isShadowColorSet = false;
         super.setSelectedColor(selectedColor);
+        setShadowProperty();
     }
 
     public boolean isShowRunningShadow() {
@@ -210,7 +215,8 @@ public class CircularDotsLoader extends DotsLoader {
 
     public void setFirstShadowColor(int firstShadowColor) {
         this.firstShadowColor = firstShadowColor;
-        firstShadowPaint.setColor(firstShadowColor);
+        isShadowColorSet = true;
+        setShadowProperty();
     }
 
     public int getSecondShadowColor() {
@@ -219,6 +225,7 @@ public class CircularDotsLoader extends DotsLoader {
 
     public void setSecondShadowColor(int secondShadowColor) {
         this.secondShadowColor = secondShadowColor;
-        secondShadowPaint.setColor(secondShadowColor);
+        isShadowColorSet = true;
+        setShadowProperty();
     }
 }

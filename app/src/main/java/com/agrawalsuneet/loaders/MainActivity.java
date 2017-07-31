@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initView();
+        //initView();
     }
 
     private void initView() {
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         loader.setRadius(40);
         loader.setAnimDur(2000);
         loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.pink_selected));
+        loader.setFirstShadowColor(ContextCompat.getColor(this, R.color.purple_selected));
         //loader.setShowRunningShadow(false);
 
         containerLL.addView(loader);
