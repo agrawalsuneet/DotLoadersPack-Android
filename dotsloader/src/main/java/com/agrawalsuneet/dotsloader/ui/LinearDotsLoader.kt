@@ -2,10 +2,8 @@ package com.agrawalsuneet.dotsloader.ui
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Paint
 import android.os.Handler
 import android.util.AttributeSet
-
 import com.agrawalsuneet.dotsloader.R
 
 /**
@@ -21,14 +19,21 @@ class LinearDotsLoader : DotsLoader {
 
     constructor(context: Context) : super(context) {
         initCordinates()
+        initPaints()
     }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         initAttributes(attrs)
+        initCordinates()
+        initPaints()
+        initShadowPaints()
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         initAttributes(attrs)
+        initCordinates()
+        initPaints()
+        initShadowPaints()
     }
 
     override fun initAttributes(attrs: AttributeSet) {
@@ -45,8 +50,6 @@ class LinearDotsLoader : DotsLoader {
         this.expandOnSelect = typedArray.getBoolean(R.styleable.LinearDotsLoader_loader_expandOnSelect, false)
 
         typedArray.recycle()
-
-        initCordinates()
     }
 
     override fun initCordinates() {
@@ -58,21 +61,6 @@ class LinearDotsLoader : DotsLoader {
         for (i in 0..this.noOfDots - 1) {
             dotsXCorArr!![i] = (i * dotsDistance + (i * 2 + 1) * radius).toFloat()
         }
-
-        //init paints for drawing dots
-        defaultCirclePaint = Paint()
-        defaultCirclePaint!!.isAntiAlias = true
-        defaultCirclePaint!!.style = Paint.Style.FILL
-        defaultCirclePaint!!.color = defaultColor
-
-        selectedCirclePaint = Paint()
-        selectedCirclePaint!!.isAntiAlias = true
-        selectedCirclePaint!!.style = Paint.Style.FILL
-        selectedCirclePaint!!.color = selectedColor
-    }
-
-    override fun initPaints() {
-
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {

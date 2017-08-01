@@ -79,7 +79,7 @@
         app:loader_noOfDots="8"
         app:loader_selectedColor="@color/purple_selected" />-->
 
-    <!--<com.agrawalsuneet.dotsloader.ui.CircularDotsLoader
+    <com.agrawalsuneet.dotsloader.ui.CircularDotsLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:loader_animDur="1000"
@@ -89,6 +89,6 @@
         app:loader_selectedColor="@color/purple_selected"
         app:loader_defaultColor="@color/purple_default"
         app:loader_firstShadowColor="@color/pink_selected"
-        app:loader_secondShadowColor="@color/pink_default"/>-->
+        app:loader_secondShadowColor="@color/pink_default"/>
 
 </LinearLayout>

@@ -2,12 +2,9 @@ package com.agrawalsuneet.dotsloader.ui
 
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Paint
 import android.os.Handler
 import android.util.AttributeSet
-
 import com.agrawalsuneet.dotsloader.R
-import com.agrawalsuneet.dotsloader.utils.Helper
 
 /**
  * Created by ballu on 04/07/17.
@@ -18,12 +15,7 @@ class CircularDotsLoader : DotsLoader {
     private val mNoOfDots = 8
     private val SIN_45 = 0.7071f
 
-    protected var dotsYCorArr: FloatArray? = null
-
-    private var firstShadowPaint: Paint? = null
-    private var secondShadowPaint: Paint? = null
-
-    private var isShadowColorSet = false
+    var dotsYCorArr: FloatArray? = null
 
     constructor(context: Context) : super(context) {
         initCordinates()
@@ -50,14 +42,6 @@ class CircularDotsLoader : DotsLoader {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CircularDotsLoader, 0, 0)
 
         this.bigCircleRadius = typedArray.getDimensionPixelSize(R.styleable.CircularDotsLoader_loader_bigCircleRadius, 60)
-        this.showRunningShadow = typedArray.getBoolean(R.styleable.CircularDotsLoader_loader_showRunningShadow, true)
-
-        this.firstShadowColor = typedArray.getColor(R.styleable.CircularDotsLoader_loader_firstShadowColor, 0)
-        this.secondShadowColor = typedArray.getColor(R.styleable.CircularDotsLoader_loader_secondShadowColor, 0)
-
-        if (firstShadowColor != 0 && secondShadowColor != 0) {
-            isShadowColorSet = true
-        }
 
         typedArray.recycle()
     }
@@ -90,39 +74,6 @@ class CircularDotsLoader : DotsLoader {
         dotsYCorArr!![7] = dotsYCorArr!![7] - sin45Radius
     }
 
-    //init paints for drawing dots
-    override fun initPaints() {
-        defaultCirclePaint = Paint()
-        defaultCirclePaint!!.isAntiAlias = true
-        defaultCirclePaint!!.style = Paint.Style.FILL
-        defaultCirclePaint!!.color = defaultColor
-
-        selectedCirclePaint = Paint()
-        selectedCirclePaint!!.isAntiAlias = true
-        selectedCirclePaint!!.style = Paint.Style.FILL
-        selectedCirclePaint!!.color = selectedColor
-    }
-
-    private fun initShadowPaints() {
-        if (showRunningShadow) {
-            if (!isShadowColorSet) {
-                firstShadowColor = Helper.adjustAlpha(selectedColor, 0.7f)
-                secondShadowColor = Helper.adjustAlpha(selectedColor, 0.5f)
-                isShadowColorSet = true
-            }
-
-            firstShadowPaint = Paint()
-            firstShadowPaint!!.isAntiAlias = true
-            firstShadowPaint!!.style = Paint.Style.FILL
-            firstShadowPaint!!.color = firstShadowColor
-
-            secondShadowPaint = Paint()
-            secondShadowPaint!!.isAntiAlias = true
-            secondShadowPaint!!.style = Paint.Style.FILL
-            secondShadowPaint!!.color = secondShadowColor
-        }
-    }
-
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
@@ -142,7 +93,7 @@ class CircularDotsLoader : DotsLoader {
             Handler().postDelayed({
                 if (System.currentTimeMillis() - logTime >= animDur) {
 
-                    selectedDotPos = selectedDotPos + 1
+                    selectedDotPos++
 
                     if (selectedDotPos > mNoOfDots) {
                         selectedDotPos = 1
@@ -176,14 +127,6 @@ class CircularDotsLoader : DotsLoader {
         }
     }
 
-
-    override var selectedColor: Int
-        get() = super.selectedColor
-        set(selectedColor) {
-            super.selectedColor = selectedColor
-            initShadowPaints()
-        }
-
     var bigCircleRadius: Int = 60
         get() = field
         set(bigCircleRadius) {
@@ -191,27 +134,5 @@ class CircularDotsLoader : DotsLoader {
             initCordinates()
         }
 
-    var showRunningShadow: Boolean = true
-        get() = field
-        set(showRunningShadow) {
-            field = showRunningShadow
-            initShadowPaints()
-        }
 
-    var firstShadowColor: Int = 0
-        get() = field
-        set(value) {
-            field = value
-            isShadowColorSet = true
-            initShadowPaints()
-        }
-
-
-    var secondShadowColor: Int = 0
-        get() = field
-        set(value) {
-            field = value
-            isShadowColorSet = true
-            initShadowPaints()
-        }
 }

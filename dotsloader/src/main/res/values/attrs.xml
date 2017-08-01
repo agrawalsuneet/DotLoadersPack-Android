@@ -6,6 +6,9 @@
         <attr name="loader_selectedColor" format="color" />
         <attr name="loader_circleRadius" format="dimension" />
         <attr name="loader_animDur" format="integer" />
+        <attr name="loader_showRunningShadow" format="boolean" />
+        <attr name="loader_firstShadowColor" format="color" />
+        <attr name="loader_secondShadowColor" format="color" />
     </declare-styleable>
 
     <declare-styleable name="LinearDotsLoader">
@@ -18,9 +21,6 @@
 
     <declare-styleable name="CircularDotsLoader">
         <attr name="loader_bigCircleRadius" format="dimension" />
-        <attr name="loader_showRunningShadow" format="boolean" />
-        <attr name="loader_firstShadowColor" format="color" />
-        <attr name="loader_secondShadowColor" format="color" />
     </declare-styleable>
 
 </resources>
