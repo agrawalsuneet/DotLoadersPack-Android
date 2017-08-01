@@ -1,7 +1,6 @@
 package com.agrawalsuneet.dotsloader.ui
 
 import android.content.Context
-import android.content.res.TypedArray
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.os.Handler
@@ -46,7 +45,7 @@ class LinearDotsLoader : DotsLoader {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.LinearDotsLoader, 0, 0)
         this.mNoOfDots = typedArray.getInt(R.styleable.LinearDotsLoader_loader_noOfDots, 3)
 
-        this.mSelRadius = typedArray.getDimensionPixelSize(R.styleable.LinearDotsLoader_loader_selectedRadius, mRadius + 10)
+        this.mSelRadius = typedArray.getDimensionPixelSize(R.styleable.LinearDotsLoader_loader_selectedRadius, radius + 10)
 
         this.mDotsDist = typedArray.getDimensionPixelSize(R.styleable.LinearDotsLoader_loader_dotsDist, 15)
 
@@ -59,25 +58,25 @@ class LinearDotsLoader : DotsLoader {
     }
 
     override fun initCordinates() {
-        diffRadius = mSelRadius - mRadius
+        diffRadius = mSelRadius - radius
 
         dotsXCorArr = FloatArray(mNoOfDots)
 
         //init X cordinates for all dots
         for (i in 0..mNoOfDots - 1) {
-            dotsXCorArr!![i] = (i * mDotsDist + (i * 2 + 1) * mRadius).toFloat()
+            dotsXCorArr!![i] = (i * mDotsDist + (i * 2 + 1) * radius).toFloat()
         }
 
         //init paints for drawing dots
         defaultCirclePaint = Paint()
         defaultCirclePaint!!.isAntiAlias = true
         defaultCirclePaint!!.style = Paint.Style.FILL
-        defaultCirclePaint!!.color = mDefaultColor
+        defaultCirclePaint!!.color = defaultColor
 
         selectedCirclePaint = Paint()
         selectedCirclePaint!!.isAntiAlias = true
         selectedCirclePaint!!.style = Paint.Style.FILL
-        selectedCirclePaint!!.color = mSelectedColor
+        selectedCirclePaint!!.color = selectedColor
     }
 
     override fun initPaints() {
@@ -88,11 +87,11 @@ class LinearDotsLoader : DotsLoader {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
         if (mExpandOnSelect) {
-            calWidth = (2 * mNoOfDots * mRadius + (mNoOfDots - 1) * mDotsDist + 2 * diffRadius)
+            calWidth = (2 * mNoOfDots * radius + (mNoOfDots - 1) * mDotsDist + 2 * diffRadius)
             calHeight = 2 * mSelRadius
         } else {
-            calHeight = 2 * mRadius
-            calWidth = (2 * mNoOfDots * mRadius + (mNoOfDots - 1) * mDotsDist)
+            calHeight = 2 * radius
+            calWidth = (2 * mNoOfDots * radius + (mNoOfDots - 1) * mDotsDist)
         }
         setMeasuredDimension(calWidth, calHeight)
     }
@@ -131,7 +130,7 @@ class LinearDotsLoader : DotsLoader {
 
     private fun drawCircle(canvas: Canvas) {
         for (i in 0..mNoOfDots - 1) {
-            /*canvas.drawCircle(dotsXCorArr[i], mRadius, mRadius,
+            /*canvas.drawCircle(dotsXCorArr[i], radius, radius,
                     i + 1 == selectedDotPos ? selectedCirclePaint : defaultCirclePaint);*/
 
             val isSelected = i + 1 == selectedDotPos
@@ -147,8 +146,8 @@ class LinearDotsLoader : DotsLoader {
 
             canvas.drawCircle(
                     xCor,
-                    (if (mExpandOnSelect) mSelRadius else mRadius).toFloat(),
-                    (if (mExpandOnSelect && isSelected) mSelRadius else mRadius).toFloat(),
+                    (if (mExpandOnSelect) mSelRadius else radius).toFloat(),
+                    (if (mExpandOnSelect && isSelected) mSelRadius else radius).toFloat(),
                     if (isSelected) selectedCirclePaint else defaultCirclePaint)
         }
     }

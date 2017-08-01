@@ -6,17 +6,11 @@ import android.util.AttributeSet
 import android.view.View
 
 import com.agrawalsuneet.dotsloader.R
-import java.lang.reflect.Array
 
 /**
  * Created by Suneet on 13/01/17.
  */
 abstract class DotsLoader : View {
-
-    protected var mDefaultColor = resources.getColor(R.color.loader_defalut)
-    protected var mSelectedColor = resources.getColor(R.color.loader_selected)
-
-    protected var mRadius = 30
 
     var animDur = 500
 
@@ -45,12 +39,12 @@ abstract class DotsLoader : View {
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.DotsLoader, 0, 0)
 
-        this.mDefaultColor = typedArray.getColor(R.styleable.DotsLoader_loader_defaultColor,
+        this.defaultColor = typedArray.getColor(R.styleable.DotsLoader_loader_defaultColor,
                 resources.getColor(R.color.loader_defalut))
-        this.mSelectedColor = typedArray.getColor(R.styleable.DotsLoader_loader_selectedColor,
+        this.selectedColor = typedArray.getColor(R.styleable.DotsLoader_loader_selectedColor,
                 resources.getColor(R.color.loader_selected))
 
-        this.mRadius = typedArray.getDimensionPixelSize(R.styleable.DotsLoader_loader_circleRadius, 30)
+        this.radius = typedArray.getDimensionPixelSize(R.styleable.DotsLoader_loader_circleRadius, 30)
 
         this.animDur = typedArray.getInt(R.styleable.DotsLoader_loader_animDur, 500)
 
@@ -71,24 +65,28 @@ abstract class DotsLoader : View {
         invalidate()
     }
 
-    var defaultColor: Int
-        get() = mDefaultColor
+    var defaultColor: Int = resources.getColor(R.color.loader_defalut)
+        get() = field
         set(defaultColor) {
-            this.mDefaultColor = defaultColor
-            defaultCirclePaint!!.color = defaultColor
+            field = defaultColor
+            if (defaultCirclePaint != null) {
+                defaultCirclePaint!!.color = defaultColor
+            }
         }
 
-    open var selectedColor: Int
-        get() = mSelectedColor
+    open var selectedColor: Int = resources.getColor(R.color.loader_selected)
+        get() = field
         set(selectedColor) {
-            this.mSelectedColor = selectedColor
-            selectedCirclePaint!!.color = selectedColor
+            field = selectedColor
+            if (selectedCirclePaint != null) {
+                selectedCirclePaint!!.color = selectedColor
+            }
         }
 
-    var radius: Int
-        get() = mRadius
+    var radius: Int = 30
+        get() = field
         set(radius) {
-            this.mRadius = radius
+            field = radius
             initCordinates()
         }
 }

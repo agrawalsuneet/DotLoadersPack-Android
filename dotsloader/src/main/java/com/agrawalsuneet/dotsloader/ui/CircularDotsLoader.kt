@@ -18,6 +18,8 @@ class CircularDotsLoader : DotsLoader {
     private val mNoOfDots = 8
     private val SIN_45 = 0.7071f
 
+    var isShowRunningShadow = true
+
     private var mBigCircleRadius = 60
 
     private var showRunningShadow = true
@@ -74,7 +76,7 @@ class CircularDotsLoader : DotsLoader {
         dotsYCorArr = FloatArray(mNoOfDots)
 
         for (i in 0..mNoOfDots - 1) {
-            dotsYCorArr!![i] = (mBigCircleRadius + mRadius).toFloat()
+            dotsYCorArr!![i] = (mBigCircleRadius + radius).toFloat()
             dotsXCorArr!![i] = dotsYCorArr!![i]
         }
 
@@ -100,19 +102,19 @@ class CircularDotsLoader : DotsLoader {
         defaultCirclePaint = Paint()
         defaultCirclePaint!!.isAntiAlias = true
         defaultCirclePaint!!.style = Paint.Style.FILL
-        defaultCirclePaint!!.color = mDefaultColor
+        defaultCirclePaint!!.color = defaultColor
 
         selectedCirclePaint = Paint()
         selectedCirclePaint!!.isAntiAlias = true
         selectedCirclePaint!!.style = Paint.Style.FILL
-        selectedCirclePaint!!.color = mSelectedColor
+        selectedCirclePaint!!.color = selectedColor
     }
 
     private fun setShadowProperty() {
         if (showRunningShadow) {
             if (!isShadowColorSet) {
-                firstShadowColor = Helper.adjustAlpha(mSelectedColor, 0.7f)
-                secondShadowColor = Helper.adjustAlpha(mSelectedColor, 0.5f)
+                firstShadowColor = Helper.adjustAlpha(selectedColor, 0.7f)
+                secondShadowColor = Helper.adjustAlpha(selectedColor, 0.5f)
                 isShadowColorSet = true
             }
 
@@ -132,7 +134,7 @@ class CircularDotsLoader : DotsLoader {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        calWidth = 2 * mBigCircleRadius + 2 * mRadius
+        calWidth = 2 * mBigCircleRadius + 2 * radius
         calHeight = calWidth
 
         setMeasuredDimension(calWidth, calHeight)
@@ -166,16 +168,16 @@ class CircularDotsLoader : DotsLoader {
 
         for (i in 0..mNoOfDots - 1) {
             //boolean isSelected = (i + 1 == selectedDotPos);
-            //canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], mRadius, isSelected ? selectedCirclePaint : defaultCirclePaint);
+            //canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], radius, isSelected ? selectedCirclePaint : defaultCirclePaint);
 
             if (i + 1 == selectedDotPos) {
-                canvas.drawCircle(dotsXCorArr!![i], dotsYCorArr!![i], mRadius.toFloat(), selectedCirclePaint!!)
+                canvas.drawCircle(dotsXCorArr!![i], dotsYCorArr!![i], radius.toFloat(), selectedCirclePaint!!)
             } else if (showRunningShadow && i + 1 == firstShadowPos) {
-                canvas.drawCircle(dotsXCorArr!![i], dotsYCorArr!![i], mRadius.toFloat(), firstShadowPaint!!)
+                canvas.drawCircle(dotsXCorArr!![i], dotsYCorArr!![i], radius.toFloat(), firstShadowPaint!!)
             } else if (showRunningShadow && i + 1 == secondShadowPos) {
-                canvas.drawCircle(dotsXCorArr!![i], dotsYCorArr!![i], mRadius.toFloat(), secondShadowPaint!!)
+                canvas.drawCircle(dotsXCorArr!![i], dotsYCorArr!![i], radius.toFloat(), secondShadowPaint!!)
             } else {
-                canvas.drawCircle(dotsXCorArr!![i], dotsYCorArr!![i], mRadius.toFloat(), defaultCirclePaint!!)
+                canvas.drawCircle(dotsXCorArr!![i], dotsYCorArr!![i], radius.toFloat(), defaultCirclePaint!!)
             }
 
         }
@@ -195,14 +197,6 @@ class CircularDotsLoader : DotsLoader {
             setShadowProperty()
         }
 
-
-
-    var isShowRunningShadow: Boolean
-        get() = showRunningShadow
-        set(showRunningShadow) {
-            this.showRunningShadow = showRunningShadow
-            setShadowProperty()
-        }
 
     fun getFirstShadowColor(): Int {
         return firstShadowColor
