@@ -99,7 +99,7 @@ public class DotsLoaderDialog extends DialogFragment {
         }
 
         if (mController.dotsDist != 0) {
-            mLoader.setDotsDist(mController.dotsDist);
+            mLoader.setDotsDistance(mController.dotsDist);
         }
 
         if (mController.dotsRadius != 0) {

@@ -14,18 +14,10 @@ import com.agrawalsuneet.dotsloader.R
 
 class LinearDotsLoader : DotsLoader {
 
+    var isSingleDir = true
 
-    private var mNoOfDots = 3
-    private var mDotsDist = 15
-
-    protected var mSelRadius = 38
-    protected var diffRadius: Int = 0
-
-    private var mIsSingleDir = true
-
+    private var diffRadius: Int = 0
     private var isFwdDir = true
-
-    protected var mExpandOnSelect = false
 
     constructor(context: Context) : super(context) {
         initCordinates()
@@ -43,14 +35,14 @@ class LinearDotsLoader : DotsLoader {
         super.initAttributes(attrs)
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.LinearDotsLoader, 0, 0)
-        this.mNoOfDots = typedArray.getInt(R.styleable.LinearDotsLoader_loader_noOfDots, 3)
+        this.noOfDots = typedArray.getInt(R.styleable.LinearDotsLoader_loader_noOfDots, 3)
 
-        this.mSelRadius = typedArray.getDimensionPixelSize(R.styleable.LinearDotsLoader_loader_selectedRadius, radius + 10)
+        this.selRadius = typedArray.getDimensionPixelSize(R.styleable.LinearDotsLoader_loader_selectedRadius, radius + 10)
 
-        this.mDotsDist = typedArray.getDimensionPixelSize(R.styleable.LinearDotsLoader_loader_dotsDist, 15)
+        this.dotsDistance = typedArray.getDimensionPixelSize(R.styleable.LinearDotsLoader_loader_dotsDist, 15)
 
-        this.mIsSingleDir = typedArray.getBoolean(R.styleable.LinearDotsLoader_loader_isSingleDir, false)
-        this.mExpandOnSelect = typedArray.getBoolean(R.styleable.LinearDotsLoader_loader_expandOnSelect, false)
+        this.isSingleDir = typedArray.getBoolean(R.styleable.LinearDotsLoader_loader_isSingleDir, false)
+        this.expandOnSelect = typedArray.getBoolean(R.styleable.LinearDotsLoader_loader_expandOnSelect, false)
 
         typedArray.recycle()
 
@@ -58,13 +50,13 @@ class LinearDotsLoader : DotsLoader {
     }
 
     override fun initCordinates() {
-        diffRadius = mSelRadius - radius
+        diffRadius = this.selRadius - radius
 
-        dotsXCorArr = FloatArray(mNoOfDots)
+        dotsXCorArr = FloatArray(this.noOfDots)
 
         //init X cordinates for all dots
-        for (i in 0..mNoOfDots - 1) {
-            dotsXCorArr!![i] = (i * mDotsDist + (i * 2 + 1) * radius).toFloat()
+        for (i in 0..this.noOfDots - 1) {
+            dotsXCorArr!![i] = (i * dotsDistance + (i * 2 + 1) * radius).toFloat()
         }
 
         //init paints for drawing dots
@@ -86,12 +78,12 @@ class LinearDotsLoader : DotsLoader {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        if (mExpandOnSelect) {
-            calWidth = (2 * mNoOfDots * radius + (mNoOfDots - 1) * mDotsDist + 2 * diffRadius)
-            calHeight = 2 * mSelRadius
+        if (expandOnSelect) {
+            calWidth = (2 * this.noOfDots * radius + (this.noOfDots - 1) * dotsDistance + 2 * diffRadius)
+            calHeight = 2 * this.selRadius
         } else {
             calHeight = 2 * radius
-            calWidth = (2 * mNoOfDots * radius + (mNoOfDots - 1) * mDotsDist)
+            calWidth = (2 * this.noOfDots * radius + (this.noOfDots - 1) * dotsDistance)
         }
         setMeasuredDimension(calWidth, calHeight)
     }
@@ -105,16 +97,16 @@ class LinearDotsLoader : DotsLoader {
             Handler().postDelayed({
                 if (System.currentTimeMillis() - logTime >= animDur) {
 
-                    if (mIsSingleDir && selectedDotPos == mNoOfDots) {
+                    if (this.isSingleDir && selectedDotPos == this.noOfDots) {
                         selectedDotPos = 1
-                    } else if (mIsSingleDir) {
+                    } else if (this.isSingleDir) {
                         selectedDotPos = selectedDotPos + 1
-                    } else if (!mIsSingleDir && isFwdDir) {
+                    } else if (!this.isSingleDir && isFwdDir) {
                         selectedDotPos = selectedDotPos + 1
-                        if (selectedDotPos == mNoOfDots) {
+                        if (selectedDotPos == this.noOfDots) {
                             isFwdDir = !isFwdDir
                         }
-                    } else if (!mIsSingleDir && !isFwdDir) {
+                    } else if (!this.isSingleDir && !isFwdDir) {
                         selectedDotPos = selectedDotPos - 1
                         if (selectedDotPos == 1) {
                             isFwdDir = !isFwdDir
@@ -129,14 +121,14 @@ class LinearDotsLoader : DotsLoader {
     }
 
     private fun drawCircle(canvas: Canvas) {
-        for (i in 0..mNoOfDots - 1) {
+        for (i in 0..this.noOfDots - 1) {
             /*canvas.drawCircle(dotsXCorArr[i], radius, radius,
                     i + 1 == selectedDotPos ? selectedCirclePaint : defaultCirclePaint);*/
 
             val isSelected = i + 1 == selectedDotPos
 
             var xCor = dotsXCorArr!![i]
-            if (mExpandOnSelect) {
+            if (expandOnSelect) {
                 if (i + 1 == selectedDotPos) {
                     xCor += diffRadius.toFloat()
                 } else if (i + 1 > selectedDotPos) {
@@ -146,43 +138,37 @@ class LinearDotsLoader : DotsLoader {
 
             canvas.drawCircle(
                     xCor,
-                    (if (mExpandOnSelect) mSelRadius else radius).toFloat(),
-                    (if (mExpandOnSelect && isSelected) mSelRadius else radius).toFloat(),
+                    (if (expandOnSelect) this.selRadius else radius).toFloat(),
+                    (if (expandOnSelect && isSelected) this.selRadius else radius).toFloat(),
                     if (isSelected) selectedCirclePaint else defaultCirclePaint)
         }
     }
 
-    var dotsDist: Int
-        get() = mDotsDist
-        set(dotsDist) {
-            this.mDotsDist = dotsDist
+    var dotsDistance: Int = 15
+        get() = field
+        set(value) {
+            field = value
             initCordinates()
         }
 
-    var noOfDots: Int
-        get() = mNoOfDots
+    var noOfDots: Int = 3
+        get() = field
         set(noOfDots) {
-            this.mNoOfDots = noOfDots
+            field = noOfDots
             initCordinates()
         }
 
-    var selRadius: Int
-        get() = mSelRadius
+    var selRadius: Int = 38
+        get() = field
         set(selRadius) {
-            this.mSelRadius = selRadius
+            field = selRadius
             initCordinates()
         }
 
-    var isSingleDir: Boolean
-        get() = mIsSingleDir
-        set(isSingleDir) {
-            this.mIsSingleDir = isSingleDir
-        }
-
-    var isExpandOnSelect: Boolean
-        get() = mExpandOnSelect
+    var expandOnSelect: Boolean = false
+        get() = field
         set(expandOnSelect) {
-            this.mExpandOnSelect = expandOnSelect
+            field = expandOnSelect
             initCordinates()
         }
 

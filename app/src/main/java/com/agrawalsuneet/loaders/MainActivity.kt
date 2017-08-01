@@ -4,10 +4,8 @@ import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.LinearLayout
-
 import com.agrawalsuneet.dotsloader.ui.CircularDotsLoader
 import com.agrawalsuneet.loaders.dialog.DotsLoaderDialog
 
@@ -18,13 +16,13 @@ class MainActivity : AppCompatActivity() {
 
     private var colorSwitch = false
 
-    lateinit var loader : CircularDotsLoader
+    lateinit var loader: CircularDotsLoader
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        initView()
+        //initView()
     }
 
     private fun initView() {
@@ -38,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         loader.setSelRadius(40);
         loader.setExpandOnSelect(true);
         loader.setRadius(30);
-        loader.setDotsDist(20);
+        loader.setDotsDistance(20);
         loader.setAnimDur(500);
         containerLL.addView(loader);*/
 
@@ -65,16 +63,16 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.show_dialog -> {
-                if (colorSwitch) {
-                    loader.setFirstShadowColor(ContextCompat.getColor(this, R.color.pink_selected))
-                    loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.pink_default))
+                /*if (colorSwitch) {
+                    loader.firstShadowColor = ContextCompat.getColor(this, R.color.pink_selected)
+                    loader.secondShadowColor = ContextCompat.getColor(this, R.color.pink_default)
                 } else {
-                    loader.setFirstShadowColor(ContextCompat.getColor(this, R.color.purple_selected))
-                    loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.purple_default))
+                    loader.firstShadowColor = ContextCompat.getColor(this, R.color.purple_selected)
+                    loader.firstShadowColor = ContextCompat.getColor(this, R.color.purple_default)
                 }
 
-                colorSwitch = !colorSwitch
-                //showAlertDialog();
+                colorSwitch = !colorSwitch*/
+                showAlertDialog();
                 return true
             }
             else -> return super.onOptionsItemSelected(item)
@@ -86,8 +84,8 @@ class MainActivity : AppCompatActivity() {
                 .setTextColor(R.color.white)
                 .setMessage("Loading...")
                 .setTextSize(24f)
-                .setDotsDefaultColor(R.color.loader_defalut)
-                .setDotsSelectedColor(R.color.loader_selected)
+                .setDotsDefaultColor(ContextCompat.getColor(this, R.color.loader_defalut))
+                .setDotsSelectedColor(ContextCompat.getColor(this, R.color.loader_selected))
                 .setAnimDuration(800)
                 .setDotsDistance(28)
                 .setDotsRadius(28)

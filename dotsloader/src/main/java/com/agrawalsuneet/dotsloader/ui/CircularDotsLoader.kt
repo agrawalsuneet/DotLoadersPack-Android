@@ -18,17 +18,10 @@ class CircularDotsLoader : DotsLoader {
     private val mNoOfDots = 8
     private val SIN_45 = 0.7071f
 
-    var isShowRunningShadow = true
-
-    private var mBigCircleRadius = 60
-
-    private var showRunningShadow = true
     protected var dotsYCorArr: FloatArray? = null
 
     private var firstShadowPaint: Paint? = null
     private var secondShadowPaint: Paint? = null
-    private var firstShadowColor = 0
-    private var secondShadowColor = 0
 
     private var isShadowColorSet = false
 
@@ -41,14 +34,14 @@ class CircularDotsLoader : DotsLoader {
         initAttributes(attrs)
         initCordinates()
         initPaints()
-        setShadowProperty()
+        initShadowPaints()
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         initAttributes(attrs)
         initCordinates()
         initPaints()
-        setShadowProperty()
+        initShadowPaints()
     }
 
     override fun initAttributes(attrs: AttributeSet) {
@@ -56,7 +49,7 @@ class CircularDotsLoader : DotsLoader {
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CircularDotsLoader, 0, 0)
 
-        this.mBigCircleRadius = typedArray.getDimensionPixelSize(R.styleable.CircularDotsLoader_loader_bigCircleRadius, 60)
+        this.bigCircleRadius = typedArray.getDimensionPixelSize(R.styleable.CircularDotsLoader_loader_bigCircleRadius, 60)
         this.showRunningShadow = typedArray.getBoolean(R.styleable.CircularDotsLoader_loader_showRunningShadow, true)
 
         this.firstShadowColor = typedArray.getColor(R.styleable.CircularDotsLoader_loader_firstShadowColor, 0)
@@ -70,29 +63,29 @@ class CircularDotsLoader : DotsLoader {
     }
 
     override fun initCordinates() {
-        val sin45Radius = SIN_45 * mBigCircleRadius
+        val sin45Radius = SIN_45 * this.bigCircleRadius
 
         dotsXCorArr = FloatArray(mNoOfDots)
         dotsYCorArr = FloatArray(mNoOfDots)
 
         for (i in 0..mNoOfDots - 1) {
-            dotsYCorArr!![i] = (mBigCircleRadius + radius).toFloat()
+            dotsYCorArr!![i] = (this.bigCircleRadius + radius).toFloat()
             dotsXCorArr!![i] = dotsYCorArr!![i]
         }
 
         dotsXCorArr!![1] = dotsXCorArr!![1] + sin45Radius
-        dotsXCorArr!![2] = dotsXCorArr!![2] + mBigCircleRadius
+        dotsXCorArr!![2] = dotsXCorArr!![2] + this.bigCircleRadius
         dotsXCorArr!![3] = dotsXCorArr!![3] + sin45Radius
 
         dotsXCorArr!![5] = dotsXCorArr!![5] - sin45Radius
-        dotsXCorArr!![6] = dotsXCorArr!![6] - mBigCircleRadius
+        dotsXCorArr!![6] = dotsXCorArr!![6] - this.bigCircleRadius
         dotsXCorArr!![7] = dotsXCorArr!![7] - sin45Radius
 
-        dotsYCorArr!![0] = dotsYCorArr!![0] - mBigCircleRadius
+        dotsYCorArr!![0] = dotsYCorArr!![0] - this.bigCircleRadius
         dotsYCorArr!![1] = dotsYCorArr!![1] - sin45Radius
         dotsYCorArr!![3] = dotsYCorArr!![3] + sin45Radius
 
-        dotsYCorArr!![4] = dotsYCorArr!![4] + mBigCircleRadius
+        dotsYCorArr!![4] = dotsYCorArr!![4] + this.bigCircleRadius
         dotsYCorArr!![5] = dotsYCorArr!![5] + sin45Radius
         dotsYCorArr!![7] = dotsYCorArr!![7] - sin45Radius
     }
@@ -110,7 +103,7 @@ class CircularDotsLoader : DotsLoader {
         selectedCirclePaint!!.color = selectedColor
     }
 
-    private fun setShadowProperty() {
+    private fun initShadowPaints() {
         if (showRunningShadow) {
             if (!isShadowColorSet) {
                 firstShadowColor = Helper.adjustAlpha(selectedColor, 0.7f)
@@ -134,7 +127,7 @@ class CircularDotsLoader : DotsLoader {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        calWidth = 2 * mBigCircleRadius + 2 * radius
+        calWidth = 2 * this.bigCircleRadius + 2 * radius
         calHeight = calWidth
 
         setMeasuredDimension(calWidth, calHeight)
@@ -172,9 +165,9 @@ class CircularDotsLoader : DotsLoader {
 
             if (i + 1 == selectedDotPos) {
                 canvas.drawCircle(dotsXCorArr!![i], dotsYCorArr!![i], radius.toFloat(), selectedCirclePaint!!)
-            } else if (showRunningShadow && i + 1 == firstShadowPos) {
+            } else if (this.showRunningShadow && i + 1 == firstShadowPos) {
                 canvas.drawCircle(dotsXCorArr!![i], dotsYCorArr!![i], radius.toFloat(), firstShadowPaint!!)
-            } else if (showRunningShadow && i + 1 == secondShadowPos) {
+            } else if (this.showRunningShadow && i + 1 == secondShadowPos) {
                 canvas.drawCircle(dotsXCorArr!![i], dotsYCorArr!![i], radius.toFloat(), secondShadowPaint!!)
             } else {
                 canvas.drawCircle(dotsXCorArr!![i], dotsYCorArr!![i], radius.toFloat(), defaultCirclePaint!!)
@@ -183,38 +176,42 @@ class CircularDotsLoader : DotsLoader {
         }
     }
 
-    var bigCircleRadius: Int
-        get() = mBigCircleRadius
-        set(bigCircleRadius) {
-            this.mBigCircleRadius = bigCircleRadius
-            initCordinates()
-        }
 
     override var selectedColor: Int
         get() = super.selectedColor
         set(selectedColor) {
             super.selectedColor = selectedColor
-            setShadowProperty()
+            initShadowPaints()
+        }
+
+    var bigCircleRadius: Int = 60
+        get() = field
+        set(bigCircleRadius) {
+            field = bigCircleRadius
+            initCordinates()
+        }
+
+    var showRunningShadow: Boolean = true
+        get() = field
+        set(showRunningShadow) {
+            field = showRunningShadow
+            initShadowPaints()
+        }
+
+    var firstShadowColor: Int = 0
+        get() = field
+        set(value) {
+            field = value
+            isShadowColorSet = true
+            initShadowPaints()
         }
 
 
-    fun getFirstShadowColor(): Int {
-        return firstShadowColor
-    }
-
-    fun setFirstShadowColor(firstShadowColor: Int) {
-        this.firstShadowColor = firstShadowColor
-        isShadowColorSet = true
-        setShadowProperty()
-    }
-
-    fun getSecondShadowColor(): Int {
-        return secondShadowColor
-    }
-
-    fun setSecondShadowColor(secondShadowColor: Int) {
-        this.secondShadowColor = secondShadowColor
-        isShadowColorSet = true
-        setShadowProperty()
-    }
+    var secondShadowColor: Int = 0
+        get() = field
+        set(value) {
+            field = value
+            isShadowColorSet = true
+            initShadowPaints()
+        }
 }
