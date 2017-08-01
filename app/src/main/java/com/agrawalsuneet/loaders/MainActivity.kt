@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.LinearLayout
 import com.agrawalsuneet.dotsloader.ui.CircularDotsLoader
+import com.agrawalsuneet.dotsloader.ui.LinearDotsLoader
 import com.agrawalsuneet.loaders.dialog.DotsLoaderDialog
 
 class MainActivity : AppCompatActivity() {
@@ -28,30 +29,32 @@ class MainActivity : AppCompatActivity() {
     private fun initView() {
         val containerLL = findViewById(R.id.container) as LinearLayout
 
-        /*LinearDotsLoader loader = new LinearDotsLoader(MainActivity.this);
-        loader.setDefaultColor(R.color.loader_defalut);
-        loader.setSelectedColor(R.color.loader_selected);
-        loader.setIsSingleDir(true);
-        loader.setNoOfDots(5);
-        loader.setSelRadius(40);
-        loader.setExpandOnSelect(true);
-        loader.setRadius(30);
-        loader.setDotsDistance(20);
-        loader.setAnimDur(500);
-        containerLL.addView(loader);*/
+        var loader = LinearDotsLoader(this)
+        loader.defaultColor = ContextCompat.getColor(this, R.color.loader_defalut)
+        loader.selectedColor = ContextCompat.getColor(this, R.color.loader_selected)
+        loader.isSingleDir = false
+        //loader.firstShadowColor = ContextCompat.getColor(this, R.color.pink_selected)
+        //loader.secondShadowColor = ContextCompat.getColor(this, R.color.purple_selected)
+        loader.noOfDots = 5
+        loader.selRadius = 60
+        loader.expandOnSelect = false
+        loader.radius = 40
+        loader.dotsDistance = 20
+        loader.animDur = 100
+        containerLL.addView(loader)
 
 
-        loader = CircularDotsLoader(this@MainActivity)
+        /*loader = CircularDotsLoader(this@MainActivity)
         loader.defaultColor = ContextCompat.getColor(this, R.color.blue_delfault)
         loader.selectedColor = ContextCompat.getColor(this, R.color.blue_selected)
         loader.bigCircleRadius = 116
         loader.radius = 40
-        loader.animDur = 1000
+        loader.animDur = 1000*/
         // loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.pink_selected));
         //loader.setFirstShadowColor(ContextCompat.getColor(this, R.color.purple_selected));
         //loader.setShowRunningShadow(false);
 
-        containerLL.addView(loader)
+        //containerLL.addView(loader)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

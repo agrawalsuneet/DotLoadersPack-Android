@@ -16,3 +16,4 @@ object Helper {
         return Color.argb(alpha, red, green, blue)
     }
 }
+

@@ -59,7 +59,7 @@ class LinearDotsLoader : DotsLoader {
 
         //init X cordinates for all dots
         for (i in 0..this.noOfDots - 1) {
-            dotsXCorArr!![i] = (i * dotsDistance + (i * 2 + 1) * radius).toFloat()
+            dotsXCorArr[i] = (i * dotsDistance + (i * 2 + 1) * radius).toFloat()
         }
     }
 
@@ -85,7 +85,7 @@ class LinearDotsLoader : DotsLoader {
             Handler().postDelayed({
                 if (System.currentTimeMillis() - logTime >= animDur) {
 
-                    if (this.isSingleDir && selectedDotPos == this.noOfDots) {
+                    /*if (this.isSingleDir && selectedDotPos == this.noOfDots) {
                         selectedDotPos = 1
                     } else if (this.isSingleDir) {
                         selectedDotPos = selectedDotPos + 1
@@ -98,6 +98,25 @@ class LinearDotsLoader : DotsLoader {
                         selectedDotPos = selectedDotPos - 1
                         if (selectedDotPos == 1) {
                             isFwdDir = !isFwdDir
+                        }
+                    }*/
+
+                    if (isSingleDir) {
+                        selectedDotPos++
+                        if (selectedDotPos > noOfDots) {
+                            selectedDotPos = 1
+                        }
+                    } else {
+                        if (isFwdDir) {
+                            selectedDotPos++
+                            if (selectedDotPos == noOfDots) {
+                                isFwdDir = !isFwdDir
+                            }
+                        } else {
+                            selectedDotPos--
+                            if (selectedDotPos == 1) {
+                                isFwdDir = !isFwdDir
+                            }
                         }
                     }
 
@@ -113,9 +132,9 @@ class LinearDotsLoader : DotsLoader {
             /*canvas.drawCircle(dotsXCorArr[i], radius, radius,
                     i + 1 == selectedDotPos ? selectedCirclePaint : defaultCirclePaint);*/
 
-            val isSelected = i + 1 == selectedDotPos
+            //val isSelected = i + 1 == selectedDotPos
 
-            var xCor = dotsXCorArr!![i]
+            var xCor = dotsXCorArr[i]
             if (expandOnSelect) {
                 if (i + 1 == selectedDotPos) {
                     xCor += diffRadius.toFloat()
@@ -124,11 +143,49 @@ class LinearDotsLoader : DotsLoader {
                 }
             }
 
-            canvas.drawCircle(
+            /*canvas.drawCircle(
                     xCor,
                     (if (expandOnSelect) this.selRadius else radius).toFloat(),
                     (if (expandOnSelect && isSelected) this.selRadius else radius).toFloat(),
-                    if (isSelected) selectedCirclePaint else defaultCirclePaint)
+                    if (isSelected) selectedCirclePaint else defaultCirclePaint)*/
+
+            var firstShadowPos: Int
+            var secondShadowPos: Int
+
+            if ((isFwdDir && selectedDotPos > 1) || selectedDotPos == noOfDots) {
+                firstShadowPos = selectedDotPos - 1
+                secondShadowPos = firstShadowPos - 1
+            } else {
+                firstShadowPos = selectedDotPos + 1
+                secondShadowPos = firstShadowPos + 1
+            }
+
+            if (i + 1 == selectedDotPos) {
+                canvas.drawCircle(
+                        xCor,
+                        (if (expandOnSelect) this.selRadius else radius).toFloat(),
+                        (if (expandOnSelect) this.selRadius else radius).toFloat(),
+                        selectedCirclePaint)
+            } else if (showRunningShadow && i + 1 == firstShadowPos) {
+                canvas.drawCircle(
+                        xCor,
+                        (if (expandOnSelect) this.selRadius else radius).toFloat(),
+                        radius.toFloat(),
+                        firstShadowPaint)
+            } else if (showRunningShadow && i + 1 == secondShadowPos) {
+                canvas.drawCircle(
+                        xCor,
+                        (if (expandOnSelect) this.selRadius else radius).toFloat(),
+                        radius.toFloat(),
+                        secondShadowPaint)
+            } else {
+                canvas.drawCircle(
+                        xCor,
+                        (if (expandOnSelect) this.selRadius else radius).toFloat(),
+                        radius.toFloat(),
+                        defaultCirclePaint)
+            }
+
         }
     }
 

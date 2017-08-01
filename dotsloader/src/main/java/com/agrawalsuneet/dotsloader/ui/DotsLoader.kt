@@ -15,13 +15,13 @@ abstract class DotsLoader : View {
 
     var animDur = 500
 
-    var dotsXCorArr: FloatArray? = null
+    lateinit var dotsXCorArr: FloatArray
 
-    protected var defaultCirclePaint: Paint? = null
-    protected var selectedCirclePaint: Paint? = null
+    protected lateinit var defaultCirclePaint: Paint
+    protected lateinit var selectedCirclePaint: Paint
 
-    protected var firstShadowPaint: Paint? = null
-    protected var secondShadowPaint: Paint? = null
+    protected lateinit var firstShadowPaint: Paint
+    protected lateinit var secondShadowPaint: Paint
 
     protected var isShadowColorSet = false
 
@@ -71,14 +71,14 @@ abstract class DotsLoader : View {
     //init paints for drawing dots
     fun initPaints() {
         defaultCirclePaint = Paint()
-        defaultCirclePaint!!.isAntiAlias = true
-        defaultCirclePaint!!.style = Paint.Style.FILL
-        defaultCirclePaint!!.color = defaultColor
+        defaultCirclePaint.isAntiAlias = true
+        defaultCirclePaint.style = Paint.Style.FILL
+        defaultCirclePaint.color = defaultColor
 
         selectedCirclePaint = Paint()
-        selectedCirclePaint!!.isAntiAlias = true
-        selectedCirclePaint!!.style = Paint.Style.FILL
-        selectedCirclePaint!!.color = selectedColor
+        selectedCirclePaint.isAntiAlias = true
+        selectedCirclePaint.style = Paint.Style.FILL
+        selectedCirclePaint.color = selectedColor
     }
 
     //init paints for drawing shadow dots
@@ -91,14 +91,14 @@ abstract class DotsLoader : View {
             }
 
             firstShadowPaint = Paint()
-            firstShadowPaint!!.isAntiAlias = true
-            firstShadowPaint!!.style = Paint.Style.FILL
-            firstShadowPaint!!.color = firstShadowColor
+            firstShadowPaint.isAntiAlias = true
+            firstShadowPaint.style = Paint.Style.FILL
+            firstShadowPaint.color = firstShadowColor
 
             secondShadowPaint = Paint()
-            secondShadowPaint!!.isAntiAlias = true
-            secondShadowPaint!!.style = Paint.Style.FILL
-            secondShadowPaint!!.color = secondShadowColor
+            secondShadowPaint.isAntiAlias = true
+            secondShadowPaint.style = Paint.Style.FILL
+            secondShadowPaint.color = secondShadowColor
         }
     }
 
@@ -117,7 +117,7 @@ abstract class DotsLoader : View {
         set(defaultColor) {
             field = defaultColor
             if (defaultCirclePaint != null) {
-                defaultCirclePaint!!.color = defaultColor
+                defaultCirclePaint.color = defaultColor
             }
         }
 
@@ -126,7 +126,7 @@ abstract class DotsLoader : View {
         set(selectedColor) {
             field = selectedColor
             if (selectedCirclePaint != null) {
-                selectedCirclePaint!!.color = selectedColor
+                selectedCirclePaint.color = selectedColor
             }
             initShadowPaints()
         }

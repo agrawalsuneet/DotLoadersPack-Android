@@ -15,7 +15,7 @@ class CircularDotsLoader : DotsLoader {
     private val mNoOfDots = 8
     private val SIN_45 = 0.7071f
 
-    var dotsYCorArr: FloatArray? = null
+    lateinit var dotsYCorArr: FloatArray
 
     constructor(context: Context) : super(context) {
         initCordinates()
@@ -53,25 +53,25 @@ class CircularDotsLoader : DotsLoader {
         dotsYCorArr = FloatArray(mNoOfDots)
 
         for (i in 0..mNoOfDots - 1) {
-            dotsYCorArr!![i] = (this.bigCircleRadius + radius).toFloat()
-            dotsXCorArr!![i] = dotsYCorArr!![i]
+            dotsYCorArr[i] = (this.bigCircleRadius + radius).toFloat()
+            dotsXCorArr[i] = dotsYCorArr[i]
         }
 
-        dotsXCorArr!![1] = dotsXCorArr!![1] + sin45Radius
-        dotsXCorArr!![2] = dotsXCorArr!![2] + this.bigCircleRadius
-        dotsXCorArr!![3] = dotsXCorArr!![3] + sin45Radius
+        dotsXCorArr[1] = dotsXCorArr[1] + sin45Radius
+        dotsXCorArr[2] = dotsXCorArr[2] + this.bigCircleRadius
+        dotsXCorArr[3] = dotsXCorArr[3] + sin45Radius
 
-        dotsXCorArr!![5] = dotsXCorArr!![5] - sin45Radius
-        dotsXCorArr!![6] = dotsXCorArr!![6] - this.bigCircleRadius
-        dotsXCorArr!![7] = dotsXCorArr!![7] - sin45Radius
+        dotsXCorArr[5] = dotsXCorArr[5] - sin45Radius
+        dotsXCorArr[6] = dotsXCorArr[6] - this.bigCircleRadius
+        dotsXCorArr[7] = dotsXCorArr[7] - sin45Radius
 
-        dotsYCorArr!![0] = dotsYCorArr!![0] - this.bigCircleRadius
-        dotsYCorArr!![1] = dotsYCorArr!![1] - sin45Radius
-        dotsYCorArr!![3] = dotsYCorArr!![3] + sin45Radius
+        dotsYCorArr[0] = dotsYCorArr[0] - this.bigCircleRadius
+        dotsYCorArr[1] = dotsYCorArr[1] - sin45Radius
+        dotsYCorArr[3] = dotsYCorArr[3] + sin45Radius
 
-        dotsYCorArr!![4] = dotsYCorArr!![4] + this.bigCircleRadius
-        dotsYCorArr!![5] = dotsYCorArr!![5] + sin45Radius
-        dotsYCorArr!![7] = dotsYCorArr!![7] - sin45Radius
+        dotsYCorArr[4] = dotsYCorArr[4] + this.bigCircleRadius
+        dotsYCorArr[5] = dotsYCorArr[5] + sin45Radius
+        dotsYCorArr[7] = dotsYCorArr[7] - sin45Radius
     }
 
 
@@ -115,13 +115,13 @@ class CircularDotsLoader : DotsLoader {
             //canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], radius, isSelected ? selectedCirclePaint : defaultCirclePaint);
 
             if (i + 1 == selectedDotPos) {
-                canvas.drawCircle(dotsXCorArr!![i], dotsYCorArr!![i], radius.toFloat(), selectedCirclePaint!!)
+                canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], radius.toFloat(), selectedCirclePaint)
             } else if (this.showRunningShadow && i + 1 == firstShadowPos) {
-                canvas.drawCircle(dotsXCorArr!![i], dotsYCorArr!![i], radius.toFloat(), firstShadowPaint!!)
+                canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], radius.toFloat(), firstShadowPaint)
             } else if (this.showRunningShadow && i + 1 == secondShadowPos) {
-                canvas.drawCircle(dotsXCorArr!![i], dotsYCorArr!![i], radius.toFloat(), secondShadowPaint!!)
+                canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], radius.toFloat(), secondShadowPaint)
             } else {
-                canvas.drawCircle(dotsXCorArr!![i], dotsYCorArr!![i], radius.toFloat(), defaultCirclePaint!!)
+                canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], radius.toFloat(), defaultCirclePaint)
             }
 
         }
