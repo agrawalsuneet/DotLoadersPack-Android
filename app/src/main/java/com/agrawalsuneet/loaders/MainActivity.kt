@@ -83,20 +83,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showAlertDialog() {
-        val dotsDialog = DotsLoaderDialog.Builder(this)
-                .setTextColor(R.color.white)
-                .setMessage("Loading...")
-                .setTextSize(24f)
-                .setDotsDefaultColor(ContextCompat.getColor(this, R.color.loader_defalut))
-                .setDotsSelectedColor(ContextCompat.getColor(this, R.color.loader_selected))
-                .setAnimDuration(800)
-                .setDotsDistance(28)
-                .setDotsRadius(28)
-                .setDotsSelectedRadius(40)
-                .setExpandOnSelect(false)
-                .setNoOfDots(5)
-                .setIsLoadingSingleDirection(true)
-                .create()
+        val dotsDialog = DotsLoaderDialog()
 
         //dotsDialog.setCancelable(false);
         dotsDialog.show(supportFragmentManager, "dotsDialog")
