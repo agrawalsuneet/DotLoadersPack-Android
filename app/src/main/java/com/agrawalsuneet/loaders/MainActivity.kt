@@ -12,9 +12,6 @@ import com.agrawalsuneet.loaders.dialog.DotsLoaderDialog
 
 class MainActivity : AppCompatActivity() {
 
-    private val mDialog: DotsLoaderDialog? = null
-    private val containerLL: LinearLayout? = null
-
     private var colorSwitch = false
 
     lateinit var loader: LinearDotsLoader
@@ -33,28 +30,30 @@ class MainActivity : AppCompatActivity() {
         loader.defaultColor = ContextCompat.getColor(this, R.color.loader_defalut)
         loader.selectedColor = ContextCompat.getColor(this, R.color.loader_selected)
         loader.isSingleDir = false
-        //loader.firstShadowColor = ContextCompat.getColor(this, R.color.pink_selected)
-        //loader.secondShadowColor = ContextCompat.getColor(this, R.color.purple_selected)
         loader.noOfDots = 5
         loader.selRadius = 60
         loader.expandOnSelect = false
         loader.radius = 40
         loader.dotsDistance = 20
-        loader.animDur = 100
+        loader.animDur = 1000
+        //loader.firstShadowColor = ContextCompat.getColor(this, R.color.pink_selected)
+        //loader.secondShadowColor = ContextCompat.getColor(this, R.color.purple_selected)
+        //loader.showRunningShadow = false
         containerLL.addView(loader)
 
 
         var cirLoader = CircularDotsLoader(this@MainActivity)
+        cirLoader.setPadding(20,20,20,20)
         cirLoader.defaultColor = ContextCompat.getColor(this, R.color.blue_delfault)
         cirLoader.selectedColor = ContextCompat.getColor(this, R.color.blue_selected)
         cirLoader.bigCircleRadius = 116
         cirLoader.radius = 40
-        cirLoader.animDur = 1000
-        // loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.pink_selected));
-        //loader.setFirstShadowColor(ContextCompat.getColor(this, R.color.purple_selected));
-        //loader.setShowRunningShadow(false);
+        cirLoader.animDur = 100
+        //cirLoader.firstShadowColor = ContextCompat.getColor(this, R.color.pink_selected)
+        //cirLoader.secondShadowColor = ContextCompat.getColor(this, R.color.purple_selected)
+        //cirLoader.showRunningShadow = false
 
-        //containerLL.addView(loader)
+        containerLL.addView(cirLoader)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -66,16 +65,15 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.show_dialog -> {
-                if (colorSwitch) {
+                /*if (colorSwitch) {
                     loader.firstShadowColor = ContextCompat.getColor(this, R.color.pink_selected)
                     loader.secondShadowColor = ContextCompat.getColor(this, R.color.pink_default)
                 } else {
                     loader.firstShadowColor = ContextCompat.getColor(this, R.color.purple_selected)
-                    loader.firstShadowColor = ContextCompat.getColor(this, R.color.purple_default)
+                    loader.secondShadowColor = ContextCompat.getColor(this, R.color.purple_default)
                 }
-
-                colorSwitch = !colorSwitch
-                //showAlertDialog();
+                colorSwitch = !colorSwitch*/
+                showAlertDialog();
                 return true
             }
             else -> return super.onOptionsItemSelected(item)
