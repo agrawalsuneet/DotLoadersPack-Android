@@ -5,6 +5,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="@null"
     android:gravity="center">
 
     <com.agrawalsuneet.dotsloader.ui.LinearDotsLoader
@@ -12,6 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        app:loader_noOfDots="5"
         app:loader_circleRadius="3dp"
         app:loader_dotsDist="1dp"
         app:loader_isSingleDir="true"/>
