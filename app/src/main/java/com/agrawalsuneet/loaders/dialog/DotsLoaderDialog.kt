@@ -1,6 +1,8 @@
 package com.agrawalsuneet.loaders.dialog
 
 import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.support.v7.app.AlertDialog
@@ -30,6 +32,7 @@ class DotsLoaderDialog : DialogFragment() {
                 .setView(mView)
 
         val dialog = builder.create()
+        dialog.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         initViews()
         return dialog
     }
@@ -39,6 +42,9 @@ class DotsLoaderDialog : DialogFragment() {
         mContainerLL = mView!!.findViewById(R.id.dialog_container) as LinearLayout
         mMessageTextView = mView!!.findViewById(R.id.dialog_message_tv) as TextView
         mLoader = mView!!.findViewById(R.id.dialog_loader) as LinearDotsLoader
+
+        mLoader?.radius = 30
+        mLoader?.dotsDistance = 20
     }
 
 }

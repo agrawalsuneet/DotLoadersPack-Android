@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     private var colorSwitch = false
 
-    lateinit var loader: CircularDotsLoader
+    lateinit var loader: LinearDotsLoader
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     private fun initView() {
         val containerLL = findViewById(R.id.container) as LinearLayout
 
-        var loader = LinearDotsLoader(this)
+        loader = LinearDotsLoader(this)
         loader.defaultColor = ContextCompat.getColor(this, R.color.loader_defalut)
         loader.selectedColor = ContextCompat.getColor(this, R.color.loader_selected)
         loader.isSingleDir = false
@@ -44,12 +44,12 @@ class MainActivity : AppCompatActivity() {
         containerLL.addView(loader)
 
 
-        /*loader = CircularDotsLoader(this@MainActivity)
-        loader.defaultColor = ContextCompat.getColor(this, R.color.blue_delfault)
-        loader.selectedColor = ContextCompat.getColor(this, R.color.blue_selected)
-        loader.bigCircleRadius = 116
-        loader.radius = 40
-        loader.animDur = 1000*/
+        var cirLoader = CircularDotsLoader(this@MainActivity)
+        cirLoader.defaultColor = ContextCompat.getColor(this, R.color.blue_delfault)
+        cirLoader.selectedColor = ContextCompat.getColor(this, R.color.blue_selected)
+        cirLoader.bigCircleRadius = 116
+        cirLoader.radius = 40
+        cirLoader.animDur = 1000
         // loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.pink_selected));
         //loader.setFirstShadowColor(ContextCompat.getColor(this, R.color.purple_selected));
         //loader.setShowRunningShadow(false);
@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.show_dialog -> {
-                /*if (colorSwitch) {
+                if (colorSwitch) {
                     loader.firstShadowColor = ContextCompat.getColor(this, R.color.pink_selected)
                     loader.secondShadowColor = ContextCompat.getColor(this, R.color.pink_default)
                 } else {
@@ -74,8 +74,8 @@ class MainActivity : AppCompatActivity() {
                     loader.firstShadowColor = ContextCompat.getColor(this, R.color.purple_default)
                 }
 
-                colorSwitch = !colorSwitch*/
-                showAlertDialog();
+                colorSwitch = !colorSwitch
+                //showAlertDialog();
                 return true
             }
             else -> return super.onOptionsItemSelected(item)
@@ -84,7 +84,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun showAlertDialog() {
         val dotsDialog = DotsLoaderDialog()
-
         //dotsDialog.setCancelable(false);
         dotsDialog.show(supportFragmentManager, "dotsDialog")
     }

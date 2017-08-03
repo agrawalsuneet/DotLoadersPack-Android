@@ -59,10 +59,6 @@ abstract class DotsLoader : View {
         this.firstShadowColor = typedArray.getColor(R.styleable.DotsLoader_loader_firstShadowColor, 0)
         this.secondShadowColor = typedArray.getColor(R.styleable.DotsLoader_loader_secondShadowColor, 0)
 
-        if (firstShadowColor != 0 && secondShadowColor != 0) {
-            isShadowColorSet = true
-        }
-
         typedArray.recycle()
     }
 
@@ -127,8 +123,8 @@ abstract class DotsLoader : View {
             field = selectedColor
             if (selectedCirclePaint != null) {
                 selectedCirclePaint!!.color = selectedColor
+                initShadowPaints()
             }
-            initShadowPaints()
         }
 
     var radius: Int = 30
@@ -142,15 +138,16 @@ abstract class DotsLoader : View {
         get() = field
         set(showRunningShadow) {
             field = showRunningShadow
-            initShadowPaints()
         }
 
     var firstShadowColor: Int = 0
         get() = field
         set(value) {
             field = value
-            isShadowColorSet = true
-            initShadowPaints()
+            if (value != 0) {
+                isShadowColorSet = true
+                initShadowPaints()
+            }
         }
 
 
@@ -158,7 +155,9 @@ abstract class DotsLoader : View {
         get() = field
         set(value) {
             field = value
-            isShadowColorSet = true
-            initShadowPaints()
+            if (value != 0) {
+                isShadowColorSet = true
+                initShadowPaints()
+            }
         }
 }

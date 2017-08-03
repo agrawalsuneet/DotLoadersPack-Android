@@ -85,22 +85,6 @@ class LinearDotsLoader : DotsLoader {
             Handler().postDelayed({
                 if (System.currentTimeMillis() - logTime >= animDur) {
 
-                    /*if (this.isSingleDir && selectedDotPos == this.noOfDots) {
-                        selectedDotPos = 1
-                    } else if (this.isSingleDir) {
-                        selectedDotPos = selectedDotPos + 1
-                    } else if (!this.isSingleDir && isFwdDir) {
-                        selectedDotPos = selectedDotPos + 1
-                        if (selectedDotPos == this.noOfDots) {
-                            isFwdDir = !isFwdDir
-                        }
-                    } else if (!this.isSingleDir && !isFwdDir) {
-                        selectedDotPos = selectedDotPos - 1
-                        if (selectedDotPos == 1) {
-                            isFwdDir = !isFwdDir
-                        }
-                    }*/
-
                     if (isSingleDir) {
                         selectedDotPos++
                         if (selectedDotPos > noOfDots) {
@@ -129,10 +113,6 @@ class LinearDotsLoader : DotsLoader {
 
     private fun drawCircle(canvas: Canvas) {
         for (i in 0..this.noOfDots - 1) {
-            /*canvas.drawCircle(dotsXCorArr[i], radius, radius,
-                    i + 1 == selectedDotPos ? selectedCirclePaint : defaultCirclePaint);*/
-
-            //val isSelected = i + 1 == selectedDotPos
 
             var xCor = dotsXCorArr[i]
             if (expandOnSelect) {
@@ -142,12 +122,6 @@ class LinearDotsLoader : DotsLoader {
                     xCor += (2 * diffRadius).toFloat()
                 }
             }
-
-            /*canvas.drawCircle(
-                    xCor,
-                    (if (expandOnSelect) this.selRadius else radius).toFloat(),
-                    (if (expandOnSelect && isSelected) this.selRadius else radius).toFloat(),
-                    if (isSelected) selectedCirclePaint else defaultCirclePaint)*/
 
             var firstShadowPos: Int
             var secondShadowPos: Int
