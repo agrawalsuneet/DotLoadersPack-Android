@@ -49,7 +49,7 @@ compile 'com.agrawalsuneet.androidlibs:dotsloader:0.3'
         loader.setSelRadius(40);
         loader.setExpandOnSelect(true);
         loader.setRadius(30);
-        loader.setDotsDist(20);
+        loader.setDotsDistance(20);
         loader.setAnimDur(500);
         containerLL.addView(loader);
 ```
