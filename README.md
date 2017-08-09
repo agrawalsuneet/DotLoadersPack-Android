@@ -32,25 +32,52 @@ compile 'com.agrawalsuneet.androidlibs:dotsloader:0.3'
         app:loader_defaultColor="@color/pink_default"
         app:loader_selectedColor="@color/pink_selected"
         app:loader_dotsDist="3dp"
-        app:loader_expandOnSelect="true"
+        app:loader_expandOnSelect="false"
         app:loader_isSingleDir="false"
-        app:loader_selectedRadius="10dp" />
+        app:loader_selectedRadius="10dp"
+        app:loader_showRunningShadow="true"
+        app:loader_firstShadowColor="@color/blue_selected"
+        app:loader_secondShadowColor="@color/blue_delfault"/>
 ```
 
 *  Through Code
+1 Kotlin
+```
+        var loader = LinearDotsLoader(this)
+        loader.defaultColor = ContextCompat.getColor(this, R.color.loader_defalut)
+        loader.selectedColor = ContextCompat.getColor(this, R.color.loader_selected)
+        loader.isSingleDir = false
+        loader.noOfDots = 5
+        loader.selRadius = 60
+        loader.expandOnSelect = false
+        loader.radius = 40
+        loader.dotsDistance = 20
+        loader.animDur = 1000
+        loader.firstShadowColor = ContextCompat.getColor(this, R.color.pink_selected)
+        loader.secondShadowColor = ContextCompat.getColor(this, R.color.purple_selected)
+        loader.showRunningShadow = true
+        containerLL.addView(loader)
+```
+
+
+2 Java
 ```
         LinearLayout containerLL = (LinearLayout) findViewById(R.id.container);
 
         LinearDotsLoader loader = new LinearDotsLoader(this);
-        loader.setDefaultColor(R.color.loader_defalut);
-        loader.setSelectedColor(R.color.loader_selected);
-        loader.setIsSingleDir(true);
+        loader.setDefaultColor(ContextCompat.getColor(this, R.color.loader_defalut));
+        loader.setSelectedColor(ContextCompat.getColor(this, R.color.loader_selected));
+        loader.setSingleDir(true);
         loader.setNoOfDots(5);
         loader.setSelRadius(40);
         loader.setExpandOnSelect(true);
         loader.setRadius(30);
         loader.setDotsDistance(20);
         loader.setAnimDur(500);
+        loader.setShowRunningShadow(true);
+        loader.setFirstShadowColor(ContextCompat.getColor(this, R.color.blue_selected));
+        loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.blue_delfault));
+        
         containerLL.addView(loader);
 ```
 
@@ -62,23 +89,47 @@ compile 'com.agrawalsuneet.androidlibs:dotsloader:0.3'
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:loader_animDur="100"
-        app:loader_bigCircleRadius="40dp"
-        app:loader_circleRadius="12dp"
+        app:loader_bigCircleRadius="42dp"
+        app:loader_circleRadius="14dp"
+        app:loader_defaultColor="@color/purple_default"
+        app:loader_firstShadowColor="@color/pink_selected"
+        app:loader_secondShadowColor="@color/pink_default"
         app:loader_selectedColor="@color/purple_selected"
-        app:loader_defaultColor="@color/purple_default"/>
+        app:loader_showRunningShadow="true" />
 ```
 
 *  Through Code
+1 Kotlin
 ```
-CircularDotsLoader loader = new CircularDotsLoader(MainActivity.this);
-        loader.setDefaultColor(R.color.blue_delfault);
-        loader.setSelectedColor(R.color.blue_selected);
+var cirLoader = CircularDotsLoader(this)
+        cirLoader.defaultColor = ContextCompat.getColor(this, R.color.blue_delfault)
+        cirLoader.selectedColor = ContextCompat.getColor(this, R.color.blue_selected)
+        cirLoader.bigCircleRadius = 1
+        cirLoader.radius = 40
+        cirLoader.animDur = 100
+        cirLoader.firstShadowColor = ContextCompat.getColor(this, R.color.pink_selected)
+        cirLoader.secondShadowColor = ContextCompat.getColor(this, R.color.purple_selected)
+        cirLoader.showRunningShadow = true
+
+        containerLL.addView(cirLoader)
+        
+```
+
+2 Java
+```
+CircularDotsLoader loader = new CircularDotsLoader(this);
+        loader.setDefaultColor(ContextCompat.getColor(this,R.color.blue_delfault));
+        loader.setSelectedColor(ContextCompat.getColor(this,R.color.blue_selected));
         loader.setBigCircleRadius(80);
         loader.setRadius(24);
         loader.setAnimDur(300);
+        loader.setShowRunningShadow(true);
+        loader.setFirstShadowColor(ContextCompat.getColor(this, R.color.blue_selected));
+        loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.blue_delfault));
 ```
 
 > For avoiding overlapping in CircularDotsLoader, set BigCircleLoader nearly four times of dotsRadius.
+> If the showRunningShadow is true and no firstShadowColor and secondShadowColor provided, it'll take 0.7f and 0.5f alpha of selectedColor
 
 Feel free to drop a mail at agrawalsuneet@gmail.com if face any issue or require any additional functionality in it.
 
