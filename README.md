@@ -5,23 +5,23 @@
 > A replacement of default android material progressbar with dots loader
 
 ### LinearDotsLoader
-![LinearDotsLoader](https://user-images.githubusercontent.com/12999622/27900760-320f5b2a-624d-11e7-80dc-76ea5b736287.gif)
+![linear](https://user-images.githubusercontent.com/12999622/29122717-e34ba8be-7d30-11e7-99b8-b440a37b7f6c.gif)
 ![LinearDotsLoader](https://user-images.githubusercontent.com/12999622/27900763-329c1dee-624d-11e7-877b-68ba0f4ea7d7.gif)
 
 ### Circular DotsLoader
 ![CircularDotsLoader](https://user-images.githubusercontent.com/12999622/27900765-32aef07c-624d-11e7-8679-f77a95030bd4.gif)
-![CircularDotsLoader](https://user-images.githubusercontent.com/12999622/27900766-332b5a7c-624d-11e7-99f0-35b26ee5f0d7.gif)
+![circular](https://user-images.githubusercontent.com/12999622/29122715-e2f4ad3e-7d30-11e7-91ba-d049e21956bd.gif)
 
 
 
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-compile 'com.agrawalsuneet.androidlibs:dotsloader:0.3'
+compile 'com.agrawalsuneet.androidlibs:dotsloader:0.4'
 ```
 
 ### LinearDotsLoader
-* Through XML
+##### Through XML
 ```
 <com.agrawalsuneet.dotsloader.ui.LinearDotsLoader
         android:layout_width="wrap_content"
@@ -40,8 +40,9 @@ compile 'com.agrawalsuneet.androidlibs:dotsloader:0.3'
         app:loader_secondShadowColor="@color/blue_delfault"/>
 ```
 
-*  Through Code
-1 Kotlin
+##### Through Code
+
+* Kotlin
 ```
         var loader = LinearDotsLoader(this)
         loader.defaultColor = ContextCompat.getColor(this, R.color.loader_defalut)
@@ -60,7 +61,7 @@ compile 'com.agrawalsuneet.androidlibs:dotsloader:0.3'
 ```
 
 
-2 Java
+* Java
 ```
         LinearLayout containerLL = (LinearLayout) findViewById(R.id.container);
 
@@ -83,7 +84,7 @@ compile 'com.agrawalsuneet.androidlibs:dotsloader:0.3'
 
 
 ### CircularDotsLoader
-* Through XML
+##### Through XML
 ```
 <com.agrawalsuneet.dotsloader.ui.CircularDotsLoader
         android:layout_width="wrap_content"
@@ -98,8 +99,9 @@ compile 'com.agrawalsuneet.androidlibs:dotsloader:0.3'
         app:loader_showRunningShadow="true" />
 ```
 
-*  Through Code
-1 Kotlin
+#####  Through Code
+
+* Kotlin
 ```
 var cirLoader = CircularDotsLoader(this)
         cirLoader.defaultColor = ContextCompat.getColor(this, R.color.blue_delfault)
@@ -115,7 +117,7 @@ var cirLoader = CircularDotsLoader(this)
         
 ```
 
-2 Java
+* Java
 ```
 CircularDotsLoader loader = new CircularDotsLoader(this);
         loader.setDefaultColor(ContextCompat.getColor(this,R.color.blue_delfault));
@@ -129,6 +131,7 @@ CircularDotsLoader loader = new CircularDotsLoader(this);
 ```
 
 > For avoiding overlapping in CircularDotsLoader, set BigCircleLoader nearly four times of dotsRadius.
+
 > If the showRunningShadow is true and no firstShadowColor and secondShadowColor provided, it'll take 0.7f and 0.5f alpha of selectedColor
 
 Feel free to drop a mail at agrawalsuneet@gmail.com if face any issue or require any additional functionality in it.
