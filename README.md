@@ -106,7 +106,7 @@ compile 'com.agrawalsuneet.androidlibs:dotsloader:0.4'
 var cirLoader = CircularDotsLoader(this)
         cirLoader.defaultColor = ContextCompat.getColor(this, R.color.blue_delfault)
         cirLoader.selectedColor = ContextCompat.getColor(this, R.color.blue_selected)
-        cirLoader.bigCircleRadius = 100
+        cirLoader.bigCircleRadius = 120
         cirLoader.radius = 40
         cirLoader.animDur = 100
         cirLoader.firstShadowColor = ContextCompat.getColor(this, R.color.pink_selected)
