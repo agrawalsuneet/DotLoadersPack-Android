@@ -11,19 +11,25 @@ import com.agrawalsuneet.dotsloader.R
  * Created by ballu on 13/08/17.
  */
 
-class CircleView : View{
+class CircleView : View {
 
     var circleRadius: Int = 15
 
-    var circleColor : Int = 0
+    var circleColor: Int = 0
+
+    constructor(context: Context, circleRadius: Int, circleColor: Int) : super(context) {
+        this.circleRadius = circleRadius
+        this.circleColor = circleColor
+    }
 
     constructor(context: Context) : super(context)
 
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs){
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         initAttributes(attrs)
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
+
 
     fun initAttributes(attrs: AttributeSet) {
 
@@ -38,7 +44,7 @@ class CircleView : View{
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        setMeasuredDimension(circleRadius, circleRadius)
+        setMeasuredDimension(2 * circleRadius, 2 * circleRadius)
     }
 
 
@@ -52,8 +58,6 @@ class CircleView : View{
 
         canvas!!.drawCircle(circleRadius.toFloat(), circleRadius.toFloat(), circleRadius.toFloat(), paint)
     }
-
-
 
 
 }
