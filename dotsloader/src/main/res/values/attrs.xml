@@ -23,4 +23,9 @@
         <attr name="loader_bigCircleRadius" format="dimension" />
     </declare-styleable>
 
+    <declare-styleable name="CircleView">
+        <attr name="circleRadius" format="dimension" />
+        <attr name="circleColor" format="color" />
+    </declare-styleable>
+
 </resources>
