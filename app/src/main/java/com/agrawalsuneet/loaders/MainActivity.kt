@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initLazyLoader() {
-        var lazyLoader = LazyLoader(this, 60, 60, ContextCompat.getColor(this, R.color.loader_selected))
+        var lazyLoader = LazyLoader(this, 30, 20, ContextCompat.getColor(this, R.color.loader_selected))
         containerLL.addView(lazyLoader)
     }
 
