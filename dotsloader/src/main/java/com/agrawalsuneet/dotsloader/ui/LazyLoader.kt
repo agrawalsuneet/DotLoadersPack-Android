@@ -1,19 +1,22 @@
 package com.agrawalsuneet.dotsloader.ui
 
 import android.content.Context
+import android.os.Handler
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.ViewTreeObserver
 import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
 import android.widget.LinearLayout
+import com.agrawalsuneet.dotsloader.R
 import com.agrawalsuneet.dotsloader.ui.basicviews.CircleView
+import com.agrawalsuneet.dotsloader.ui.basicviews.LoaderContract
 
 
 /**
  * Created by ballu on 13/08/17.
  */
-class LazyLoader : LinearLayout {
+class LazyLoader : LinearLayout, LoaderContract {
 
     var dotsRadius: Int = 30
 
@@ -22,12 +25,14 @@ class LazyLoader : LinearLayout {
     var dotsColor: Int = 0
 
     var animDuration: Int = 500
+    var firstDelayDuration: Int = 100
+    var secondDelayDuration: Int = 200
 
     var startLoadingDefault: Boolean = true
 
-    lateinit var firstCircle: CircleView
-    lateinit var secondCircle: CircleView
-    lateinit var thirdCircle: CircleView
+    private lateinit var firstCircle: CircleView
+    private lateinit var secondCircle: CircleView
+    private lateinit var thirdCircle: CircleView
 
     constructor(context: Context, dotsRadius: Int, dotsDist: Int, dotsColor: Int) : super(context) {
         this.dotsRadius = dotsRadius
@@ -40,19 +45,36 @@ class LazyLoader : LinearLayout {
         initView()
     }
 
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
+    constructor(context: Context?, attrs: AttributeSet) : super(context, attrs) {
+        initAttributes(attrs)
         initView()
     }
 
-    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    constructor(context: Context?, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+        initAttributes(attrs)
         initView()
+    }
+
+    override fun initAttributes(attrs: AttributeSet) {
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.LazyLoader, 0, 0)
+
+        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.LazyLoader_lazyloader_dotsRadius, 30)
+        this.dotsDist = typedArray.getDimensionPixelSize(R.styleable.LazyLoader_lazyloader_dotsDist, 15)
+        this.dotsColor = typedArray.getColor(R.styleable.LazyLoader_lazyloader_dotsColor,
+                resources.getColor(R.color.loader_defalut))
+
+        this.animDuration = typedArray.getInt(R.styleable.LazyLoader_lazyloader_animDur, 500)
+        this.firstDelayDuration = typedArray.getInt(R.styleable.LazyLoader_lazyloader_firstDelayDur, 100)
+        this.secondDelayDuration = typedArray.getInt(R.styleable.LazyLoader_lazyloader_secondDelayDur, 200)
+
+        typedArray.recycle()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        var calWidth = (6 * dotsRadius) + (2 * dotsDist)
-        var calHeight = 6 * dotsRadius
+        val calWidth = (6 * dotsRadius) + (2 * dotsDist)
+        val calHeight = 6 * dotsRadius
 
         setMeasuredDimension(calWidth, calHeight)
     }
@@ -65,7 +87,7 @@ class LazyLoader : LinearLayout {
         secondCircle = CircleView(context, dotsRadius, dotsColor)
         thirdCircle = CircleView(context, dotsRadius, dotsColor)
 
-        var params = LinearLayout.LayoutParams((2 * dotsRadius), 2 * dotsRadius)
+        val params = LinearLayout.LayoutParams((2 * dotsRadius), 2 * dotsRadius)
         params.leftMargin = dotsDist
 
         setVerticalGravity(Gravity.BOTTOM)
@@ -91,41 +113,43 @@ class LazyLoader : LinearLayout {
     }
 
     private fun startLoading() {
-        var trans1Anim = TranslateAnimation(0f, 0f, 0f, (-(4 * dotsRadius).toFloat()))
-        trans1Anim.duration = animDuration.toLong()
-        trans1Anim.fillAfter = true
-        trans1Anim.repeatCount = 1
-        trans1Anim.repeatMode = Animation.REVERSE
 
+        val trans1Anim = getTranslateAnim()
         firstCircle.startAnimation(trans1Anim)
 
-        var trans2Anim = TranslateAnimation(0f, 0f, 0f, (-(4 * dotsRadius).toFloat()))
-        trans2Anim.duration = animDuration.toLong()
-        trans2Anim.fillAfter = true
-        trans2Anim.repeatCount = 1
-        trans2Anim.repeatMode = Animation.REVERSE
-        trans2Anim.startOffset = (animDuration.toLong() / 6)
-        secondCircle.startAnimation(trans2Anim)
+        val trans2Anim = getTranslateAnim()
 
-        var trans3Anim = TranslateAnimation(0f, 0f, 0f, (-(4 * dotsRadius).toFloat()))
-        trans3Anim.duration = animDuration.toLong()
-        trans3Anim.fillAfter = true
-        trans3Anim.repeatCount = 1
-        trans3Anim.repeatMode = Animation.REVERSE
-        trans3Anim.startOffset = (animDuration.toLong() / 3)
-        thirdCircle.startAnimation(trans3Anim)
+        Handler().postDelayed({
+            secondCircle.startAnimation(trans2Anim)
+        }, firstDelayDuration.toLong())
+
+
+        val trans3Anim = getTranslateAnim()
+
+        Handler().postDelayed({
+            thirdCircle.startAnimation(trans3Anim)
+        }, secondDelayDuration.toLong())
 
         trans3Anim.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationRepeat(animation: Animation?) {
-
             }
 
             override fun onAnimationEnd(animation: Animation?) {
                 startLoading()
             }
 
-            override fun onAnimationStart(animation: Animation?) {
+            override fun onAnimationStart(animation: Animation) {
             }
         })
+    }
+
+    private fun getTranslateAnim(): TranslateAnimation {
+        val transAnim = TranslateAnimation(0f, 0f, 0f, (-(4 * dotsRadius).toFloat()))
+        transAnim.duration = animDuration.toLong()
+        transAnim.fillAfter = true
+        transAnim.repeatCount = 1
+        transAnim.repeatMode = Animation.REVERSE
+
+        return transAnim
     }
 }

@@ -14,6 +14,18 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.agrawalsuneet.loaders.MainActivity">
 
+
+    <com.agrawalsuneet.dotsloader.ui.LazyLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:lazyloader_dotsColor="@color/pink_selected"
+        app:lazyloader_dotsDist="10dp"
+        app:lazyloader_dotsRadius="16dp"
+        app:lazyloader_animDur="2000"
+        app:lazyloader_firstDelayDur="500"
+        app:lazyloader_secondDelayDur="1000"
+        android:layout_margin="20dp"/>
+
     <!--<com.agrawalsuneet.dotsloader.ui.LinearDotsLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

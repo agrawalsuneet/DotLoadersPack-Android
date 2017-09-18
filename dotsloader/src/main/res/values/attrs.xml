@@ -23,6 +23,15 @@
         <attr name="loader_bigCircleRadius" format="dimension" />
     </declare-styleable>
 
+    <declare-styleable name="LazyLoader">
+        <attr name="lazyloader_dotsRadius" format="dimension" />
+        <attr name="lazyloader_dotsDist" format="dimension" />
+        <attr name="lazyloader_dotsColor" format="color" />
+        <attr name="lazyloader_animDur" format="integer" />
+        <attr name="lazyloader_firstDelayDur" format="integer" />
+        <attr name="lazyloader_secondDelayDur" format="integer" />
+    </declare-styleable>
+
     <declare-styleable name="CircleView">
         <attr name="circleRadius" format="dimension" />
         <attr name="circleColor" format="color" />
