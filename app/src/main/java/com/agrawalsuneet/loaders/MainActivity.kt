@@ -37,6 +37,15 @@ class MainActivity : AppCompatActivity() {
                     firstDelayDuration = 100
                     secondDelayDuration = 200
                 }
+
+        /*var lazyLoader = LazyLoader(this).apply{
+            animDuration = 500
+            firstDelayDuration = 100
+            secondDelayDuration = 200
+        }
+        lazyLoader.dotsRadius = 60
+        lazyLoader.dotsDist = 60*/
+
         containerLL.addView(lazyLoader)
     }
 

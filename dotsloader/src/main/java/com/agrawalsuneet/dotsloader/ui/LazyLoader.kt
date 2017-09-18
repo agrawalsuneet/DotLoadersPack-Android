@@ -18,12 +18,6 @@ import com.agrawalsuneet.dotsloader.ui.basicviews.LoaderContract
  */
 class LazyLoader : LinearLayout, LoaderContract {
 
-    var dotsRadius: Int = 30
-
-    var dotsDist: Int = 15
-
-    var dotsColor: Int = 0
-
     var animDuration: Int = 500
     var firstDelayDuration: Int = 100
     var secondDelayDuration: Int = 200
@@ -152,4 +146,25 @@ class LazyLoader : LinearLayout, LoaderContract {
 
         return transAnim
     }
+
+    var dotsRadius: Int = 30
+        get() = field
+        set(value) {
+            field = value
+            initView()
+        }
+
+    var dotsDist: Int = 15
+        get() = field
+        set(value) {
+            field = value
+            initView()
+        }
+
+    var dotsColor: Int = resources.getColor(R.color.loader_defalut, null)
+        get() = field
+        set(value) {
+            field = value
+            initView()
+        }
 }
