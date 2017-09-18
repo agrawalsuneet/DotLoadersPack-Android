@@ -7,10 +7,13 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.LinearLayout
 import com.agrawalsuneet.dotsloader.ui.CircularDotsLoader
+import com.agrawalsuneet.dotsloader.ui.LazyLoader
 import com.agrawalsuneet.dotsloader.ui.LinearDotsLoader
 import com.agrawalsuneet.loaders.dialog.DotsLoaderDialog
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var containerLL : LinearLayout
 
     private var colorSwitch = false
 
@@ -20,12 +23,33 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        initView()
+        containerLL = findViewById(R.id.container) as LinearLayout
+
+        //initView()
+
+        initLazyLoader()
+    }
+
+    private fun initLazyLoader() {
+        var lazyLoader = LazyLoader(this, 30, 20, ContextCompat.getColor(this, R.color.purple_selected))
+                .apply {
+                    animDuration = 500
+                    firstDelayDuration = 100
+                    secondDelayDuration = 200
+                }
+
+        /*var lazyLoader = LazyLoader(this).apply{
+            animDuration = 500
+            firstDelayDuration = 100
+            secondDelayDuration = 200
+        }
+        lazyLoader.dotsRadius = 60
+        lazyLoader.dotsDist = 60*/
+
+        containerLL.addView(lazyLoader)
     }
 
     private fun initView() {
-        val containerLL = findViewById(R.id.container) as LinearLayout
-
         loader = LinearDotsLoader(this)
         loader.defaultColor = ContextCompat.getColor(this, R.color.loader_defalut)
         loader.selectedColor = ContextCompat.getColor(this, R.color.loader_selected)
