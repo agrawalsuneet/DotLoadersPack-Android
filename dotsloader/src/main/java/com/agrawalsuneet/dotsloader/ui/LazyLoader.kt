@@ -22,8 +22,6 @@ class LazyLoader : LinearLayout, LoaderContract {
     var firstDelayDuration: Int = 100
     var secondDelayDuration: Int = 200
 
-    var startLoadingDefault: Boolean = true
-
     private lateinit var firstCircle: CircleView
     private lateinit var secondCircle: CircleView
     private lateinit var thirdCircle: CircleView
@@ -91,19 +89,17 @@ class LazyLoader : LinearLayout, LoaderContract {
         addView(thirdCircle, params)
 
 
-        if (startLoadingDefault) {
-            val loaderView = this
+        val loaderView = this
 
-            viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
-                override fun onGlobalLayout() {
-                    startLoading()
+        viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                startLoading()
 
-                    val vto = loaderView.viewTreeObserver
-                    vto.removeOnGlobalLayoutListener(this)
-                }
-            })
-            startLoadingDefault = false
-        }
+                val vto = loaderView.viewTreeObserver
+                vto.removeOnGlobalLayoutListener(this)
+            }
+        })
+
     }
 
     private fun startLoading() {
