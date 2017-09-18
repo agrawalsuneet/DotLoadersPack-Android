@@ -6,12 +6,13 @@ import android.util.AttributeSet
 import android.view.View
 
 import com.agrawalsuneet.dotsloader.R
+import com.agrawalsuneet.dotsloader.ui.basicviews.LoaderContract
 import com.agrawalsuneet.dotsloader.utils.Helper
 
 /**
  * Created by Suneet on 13/01/17.
  */
-abstract class DotsLoader : View {
+abstract class DotsLoader : View, LoaderContract {
 
     var animDur = 500
 
@@ -41,7 +42,7 @@ abstract class DotsLoader : View {
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
 
-    protected open fun initAttributes(attrs: AttributeSet) {
+    override fun initAttributes(attrs: AttributeSet) {
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.DotsLoader, 0, 0)
 

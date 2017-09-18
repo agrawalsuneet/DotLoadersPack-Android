@@ -20,7 +20,7 @@ buildscript {
 ext {
     PUBLISH_GROUP_ID = 'com.agrawalsuneet.androidlibs'
     PUBLISH_ARTIFACT_ID = 'dotsloader'
-    PUBLISH_VERSION = '0.4'
+    PUBLISH_VERSION = '0.5'
 }
 
 configurations {
@@ -32,10 +32,10 @@ android {
     buildToolsVersion "25.0.2"
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 16
         targetSdkVersion 25
-        versionCode 4
-        versionName "0.4"
+        versionCode 5
+        versionName "0.5"
     }
     buildTypes {
         release {
