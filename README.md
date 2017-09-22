@@ -12,12 +12,13 @@
 ![CircularDotsLoader](https://user-images.githubusercontent.com/12999622/27900765-32aef07c-624d-11e7-8679-f77a95030bd4.gif)
 ![circular](https://user-images.githubusercontent.com/12999622/29122715-e2f4ad3e-7d30-11e7-91ba-d049e21956bd.gif)
 
-
+### LazyLoader
+3 lazy dots jumping up and down
 
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-compile 'com.agrawalsuneet.androidlibs:dotsloader:0.4'
+compile 'com.agrawalsuneet.androidlibs:dotsloader:0.5'
 ```
 
 ### LinearDotsLoader
@@ -133,6 +134,50 @@ CircularDotsLoader loader = new CircularDotsLoader(this);
 > For avoiding overlapping in CircularDotsLoader, set BigCircleLoader nearly four times of dotsRadius.
 
 > If the showRunningShadow is true and no firstShadowColor and secondShadowColor provided, it'll take 0.7f and 0.5f alpha of selectedColor
+
+### LazyLoader
+##### Through XML
+```
+<com.agrawalsuneet.dotsloader.ui.LazyLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:lazyloader_dotsColor="@color/loader_selected"
+        app:lazyloader_dotsDist="10dp"
+        app:lazyloader_dotsRadius="16dp"
+        app:lazyloader_animDur="2000"
+        app:lazyloader_firstDelayDur="500"
+        app:lazyloader_secondDelayDur="1000"
+        android:layout_margin="20dp"
+        android:layout_marginTop="30dp"/>
+```
+
+##### Through Code
+
+* Kotlin
+```
+        var lazyLoader = LazyLoader(this, 30, 20, ContextCompat.getColor(this, R.color.purple_selected))
+                .apply {
+                    animDuration = 500
+                    firstDelayDuration = 100
+                    secondDelayDuration = 200
+                }
+        containerLL.addView(lazyLoader)
+```
+
+
+* Java
+```
+        LazyLoader loader = new LazyLoader(this);
+        loader.setDotsColor(ContextCompat.getColor(this,R.color.blue_selected));
+        loader.setDotsDist(20);
+        loader.setDotsRadius(30);
+        loader.setAnimDuration(500);
+        loader.setFirstDelayDuration(100);
+        loader.setSecondDelayDuration(200);
+        
+        containerLL.addView(loader);
+```
+
 
 Feel free to drop a mail at agrawalsuneet@gmail.com if face any issue or require any additional functionality in it.
 
