@@ -157,7 +157,7 @@ class LazyLoader : LinearLayout, LoaderContract {
             initView()
         }
 
-    var dotsColor: Int = resources.getColor(R.color.loader_defalut, null)
+    var dotsColor: Int = resources.getColor(R.color.loader_defalut)
         get() = field
         set(value) {
             field = value
