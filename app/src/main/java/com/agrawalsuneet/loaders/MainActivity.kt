@@ -34,8 +34,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initTashieLoader() {
-        var trisha = TashieLoader(this)
-        containerLL.addView(trisha)
+        var tashie = TashieLoader(this)
+                .apply {
+                    noOfDots = 5
+                    dotsDist = 30
+                    dotsRadius = 60
+                    animDuration = 500
+                    dotsColor = resources.getColor(R.color.green)
+                }
+        containerLL.addView(tashie)
     }
 
     private fun initLazyLoader() {
