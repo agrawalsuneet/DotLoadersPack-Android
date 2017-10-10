@@ -5,6 +5,8 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.animation.AccelerateInterpolator
+import android.view.animation.DecelerateInterpolator
 import android.widget.LinearLayout
 import com.agrawalsuneet.dotsloader.ui.CircularDotsLoader
 import com.agrawalsuneet.dotsloader.ui.LazyLoader
@@ -36,6 +38,7 @@ class MainActivity : AppCompatActivity() {
                     animDuration = 500
                     firstDelayDuration = 100
                     secondDelayDuration = 200
+                    interpolator = DecelerateInterpolator()
                 }
 
         /*var lazyLoader = LazyLoader(this).apply{

@@ -11,14 +11,14 @@ import android.widget.LinearLayout
 import com.agrawalsuneet.dotsloader.R
 import com.agrawalsuneet.dotsloader.ui.basicviews.CircleView
 import com.agrawalsuneet.dotsloader.ui.basicviews.LoaderContract
+import com.agrawalsuneet.dotsloader.ui.basicviews.ModifiedLinearLayout
 
 
 /**
  * Created by ballu on 13/08/17.
  */
-class LazyLoader : LinearLayout, LoaderContract {
+class LazyLoader : ModifiedLinearLayout, LoaderContract {
 
-    var animDuration: Int = 500
     var firstDelayDuration: Int = 100
     var secondDelayDuration: Int = 200
 
@@ -139,6 +139,7 @@ class LazyLoader : LinearLayout, LoaderContract {
         transAnim.fillAfter = true
         transAnim.repeatCount = 1
         transAnim.repeatMode = Animation.REVERSE
+        transAnim.interpolator = interpolator
 
         return transAnim
     }
