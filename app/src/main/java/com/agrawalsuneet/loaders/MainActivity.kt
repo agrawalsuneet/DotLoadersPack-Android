@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import com.agrawalsuneet.dotsloader.ui.CircularDotsLoader
 import com.agrawalsuneet.dotsloader.ui.LazyLoader
 import com.agrawalsuneet.dotsloader.ui.LinearDotsLoader
+import com.agrawalsuneet.dotsloader.ui.TashieLoader
 import com.agrawalsuneet.loaders.dialog.DotsLoaderDialog
 
 class MainActivity : AppCompatActivity() {
@@ -28,8 +29,13 @@ class MainActivity : AppCompatActivity() {
         containerLL = findViewById(R.id.container) as LinearLayout
 
         //initView()
+        //initLazyLoader()
+        initTashieLoader()
+    }
 
-        initLazyLoader()
+    private fun initTashieLoader() {
+        var trisha = TashieLoader(this)
+        containerLL.addView(trisha)
     }
 
     private fun initLazyLoader() {

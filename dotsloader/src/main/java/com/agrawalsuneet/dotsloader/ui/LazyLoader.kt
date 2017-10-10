@@ -71,7 +71,7 @@ class LazyLoader : ModifiedLinearLayout, LoaderContract {
         setMeasuredDimension(calWidth, calHeight)
     }
 
-    private fun initView() {
+    override fun initView() {
         removeAllViews()
         removeAllViewsInLayout()
 
@@ -143,25 +143,4 @@ class LazyLoader : ModifiedLinearLayout, LoaderContract {
 
         return transAnim
     }
-
-    var dotsRadius: Int = 30
-        get() = field
-        set(value) {
-            field = value
-            initView()
-        }
-
-    var dotsDist: Int = 15
-        get() = field
-        set(value) {
-            field = value
-            initView()
-        }
-
-    var dotsColor: Int = resources.getColor(R.color.loader_defalut)
-        get() = field
-        set(value) {
-            field = value
-            initView()
-        }
 }
