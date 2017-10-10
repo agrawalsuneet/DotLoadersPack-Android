@@ -13,7 +13,7 @@
 ![circular](https://user-images.githubusercontent.com/12999622/29122715-e2f4ad3e-7d30-11e7-91ba-d049e21956bd.gif)
 
 ### LazyLoader
-3 lazy dots jumping up and down
+![lazyloader](https://user-images.githubusercontent.com/12999622/30963328-f3db79ee-a444-11e7-870f-8cb15f8f112b.gif)
 
 ## How To use
 include below dependency in build.gradle of application and compile it
@@ -179,7 +179,10 @@ CircularDotsLoader loader = new CircularDotsLoader(this);
 ```
 
 
-Feel free to drop a mail at agrawalsuneet@gmail.com if face any issue or require any additional functionality in it.
+Please take a 2 mins survey to make this library better [here](https://goo.gl/forms/81Cf63sL2X1WhXHl2).
+It won't take more than 2 mins I promise :)
+
+ or feel free to drop an email at agrawalsuneet@gmail.com if face any issue or require any additional functionality in it.
 
 ```
 Copyright 2017 Suneet Agrawal
