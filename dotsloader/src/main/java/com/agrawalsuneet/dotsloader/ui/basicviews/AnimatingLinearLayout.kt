@@ -2,6 +2,7 @@ package com.agrawalsuneet.dotsloader.ui.basicviews
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.animation.AnimationUtils
 import android.view.animation.Interpolator
 import android.view.animation.LinearInterpolator
 import android.widget.LinearLayout
@@ -35,6 +36,12 @@ abstract class AnimatingLinearLayout : LinearLayout, LoaderContract {
                 resources.getColor(R.color.loader_defalut))
 
         this.animDuration = typedArray.getInt(R.styleable.AnimatingLinearLayout_all_animDur, 500)
+
+        this.interpolator = AnimationUtils.loadInterpolator(context,
+                typedArray.getResourceId(R.styleable.AnimatingLinearLayout_all_interpolator,
+                        android.R.anim.linear_interpolator))
+
+        typedArray.recycle()
     }
 
 

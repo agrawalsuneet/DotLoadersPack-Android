@@ -33,7 +33,7 @@
         <attr name="all_dotsDist" format="dimension" />
         <attr name="all_dotsColor" format="color" />
         <attr name="all_animDur" format="integer" />
-        <attr name="all_interpolator" format="integer" />
+        <attr name="all_interpolator" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="LazyLoader">
