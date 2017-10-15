@@ -11,13 +11,13 @@ import android.widget.LinearLayout
 import com.agrawalsuneet.dotsloader.R
 import com.agrawalsuneet.dotsloader.ui.basicviews.CircleView
 import com.agrawalsuneet.dotsloader.ui.basicviews.LoaderContract
-import com.agrawalsuneet.dotsloader.ui.basicviews.ModifiedLinearLayout
+import com.agrawalsuneet.dotsloader.ui.basicviews.AnimatingLinearLayout
 
 
 /**
  * Created by ballu on 13/08/17.
  */
-class LazyLoader : ModifiedLinearLayout, LoaderContract {
+class LazyLoader : AnimatingLinearLayout {
 
     var firstDelayDuration: Int = 100
     var secondDelayDuration: Int = 200
@@ -50,12 +50,12 @@ class LazyLoader : ModifiedLinearLayout, LoaderContract {
     override fun initAttributes(attrs: AttributeSet) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.LazyLoader, 0, 0)
 
-        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.LazyLoader_lazyloader_dotsRadius, 30)
-        this.dotsDist = typedArray.getDimensionPixelSize(R.styleable.LazyLoader_lazyloader_dotsDist, 15)
-        this.dotsColor = typedArray.getColor(R.styleable.LazyLoader_lazyloader_dotsColor,
+        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.AnimatingLinearLayout_all_dotsRadius, 30)
+        this.dotsDist = typedArray.getDimensionPixelSize(R.styleable.AnimatingLinearLayout_all_dotsDist, 15)
+        this.dotsColor = typedArray.getColor(R.styleable.AnimatingLinearLayout_all_dotsColor,
                 resources.getColor(R.color.loader_defalut))
 
-        this.animDuration = typedArray.getInt(R.styleable.LazyLoader_lazyloader_animDur, 500)
+        this.animDuration = typedArray.getInt(R.styleable.AnimatingLinearLayout_all_animDur, 500)
         this.firstDelayDuration = typedArray.getInt(R.styleable.LazyLoader_lazyloader_firstDelayDur, 100)
         this.secondDelayDuration = typedArray.getInt(R.styleable.LazyLoader_lazyloader_secondDelayDur, 200)
 

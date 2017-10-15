@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initLazyLoader() {
-        var lazyLoader = LazyLoader(this, 30, 20, ContextCompat.getColor(this, R.color.purple_selected))
+        var lazyLoader = LazyLoader(this, 20, 10, ContextCompat.getColor(this, R.color.purple_selected))
                 .apply {
                     animDuration = 500
                     firstDelayDuration = 100

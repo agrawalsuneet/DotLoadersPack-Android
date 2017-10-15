@@ -11,7 +11,7 @@ import com.agrawalsuneet.dotsloader.R
  * Created by suneet on 10/10/17.
  */
 
-abstract class ModifiedLinearLayout : LinearLayout {
+abstract class AnimatingLinearLayout : LinearLayout, LoaderContract {
 
     var animDuration: Int = 500
 

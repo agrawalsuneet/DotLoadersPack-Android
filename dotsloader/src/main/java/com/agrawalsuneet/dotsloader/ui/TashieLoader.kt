@@ -9,22 +9,20 @@ import android.view.animation.Animation
 import android.view.animation.AnimationSet
 import android.view.animation.ScaleAnimation
 import android.widget.LinearLayout
-import com.agrawalsuneet.dotsloader.R
+import com.agrawalsuneet.dotsloader.ui.basicviews.AnimatingLinearLayout
 import com.agrawalsuneet.dotsloader.ui.basicviews.CircleView
-import com.agrawalsuneet.dotsloader.ui.basicviews.LoaderContract
-import com.agrawalsuneet.dotsloader.ui.basicviews.ModifiedLinearLayout
 
 /**
  * Created by suneet on 10/10/17.
  */
-class TashieLoader : ModifiedLinearLayout, LoaderContract {
+class TashieLoader : AnimatingLinearLayout {
 
     var noOfDots: Int = 8
-    var animDelay : Int = 100
+    var animDelay: Int = 100
 
     private lateinit var dotsArray: Array<CircleView?>
 
-    private var isDotsExpanded: Boolean = false
+    private var isDotsExpanding: Boolean = true
 
     constructor(context: Context?) : super(context) {
         initView()
@@ -48,7 +46,7 @@ class TashieLoader : ModifiedLinearLayout, LoaderContract {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
         val calHeight = 2 * dotsRadius
-        val calWidth = (2 * noOfDots * dotsRadius + (noOfDots - 1) * dotsDist)
+        val calWidth = ((2 * noOfDots * dotsRadius) + ((noOfDots - 1) * dotsDist))
 
         setMeasuredDimension(calWidth, calHeight)
     }
@@ -85,106 +83,79 @@ class TashieLoader : ModifiedLinearLayout, LoaderContract {
     }
 
     private fun startLoading() {
-        if (!isDotsExpanded) {
-            for (iCount in 0 until noOfDots) {
-                var anim = getExpandScaleAnimation(iCount)
-                dotsArray[iCount]!!.startAnimation(anim)
 
-                if (iCount == noOfDots - 1){
-                    anim.setAnimationListener(object : Animation.AnimationListener{
-                        override fun onAnimationRepeat(p0: Animation?) {
-                        }
+        for (iCount in 0 until noOfDots) {
+            var anim = getScaleAnimation(isDotsExpanding, iCount)
+            dotsArray[iCount]!!.startAnimation(anim)
 
-                        override fun onAnimationEnd(p0: Animation?) {
-                            startLoading()
-                        }
+            setAnimationListener(anim, iCount)
+        }
+        isDotsExpanding = !isDotsExpanding
+    }
 
-                        override fun onAnimationStart(p0: Animation?) {
-                        }
+    private fun getScaleAnimation(isExpanding: Boolean, delay: Int): AnimationSet {
+        var anim = AnimationSet(true);
 
-                    })
-                } else {
-                    anim.setAnimationListener(object : Animation.AnimationListener{
-                        override fun onAnimationRepeat(p0: Animation?) {
-                        }
+        var scaleAnim: ScaleAnimation
 
-                        override fun onAnimationEnd(p0: Animation?) {
-                            dotsArray[iCount]!!.visibility = View.VISIBLE
-                        }
+        when (isExpanding) {
+            true -> {
+                scaleAnim = ScaleAnimation(0f, 1f, 0f, 1f,
+                        Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
+            }
 
-                        override fun onAnimationStart(p0: Animation?) {
-                        }
+            false -> {
+                scaleAnim = ScaleAnimation(1f, 0f, 1f, 0f,
+                        Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
+            }
+        }
 
-                    })
+        scaleAnim.duration = animDuration.toLong()
+        scaleAnim.fillAfter = true
+        scaleAnim.repeatCount = 0
+        scaleAnim.startOffset = (animDelay * delay).toLong()
+        anim.addAnimation(scaleAnim)
+
+        anim.interpolator = interpolator
+        return anim
+    }
+
+    private fun setAnimationListener(anim: AnimationSet, dotPosition: Int) {
+        if (dotPosition == noOfDots - 1) {
+            anim.setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationRepeat(p0: Animation?) {
                 }
 
-            }
-            isDotsExpanded = true
+                override fun onAnimationEnd(p0: Animation?) {
+                    startLoading()
+                }
+
+                override fun onAnimationStart(p0: Animation?) {
+                }
+
+            })
         } else {
-            for (iCount in 0 until noOfDots) {
-                var anim = getCollapseAnimation(iCount)
-                dotsArray[iCount]!!.startAnimation(anim)
-
-                if (iCount == noOfDots - 1){
-                    anim.setAnimationListener(object : Animation.AnimationListener{
-                        override fun onAnimationRepeat(p0: Animation?) {
-                        }
-
-                        override fun onAnimationEnd(p0: Animation?) {
-                            startLoading()
-                        }
-
-                        override fun onAnimationStart(p0: Animation?) {
-                        }
-
-                    })
-                } else {
-                    anim.setAnimationListener(object : Animation.AnimationListener{
-                        override fun onAnimationRepeat(p0: Animation?) {
-                        }
-
-                        override fun onAnimationEnd(p0: Animation?) {
-                            dotsArray[iCount]!!.visibility = View.INVISIBLE
-                        }
-
-                        override fun onAnimationStart(p0: Animation?) {
-                        }
-
-                    })
+            anim.setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationRepeat(p0: Animation?) {
                 }
-            }
-            isDotsExpanded = false
+
+                override fun onAnimationEnd(p0: Animation?) {
+                    when (!isDotsExpanding) {
+                        true -> {
+                            dotsArray[dotPosition]!!.visibility = View.VISIBLE
+                        }
+
+                        false -> {
+                            dotsArray[dotPosition]!!.visibility = View.INVISIBLE
+                        }
+                    }
+
+                }
+
+                override fun onAnimationStart(p0: Animation?) {
+                }
+
+            })
         }
     }
-
-    private fun getExpandScaleAnimation(delay: Int): AnimationSet {
-        var anim = AnimationSet(true);
-
-        val scaleAnim = ScaleAnimation(0f, 1f, 0f, 1f,
-                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
-        scaleAnim.duration = animDuration.toLong()
-        scaleAnim.fillAfter = true
-        scaleAnim.repeatCount = 0
-        scaleAnim.startOffset = (animDelay * delay).toLong()
-        anim.addAnimation(scaleAnim)
-
-        anim.interpolator = interpolator
-        return anim
-    }
-
-    private fun getCollapseAnimation(delay: Int): AnimationSet {
-        var anim = AnimationSet(true);
-
-        val scaleAnim = ScaleAnimation(1f, 0f, 1f, 0f,
-                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
-        scaleAnim.duration = animDuration.toLong()
-        scaleAnim.fillAfter = true
-        scaleAnim.repeatCount = 0
-        scaleAnim.startOffset = (animDelay * delay).toLong()
-        anim.addAnimation(scaleAnim)
-
-        anim.interpolator = interpolator
-        return anim
-    }
-
 }
