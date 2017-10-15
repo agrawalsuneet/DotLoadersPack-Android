@@ -33,7 +33,7 @@ abstract class AnimatingLinearLayout : LinearLayout, LoaderContract {
         this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.AnimatingLinearLayout_all_dotsRadius, 30)
         this.dotsDist = typedArray.getDimensionPixelSize(R.styleable.AnimatingLinearLayout_all_dotsDist, 15)
         this.dotsColor = typedArray.getColor(R.styleable.AnimatingLinearLayout_all_dotsColor,
-                resources.getColor(R.color.loader_defalut))
+                resources.getColor(R.color.loader_selected))
 
         this.animDuration = typedArray.getInt(R.styleable.AnimatingLinearLayout_all_animDur, 500)
 
