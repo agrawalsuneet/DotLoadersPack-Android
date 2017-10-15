@@ -9,16 +9,15 @@ import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
 import android.widget.LinearLayout
 import com.agrawalsuneet.dotsloader.R
+import com.agrawalsuneet.dotsloader.ui.basicviews.AnimatingLinearLayout
 import com.agrawalsuneet.dotsloader.ui.basicviews.CircleView
-import com.agrawalsuneet.dotsloader.ui.basicviews.LoaderContract
 
 
 /**
  * Created by ballu on 13/08/17.
  */
-class LazyLoader : LinearLayout, LoaderContract {
+class LazyLoader : AnimatingLinearLayout {
 
-    var animDuration: Int = 500
     var firstDelayDuration: Int = 100
     var secondDelayDuration: Int = 200
 
@@ -48,14 +47,10 @@ class LazyLoader : LinearLayout, LoaderContract {
     }
 
     override fun initAttributes(attrs: AttributeSet) {
+        super.initAttributes(attrs)
+
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.LazyLoader, 0, 0)
 
-        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.LazyLoader_lazyloader_dotsRadius, 30)
-        this.dotsDist = typedArray.getDimensionPixelSize(R.styleable.LazyLoader_lazyloader_dotsDist, 15)
-        this.dotsColor = typedArray.getColor(R.styleable.LazyLoader_lazyloader_dotsColor,
-                resources.getColor(R.color.loader_defalut))
-
-        this.animDuration = typedArray.getInt(R.styleable.LazyLoader_lazyloader_animDur, 500)
         this.firstDelayDuration = typedArray.getInt(R.styleable.LazyLoader_lazyloader_firstDelayDur, 100)
         this.secondDelayDuration = typedArray.getInt(R.styleable.LazyLoader_lazyloader_secondDelayDur, 200)
 
@@ -71,7 +66,7 @@ class LazyLoader : LinearLayout, LoaderContract {
         setMeasuredDimension(calWidth, calHeight)
     }
 
-    private fun initView() {
+    override fun initView() {
         removeAllViews()
         removeAllViewsInLayout()
 
@@ -139,28 +134,8 @@ class LazyLoader : LinearLayout, LoaderContract {
         transAnim.fillAfter = true
         transAnim.repeatCount = 1
         transAnim.repeatMode = Animation.REVERSE
+        transAnim.interpolator = interpolator
 
         return transAnim
     }
-
-    var dotsRadius: Int = 30
-        get() = field
-        set(value) {
-            field = value
-            initView()
-        }
-
-    var dotsDist: Int = 15
-        get() = field
-        set(value) {
-            field = value
-            initView()
-        }
-
-    var dotsColor: Int = resources.getColor(R.color.loader_defalut)
-        get() = field
-        set(value) {
-            field = value
-            initView()
-        }
 }

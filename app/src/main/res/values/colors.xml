@@ -21,4 +21,7 @@
     <color name="blue_selected">#2196F3</color>
     <color name="blue_delfault">#BBDEFB</color>
 
+    <color name="red">#ff0000</color>
+    <color name="green">#00e500</color>
+
 </resources>
