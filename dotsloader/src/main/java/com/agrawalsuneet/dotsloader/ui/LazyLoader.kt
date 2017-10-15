@@ -9,9 +9,8 @@ import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
 import android.widget.LinearLayout
 import com.agrawalsuneet.dotsloader.R
-import com.agrawalsuneet.dotsloader.ui.basicviews.CircleView
-import com.agrawalsuneet.dotsloader.ui.basicviews.LoaderContract
 import com.agrawalsuneet.dotsloader.ui.basicviews.AnimatingLinearLayout
+import com.agrawalsuneet.dotsloader.ui.basicviews.CircleView
 
 
 /**
@@ -48,14 +47,10 @@ class LazyLoader : AnimatingLinearLayout {
     }
 
     override fun initAttributes(attrs: AttributeSet) {
+        super.initAttributes(attrs)
+
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.LazyLoader, 0, 0)
 
-        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.AnimatingLinearLayout_all_dotsRadius, 30)
-        this.dotsDist = typedArray.getDimensionPixelSize(R.styleable.AnimatingLinearLayout_all_dotsDist, 15)
-        this.dotsColor = typedArray.getColor(R.styleable.AnimatingLinearLayout_all_dotsColor,
-                resources.getColor(R.color.loader_defalut))
-
-        this.animDuration = typedArray.getInt(R.styleable.AnimatingLinearLayout_all_animDur, 500)
         this.firstDelayDuration = typedArray.getInt(R.styleable.LazyLoader_lazyloader_firstDelayDur, 100)
         this.secondDelayDuration = typedArray.getInt(R.styleable.LazyLoader_lazyloader_secondDelayDur, 200)
 

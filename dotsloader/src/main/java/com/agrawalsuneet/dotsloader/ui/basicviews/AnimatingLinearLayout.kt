@@ -15,7 +15,7 @@ abstract class AnimatingLinearLayout : LinearLayout, LoaderContract {
 
     var animDuration: Int = 500
 
-    var interpolator : Interpolator = LinearInterpolator()
+    var interpolator: Interpolator = LinearInterpolator()
 
     constructor(context: Context?) : super(context) {
     }
@@ -24,6 +24,17 @@ abstract class AnimatingLinearLayout : LinearLayout, LoaderContract {
     }
 
     constructor(context: Context?, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    }
+
+    override fun initAttributes(attrs: AttributeSet) {
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.AnimatingLinearLayout, 0, 0)
+
+        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.AnimatingLinearLayout_all_dotsRadius, 30)
+        this.dotsDist = typedArray.getDimensionPixelSize(R.styleable.AnimatingLinearLayout_all_dotsDist, 15)
+        this.dotsColor = typedArray.getColor(R.styleable.AnimatingLinearLayout_all_dotsColor,
+                resources.getColor(R.color.loader_defalut))
+
+        this.animDuration = typedArray.getInt(R.styleable.AnimatingLinearLayout_all_animDur, 500)
     }
 
 

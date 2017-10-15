@@ -37,8 +37,8 @@ class MainActivity : AppCompatActivity() {
         var tashie = TashieLoader(this)
                 .apply {
                     noOfDots = 5
-                    dotsDist = 30
-                    dotsRadius = 60
+                    dotsDist = 10
+                    dotsRadius = 30
                     animDuration = 500
                     dotsColor = resources.getColor(R.color.green)
                 }
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initLazyLoader() {
-        var lazyLoader = LazyLoader(this, 20, 10, ContextCompat.getColor(this, R.color.purple_selected))
+        var lazyLoader = LazyLoader(this, 15, 5, ContextCompat.getColor(this, R.color.purple_selected))
                 .apply {
                     animDuration = 500
                     firstDelayDuration = 100

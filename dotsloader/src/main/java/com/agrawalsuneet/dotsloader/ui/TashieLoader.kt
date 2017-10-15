@@ -9,6 +9,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationSet
 import android.view.animation.ScaleAnimation
 import android.widget.LinearLayout
+import com.agrawalsuneet.dotsloader.R
 import com.agrawalsuneet.dotsloader.ui.basicviews.AnimatingLinearLayout
 import com.agrawalsuneet.dotsloader.ui.basicviews.CircleView
 
@@ -39,7 +40,14 @@ class TashieLoader : AnimatingLinearLayout {
     }
 
     override fun initAttributes(attrs: AttributeSet) {
+        super.initAttributes(attrs)
 
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.TashieLoader, 0, 0)
+
+        this.noOfDots = typedArray.getInt(R.styleable.TashieLoader_tashieloader_noOfDots, 8)
+        this.animDelay = typedArray.getInt(R.styleable.TashieLoader_tashieloader_animDelay, 100)
+
+        typedArray.recycle()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {

@@ -5,13 +5,13 @@ import android.graphics.Canvas
 import android.os.Handler
 import android.util.AttributeSet
 import com.agrawalsuneet.dotsloader.R
-import com.agrawalsuneet.dotsloader.ui.basicviews.DotsLoader
+import com.agrawalsuneet.dotsloader.ui.basicviews.DotsLoaderBaseView
 
 /**
  * Created by ballu on 04/07/17.
  */
 
-class LinearDotsLoader : DotsLoader {
+class LinearDotsLoader : DotsLoaderBaseView {
 
     var isSingleDir = true
 
