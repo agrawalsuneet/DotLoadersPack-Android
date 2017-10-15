@@ -5,12 +5,13 @@ import android.graphics.Canvas
 import android.os.Handler
 import android.util.AttributeSet
 import com.agrawalsuneet.dotsloader.R
+import com.agrawalsuneet.dotsloader.ui.basicviews.DotsLoaderBaseView
 
 /**
  * Created by ballu on 04/07/17.
  */
 
-class CircularDotsLoader : DotsLoader {
+class CircularDotsLoader : DotsLoaderBaseView {
 
     private val mNoOfDots = 8
     private val SIN_45 = 0.7071f

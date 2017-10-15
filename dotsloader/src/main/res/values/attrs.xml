@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="DotsLoader">
+    <declare-styleable name="DotsLoaderBaseView">
         <attr name="loader_defaultColor" format="color" />
         <attr name="loader_selectedColor" format="color" />
         <attr name="loader_circleRadius" format="dimension" />
@@ -23,18 +23,28 @@
         <attr name="loader_bigCircleRadius" format="dimension" />
     </declare-styleable>
 
-    <declare-styleable name="LazyLoader">
-        <attr name="lazyloader_dotsRadius" format="dimension" />
-        <attr name="lazyloader_dotsDist" format="dimension" />
-        <attr name="lazyloader_dotsColor" format="color" />
-        <attr name="lazyloader_animDur" format="integer" />
-        <attr name="lazyloader_firstDelayDur" format="integer" />
-        <attr name="lazyloader_secondDelayDur" format="integer" />
-    </declare-styleable>
-
     <declare-styleable name="CircleView">
         <attr name="circleRadius" format="dimension" />
         <attr name="circleColor" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="AnimatingLinearLayout">
+        <attr name="all_dotsRadius" format="dimension" />
+        <attr name="all_dotsDist" format="dimension" />
+        <attr name="all_dotsColor" format="color" />
+        <attr name="all_animDur" format="integer" />
+        <attr name="all_interpolator" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="LazyLoader">
+        <attr name="lazyloader_firstDelayDur" format="integer" />
+        <attr name="lazyloader_secondDelayDur" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="TashieLoader">
+        <attr name="tashieloader_noOfDots" format="integer" />
+        <attr name="tashieloader_animDelay" format="integer" />
+    </declare-styleable>
+
 
 </resources>

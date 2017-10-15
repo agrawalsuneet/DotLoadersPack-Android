@@ -5,10 +5,13 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.animation.AccelerateInterpolator
+import android.view.animation.DecelerateInterpolator
 import android.widget.LinearLayout
 import com.agrawalsuneet.dotsloader.ui.CircularDotsLoader
 import com.agrawalsuneet.dotsloader.ui.LazyLoader
 import com.agrawalsuneet.dotsloader.ui.LinearDotsLoader
+import com.agrawalsuneet.dotsloader.ui.TashieLoader
 import com.agrawalsuneet.loaders.dialog.DotsLoaderDialog
 
 class MainActivity : AppCompatActivity() {
@@ -26,16 +29,29 @@ class MainActivity : AppCompatActivity() {
         containerLL = findViewById(R.id.container) as LinearLayout
 
         //initView()
+        //initLazyLoader()
+        initTashieLoader()
+    }
 
-        initLazyLoader()
+    private fun initTashieLoader() {
+        var tashie = TashieLoader(this)
+                .apply {
+                    noOfDots = 5
+                    dotsDist = 10
+                    dotsRadius = 30
+                    animDuration = 500
+                    dotsColor = resources.getColor(R.color.green)
+                }
+        containerLL.addView(tashie)
     }
 
     private fun initLazyLoader() {
-        var lazyLoader = LazyLoader(this, 30, 20, ContextCompat.getColor(this, R.color.purple_selected))
+        var lazyLoader = LazyLoader(this, 15, 5, ContextCompat.getColor(this, R.color.purple_selected))
                 .apply {
                     animDuration = 500
                     firstDelayDuration = 100
                     secondDelayDuration = 200
+                    interpolator = DecelerateInterpolator()
                 }
 
         /*var lazyLoader = LazyLoader(this).apply{
