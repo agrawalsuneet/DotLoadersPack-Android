@@ -15,6 +15,9 @@
 ### LazyLoader
 ![lazyloader](https://user-images.githubusercontent.com/12999622/30963328-f3db79ee-a444-11e7-870f-8cb15f8f112b.gif)
 
+### TashieLoader
+A perfect animation of dots appeaing and disappearing in a linear form.
+
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
@@ -141,14 +144,15 @@ CircularDotsLoader loader = new CircularDotsLoader(this);
 <com.agrawalsuneet.dotsloader.ui.LazyLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:lazyloader_dotsColor="@color/loader_selected"
-        app:lazyloader_dotsDist="10dp"
-        app:lazyloader_dotsRadius="16dp"
-        app:lazyloader_animDur="2000"
-        app:lazyloader_firstDelayDur="500"
-        app:lazyloader_secondDelayDur="1000"
         android:layout_margin="20dp"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="30dp"
+        app:all_animDur="500"
+        app:all_dotsColor="@color/loader_selected"
+        app:all_dotsDist="10dp"
+        app:all_dotsRadius="16dp"
+        app:all_interpolator="@android:anim/accelerate_interpolator"
+        app:lazyloader_firstDelayDur="100"
+        app:lazyloader_secondDelayDur="200" />
 ```
 
 ##### Through Code
@@ -160,6 +164,7 @@ CircularDotsLoader loader = new CircularDotsLoader(this);
                     animDuration = 500
                     firstDelayDuration = 100
                     secondDelayDuration = 200
+                    interpolator = DecelerateInterpolator()
                 }
         containerLL.addView(lazyLoader)
 ```
@@ -174,9 +179,59 @@ CircularDotsLoader loader = new CircularDotsLoader(this);
         loader.setAnimDuration(500);
         loader.setFirstDelayDuration(100);
         loader.setSecondDelayDuration(200);
+        loader.setInterpolator(new LinearInterpolator());
         
         containerLL.addView(loader);
 ```
+
+### TashieLoader
+##### Through XML
+```
+<com.agrawalsuneet.dotsloader.ui.TashieLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:all_animDur="1000"
+        app:all_dotsColor="@color/purple_selected"
+        app:all_dotsDist="5dp"
+        app:all_dotsRadius="20dp"
+        app:all_interpolator="@android:anim/accelerate_interpolator"
+        app:tashieloader_animDelay="200"
+        app:tashieloader_noOfDots="6" />
+```
+
+#####  Through Code
+
+* Kotlin
+```
+var tashie = TashieLoader(this)
+                .apply {
+                    noOfDots = 5
+                    dotsDist = 10
+                    dotsRadius = 30
+                    animDuration = 500
+                    animDelay = 100
+                    dotsColor = resources.getColor(R.color.green)
+                    interpolator = LinearInterpolator()
+                }
+        containerLL.addView(tashie)
+        
+```
+
+* Java
+```
+TashieLoader tashie = new TashieLoader(this);
+        tashie.setNoOfDots(8);
+        tashie.setDotsRadius(20);
+        tashie.setDotsDist(10);
+        tashie.setDotsColor(ContextCompat.getColor(this, R.color.blue_selected));
+        tashie.setAnimDuration(500);
+        tashie.setAnimDelay(100);
+        tashie.setInterpolator(new LinearInterpolator());
+        
+        containerLL.addView(tashie);
+```
+
 
 
 Please take a 2 mins survey to make this library better [here](https://goo.gl/forms/81Cf63sL2X1WhXHl2).
