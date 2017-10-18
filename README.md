@@ -21,7 +21,7 @@ A perfect animation of dots appeaing and disappearing in a linear form.
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-compile 'com.agrawalsuneet.androidlibs:dotsloader:0.5'
+compile 'com.agrawalsuneet.androidlibs:dotsloader:0.6'
 ```
 
 ### LinearDotsLoader
