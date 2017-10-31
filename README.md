@@ -16,7 +16,9 @@
 ![lazyloader](https://user-images.githubusercontent.com/12999622/30963328-f3db79ee-a444-11e7-870f-8cb15f8f112b.gif)
 
 ### TashieLoader
-A perfect animation of dots appeaing and disappearing in a linear form.
+![tashieloader](https://user-images.githubusercontent.com/12999622/32248048-500dffc4-be7c-11e7-93cf-5d57f3fa7f34.gif)
+
+ Other loaders: [FourFoldLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ZipZapLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ClockLoader](https://github.com/agrawalsuneet/LoadersPack)
 
 ## How To use
 include below dependency in build.gradle of application and compile it
@@ -235,10 +237,7 @@ TashieLoader tashie = new TashieLoader(this);
 
 
 Please take a 2 mins survey to make this library better [here](https://goo.gl/forms/81Cf63sL2X1WhXHl2).
-It won't take more than 2 mins I promise :)
-
- or feel free to drop an email at agrawalsuneet@gmail.com if face any issue or require any additional functionality in it.
-
+It won't take more than 2 mins I promise :) or feel free to drop an email at agrawalsuneet@gmail.com if face any issue or require any additional functionality in it.
 ```
 Copyright 2017 Suneet Agrawal
 
