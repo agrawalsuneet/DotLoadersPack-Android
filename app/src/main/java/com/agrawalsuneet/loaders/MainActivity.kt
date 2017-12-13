@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
+import android.view.animation.LinearInterpolator
 import android.widget.LinearLayout
 import com.agrawalsuneet.dotsloader.ui.CircularDotsLoader
 import com.agrawalsuneet.dotsloader.ui.LazyLoader
@@ -40,7 +41,9 @@ class MainActivity : AppCompatActivity() {
                     dotsDist = 10
                     dotsRadius = 30
                     animDuration = 500
+                    animDelay = 100
                     dotsColor = resources.getColor(R.color.green)
+                    interpolator = LinearInterpolator()
                 }
         containerLL.addView(tashie)
     }

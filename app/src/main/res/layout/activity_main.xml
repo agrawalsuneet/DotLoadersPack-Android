@@ -19,6 +19,18 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         app:all_animDur="1000"
+        app:all_dotsDist="3dp"
+        app:all_dotsRadius="10dp"
+        app:all_interpolator="@android:anim/accelerate_interpolator"
+        app:tashieloader_animDelay="200"
+        app:tashieloader_noOfDots="10" />
+
+
+    <com.agrawalsuneet.dotsloader.ui.TashieLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        app:all_animDur="1000"
         app:all_dotsColor="@color/purple_selected"
         app:all_dotsDist="5dp"
         app:all_dotsRadius="20dp"
@@ -27,7 +39,7 @@
         app:tashieloader_noOfDots="6" />
 
 
-    <com.agrawalsuneet.dotsloader.ui.LazyLoader
+    <!--<com.agrawalsuneet.dotsloader.ui.LazyLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -37,7 +49,7 @@
         app:all_dotsDist="10dp"
         app:all_dotsRadius="16dp"
         app:lazyloader_firstDelayDur="100"
-        app:lazyloader_secondDelayDur="200" />
+        app:lazyloader_secondDelayDur="200" />-->
 
     <!--<com.agrawalsuneet.dotsloader.ui.LinearDotsLoader
         android:layout_width="wrap_content"
