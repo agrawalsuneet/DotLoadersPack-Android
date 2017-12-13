@@ -29,7 +29,7 @@ compile 'com.agrawalsuneet.androidlibs:dotsloader:0.6'
 ### LinearDotsLoader
 ##### Through XML
 ```
-<com.agrawalsuneet.dotsloader.ui.LinearDotsLoader
+<com.agrawalsuneet.dotsloader.loaders.LinearDotsLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:loader_animDur="1000"
@@ -92,7 +92,7 @@ compile 'com.agrawalsuneet.androidlibs:dotsloader:0.6'
 ### CircularDotsLoader
 ##### Through XML
 ```
-<com.agrawalsuneet.dotsloader.ui.CircularDotsLoader
+<com.agrawalsuneet.dotsloader.loaders.CircularDotsLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:loader_animDur="100"
@@ -143,7 +143,7 @@ CircularDotsLoader loader = new CircularDotsLoader(this);
 ### LazyLoader
 ##### Through XML
 ```
-<com.agrawalsuneet.dotsloader.ui.LazyLoader
+<com.agrawalsuneet.dotsloader.loaders.LazyLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -189,7 +189,7 @@ CircularDotsLoader loader = new CircularDotsLoader(this);
 ### TashieLoader
 ##### Through XML
 ```
-<com.agrawalsuneet.dotsloader.ui.TashieLoader
+<com.agrawalsuneet.dotsloader.loaders.TashieLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"

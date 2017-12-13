@@ -9,10 +9,10 @@ import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.LinearInterpolator
 import android.widget.LinearLayout
-import com.agrawalsuneet.dotsloader.ui.CircularDotsLoader
-import com.agrawalsuneet.dotsloader.ui.LazyLoader
-import com.agrawalsuneet.dotsloader.ui.LinearDotsLoader
-import com.agrawalsuneet.dotsloader.ui.TashieLoader
+import com.agrawalsuneet.dotsloader.loaders.CircularDotsLoader
+import com.agrawalsuneet.dotsloader.loaders.LazyLoader
+import com.agrawalsuneet.dotsloader.loaders.LinearDotsLoader
+import com.agrawalsuneet.dotsloader.loaders.TashieLoader
 import com.agrawalsuneet.loaders.dialog.DotsLoaderDialog
 
 class MainActivity : AppCompatActivity() {
@@ -25,13 +25,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main_2)
 
         containerLL = findViewById(R.id.container) as LinearLayout
 
         //initView()
         //initLazyLoader()
-        initTashieLoader()
+        //initTashieLoader()
     }
 
     private fun initTashieLoader() {

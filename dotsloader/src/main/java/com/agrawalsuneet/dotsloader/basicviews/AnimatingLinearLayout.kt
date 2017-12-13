@@ -1,4 +1,4 @@
-package com.agrawalsuneet.dotsloader.ui.basicviews
+package com.agrawalsuneet.dotsloader.basicviews
 
 import android.content.Context
 import android.util.AttributeSet
@@ -14,9 +14,9 @@ import com.agrawalsuneet.dotsloader.R
 
 abstract class AnimatingLinearLayout : LinearLayout, LoaderContract {
 
-    var animDuration: Int = 500
+    open var animDuration: Int = 500
 
-    var interpolator: Interpolator = LinearInterpolator()
+    open var interpolator: Interpolator = LinearInterpolator()
 
     constructor(context: Context?) : super(context) {
     }

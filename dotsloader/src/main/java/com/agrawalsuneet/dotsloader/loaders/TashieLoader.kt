@@ -1,4 +1,4 @@
-package com.agrawalsuneet.dotsloader.ui
+package com.agrawalsuneet.dotsloader.loaders
 
 import android.content.Context
 import android.util.AttributeSet
@@ -10,8 +10,8 @@ import android.view.animation.AnimationSet
 import android.view.animation.ScaleAnimation
 import android.widget.LinearLayout
 import com.agrawalsuneet.dotsloader.R
-import com.agrawalsuneet.dotsloader.ui.basicviews.AnimatingLinearLayout
-import com.agrawalsuneet.dotsloader.ui.basicviews.CircleView
+import com.agrawalsuneet.dotsloader.basicviews.AnimatingLinearLayout
+import com.agrawalsuneet.dotsloader.basicviews.CircleView
 
 /**
  * Created by suneet on 10/10/17.

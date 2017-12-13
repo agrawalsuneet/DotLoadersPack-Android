@@ -7,8 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.animation.LinearInterpolator;
 import android.widget.LinearLayout;
 
-import com.agrawalsuneet.dotsloader.ui.LazyLoader;
-import com.agrawalsuneet.dotsloader.ui.TashieLoader;
+import com.agrawalsuneet.dotsloader.loaders.LazyLoader;
+import com.agrawalsuneet.dotsloader.loaders.TashieLoader;
 
 /**
  * Created by suneet on 9/22/17.

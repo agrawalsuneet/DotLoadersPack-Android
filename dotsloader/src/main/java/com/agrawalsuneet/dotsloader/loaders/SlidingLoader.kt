@@ -1,29 +1,47 @@
-package com.agrawalsuneet.dotsloader.ui
+package com.agrawalsuneet.dotsloader.loaders
 
 import android.content.Context
 import android.os.Handler
 import android.util.AttributeSet
-import android.view.Gravity
 import android.view.ViewTreeObserver
 import android.view.animation.Animation
+import android.view.animation.AnticipateOvershootInterpolator
+import android.view.animation.Interpolator
 import android.view.animation.TranslateAnimation
 import android.widget.LinearLayout
 import com.agrawalsuneet.dotsloader.R
-import com.agrawalsuneet.dotsloader.ui.basicviews.AnimatingLinearLayout
-import com.agrawalsuneet.dotsloader.ui.basicviews.CircleView
-
+import com.agrawalsuneet.dotsloader.basicviews.AnimatingLinearLayout
+import com.agrawalsuneet.dotsloader.basicviews.CircleView
 
 /**
- * Created by ballu on 13/08/17.
+ * Created by suneet on 12/13/17.
  */
-class LazyLoader : AnimatingLinearLayout {
+class SlidingLoader : AnimatingLinearLayout {
 
-    var firstDelayDuration: Int = 100
-    var secondDelayDuration: Int = 200
+    override var animDuration: Int = 500
+        set(value) {
+            field = value
+            firstDelayDuration = value / 10
+            secondDelayDuration = value / 5
+        }
+
+    override var interpolator: Interpolator = AnticipateOvershootInterpolator()
+        set(value) {
+            field = AnticipateOvershootInterpolator()
+        }
+
+    var distanceToMove: Int = 12
+        set(value) {
+            field = value
+            invalidate()
+        }
 
     private lateinit var firstCircle: CircleView
     private lateinit var secondCircle: CircleView
     private lateinit var thirdCircle: CircleView
+
+    private var firstDelayDuration: Int = 0
+    private var secondDelayDuration: Int = 0
 
     constructor(context: Context, dotsRadius: Int, dotsDist: Int, dotsColor: Int) : super(context) {
         this.dotsRadius = dotsRadius
@@ -60,8 +78,8 @@ class LazyLoader : AnimatingLinearLayout {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        val calWidth = (6 * dotsRadius) + (2 * dotsDist)
-        val calHeight = 6 * dotsRadius
+        val calWidth = (10 * dotsRadius) + (distanceToMove * dotsRadius) + (2 * dotsDist)
+        val calHeight = 2 * dotsRadius
 
         setMeasuredDimension(calWidth, calHeight)
     }
@@ -74,21 +92,26 @@ class LazyLoader : AnimatingLinearLayout {
         secondCircle = CircleView(context, dotsRadius, dotsColor)
         thirdCircle = CircleView(context, dotsRadius, dotsColor)
 
-        val params = LinearLayout.LayoutParams((2 * dotsRadius), 2 * dotsRadius)
-        params.leftMargin = dotsDist
+        val paramsFirstCircle = LinearLayout.LayoutParams((2 * dotsRadius), 2 * dotsRadius)
+        paramsFirstCircle.leftMargin = (2 * dotsRadius)
 
-        setVerticalGravity(Gravity.BOTTOM)
+        val paramsSecondCircle = LinearLayout.LayoutParams((2 * dotsRadius), 2 * dotsRadius)
+        paramsSecondCircle.leftMargin = dotsDist
 
-        addView(firstCircle)
-        addView(secondCircle, params)
-        addView(thirdCircle, params)
+        val paramsThirdCircle = LinearLayout.LayoutParams((2 * dotsRadius), 2 * dotsRadius)
+        paramsThirdCircle.leftMargin = dotsDist
+        paramsThirdCircle.rightMargin = (2 * dotsRadius)
+
+        addView(firstCircle, paramsFirstCircle)
+        addView(secondCircle, paramsSecondCircle)
+        addView(thirdCircle, paramsThirdCircle)
 
 
         val loaderView = this
 
         viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
-                startLoading()
+                startLoading(true)
 
                 val vto = loaderView.viewTreeObserver
                 vto.removeOnGlobalLayoutListener(this)
@@ -97,22 +120,28 @@ class LazyLoader : AnimatingLinearLayout {
 
     }
 
-    private fun startLoading() {
+    private fun startLoading(isForwardDir: Boolean) {
 
-        val trans1Anim = getTranslateAnim()
-        firstCircle.startAnimation(trans1Anim)
+        interpolator = AnticipateOvershootInterpolator()
+        animDuration = 1500
 
-        val trans2Anim = getTranslateAnim()
+        firstDelayDuration = 150
+        secondDelayDuration = 300
+
+        val trans1Anim = getTranslateAnim(isForwardDir)
+        if (isForwardDir) thirdCircle.startAnimation(trans1Anim) else firstCircle.startAnimation(trans1Anim)
+
+        val trans2Anim = getTranslateAnim(isForwardDir)
 
         Handler().postDelayed({
             secondCircle.startAnimation(trans2Anim)
         }, firstDelayDuration.toLong())
 
 
-        val trans3Anim = getTranslateAnim()
+        val trans3Anim = getTranslateAnim(isForwardDir)
 
         Handler().postDelayed({
-            thirdCircle.startAnimation(trans3Anim)
+            if (isForwardDir) firstCircle.startAnimation(trans3Anim) else thirdCircle.startAnimation(trans3Anim)
         }, secondDelayDuration.toLong())
 
         trans3Anim.setAnimationListener(object : Animation.AnimationListener {
@@ -120,7 +149,7 @@ class LazyLoader : AnimatingLinearLayout {
             }
 
             override fun onAnimationEnd(animation: Animation?) {
-                startLoading()
+                startLoading(!isForwardDir)
             }
 
             override fun onAnimationStart(animation: Animation) {
@@ -128,12 +157,13 @@ class LazyLoader : AnimatingLinearLayout {
         })
     }
 
-    private fun getTranslateAnim(): TranslateAnimation {
-        val transAnim = TranslateAnimation(0f, 0f, 0f, (-(4 * dotsRadius).toFloat()))
+
+    private fun getTranslateAnim(isForwardDir: Boolean): TranslateAnimation {
+        val transAnim = TranslateAnimation(if (isForwardDir) 0f else (distanceToMove * dotsRadius).toFloat(),
+                if (isForwardDir) (distanceToMove * dotsRadius).toFloat() else 0f,
+                0f, 0f)
         transAnim.duration = animDuration.toLong()
         transAnim.fillAfter = true
-        transAnim.repeatCount = 1
-        transAnim.repeatMode = Animation.REVERSE
         transAnim.interpolator = interpolator
 
         return transAnim
