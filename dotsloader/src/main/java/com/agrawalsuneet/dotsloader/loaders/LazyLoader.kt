@@ -9,28 +9,21 @@ import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
 import android.widget.LinearLayout
 import com.agrawalsuneet.dotsloader.R
-import com.agrawalsuneet.dotsloader.basicviews.AnimatingLinearLayout
 import com.agrawalsuneet.dotsloader.basicviews.CircleView
+import com.agrawalsuneet.dotsloader.basicviews.ThreeDotsBaseView
 
 
 /**
  * Created by ballu on 13/08/17.
  */
-class LazyLoader : AnimatingLinearLayout {
+class LazyLoader : ThreeDotsBaseView {
 
     var firstDelayDuration: Int = 100
     var secondDelayDuration: Int = 200
 
-    private lateinit var firstCircle: CircleView
-    private lateinit var secondCircle: CircleView
-    private lateinit var thirdCircle: CircleView
-
-    constructor(context: Context, dotsRadius: Int, dotsDist: Int, dotsColor: Int) : super(context) {
-        this.dotsRadius = dotsRadius
-        this.dotsDist = dotsDist
-        this.dotsColor = dotsColor
-        initView()
-    }
+    constructor(context: Context, dotsRadius: Int, dotsDist: Int,
+                firstDotColor: Int, secondDotColor: Int, thirdDotColor: Int)
+            : super(context, dotsRadius, dotsDist, firstDotColor, secondDotColor, thirdDotColor)
 
     constructor(context: Context?) : super(context) {
         initView()
@@ -70,9 +63,9 @@ class LazyLoader : AnimatingLinearLayout {
         removeAllViews()
         removeAllViewsInLayout()
 
-        firstCircle = CircleView(context, dotsRadius, dotsColor)
-        secondCircle = CircleView(context, dotsRadius, dotsColor)
-        thirdCircle = CircleView(context, dotsRadius, dotsColor)
+        firstCircle = CircleView(context, dotsRadius, firstDotColor)
+        secondCircle = CircleView(context, dotsRadius, secondDotColor)
+        thirdCircle = CircleView(context, dotsRadius, thirdDotColor)
 
         val params = LinearLayout.LayoutParams((2 * dotsRadius), 2 * dotsRadius)
         params.leftMargin = dotsDist

@@ -12,11 +12,12 @@ import android.widget.LinearLayout
 import com.agrawalsuneet.dotsloader.R
 import com.agrawalsuneet.dotsloader.basicviews.AnimatingLinearLayout
 import com.agrawalsuneet.dotsloader.basicviews.CircleView
+import com.agrawalsuneet.dotsloader.basicviews.ThreeDotsBaseView
 
 /**
  * Created by suneet on 12/13/17.
  */
-class SlidingLoader : AnimatingLinearLayout {
+class SlidingLoader : ThreeDotsBaseView {
 
     override var animDuration: Int = 500
         set(value) {
@@ -36,19 +37,12 @@ class SlidingLoader : AnimatingLinearLayout {
             invalidate()
         }
 
-    private lateinit var firstCircle: CircleView
-    private lateinit var secondCircle: CircleView
-    private lateinit var thirdCircle: CircleView
-
     private var firstDelayDuration: Int = 0
     private var secondDelayDuration: Int = 0
 
-    constructor(context: Context, dotsRadius: Int, dotsDist: Int, dotsColor: Int) : super(context) {
-        this.dotsRadius = dotsRadius
-        this.dotsDist = dotsDist
-        this.dotsColor = dotsColor
-        initView()
-    }
+    constructor(context: Context, dotsRadius: Int, dotsDist: Int,
+                firstDotColor: Int, secondDotColor: Int, thirdDotColor: Int)
+            : super(context, dotsRadius, dotsDist, firstDotColor, secondDotColor, thirdDotColor)
 
     constructor(context: Context?) : super(context) {
         initView()
