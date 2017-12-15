@@ -2,7 +2,6 @@ package com.agrawalsuneet.dotsloader.basicviews
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.animation.AnimationUtils
 import android.view.animation.Interpolator
 import android.view.animation.LinearInterpolator
 import android.widget.LinearLayout
@@ -17,16 +16,6 @@ abstract class AnimatingLinearLayout : LinearLayout, LoaderContract {
     open var animDuration: Int = 500
 
     open var interpolator: Interpolator = LinearInterpolator()
-
-    constructor(context: Context?) : super(context) {
-    }
-
-    constructor(context: Context?, attrs: AttributeSet) : super(context, attrs) {
-    }
-
-    constructor(context: Context?, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-    }
-
 
     var dotsRadius: Int = 30
         get() = field
@@ -50,5 +39,14 @@ abstract class AnimatingLinearLayout : LinearLayout, LoaderContract {
         }
 
     abstract fun initView()
+
+    constructor(context: Context?) : super(context) {
+    }
+
+    constructor(context: Context?, attrs: AttributeSet) : super(context, attrs) {
+    }
+
+    constructor(context: Context?, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+    }
 
 }

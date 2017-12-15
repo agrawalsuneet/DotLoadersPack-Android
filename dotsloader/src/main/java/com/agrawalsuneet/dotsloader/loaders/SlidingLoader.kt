@@ -60,14 +60,15 @@ class SlidingLoader : ThreeDotsBaseView {
 
         this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.SlidingLoader_slidingloader_dotsRadius, 30)
         this.dotsDist = typedArray.getDimensionPixelSize(R.styleable.SlidingLoader_slidingloader_dotsDist, 15)
-        this.dotsColor = typedArray.getColor(R.styleable.SlidingLoader_slidingloader_dotsColor,
+        this.firstDotColor = typedArray.getColor(R.styleable.SlidingLoader_slidingloader_firstDotColor,
+                resources.getColor(R.color.loader_selected))
+        this.secondDotColor = typedArray.getColor(R.styleable.SlidingLoader_slidingloader_secondDotColor,
+                resources.getColor(R.color.loader_selected))
+        this.thirdDotColor = typedArray.getColor(R.styleable.SlidingLoader_slidingloader_thirdDotColor,
                 resources.getColor(R.color.loader_selected))
 
-        this.animDuration = typedArray.getInt(R.styleable.SlidingLoader_slidingloader_animDur, 500)
 
-        this.interpolator = AnimationUtils.loadInterpolator(context,
-                typedArray.getResourceId(R.styleable.SlidingLoader_slidingloader_interpolator,
-                        android.R.anim.linear_interpolator))
+        this.animDuration = typedArray.getInt(R.styleable.SlidingLoader_slidingloader_animDur, 500)
 
         this.distanceToMove = typedArray.getInteger(R.styleable.SlidingLoader_slidingloader_distanceToMove, 12)
 
@@ -87,9 +88,9 @@ class SlidingLoader : ThreeDotsBaseView {
         removeAllViews()
         removeAllViewsInLayout()
 
-        firstCircle = CircleView(context, dotsRadius, dotsColor)
-        secondCircle = CircleView(context, dotsRadius, dotsColor)
-        thirdCircle = CircleView(context, dotsRadius, dotsColor)
+        firstCircle = CircleView(context, dotsRadius, firstDotColor)
+        secondCircle = CircleView(context, dotsRadius, secondDotColor)
+        thirdCircle = CircleView(context, dotsRadius, thirdDotColor)
 
         val paramsFirstCircle = LinearLayout.LayoutParams((2 * dotsRadius), 2 * dotsRadius)
         paramsFirstCircle.leftMargin = (2 * dotsRadius)

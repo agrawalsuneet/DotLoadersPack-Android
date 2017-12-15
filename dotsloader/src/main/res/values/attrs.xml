@@ -31,7 +31,9 @@
     <declare-styleable name="LazyLoader">
         <attr name="lazyloader_dotsRadius" format="dimension" />
         <attr name="lazyloader_dotsDist" format="dimension" />
-        <attr name="lazyloader_dotsColor" format="color" />
+        <attr name="lazyloader_firstDotColor" format="color" />
+        <attr name="lazyloader_secondDotColor" format="color" />
+        <attr name="lazyloader_thirdDotColor" format="color" />
         <attr name="lazyloader_animDur" format="integer" />
         <attr name="lazyloader_interpolator" format="reference" />
         <attr name="lazyloader_firstDelayDur" format="integer" />
@@ -41,9 +43,10 @@
     <declare-styleable name="SlidingLoader">
         <attr name="slidingloader_dotsRadius" format="dimension" />
         <attr name="slidingloader_dotsDist" format="dimension" />
-        <attr name="slidingloader_dotsColor" format="color" />
+        <attr name="slidingloader_firstDotColor" format="color" />
+        <attr name="slidingloader_secondDotColor" format="color" />
+        <attr name="slidingloader_thirdDotColor" format="color" />
         <attr name="slidingloader_animDur" format="integer" />
-        <attr name="slidingloader_interpolator" format="reference" />
         <attr name="slidingloader_distanceToMove" format="integer" />
     </declare-styleable>
 
