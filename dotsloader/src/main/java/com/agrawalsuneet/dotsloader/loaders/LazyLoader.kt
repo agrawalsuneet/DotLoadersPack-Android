@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.Gravity
 import android.view.ViewTreeObserver
 import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.view.animation.TranslateAnimation
 import android.widget.LinearLayout
 import com.agrawalsuneet.dotsloader.R
@@ -40,10 +41,20 @@ class LazyLoader : ThreeDotsBaseView {
     }
 
     override fun initAttributes(attrs: AttributeSet) {
-        super.initAttributes(attrs)
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.LazyLoader, 0, 0)
 
+        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.LazyLoader_lazyloader_dotsRadius, 30)
+        this.dotsDist = typedArray.getDimensionPixelSize(R.styleable.LazyLoader_lazyloader_dotsDist, 15)
+        this.dotsColor = typedArray.getColor(R.styleable.LazyLoader_lazyloader_dotsColor,
+                resources.getColor(R.color.loader_selected))
+
+        this.animDuration = typedArray.getInt(R.styleable.LazyLoader_lazyloader_animDur, 500)
+
+        this.interpolator = AnimationUtils.loadInterpolator(context,
+                typedArray.getResourceId(R.styleable.LazyLoader_lazyloader_interpolator,
+                        android.R.anim.linear_interpolator))
+        
         this.firstDelayDuration = typedArray.getInt(R.styleable.LazyLoader_lazyloader_firstDelayDur, 100)
         this.secondDelayDuration = typedArray.getInt(R.styleable.LazyLoader_lazyloader_secondDelayDur, 200)
 

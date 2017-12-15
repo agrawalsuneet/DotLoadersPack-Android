@@ -27,23 +27,6 @@ abstract class AnimatingLinearLayout : LinearLayout, LoaderContract {
     constructor(context: Context?, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
     }
 
-    override fun initAttributes(attrs: AttributeSet) {
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.AnimatingLinearLayout, 0, 0)
-
-        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.AnimatingLinearLayout_all_dotsRadius, 30)
-        this.dotsDist = typedArray.getDimensionPixelSize(R.styleable.AnimatingLinearLayout_all_dotsDist, 15)
-        this.dotsColor = typedArray.getColor(R.styleable.AnimatingLinearLayout_all_dotsColor,
-                resources.getColor(R.color.loader_selected))
-
-        this.animDuration = typedArray.getInt(R.styleable.AnimatingLinearLayout_all_animDur, 500)
-
-        this.interpolator = AnimationUtils.loadInterpolator(context,
-                typedArray.getResourceId(R.styleable.AnimatingLinearLayout_all_interpolator,
-                        android.R.anim.linear_interpolator))
-
-        typedArray.recycle()
-    }
-
 
     var dotsRadius: Int = 30
         get() = field

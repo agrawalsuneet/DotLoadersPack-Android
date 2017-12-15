@@ -4,13 +4,9 @@ import android.content.Context
 import android.os.Handler
 import android.util.AttributeSet
 import android.view.ViewTreeObserver
-import android.view.animation.Animation
-import android.view.animation.AnticipateOvershootInterpolator
-import android.view.animation.Interpolator
-import android.view.animation.TranslateAnimation
+import android.view.animation.*
 import android.widget.LinearLayout
 import com.agrawalsuneet.dotsloader.R
-import com.agrawalsuneet.dotsloader.basicviews.AnimatingLinearLayout
 import com.agrawalsuneet.dotsloader.basicviews.CircleView
 import com.agrawalsuneet.dotsloader.basicviews.ThreeDotsBaseView
 
@@ -59,12 +55,21 @@ class SlidingLoader : ThreeDotsBaseView {
     }
 
     override fun initAttributes(attrs: AttributeSet) {
-        super.initAttributes(attrs)
 
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.LazyLoader, 0, 0)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.SlidingLoader, 0, 0)
 
-        this.firstDelayDuration = typedArray.getInt(R.styleable.LazyLoader_lazyloader_firstDelayDur, 100)
-        this.secondDelayDuration = typedArray.getInt(R.styleable.LazyLoader_lazyloader_secondDelayDur, 200)
+        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.SlidingLoader_slidingloader_dotsRadius, 30)
+        this.dotsDist = typedArray.getDimensionPixelSize(R.styleable.SlidingLoader_slidingloader_dotsDist, 15)
+        this.dotsColor = typedArray.getColor(R.styleable.SlidingLoader_slidingloader_dotsColor,
+                resources.getColor(R.color.loader_selected))
+
+        this.animDuration = typedArray.getInt(R.styleable.SlidingLoader_slidingloader_animDur, 500)
+
+        this.interpolator = AnimationUtils.loadInterpolator(context,
+                typedArray.getResourceId(R.styleable.SlidingLoader_slidingloader_interpolator,
+                        android.R.anim.linear_interpolator))
+
+        this.distanceToMove = typedArray.getInteger(R.styleable.SlidingLoader_slidingloader_distanceToMove, 12)
 
         typedArray.recycle()
     }
