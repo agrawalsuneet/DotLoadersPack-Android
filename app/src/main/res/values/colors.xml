@@ -14,7 +14,7 @@
 
     <color name="pink_selected">#E91E63</color>
     <color name="pink_default">#F8BBD0</color>
-    
+
     <color name="purple_selected">#673AB7</color>
     <color name="purple_default">#D1C4E9</color>
 
@@ -23,5 +23,6 @@
 
     <color name="red">#ff0000</color>
     <color name="green">#00e500</color>
+    <color name="yellow">#ffff00</color>
 
 </resources>

@@ -122,12 +122,6 @@ class SlidingLoader : ThreeDotsBaseView {
 
     private fun startLoading(isForwardDir: Boolean) {
 
-        interpolator = AnticipateOvershootInterpolator()
-        animDuration = 1500
-
-        firstDelayDuration = 150
-        secondDelayDuration = 300
-
         val trans1Anim = getTranslateAnim(isForwardDir)
         if (isForwardDir) thirdCircle.startAnimation(trans1Anim) else firstCircle.startAnimation(trans1Anim)
 

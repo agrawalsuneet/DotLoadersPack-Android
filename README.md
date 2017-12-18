@@ -18,7 +18,10 @@
 ### TashieLoader
 ![tashieloader](https://user-images.githubusercontent.com/12999622/32248048-500dffc4-be7c-11e7-93cf-5d57f3fa7f34.gif)
 
- Other loaders: [FourFoldLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ZipZapLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ClockLoader](https://github.com/agrawalsuneet/LoadersPack)
+### SlidingLoader
+
+
+ Other loaders: [FourFoldLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ZipZapLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ClockLoader](https://github.com/agrawalsuneet/LoadersPack), [RippleLoader](https://github.com/agrawalsuneet/LoadersPack), [SVGLoader](https://github.com/agrawalsuneet/SVGLoadersPack-Android)
 
 ## How To use
 include below dependency in build.gradle of application and compile it
@@ -234,6 +237,48 @@ TashieLoader tashie = new TashieLoader(this);
         containerLL.addView(tashie);
 ```
 
+### SlidingLoader
+##### Through XML
+```
+<com.agrawalsuneet.dotsloader.loaders.SlidingLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:slidingloader_animDur="2000"
+        app:slidingloader_distanceToMove="12"
+        app:slidingloader_dotsDist="6dp"
+        app:slidingloader_dotsRadius="10dp"
+        app:slidingloader_firstDotColor="@color/colorPrimary"
+        app:slidingloader_secondDotColor="@color/colorAccent"
+        app:slidingloader_thirdDotColor="@color/colorPrimaryDark" />
+```
+
+#####  Through Code
+
+* Kotlin
+```
+var sliding = SlidingLoader(this, 40, 10,
+                ContextCompat.getColor(this, R.color.red),
+                ContextCompat.getColor(this, R.color.yellow),
+                ContextCompat.getColor(this, R.color.green)).apply {
+            animDuration = 1000
+            distanceToMove = 12
+        }
+
+        containerLL.addView(sliding)
+        
+```
+
+* Java
+```
+SlidingLoader sliding = new SlidingLoader(this, 40, 10,
+                ContextCompat.getColor(this, R.color.red),
+                ContextCompat.getColor(this, R.color.yellow),
+                ContextCompat.getColor(this, R.color.green));
+        sliding.setAnimDuration(1000);
+        sliding.setDistanceToMove(12);
+
+        containerLL.addView(sliding);
+```
 
 
 Please take a 2 mins survey to make this library better [here](https://goo.gl/forms/81Cf63sL2X1WhXHl2).
