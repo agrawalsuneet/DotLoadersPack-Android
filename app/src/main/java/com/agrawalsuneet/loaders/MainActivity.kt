@@ -30,11 +30,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initSlidongLoader() {
-        var sliding = SlidingLoader(this, 40, 10,
+        var sliding = SlidingLoader(this, 20, 5,
                 ContextCompat.getColor(this, R.color.red),
                 ContextCompat.getColor(this, R.color.yellow),
                 ContextCompat.getColor(this, R.color.green)).apply {
-            animDuration = 10000
+            animDuration = 1500
             distanceToMove = 12
         }
 

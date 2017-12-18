@@ -14,15 +14,16 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.agrawalsuneet.loaders.MainActivity">
 
-    <!--<com.agrawalsuneet.dotsloader.loaders.SlidingLoader
+    <com.agrawalsuneet.dotsloader.loaders.SlidingLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
         app:slidingloader_animDur="2000"
         app:slidingloader_distanceToMove="12"
         app:slidingloader_dotsDist="6dp"
-        app:slidingloader_dotsRadius="10dp"
-        app:slidingloader_firstDotColor="@color/colorPrimary"
-        app:slidingloader_secondDotColor="@color/colorAccent"
-        app:slidingloader_thirdDotColor="@color/colorPrimaryDark" />-->
+        app:slidingloader_dotsRadius="14dp"
+        app:slidingloader_firstDotColor="@color/loader_selected"
+        app:slidingloader_secondDotColor="@color/loader_selected"
+        app:slidingloader_thirdDotColor="@color/loader_selected" />
 
 </LinearLayout>
