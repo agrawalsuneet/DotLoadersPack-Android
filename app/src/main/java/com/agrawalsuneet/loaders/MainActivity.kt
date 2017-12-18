@@ -18,15 +18,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_2)
+        setContentView(R.layout.activity_main)
 
         containerLL = findViewById(R.id.container) as LinearLayout
 
         //initView()
         //initLazyLoader()
-        //initTashieLoader()
+        initTashieLoader()
 
-        initSlidongLoader()
+        //initSlidongLoader()
     }
 
     private fun initSlidongLoader() {
@@ -57,9 +57,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun initLazyLoader() {
         var lazyLoader = LazyLoader(this, 15, 5,
-                ContextCompat.getColor(this, R.color.purple_selected),
-                ContextCompat.getColor(this, R.color.purple_selected),
-                ContextCompat.getColor(this, R.color.purple_selected))
+                ContextCompat.getColor(this, R.color.loader_selected),
+                ContextCompat.getColor(this, R.color.loader_selected),
+                ContextCompat.getColor(this, R.color.loader_selected))
                 .apply {
                     animDuration = 500
                     firstDelayDuration = 100

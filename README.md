@@ -152,13 +152,15 @@ CircularDotsLoader loader = new CircularDotsLoader(this);
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:layout_marginTop="30dp"
-        app:all_animDur="500"
-        app:all_dotsColor="@color/loader_selected"
-        app:all_dotsDist="10dp"
-        app:all_dotsRadius="16dp"
-        app:all_interpolator="@android:anim/accelerate_interpolator"
-        app:lazyloader_firstDelayDur="100"
-        app:lazyloader_secondDelayDur="200" />
+        app:lazyloader_animDur="800"
+        app:lazyloader_dotsDist="10dp"
+        app:lazyloader_dotsRadius="16dp"
+        app:lazyloader_firstDelayDur="150"
+        app:lazyloader_firstDotColor="@color/red"
+        app:lazyloader_interpolator="@android:anim/decelerate_interpolator"
+        app:lazyloader_secondDelayDur="300"
+        app:lazyloader_secondDotColor="@color/green"
+        app:lazyloader_thirdDotColor="@color/yellow" />
 ```
 
 ##### Through Code
@@ -196,13 +198,12 @@ CircularDotsLoader loader = new CircularDotsLoader(this);
 <com.agrawalsuneet.dotsloader.loaders.TashieLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:all_animDur="1000"
-        app:all_dotsColor="@color/purple_selected"
-        app:all_dotsDist="5dp"
-        app:all_dotsRadius="20dp"
-        app:all_interpolator="@android:anim/accelerate_interpolator"
         app:tashieloader_animDelay="200"
+        app:tashieloader_animDur="1000"
+        app:tashieloader_dotsColor="@color/purple_selected"
+        app:tashieloader_dotsDist="5dp"
+        app:tashieloader_dotsRadius="20dp"
+        app:tashieloader_interpolator="@android:anim/accelerate_interpolator"
         app:tashieloader_noOfDots="6" />
 ```
 
