@@ -28,20 +28,34 @@
         <attr name="circleColor" format="color" />
     </declare-styleable>
 
-    <declare-styleable name="AnimatingLinearLayout">
-        <attr name="all_dotsRadius" format="dimension" />
-        <attr name="all_dotsDist" format="dimension" />
-        <attr name="all_dotsColor" format="color" />
-        <attr name="all_animDur" format="integer" />
-        <attr name="all_interpolator" format="reference" />
-    </declare-styleable>
-
     <declare-styleable name="LazyLoader">
+        <attr name="lazyloader_dotsRadius" format="dimension" />
+        <attr name="lazyloader_dotsDist" format="dimension" />
+        <attr name="lazyloader_firstDotColor" format="color" />
+        <attr name="lazyloader_secondDotColor" format="color" />
+        <attr name="lazyloader_thirdDotColor" format="color" />
+        <attr name="lazyloader_animDur" format="integer" />
+        <attr name="lazyloader_interpolator" format="reference" />
         <attr name="lazyloader_firstDelayDur" format="integer" />
         <attr name="lazyloader_secondDelayDur" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="SlidingLoader">
+        <attr name="slidingloader_dotsRadius" format="dimension" />
+        <attr name="slidingloader_dotsDist" format="dimension" />
+        <attr name="slidingloader_firstDotColor" format="color" />
+        <attr name="slidingloader_secondDotColor" format="color" />
+        <attr name="slidingloader_thirdDotColor" format="color" />
+        <attr name="slidingloader_animDur" format="integer" />
+        <attr name="slidingloader_distanceToMove" format="integer" />
+    </declare-styleable>
+
     <declare-styleable name="TashieLoader">
+        <attr name="tashieloader_dotsRadius" format="dimension" />
+        <attr name="tashieloader_dotsDist" format="dimension" />
+        <attr name="tashieloader_dotsColor" format="color" />
+        <attr name="tashieloader_animDur" format="integer" />
+        <attr name="tashieloader_interpolator" format="reference" />
         <attr name="tashieloader_noOfDots" format="integer" />
         <attr name="tashieloader_animDelay" format="integer" />
     </declare-styleable>

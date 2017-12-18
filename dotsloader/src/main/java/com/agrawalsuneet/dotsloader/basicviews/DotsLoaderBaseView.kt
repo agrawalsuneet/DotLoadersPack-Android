@@ -1,4 +1,4 @@
-package com.agrawalsuneet.dotsloader.ui.basicviews
+package com.agrawalsuneet.dotsloader.basicviews
 
 import android.content.Context
 import android.graphics.Paint

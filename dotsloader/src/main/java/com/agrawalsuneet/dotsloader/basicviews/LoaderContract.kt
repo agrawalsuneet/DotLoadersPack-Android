@@ -1,4 +1,4 @@
-package com.agrawalsuneet.dotsloader.ui.basicviews
+package com.agrawalsuneet.dotsloader.basicviews
 
 import android.util.AttributeSet
 

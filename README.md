@@ -18,7 +18,11 @@
 ### TashieLoader
 ![tashieloader](https://user-images.githubusercontent.com/12999622/32248048-500dffc4-be7c-11e7-93cf-5d57f3fa7f34.gif)
 
- Other loaders: [FourFoldLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ZipZapLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ClockLoader](https://github.com/agrawalsuneet/LoadersPack)
+### SlidingLoader
+![slidingloader](https://user-images.githubusercontent.com/12999622/34130222-f58ba220-e43e-11e7-8f60-4971918fecde.gif)
+please check a better quality demo [here](https://www.youtube.com/watch?v=24xl6td1LBg)
+
+ Other loaders: [FourFoldLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ZipZapLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ClockLoader](https://github.com/agrawalsuneet/LoadersPack), [RippleLoader](https://github.com/agrawalsuneet/LoadersPack), [SVGLoader](https://github.com/agrawalsuneet/SVGLoadersPack-Android)
 
 ## How To use
 include below dependency in build.gradle of application and compile it
@@ -29,7 +33,7 @@ compile 'com.agrawalsuneet.androidlibs:dotsloader:0.6'
 ### LinearDotsLoader
 ##### Through XML
 ```
-<com.agrawalsuneet.dotsloader.ui.LinearDotsLoader
+<com.agrawalsuneet.dotsloader.loaders.LinearDotsLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:loader_animDur="1000"
@@ -92,7 +96,7 @@ compile 'com.agrawalsuneet.androidlibs:dotsloader:0.6'
 ### CircularDotsLoader
 ##### Through XML
 ```
-<com.agrawalsuneet.dotsloader.ui.CircularDotsLoader
+<com.agrawalsuneet.dotsloader.loaders.CircularDotsLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:loader_animDur="100"
@@ -143,18 +147,20 @@ CircularDotsLoader loader = new CircularDotsLoader(this);
 ### LazyLoader
 ##### Through XML
 ```
-<com.agrawalsuneet.dotsloader.ui.LazyLoader
+<com.agrawalsuneet.dotsloader.loaders.LazyLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:layout_marginTop="30dp"
-        app:all_animDur="500"
-        app:all_dotsColor="@color/loader_selected"
-        app:all_dotsDist="10dp"
-        app:all_dotsRadius="16dp"
-        app:all_interpolator="@android:anim/accelerate_interpolator"
-        app:lazyloader_firstDelayDur="100"
-        app:lazyloader_secondDelayDur="200" />
+        app:lazyloader_animDur="800"
+        app:lazyloader_dotsDist="10dp"
+        app:lazyloader_dotsRadius="16dp"
+        app:lazyloader_firstDelayDur="150"
+        app:lazyloader_firstDotColor="@color/red"
+        app:lazyloader_interpolator="@android:anim/decelerate_interpolator"
+        app:lazyloader_secondDelayDur="300"
+        app:lazyloader_secondDotColor="@color/green"
+        app:lazyloader_thirdDotColor="@color/yellow" />
 ```
 
 ##### Through Code
@@ -189,16 +195,15 @@ CircularDotsLoader loader = new CircularDotsLoader(this);
 ### TashieLoader
 ##### Through XML
 ```
-<com.agrawalsuneet.dotsloader.ui.TashieLoader
+<com.agrawalsuneet.dotsloader.loaders.TashieLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:all_animDur="1000"
-        app:all_dotsColor="@color/purple_selected"
-        app:all_dotsDist="5dp"
-        app:all_dotsRadius="20dp"
-        app:all_interpolator="@android:anim/accelerate_interpolator"
         app:tashieloader_animDelay="200"
+        app:tashieloader_animDur="1000"
+        app:tashieloader_dotsColor="@color/purple_selected"
+        app:tashieloader_dotsDist="5dp"
+        app:tashieloader_dotsRadius="20dp"
+        app:tashieloader_interpolator="@android:anim/accelerate_interpolator"
         app:tashieloader_noOfDots="6" />
 ```
 
@@ -234,6 +239,48 @@ TashieLoader tashie = new TashieLoader(this);
         containerLL.addView(tashie);
 ```
 
+### SlidingLoader
+##### Through XML
+```
+<com.agrawalsuneet.dotsloader.loaders.SlidingLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:slidingloader_animDur="2000"
+        app:slidingloader_distanceToMove="12"
+        app:slidingloader_dotsDist="6dp"
+        app:slidingloader_dotsRadius="10dp"
+        app:slidingloader_firstDotColor="@color/colorPrimary"
+        app:slidingloader_secondDotColor="@color/colorAccent"
+        app:slidingloader_thirdDotColor="@color/colorPrimaryDark" />
+```
+
+#####  Through Code
+
+* Kotlin
+```
+var sliding = SlidingLoader(this, 40, 10,
+                ContextCompat.getColor(this, R.color.red),
+                ContextCompat.getColor(this, R.color.yellow),
+                ContextCompat.getColor(this, R.color.green)).apply {
+            animDuration = 1000
+            distanceToMove = 12
+        }
+
+        containerLL.addView(sliding)
+        
+```
+
+* Java
+```
+SlidingLoader sliding = new SlidingLoader(this, 40, 10,
+                ContextCompat.getColor(this, R.color.red),
+                ContextCompat.getColor(this, R.color.yellow),
+                ContextCompat.getColor(this, R.color.green));
+        sliding.setAnimDuration(1000);
+        sliding.setDistanceToMove(12);
+
+        containerLL.addView(sliding);
+```
 
 
 Please take a 2 mins survey to make this library better [here](https://goo.gl/forms/81Cf63sL2X1WhXHl2).
