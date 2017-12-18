@@ -19,7 +19,8 @@
 ![tashieloader](https://user-images.githubusercontent.com/12999622/32248048-500dffc4-be7c-11e7-93cf-5d57f3fa7f34.gif)
 
 ### SlidingLoader
-
+![slidingloader](https://user-images.githubusercontent.com/12999622/34130222-f58ba220-e43e-11e7-8f60-4971918fecde.gif)
+please check a better quality demo [here](https://www.youtube.com/watch?v=24xl6td1LBg)
 
  Other loaders: [FourFoldLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ZipZapLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ClockLoader](https://github.com/agrawalsuneet/LoadersPack), [RippleLoader](https://github.com/agrawalsuneet/LoadersPack), [SVGLoader](https://github.com/agrawalsuneet/SVGLoadersPack-Android)
 
