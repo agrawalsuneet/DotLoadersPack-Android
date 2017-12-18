@@ -3,21 +3,14 @@ package com.agrawalsuneet.loaders
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
-import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.LinearInterpolator
 import android.widget.LinearLayout
-import com.agrawalsuneet.dotsloader.ui.CircularDotsLoader
-import com.agrawalsuneet.dotsloader.ui.LazyLoader
-import com.agrawalsuneet.dotsloader.ui.LinearDotsLoader
-import com.agrawalsuneet.dotsloader.ui.TashieLoader
-import com.agrawalsuneet.loaders.dialog.DotsLoaderDialog
+import com.agrawalsuneet.dotsloader.loaders.*
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var containerLL : LinearLayout
+    lateinit var containerLL: LinearLayout
 
     private var colorSwitch = false
 
@@ -32,6 +25,20 @@ class MainActivity : AppCompatActivity() {
         //initView()
         //initLazyLoader()
         initTashieLoader()
+
+        //initSlidongLoader()
+    }
+
+    private fun initSlidongLoader() {
+        var sliding = SlidingLoader(this, 20, 5,
+                ContextCompat.getColor(this, R.color.red),
+                ContextCompat.getColor(this, R.color.yellow),
+                ContextCompat.getColor(this, R.color.green)).apply {
+            animDuration = 1500
+            distanceToMove = 12
+        }
+
+        containerLL.addView(sliding)
     }
 
     private fun initTashieLoader() {
@@ -49,7 +56,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initLazyLoader() {
-        var lazyLoader = LazyLoader(this, 15, 5, ContextCompat.getColor(this, R.color.purple_selected))
+        var lazyLoader = LazyLoader(this, 15, 5,
+                ContextCompat.getColor(this, R.color.loader_selected),
+                ContextCompat.getColor(this, R.color.loader_selected),
+                ContextCompat.getColor(this, R.color.loader_selected))
                 .apply {
                     animDuration = 500
                     firstDelayDuration = 100
@@ -86,7 +96,7 @@ class MainActivity : AppCompatActivity() {
 
 
         var cirLoader = CircularDotsLoader(this@MainActivity)
-        cirLoader.setPadding(20,20,20,20)
+        cirLoader.setPadding(20, 20, 20, 20)
         cirLoader.defaultColor = ContextCompat.getColor(this, R.color.blue_delfault)
         cirLoader.selectedColor = ContextCompat.getColor(this, R.color.blue_selected)
         cirLoader.bigCircleRadius = 116
@@ -97,35 +107,5 @@ class MainActivity : AppCompatActivity() {
         //cirLoader.showRunningShadow = false
 
         containerLL.addView(cirLoader)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.main_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.show_dialog -> {
-                /*if (colorSwitch) {
-                    loader.firstShadowColor = ContextCompat.getColor(this, R.color.pink_selected)
-                    loader.secondShadowColor = ContextCompat.getColor(this, R.color.pink_default)
-                } else {
-                    loader.firstShadowColor = ContextCompat.getColor(this, R.color.purple_selected)
-                    loader.secondShadowColor = ContextCompat.getColor(this, R.color.purple_default)
-                }
-                colorSwitch = !colorSwitch*/
-                showAlertDialog();
-                return true
-            }
-            else -> return super.onOptionsItemSelected(item)
-        }
-    }
-
-    private fun showAlertDialog() {
-        val dotsDialog = DotsLoaderDialog()
-        //dotsDialog.setCancelable(false);
-        dotsDialog.show(supportFragmentManager, "dotsDialog")
     }
 }

@@ -1,11 +1,11 @@
-package com.agrawalsuneet.dotsloader.ui
+package com.agrawalsuneet.dotsloader.loaders
 
 import android.content.Context
 import android.graphics.Canvas
 import android.os.Handler
 import android.util.AttributeSet
 import com.agrawalsuneet.dotsloader.R
-import com.agrawalsuneet.dotsloader.ui.basicviews.DotsLoaderBaseView
+import com.agrawalsuneet.dotsloader.basicviews.DotsLoaderBaseView
 
 /**
  * Created by ballu on 04/07/17.

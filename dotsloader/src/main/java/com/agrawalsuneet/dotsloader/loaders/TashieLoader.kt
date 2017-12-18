@@ -1,4 +1,4 @@
-package com.agrawalsuneet.dotsloader.ui
+package com.agrawalsuneet.dotsloader.loaders
 
 import android.content.Context
 import android.util.AttributeSet
@@ -7,11 +7,12 @@ import android.view.View
 import android.view.ViewTreeObserver
 import android.view.animation.Animation
 import android.view.animation.AnimationSet
+import android.view.animation.AnimationUtils
 import android.view.animation.ScaleAnimation
 import android.widget.LinearLayout
 import com.agrawalsuneet.dotsloader.R
-import com.agrawalsuneet.dotsloader.ui.basicviews.AnimatingLinearLayout
-import com.agrawalsuneet.dotsloader.ui.basicviews.CircleView
+import com.agrawalsuneet.dotsloader.basicviews.AnimatingLinearLayout
+import com.agrawalsuneet.dotsloader.basicviews.CircleView
 
 /**
  * Created by suneet on 10/10/17.
@@ -40,9 +41,19 @@ class TashieLoader : AnimatingLinearLayout {
     }
 
     override fun initAttributes(attrs: AttributeSet) {
-        super.initAttributes(attrs)
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.TashieLoader, 0, 0)
+
+        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.TashieLoader_tashieloader_dotsRadius, 30)
+        this.dotsDist = typedArray.getDimensionPixelSize(R.styleable.TashieLoader_tashieloader_dotsDist, 15)
+        this.dotsColor = typedArray.getColor(R.styleable.TashieLoader_tashieloader_dotsColor,
+                resources.getColor(R.color.loader_selected))
+
+        this.animDuration = typedArray.getInt(R.styleable.TashieLoader_tashieloader_animDur, 500)
+
+        this.interpolator = AnimationUtils.loadInterpolator(context,
+                typedArray.getResourceId(R.styleable.TashieLoader_tashieloader_interpolator,
+                        android.R.anim.linear_interpolator))
 
         this.noOfDots = typedArray.getInt(R.styleable.TashieLoader_tashieloader_noOfDots, 8)
         this.animDelay = typedArray.getInt(R.styleable.TashieLoader_tashieloader_animDelay, 100)
