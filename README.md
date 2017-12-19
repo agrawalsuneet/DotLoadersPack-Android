@@ -28,7 +28,7 @@ please check a better quality demo [here](https://www.youtube.com/watch?v=24xl6t
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-compile 'com.agrawalsuneet.androidlibs:dotsloader:0.6'
+compile 'com.agrawalsuneet.androidlibs:dotsloader:0.7'
 ```
 
 ### LinearDotsLoader
