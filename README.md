@@ -168,27 +168,29 @@ CircularDotsLoader loader = new CircularDotsLoader(this);
 
 * Kotlin
 ```
-        var lazyLoader = LazyLoader(this, 30, 20, ContextCompat.getColor(this, R.color.purple_selected))
-                .apply {
-                    animDuration = 500
-                    firstDelayDuration = 100
-                    secondDelayDuration = 200
-                    interpolator = DecelerateInterpolator()
-                }
+        var lazyLoader = LazyLoader(this, 15, 5,
+                        ContextCompat.getColor(this, R.color.loader_selected),
+                        ContextCompat.getColor(this, R.color.loader_selected),
+                        ContextCompat.getColor(this, R.color.loader_selected))
+                        .apply {
+                            animDuration = 500
+                            firstDelayDuration = 100
+                            secondDelayDuration = 200
+                            interpolator = DecelerateInterpolator()
+                        }
         containerLL.addView(lazyLoader)
 ```
 
 
 * Java
 ```
-        LazyLoader loader = new LazyLoader(this);
-        loader.setDotsColor(ContextCompat.getColor(this,R.color.blue_selected));
-        loader.setDotsDist(20);
-        loader.setDotsRadius(30);
-        loader.setAnimDuration(500);
-        loader.setFirstDelayDuration(100);
-        loader.setSecondDelayDuration(200);
-        loader.setInterpolator(new LinearInterpolator());
+        LazyLoader loader = new LazyLoader(this, 30, 20, ContextCompat.getColor(this, R.color.loader_selected),
+                        ContextCompat.getColor(this, R.color.loader_selected),
+                        ContextCompat.getColor(this, R.color.loader_selected));
+                loader.setAnimDuration(500);
+                loader.setFirstDelayDuration(100);
+                loader.setSecondDelayDuration(200);
+                loader.setInterpolator(new LinearInterpolator());
         
         containerLL.addView(loader);
 ```
