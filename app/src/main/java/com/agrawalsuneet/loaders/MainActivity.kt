@@ -12,24 +12,20 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var containerLL: LinearLayout
 
-    private var colorSwitch = false
-
-    lateinit var loader: LinearDotsLoader
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_3)
 
         containerLL = findViewById(R.id.container) as LinearLayout
 
-        //initView()
+        //initLinearDotsLoader()
+        //initCircularDotsLoader()
         //initLazyLoader()
         //initTashieLoader()
-
         //initSlidongLoader()
-
         //initRotatingCircularDotsLoader()
     }
+
 
     private fun initRotatingCircularDotsLoader() {
         val loader = RotatingCircularDotsLoader(this,
@@ -90,8 +86,23 @@ class MainActivity : AppCompatActivity() {
         containerLL.addView(lazyLoader)
     }
 
-    private fun initView() {
-        loader = LinearDotsLoader(this)
+    private fun initCircularDotsLoader() {
+        var cirLoader = CircularDotsLoader(this@MainActivity)
+        cirLoader.setPadding(20, 20, 20, 20)
+        cirLoader.defaultColor = ContextCompat.getColor(this, R.color.blue_delfault)
+        cirLoader.selectedColor = ContextCompat.getColor(this, R.color.blue_selected)
+        cirLoader.bigCircleRadius = 116
+        cirLoader.radius = 40
+        cirLoader.animDur = 100
+        cirLoader.firstShadowColor = ContextCompat.getColor(this, R.color.pink_selected)
+        cirLoader.secondShadowColor = ContextCompat.getColor(this, R.color.purple_selected)
+        cirLoader.showRunningShadow = true
+
+        containerLL.addView(cirLoader)
+    }
+
+    private fun initLinearDotsLoader() {
+        val loader = LinearDotsLoader(this)
         loader.defaultColor = ContextCompat.getColor(this, R.color.loader_defalut)
         loader.selectedColor = ContextCompat.getColor(this, R.color.loader_selected)
         loader.isSingleDir = false
@@ -107,17 +118,5 @@ class MainActivity : AppCompatActivity() {
         containerLL.addView(loader)
 
 
-        var cirLoader = CircularDotsLoader(this@MainActivity)
-        cirLoader.setPadding(20, 20, 20, 20)
-        cirLoader.defaultColor = ContextCompat.getColor(this, R.color.blue_delfault)
-        cirLoader.selectedColor = ContextCompat.getColor(this, R.color.blue_selected)
-        cirLoader.bigCircleRadius = 116
-        cirLoader.radius = 40
-        cirLoader.animDur = 100
-        //cirLoader.firstShadowColor = ContextCompat.getColor(this, R.color.pink_selected)
-        //cirLoader.secondShadowColor = ContextCompat.getColor(this, R.color.purple_selected)
-        //cirLoader.showRunningShadow = false
-
-        containerLL.addView(cirLoader)
     }
 }

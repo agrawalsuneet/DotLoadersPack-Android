@@ -137,19 +137,4 @@
         app:loader_selectedColor="@color/blue_selected"
         app:loader_showRunningShadow="true" />
 
-    <com.agrawalsuneet.dotsloader.basicviews.CircularLoaderBaseView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:loader_animDur="1000"
-        app:loader_bigCircleRadius="42dp"
-        app:loader_circleRadius="14dp"
-        app:loader_defaultColor="@color/blue_delfault"
-        app:loader_selectedColor="@color/blue_selected" />
-
-    <com.agrawalsuneet.dotsloader.loaders.RotatingCircularDotsLoader
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp" />
-
 </LinearLayout>
