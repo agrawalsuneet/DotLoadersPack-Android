@@ -67,6 +67,9 @@ class LinearDotsLoader : DotsLoaderBaseView {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
+        val calWidth: Int
+        val calHeight: Int
+
         if (expandOnSelect) {
             calWidth = (2 * this.noOfDots * radius + (this.noOfDots - 1) * dotsDistance + 2 * diffRadius)
             calHeight = 2 * this.selRadius

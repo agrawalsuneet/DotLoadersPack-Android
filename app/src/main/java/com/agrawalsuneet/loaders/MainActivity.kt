@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         //initView()
         //initLazyLoader()
-        initTashieLoader()
+        //initTashieLoader()
 
         //initSlidongLoader()
     }
