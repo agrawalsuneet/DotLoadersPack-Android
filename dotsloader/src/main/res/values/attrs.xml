@@ -65,7 +65,6 @@
         <attr name="rotatingcircular_dotsRadius" format="dimension" />
         <attr name="rotatingcircular_bigCircleRadius" format="dimension" />
         <attr name="rotatingcircular_animDur" format="integer" />
-        <attr name="rotatingcircular_interpolator" format="reference" />
     </declare-styleable>
 
 

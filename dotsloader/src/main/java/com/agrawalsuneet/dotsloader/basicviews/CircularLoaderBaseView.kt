@@ -26,10 +26,10 @@ open class CircularLoaderBaseView : DotsLoaderBaseView {
         initPaints()
     }
 
-    constructor(context: Context, dotsRadius: Int, dotsColor: Int, bigCircleRadius: Int) : super(context) {
+    constructor(context: Context, dotsRadius: Int, bigCircleRadius: Int, dotsColor: Int) : super(context) {
         this.radius = dotsRadius
-        this.defaultColor = dotsColor
         this.bigCircleRadius = bigCircleRadius
+        this.defaultColor = dotsColor
 
         initCordinates()
         initPaints()

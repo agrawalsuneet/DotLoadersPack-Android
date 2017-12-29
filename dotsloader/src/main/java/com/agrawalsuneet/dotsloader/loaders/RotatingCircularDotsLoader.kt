@@ -3,7 +3,9 @@ package com.agrawalsuneet.dotsloader.loaders
 import android.content.Context
 import android.util.AttributeSet
 import android.view.ViewTreeObserver
-import android.view.animation.*
+import android.view.animation.Animation
+import android.view.animation.LinearInterpolator
+import android.view.animation.RotateAnimation
 import android.widget.LinearLayout
 import com.agrawalsuneet.dotsloader.R
 import com.agrawalsuneet.dotsloader.basicviews.CircularLoaderBaseView
@@ -19,7 +21,6 @@ class RotatingCircularDotsLoader : LinearLayout, LoaderContract {
     var bigCircleRadius: Int = 90
 
     var animDuration: Int = 5000
-    var interpolator: Interpolator = LinearInterpolator()
 
     private lateinit var circularLoaderBaseView: CircularLoaderBaseView
 
@@ -28,10 +29,10 @@ class RotatingCircularDotsLoader : LinearLayout, LoaderContract {
         initView()
     }
 
-    constructor(context: Context, dotsRadius: Int, dotsColor: Int, bigCircleRadius: Int) : super(context) {
+    constructor(context: Context, dotsRadius: Int, bigCircleRadius: Int, dotsColor: Int) : super(context) {
         this.dotsRadius = dotsRadius
-        this.dotsColor = dotsColor
         this.bigCircleRadius = bigCircleRadius
+        this.dotsColor = dotsColor
         initView()
     }
 
@@ -59,10 +60,6 @@ class RotatingCircularDotsLoader : LinearLayout, LoaderContract {
 
         this.animDuration = typedArray.getInt(R.styleable.RotatingCircularDotsLoader_rotatingcircular_animDur, 5000)
 
-        this.interpolator = AnimationUtils.loadInterpolator(context,
-                typedArray.getResourceId(R.styleable.RotatingCircularDotsLoader_rotatingcircular_interpolator,
-                        android.R.anim.linear_interpolator))
-
         typedArray.recycle()
     }
 
@@ -79,7 +76,7 @@ class RotatingCircularDotsLoader : LinearLayout, LoaderContract {
         removeAllViews()
         removeAllViewsInLayout()
 
-        circularLoaderBaseView = CircularLoaderBaseView(context, dotsRadius, dotsColor, bigCircleRadius)
+        circularLoaderBaseView = CircularLoaderBaseView(context, dotsRadius, bigCircleRadius, dotsColor)
 
         addView(circularLoaderBaseView)
 
@@ -111,7 +108,7 @@ class RotatingCircularDotsLoader : LinearLayout, LoaderContract {
         transAnim.fillAfter = true
         transAnim.repeatCount = Animation.INFINITE
         transAnim.repeatMode = Animation.RESTART
-        transAnim.interpolator = interpolator
+        transAnim.interpolator = LinearInterpolator()
 
         return transAnim
     }

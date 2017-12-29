@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main_3)
 
         containerLL = findViewById(R.id.container) as LinearLayout
 
@@ -27,6 +27,18 @@ class MainActivity : AppCompatActivity() {
         //initTashieLoader()
 
         //initSlidongLoader()
+
+        //initRotatingCircularDotsLoader()
+    }
+
+    private fun initRotatingCircularDotsLoader() {
+        val loader = RotatingCircularDotsLoader(this,
+                20, 60, ContextCompat.getColor(this, R.color.red))
+                .apply {
+                    animDuration = 10000
+                }
+
+        containerLL.addView(loader)
     }
 
     private fun initSlidongLoader() {
