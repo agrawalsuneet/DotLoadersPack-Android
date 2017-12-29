@@ -23,12 +23,17 @@
 
 please check a better quality demo [here](https://www.youtube.com/watch?v=24xl6td1LBg)
 
- Other loaders: [FourFoldLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ZipZapLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ClockLoader](https://github.com/agrawalsuneet/LoadersPack), [RippleLoader](https://github.com/agrawalsuneet/LoadersPack), [SVGLoader](https://github.com/agrawalsuneet/SVGLoadersPack-Android)
+### RotatingCircularDotsLoader
+
+
+please check a better quality demo [here]()
+
+Other loaders: [SVGLoader](https://github.com/agrawalsuneet/SVGLoadersPack-Android), [ClockLoader](https://github.com/agrawalsuneet/LoadersPack), [RippleLoader](https://github.com/agrawalsuneet/LoadersPack), [FourFoldLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ZipZapLoader](https://github.com/agrawalsuneet/FourFoldLoader), [WaveLoader](https://github.com/agrawalsuneet/FourFoldLoader)  
 
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-compile 'com.agrawalsuneet.androidlibs:dotsloader:0.7'
+compile 'com.agrawalsuneet.androidlibs:dotsloader:0.8'
 ```
 
 ### LinearDotsLoader
@@ -285,6 +290,40 @@ SlidingLoader sliding = new SlidingLoader(this, 40, 10,
         containerLL.addView(sliding);
 ```
 
+### RotatingCircularDotsLoader
+##### Through XML
+```
+<com.agrawalsuneet.dotsloader.loaders.RotatingCircularDotsLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:rotatingcircular_animDur="3000"
+        app:rotatingcircular_bigCircleRadius="42dp"
+        app:rotatingcircular_dotsColor="@color/blue_selected"
+        app:rotatingcircular_dotsRadius="14dp" />
+```
+
+#####  Through Code
+
+* Kotlin
+```
+val loader = RotatingCircularDotsLoader(this,
+                20, 60, ContextCompat.getColor(this, R.color.red))
+                .apply {
+                    animDuration = 3000
+                }
+
+        containerLL.addView(loader)
+        
+```
+
+* Java
+```
+RotatingCircularDotsLoader loader = new RotatingCircularDotsLoader(this,
+                20, 60, ContextCompat.getColor(this, R.color.red));
+        loader.setAnimDuration(3000);
+
+        containerLL.addView(loader);
+```
 
 Please take a 2 mins survey to make this library better [here](https://goo.gl/forms/81Cf63sL2X1WhXHl2).
 It won't take more than 2 mins I promise :) or feel free to drop an email at agrawalsuneet@gmail.com if face any issue or require any additional functionality in it.
