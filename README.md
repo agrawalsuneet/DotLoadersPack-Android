@@ -24,9 +24,9 @@
 please check a better quality demo [here](https://www.youtube.com/watch?v=24xl6td1LBg)
 
 ### RotatingCircularDotsLoader
-![slidingloader](https://user-images.githubusercontent.com/12999622/34130222-f58ba220-e43e-11e7-8f60-4971918fecde.gif)
 
-please check a better quality demo [here](https://www.youtube.com/watch?v=24xl6td1LBg)
+
+please check a better quality demo [here]()
 
 Other loaders: [SVGLoader](https://github.com/agrawalsuneet/SVGLoadersPack-Android), [ClockLoader](https://github.com/agrawalsuneet/LoadersPack), [RippleLoader](https://github.com/agrawalsuneet/LoadersPack), [FourFoldLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ZipZapLoader](https://github.com/agrawalsuneet/FourFoldLoader), [WaveLoader](https://github.com/agrawalsuneet/FourFoldLoader)  
 
