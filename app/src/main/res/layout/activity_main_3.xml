@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@color/grey_cool"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_margin="16dp">
+
+        <com.agrawalsuneet.dotsloader.loaders.RotatingCircularDotsLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:rotatingcircular_animDur="5000"
+            app:rotatingcircular_bigCircleRadius="15dp"
+            app:rotatingcircular_dotsColor="@color/red"
+            app:rotatingcircular_dotsRadius="5dp" />
+
+        <com.agrawalsuneet.dotsloader.loaders.RotatingCircularDotsLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:rotatingcircular_animDur="5000"
+            app:rotatingcircular_bigCircleRadius="15dp"
+            app:rotatingcircular_dotsColor="@color/yellow"
+            app:rotatingcircular_dotsRadius="5dp" />
+
+        <com.agrawalsuneet.dotsloader.loaders.RotatingCircularDotsLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:rotatingcircular_animDur="5000"
+            app:rotatingcircular_bigCircleRadius="15dp"
+            app:rotatingcircular_dotsColor="@color/green"
+            app:rotatingcircular_dotsRadius="5dp" />
+
+    </LinearLayout>
+
+    <com.agrawalsuneet.dotsloader.loaders.RotatingCircularDotsLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:rotatingcircular_animDur="3000"
+        app:rotatingcircular_bigCircleRadius="42dp"
+        app:rotatingcircular_dotsColor="@color/blue_selected"
+        app:rotatingcircular_dotsRadius="14dp" />
+
+    <com.agrawalsuneet.dotsloader.loaders.RotatingCircularDotsLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:rotatingcircular_animDur="4000" />
+
+
+</LinearLayout>

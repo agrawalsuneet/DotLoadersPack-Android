@@ -24,9 +24,6 @@ abstract class DotsLoaderBaseView : View, LoaderContract {
 
     protected var isShadowColorSet = false
 
-    protected var calWidth: Int = 0
-    protected var calHeight: Int = 0
-
     protected var shouldAnimate = true
 
     protected var selectedDotPos = 1
@@ -108,7 +105,6 @@ abstract class DotsLoaderBaseView : View, LoaderContract {
     }
 
     var defaultColor: Int = resources.getColor(R.color.loader_defalut)
-        get() = field
         set(defaultColor) {
             field = defaultColor
             if (defaultCirclePaint != null) {
@@ -117,7 +113,6 @@ abstract class DotsLoaderBaseView : View, LoaderContract {
         }
 
     open var selectedColor: Int = resources.getColor(R.color.loader_selected)
-        get() = field
         set(selectedColor) {
             field = selectedColor
             if (selectedCirclePaint != null) {
@@ -127,20 +122,14 @@ abstract class DotsLoaderBaseView : View, LoaderContract {
         }
 
     var radius: Int = 30
-        get() = field
         set(radius) {
             field = radius
             initCordinates()
         }
 
     var showRunningShadow: Boolean = true
-        get() = field
-        set(showRunningShadow) {
-            field = showRunningShadow
-        }
 
     var firstShadowColor: Int = 0
-        get() = field
         set(value) {
             field = value
             if (value != 0) {
@@ -151,7 +140,6 @@ abstract class DotsLoaderBaseView : View, LoaderContract {
 
 
     var secondShadowColor: Int = 0
-        get() = field
         set(value) {
             field = value
             if (value != 0) {
