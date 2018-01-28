@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_cool"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.agrawalsuneet.loaders.MainActivity">
+
+    <com.agrawalsuneet.dotsloader.loaders.LinearDotsLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        app:loader_animDur="800"
+        app:loader_circleRadius="12dp"
+        app:loader_dotsDist="8dp"
+        app:loader_expandOnSelect="true"
+        app:loader_isSingleDir="true"
+        app:loader_noOfDots="5"
+        app:loader_selectedRadius="16dp"
+        app:loader_showRunningShadow="false" />
+
+    <com.agrawalsuneet.dotsloader.loaders.LinearDotsLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        app:loader_animDur="100"
+        app:loader_circleRadius="12dp"
+        app:loader_dotsDist="6dp"
+        app:loader_isSingleDir="false"
+        app:loader_noOfDots="8"
+        app:loader_selectedRadius="16dp" />
+
+    <com.agrawalsuneet.dotsloader.loaders.LinearDotsLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        app:loader_animDur="500"
+        app:loader_circleRadius="14dp"
+        app:loader_defaultColor="@color/pink_default"
+        app:loader_dotsDist="4dp"
+        app:loader_expandOnSelect="true"
+        app:loader_isSingleDir="false"
+        app:loader_noOfDots="6"
+        app:loader_selectedColor="@color/pink_selected"
+        app:loader_selectedRadius="16dp" />
+
+    <com.agrawalsuneet.dotsloader.loaders.LinearDotsLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        app:loader_circleRadius="12dp"
+        app:loader_defaultColor="@color/blue_delfault"
+        app:loader_dotsDist="6dp"
+        app:loader_isSingleDir="true"
+        app:loader_showRunningShadow="false"
+        app:loader_selectedColor="@color/blue_selected" />
+
+    <com.agrawalsuneet.dotsloader.loaders.LinearDotsLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        app:loader_circleRadius="8dp"
+        app:loader_defaultColor="@color/purple_default"
+        app:loader_dotsDist="6dp"
+        app:loader_isSingleDir="true"
+        app:loader_noOfDots="8"
+        app:loader_animDur="100"
+        app:loader_selectedColor="@color/purple_selected" />
+
+</LinearLayout>

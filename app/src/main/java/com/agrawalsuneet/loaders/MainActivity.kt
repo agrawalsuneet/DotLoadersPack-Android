@@ -14,7 +14,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_3)
+        setContentView(R.layout.activity_main_lineardotsloader)
+
+        supportActionBar!!.title = "LinearDotsLoader"
 
         containerLL = findViewById(R.id.container) as LinearLayout
 

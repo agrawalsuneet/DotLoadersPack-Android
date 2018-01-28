@@ -105,6 +105,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/instant-run-support" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jniLibs" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifests" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/pre-dexed" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/reload-dex" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/res" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/restart-dex" />
@@ -115,23 +116,25 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/transforms" />
       <excludeFolder url="file://$MODULE_DIR$/build/kotlin" />
       <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
+      <excludeFolder url="file://$MODULE_DIR$/build/reports" />
       <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 25 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="org.jetbrains.kotlin:kotlin-stdlib-jre7:1.1.51@jar" level="project" />
     <orderEntry type="library" exported="" name="com.android.support:support-core-utils-25.1.0" level="project" />
     <orderEntry type="library" exported="" name="com.android.support:animated-vector-drawable-25.1.0" level="project" />
     <orderEntry type="library" exported="" name="com.android.support:appcompat-v7-25.1.0" level="project" />
+    <orderEntry type="library" exported="" name="org.jetbrains.kotlin:kotlin-stdlib:1.1.51@jar" level="project" />
     <orderEntry type="library" exported="" name="com.android.support:support-core-ui-25.1.0" level="project" />
-    <orderEntry type="library" exported="" name="org.jetbrains.kotlin:kotlin-stdlib-jre7:1.1.3-2@jar" level="project" />
-    <orderEntry type="library" exported="" name="com.android.support:support-compat-25.1.0" level="project" />
     <orderEntry type="library" exported="" name="com.android.support:support-media-compat-25.1.0" level="project" />
     <orderEntry type="library" exported="" name="org.jetbrains:annotations:13.0@jar" level="project" />
-    <orderEntry type="library" exported="" name="org.jetbrains.kotlin:kotlin-stdlib:1.1.3-2@jar" level="project" />
-    <orderEntry type="library" exported="" name="com.android.support:support-annotations:25.1.0@jar" level="project" />
+    <orderEntry type="library" exported="" name="com.agrawalsuneet.androidlibs:loaderspack-0.1" level="project" />
     <orderEntry type="library" exported="" name="com.android.support:support-vector-drawable-25.1.0" level="project" />
     <orderEntry type="library" exported="" name="com.android.support:support-v4-25.1.0" level="project" />
+    <orderEntry type="library" exported="" name="com.android.support:support-compat-26.0.2" level="project" />
     <orderEntry type="library" exported="" name="com.android.support:support-fragment-25.1.0" level="project" />
+    <orderEntry type="library" exported="" name="com.android.support:support-annotations:26.0.2@jar" level="project" />
     <orderEntry type="module" module-name="dotsloader" exported="" />
   </component>
 </module>

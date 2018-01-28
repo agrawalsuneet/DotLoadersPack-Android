@@ -5,8 +5,8 @@
 > A replacement of default android material progressbar with dots loader
 
 ### LinearDotsLoader
-![linear](https://user-images.githubusercontent.com/12999622/29122717-e34ba8be-7d30-11e7-99b8-b440a37b7f6c.gif)
-![LinearDotsLoader](https://user-images.githubusercontent.com/12999622/27900763-329c1dee-624d-11e7-877b-68ba0f4ea7d7.gif)
+![lineardotsloader](https://user-images.githubusercontent.com/12999622/35482391-54665328-042c-11e8-954b-93a92ebe2b0c.gif)
+please check a better quality demo [here](https://youtu.be/QM4wd5Ci1QU)
 
 ### Circular DotsLoader
 ![CircularDotsLoader](https://user-images.githubusercontent.com/12999622/27900765-32aef07c-624d-11e7-8679-f77a95030bd4.gif)
