@@ -6,7 +6,6 @@
 
 ### LinearDotsLoader
 ![lineardotsloader](https://user-images.githubusercontent.com/12999622/35482391-54665328-042c-11e8-954b-93a92ebe2b0c.gif)
-please check a better quality demo [here](https://youtu.be/QM4wd5Ci1QU)
 
 ### Circular DotsLoader
 ![CircularDotsLoader](https://user-images.githubusercontent.com/12999622/27900765-32aef07c-624d-11e7-8679-f77a95030bd4.gif)
