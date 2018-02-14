@@ -14,9 +14,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_circulardotsloader)
+        setContentView(R.layout.activity_main_tashieloader)
 
-        supportActionBar!!.title = "CircularDotsLoader"
+        supportActionBar!!.title = "TashieLoader"
 
         containerLL = findViewById(R.id.container) as LinearLayout
 
