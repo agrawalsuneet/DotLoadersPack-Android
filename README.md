@@ -28,6 +28,10 @@
 ![RotatingCircularDotsLoader](https://user-images.githubusercontent.com/12999622/34453427-d9aa8294-ed4c-11e7-8b1d-fe98d0c2c3dc.gif)
 
 
+### TrailingCircularDotsLoader
+![circulardotsloader](https://user-images.githubusercontent.com/12999622/36224573-f274b956-11bf-11e8-8f97-e4c031959465.gif)
+
+
 Other loaders: [SVGLoader](https://github.com/agrawalsuneet/SVGLoadersPack-Android), [ClockLoader](https://github.com/agrawalsuneet/LoadersPack), [RippleLoader](https://github.com/agrawalsuneet/LoadersPack), [RotatingCircularSticksLoader](https://github.com/agrawalsuneet/LoadersPack), [CircularSticksLoader](https://github.com/agrawalsuneet/LoadersPack), [ZipZapLoader](https://github.com/agrawalsuneet/SquareLoadersPack-Android), [WaveLoader](https://github.com/agrawalsuneet/SquareLoadersPack-Android), [MusicPlayerLoader](https://github.com/agrawalsuneet/SquareLoadersPack-Android), [RotatingSquareLoader](https://github.com/agrawalsuneet/SquareLoadersPack-Android), [FourFoldLoader](https://github.com/agrawalsuneet/FourFoldLoader)
 
 ## How To use
@@ -323,6 +327,51 @@ RotatingCircularDotsLoader loader = new RotatingCircularDotsLoader(this,
         loader.setAnimDuration(3000);
 
         containerLL.addView(loader);
+```
+
+### TrailingCircularDotsLoader
+##### Through XML
+```
+<com.agrawalsuneet.dotsloader.loaders.TrailingCircularDotsLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:trailingcircular_animDelay="200"
+        app:trailingcircular_animDuration="1200"
+        app:trailingcircular_bigCircleRadius="40dp"
+        app:trailingcircular_dotsColor="@color/loader_selected"
+        app:trailingcircular_dotsRadius="11dp"
+        app:trailingcircular_noOfTrailingDots="5" />
+```
+
+#####  Through Code
+
+* Kotlin
+```
+var cirLoader = CircularDotsLoader(this)
+        cirLoader.defaultColor = ContextCompat.getColor(this, R.color.blue_delfault)
+        cirLoader.selectedColor = ContextCompat.getColor(this, R.color.blue_selected)
+        cirLoader.bigCircleRadius = 120
+        cirLoader.radius = 40
+        cirLoader.animDur = 100
+        cirLoader.firstShadowColor = ContextCompat.getColor(this, R.color.pink_selected)
+        cirLoader.secondShadowColor = ContextCompat.getColor(this, R.color.purple_selected)
+        cirLoader.showRunningShadow = true
+
+        containerLL.addView(cirLoader)
+        
+```
+
+* Java
+```
+CircularDotsLoader loader = new CircularDotsLoader(this);
+        loader.setDefaultColor(ContextCompat.getColor(this,R.color.blue_delfault));
+        loader.setSelectedColor(ContextCompat.getColor(this,R.color.blue_selected));
+        loader.setBigCircleRadius(80);
+        loader.setRadius(24);
+        loader.setAnimDur(300);
+        loader.setShowRunningShadow(true);
+        loader.setFirstShadowColor(ContextCompat.getColor(this, R.color.blue_selected));
+        loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.blue_delfault));
 ```
 
 Please take a 2 mins survey to make this library better [here](https://goo.gl/forms/81Cf63sL2X1WhXHl2).

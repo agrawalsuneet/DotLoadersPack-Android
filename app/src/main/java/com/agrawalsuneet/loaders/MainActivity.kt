@@ -3,12 +3,9 @@ package com.agrawalsuneet.loaders
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
-import android.view.animation.Animation
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.LinearInterpolator
-import android.view.animation.RotateAnimation
 import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import com.agrawalsuneet.dotsloader.loaders.*
 
 class MainActivity : AppCompatActivity() {
@@ -34,40 +31,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initTrailingCirculerDotsLoader() {
-        /*var loader = findViewById(R.id.trailingloaderRL)
 
-        var circle = findViewById(R.id.circleview)
-
-        val layoutparams = circle.getLayoutParams() as RelativeLayout.LayoutParams
-        layoutparams.addRule(RelativeLayout.CENTER_HORIZONTAL)
-        circle.setLayoutParams(layoutparams)*/
-
-//        var rotateAnim = getRotateAnimation()
-//
-//        loader.startAnimation(rotateAnim)
-
-
-        //var trailingLoader = findViewById(R.id.trailingloader)
-
-       /* val layoutparams = trailingLoader.getLayoutParams() as RelativeLayout.LayoutParams
-        layoutparams.addRule(RelativeLayout.CENTER_HORIZONTAL)
-        mainCircle.setLayoutParams(layoutparams)*/
     }
 
-
-    private fun getRotateAnimation(): RotateAnimation {
-
-        val transAnim = RotateAnimation(0f, 360f,
-                Animation.RELATIVE_TO_SELF, 0.5f,
-                Animation.RELATIVE_TO_SELF, 0.5f)
-        transAnim.duration = 2000
-        transAnim.fillAfter = true
-        transAnim.repeatCount = Animation.INFINITE
-        transAnim.repeatMode = Animation.RESTART
-        transAnim.interpolator = LinearInterpolator()
-
-        return transAnim
-    }
 
     private fun initRotatingCircularDotsLoader() {
         val loader = RotatingCircularDotsLoader(this,
