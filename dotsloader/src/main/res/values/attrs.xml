@@ -73,7 +73,7 @@
         <attr name="trailingcircular_noOfTrailingDots" format="integer" />
         <attr name="trailingcircular_bigCircleRadius" format="dimension" />
         <attr name="trailingcircular_dotsColor" format="color" />
-        <attr name="trailingcircular_animDur" format="integer" />
+        <attr name="trailingcircular_animDuration" format="integer" />
         <attr name="trailingcircular_animDelay" format="integer" />
     </declare-styleable>
 
