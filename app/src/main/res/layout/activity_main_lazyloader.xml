@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.agrawalsuneet.dotsloader.loaders.LazyLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:lazyloader_animDur="600"
+        app:lazyloader_dotsDist="6dp"
+        app:lazyloader_dotsRadius="10dp"
+        app:lazyloader_firstDelayDur="100"
+        app:lazyloader_firstDotColor="@color/red"
+        app:lazyloader_interpolator="@android:anim/decelerate_interpolator"
+        app:lazyloader_secondDelayDur="200"
+        app:lazyloader_secondDotColor="@color/amber"
+        app:lazyloader_thirdDotColor="@color/green" />
+
+    <com.agrawalsuneet.dotsloader.loaders.LazyLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:lazyloader_animDur="800"
+        app:lazyloader_dotsDist="10dp"
+        app:lazyloader_dotsRadius="16dp"
+        app:lazyloader_firstDelayDur="150"
+        app:lazyloader_firstDotColor="@color/blue_selected"
+        app:lazyloader_interpolator="@android:anim/decelerate_interpolator"
+        app:lazyloader_secondDelayDur="300"
+        app:lazyloader_secondDotColor="@color/blue_selected"
+        app:lazyloader_thirdDotColor="@color/blue_selected" />
+
+
+    <com.agrawalsuneet.dotsloader.loaders.LazyLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:lazyloader_animDur="800"
+        app:lazyloader_dotsDist="8dp"
+        app:lazyloader_dotsRadius="24dp"
+        app:lazyloader_firstDelayDur="200"
+        app:lazyloader_firstDotColor="@color/grey"
+        app:lazyloader_interpolator="@android:anim/decelerate_interpolator"
+        app:lazyloader_secondDelayDur="400"
+        app:lazyloader_secondDotColor="@color/grey"
+        app:lazyloader_thirdDotColor="@color/grey" />
+
+</LinearLayout>

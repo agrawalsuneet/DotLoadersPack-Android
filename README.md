@@ -5,35 +5,39 @@
 > A replacement of default android material progressbar with dots loader
 
 ### LinearDotsLoader
-![linear](https://user-images.githubusercontent.com/12999622/29122717-e34ba8be-7d30-11e7-99b8-b440a37b7f6c.gif)
-![LinearDotsLoader](https://user-images.githubusercontent.com/12999622/27900763-329c1dee-624d-11e7-877b-68ba0f4ea7d7.gif)
+![lineardotsloader](https://user-images.githubusercontent.com/12999622/35482391-54665328-042c-11e8-954b-93a92ebe2b0c.gif)
 
-### Circular DotsLoader
-![CircularDotsLoader](https://user-images.githubusercontent.com/12999622/27900765-32aef07c-624d-11e7-8679-f77a95030bd4.gif)
-![circular](https://user-images.githubusercontent.com/12999622/29122715-e2f4ad3e-7d30-11e7-91ba-d049e21956bd.gif)
+
+### CircularDotsLoader
+![circulardotsloader](https://user-images.githubusercontent.com/12999622/36224573-f274b956-11bf-11e8-8f97-e4c031959465.gif)
+
 
 ### LazyLoader
-![lazyloader](https://user-images.githubusercontent.com/12999622/30963328-f3db79ee-a444-11e7-870f-8cb15f8f112b.gif)
+![lazyloader](https://user-images.githubusercontent.com/12999622/36225792-b7044432-11c3-11e8-8e22-5bbdcafa2312.gif)
+
 
 ### TashieLoader
-![tashieloader](https://user-images.githubusercontent.com/12999622/32248048-500dffc4-be7c-11e7-93cf-5d57f3fa7f34.gif)
+![tashieloader](https://user-images.githubusercontent.com/12999622/36225793-b71f694c-11c3-11e8-9a81-8414bafb26c5.gif)
+
 
 ### SlidingLoader
 ![slidingloader](https://user-images.githubusercontent.com/12999622/34130222-f58ba220-e43e-11e7-8f60-4971918fecde.gif)
 
-please check a better quality demo [here](https://www.youtube.com/watch?v=24xl6td1LBg)
 
 ### RotatingCircularDotsLoader
 ![RotatingCircularDotsLoader](https://user-images.githubusercontent.com/12999622/34453427-d9aa8294-ed4c-11e7-8b1d-fe98d0c2c3dc.gif)
 
-please check a better quality demo [here](https://youtu.be/QM4wd5Ci1QU)
 
-Other loaders: [SVGLoader](https://github.com/agrawalsuneet/SVGLoadersPack-Android), [ClockLoader](https://github.com/agrawalsuneet/LoadersPack), [RippleLoader](https://github.com/agrawalsuneet/LoadersPack), [FourFoldLoader](https://github.com/agrawalsuneet/FourFoldLoader), [ZipZapLoader](https://github.com/agrawalsuneet/FourFoldLoader), [WaveLoader](https://github.com/agrawalsuneet/FourFoldLoader)  
+### TrailingCircularDotsLoader
+![trailingcirculardotsloader](https://user-images.githubusercontent.com/12999622/39367184-f3bb706a-4a2d-11e8-9120-5027bbef2861.gif)
+
+
+Other loaders: [SVGLoader](https://github.com/agrawalsuneet/SVGLoadersPack-Android), [ClockLoader](https://github.com/agrawalsuneet/LoadersPack), [RippleLoader](https://github.com/agrawalsuneet/LoadersPack), [RotatingCircularSticksLoader](https://github.com/agrawalsuneet/LoadersPack), [CircularSticksLoader](https://github.com/agrawalsuneet/LoadersPack), [ZipZapLoader](https://github.com/agrawalsuneet/SquareLoadersPack-Android), [WaveLoader](https://github.com/agrawalsuneet/SquareLoadersPack-Android), [MusicPlayerLoader](https://github.com/agrawalsuneet/SquareLoadersPack-Android), [RotatingSquareLoader](https://github.com/agrawalsuneet/SquareLoadersPack-Android), [FourFoldLoader](https://github.com/agrawalsuneet/FourFoldLoader)
 
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-compile 'com.agrawalsuneet.androidlibs:dotsloader:0.8'
+compile 'com.agrawalsuneet.androidlibs:dotsloader:0.9'
 ```
 
 ### LinearDotsLoader
@@ -323,6 +327,52 @@ RotatingCircularDotsLoader loader = new RotatingCircularDotsLoader(this,
         loader.setAnimDuration(3000);
 
         containerLL.addView(loader);
+```
+
+### TrailingCircularDotsLoader
+##### Through XML
+```
+<com.agrawalsuneet.dotsloader.loaders.TrailingCircularDotsLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:trailingcircular_animDelay="200"
+        app:trailingcircular_animDuration="1200"
+        app:trailingcircular_bigCircleRadius="40dp"
+        app:trailingcircular_dotsColor="@color/loader_selected"
+        app:trailingcircular_dotsRadius="11dp"
+        app:trailingcircular_noOfTrailingDots="5" />
+```
+
+#####  Through Code
+
+* Kotlin
+```
+var trailingCircularDotsLoader = TrailingCircularDotsLoader(
+                this,
+                24,
+                ContextCompat.getColor(this, android.R.color.holo_green_light),
+                100,
+                5)
+                .apply {
+                    animDuration = 1200
+                    animDelay = 200
+                }
+
+        containerLL.addView(trailingCircularDotsLoader)
+```
+
+* Java
+```
+TrailingCircularDotsLoader trailingCircularDotsLoader = new TrailingCircularDotsLoader(
+                this,
+                24,
+                ContextCompat.getColor(this, android.R.color.holo_green_light),
+                100,
+                5);
+        trailingCircularDotsLoader.setAnimDuration(1200);
+        trailingCircularDotsLoader.setAnimDelay(200);
+
+        containerLL.addView(trailingCircularDotsLoader);
 ```
 
 Please take a 2 mins survey to make this library better [here](https://goo.gl/forms/81Cf63sL2X1WhXHl2).

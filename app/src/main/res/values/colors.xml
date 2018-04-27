@@ -7,6 +7,7 @@
     <color name="grey_cool">#787887</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+    <color name="grey">#A9A9A9</color>
 
     <color name="loader_defalut">#44ffffff</color>
     <color name="loader_selected">#ffffff</color>
@@ -24,5 +25,6 @@
     <color name="red">#ff0000</color>
     <color name="green">#00e500</color>
     <color name="yellow">#ffff00</color>
+    <color name="amber">#FFC200</color>
 
 </resources>

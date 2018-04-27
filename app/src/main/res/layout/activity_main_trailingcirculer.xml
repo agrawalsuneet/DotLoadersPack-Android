@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#777777"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.agrawalsuneet.loaders.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.agrawalsuneet.dotsloader.loaders.TrailingCircularDotsLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:trailingcircular_animDelay="50"
+            app:trailingcircular_animDuration="1200"
+            app:trailingcircular_bigCircleRadius="20dp"
+            app:trailingcircular_dotsColor="@color/red"
+            app:trailingcircular_dotsRadius="6dp"
+            app:trailingcircular_noOfTrailingDots="5" />
+
+
+        <com.agrawalsuneet.dotsloader.loaders.TrailingCircularDotsLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            app:trailingcircular_animDelay="50"
+            app:trailingcircular_animDuration="1200"
+            app:trailingcircular_bigCircleRadius="20dp"
+            app:trailingcircular_dotsColor="@color/amber"
+            app:trailingcircular_dotsRadius="6dp"
+            app:trailingcircular_noOfTrailingDots="5" />
+
+        <com.agrawalsuneet.dotsloader.loaders.TrailingCircularDotsLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:trailingcircular_animDelay="50"
+            app:trailingcircular_animDuration="1200"
+            app:trailingcircular_bigCircleRadius="20dp"
+            app:trailingcircular_dotsColor="@color/green"
+            app:trailingcircular_dotsRadius="6dp"
+            app:trailingcircular_noOfTrailingDots="5" />
+
+    </LinearLayout>
+
+    <com.agrawalsuneet.dotsloader.loaders.TrailingCircularDotsLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:trailingcircular_animDelay="30"
+        app:trailingcircular_animDuration="1100"
+        app:trailingcircular_bigCircleRadius="40dp"
+        app:trailingcircular_dotsColor="@color/loader_selected"
+        app:trailingcircular_dotsRadius="11dp"
+        app:trailingcircular_noOfTrailingDots="6" />
+
+    <com.agrawalsuneet.dotsloader.loaders.TrailingCircularDotsLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:trailingcircular_animDelay="10"
+        app:trailingcircular_animDuration="1400"
+        app:trailingcircular_bigCircleRadius="30dp"
+        app:trailingcircular_dotsColor="@color/blue_selected"
+        app:trailingcircular_dotsRadius="8dp"
+        app:trailingcircular_noOfTrailingDots="3" />
+
+
+</LinearLayout>
