@@ -14,9 +14,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_tashieloader)
+        setContentView(R.layout.activity_main_trailingcirculer)
 
-        supportActionBar!!.title = "TashieLoader"
+        supportActionBar!!.title = "TrailingCircularDotsLoader"
 
         containerLL = findViewById(R.id.container) as LinearLayout
 
@@ -26,6 +26,23 @@ class MainActivity : AppCompatActivity() {
         //initTashieLoader()
         //initSlidongLoader()
         //initRotatingCircularDotsLoader()
+
+        //initTrailingCirculerDotsLoader()
+    }
+
+    private fun initTrailingCirculerDotsLoader() {
+        var trailingCircularDotsLoader = TrailingCircularDotsLoader(
+                this,
+                24,
+                ContextCompat.getColor(this, android.R.color.holo_green_light),
+                100,
+                5)
+                .apply {
+                    animDuration = 1200
+                    animDelay = 200
+                }
+
+        containerLL.addView(trailingCircularDotsLoader)
     }
 
 

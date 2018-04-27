@@ -28,12 +28,16 @@
 ![RotatingCircularDotsLoader](https://user-images.githubusercontent.com/12999622/34453427-d9aa8294-ed4c-11e7-8b1d-fe98d0c2c3dc.gif)
 
 
+### TrailingCircularDotsLoader
+![trailingcirculardotsloader](https://user-images.githubusercontent.com/12999622/39367184-f3bb706a-4a2d-11e8-9120-5027bbef2861.gif)
+
+
 Other loaders: [SVGLoader](https://github.com/agrawalsuneet/SVGLoadersPack-Android), [ClockLoader](https://github.com/agrawalsuneet/LoadersPack), [RippleLoader](https://github.com/agrawalsuneet/LoadersPack), [RotatingCircularSticksLoader](https://github.com/agrawalsuneet/LoadersPack), [CircularSticksLoader](https://github.com/agrawalsuneet/LoadersPack), [ZipZapLoader](https://github.com/agrawalsuneet/SquareLoadersPack-Android), [WaveLoader](https://github.com/agrawalsuneet/SquareLoadersPack-Android), [MusicPlayerLoader](https://github.com/agrawalsuneet/SquareLoadersPack-Android), [RotatingSquareLoader](https://github.com/agrawalsuneet/SquareLoadersPack-Android), [FourFoldLoader](https://github.com/agrawalsuneet/FourFoldLoader)
 
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-compile 'com.agrawalsuneet.androidlibs:dotsloader:0.8'
+compile 'com.agrawalsuneet.androidlibs:dotsloader:0.9'
 ```
 
 ### LinearDotsLoader
@@ -323,6 +327,52 @@ RotatingCircularDotsLoader loader = new RotatingCircularDotsLoader(this,
         loader.setAnimDuration(3000);
 
         containerLL.addView(loader);
+```
+
+### TrailingCircularDotsLoader
+##### Through XML
+```
+<com.agrawalsuneet.dotsloader.loaders.TrailingCircularDotsLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:trailingcircular_animDelay="200"
+        app:trailingcircular_animDuration="1200"
+        app:trailingcircular_bigCircleRadius="40dp"
+        app:trailingcircular_dotsColor="@color/loader_selected"
+        app:trailingcircular_dotsRadius="11dp"
+        app:trailingcircular_noOfTrailingDots="5" />
+```
+
+#####  Through Code
+
+* Kotlin
+```
+var trailingCircularDotsLoader = TrailingCircularDotsLoader(
+                this,
+                24,
+                ContextCompat.getColor(this, android.R.color.holo_green_light),
+                100,
+                5)
+                .apply {
+                    animDuration = 1200
+                    animDelay = 200
+                }
+
+        containerLL.addView(trailingCircularDotsLoader)
+```
+
+* Java
+```
+TrailingCircularDotsLoader trailingCircularDotsLoader = new TrailingCircularDotsLoader(
+                this,
+                24,
+                ContextCompat.getColor(this, android.R.color.holo_green_light),
+                100,
+                5);
+        trailingCircularDotsLoader.setAnimDuration(1200);
+        trailingCircularDotsLoader.setAnimDelay(200);
+
+        containerLL.addView(trailingCircularDotsLoader);
 ```
 
 Please take a 2 mins survey to make this library better [here](https://goo.gl/forms/81Cf63sL2X1WhXHl2).
