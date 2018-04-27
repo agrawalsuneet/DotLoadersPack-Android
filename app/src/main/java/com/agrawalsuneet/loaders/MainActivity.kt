@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         //initSlidongLoader()
         //initRotatingCircularDotsLoader()
 
-        initTrailingCirculerDotsLoader()
+        //initTrailingCirculerDotsLoader()
     }
 
     private fun initTrailingCirculerDotsLoader() {
