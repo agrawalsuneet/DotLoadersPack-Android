@@ -22,7 +22,7 @@ class TrailingCircularDotsLoader : LinearLayout, LoaderContract {
     var BigCircleRadius: Int = 200
 
     var animDuration: Int = 2000
-    var animDelay: Int = animDuration / 5
+    var animDelay: Int = animDuration / 10
 
     private var calWidthHeight: Int = 0
     private lateinit var mainCircle: CircleView
@@ -82,13 +82,6 @@ class TrailingCircularDotsLoader : LinearLayout, LoaderContract {
         trailingCirclesArray = arrayOfNulls(noOfTrailingDots)
 
         for (i in 0 until noOfTrailingDots) {
-            /*var circleColor = 0
-            when (i) {
-                0, 3 -> circleColor = resources.getColor(android.R.color.holo_red_light)
-                1, 4 -> circleColor = resources.getColor(android.R.color.holo_green_light)
-                2, 5 -> circleColor = resources.getColor(android.R.color.holo_blue_light)
-            }*/
-
             val circle = CircleView(context, circleRadius, circleColor)
             relativeLayout.addView(circle)
             trailingCirclesArray[i] = circle
@@ -141,7 +134,7 @@ class TrailingCircularDotsLoader : LinearLayout, LoaderContract {
                 Animation.RELATIVE_TO_PARENT, 0.5f)
         rotateAnim.duration = animDuration.toLong()
         rotateAnim.fillAfter = true
-        rotateAnim.interpolator = AccelerateDecelerateInterpolator()
+        rotateAnim.interpolator = AccelerateInterpolator()
         rotateAnim.startOffset = (animDuration / 10).toLong()
 
         return rotateAnim
@@ -165,7 +158,7 @@ class TrailingCircularDotsLoader : LinearLayout, LoaderContract {
         animSet.addAnimation(rotateAnim)
         animSet.duration = animDuration.toLong()
         animSet.fillAfter = false
-        animSet.interpolator = AccelerateDecelerateInterpolator()
+        animSet.interpolator = AccelerateInterpolator()
         animSet.startOffset = delay.toLong()
 
         return animSet

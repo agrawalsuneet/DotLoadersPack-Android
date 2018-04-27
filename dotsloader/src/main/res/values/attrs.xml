@@ -68,4 +68,13 @@
     </declare-styleable>
 
 
+    <declare-styleable name="TrailingCircularDotsLoader">
+        <attr name="trailingcircular_dotsRadius" format="dimension" />
+        <attr name="trailingcircular_noOfTrailingDots" format="integer" />
+        <attr name="trailingcircular_bigCircleRadius" format="dimension" />
+        <attr name="trailingcircular_dotsColor" format="color" />
+        <attr name="trailingcircular_animDur" format="integer" />
+        <attr name="trailingcircular_animDelay" format="integer" />
+    </declare-styleable>
+
 </resources>
