@@ -31,7 +31,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initTrailingCirculerDotsLoader() {
+        var trailingCircularDotsLoader = TrailingCircularDotsLoader(
+                this,
+                24,
+                ContextCompat.getColor(this, android.R.color.holo_green_light),
+                100,
+                5)
+                .apply {
+                    animDuration = 1200
+                    animDelay = 200
+                }
 
+        containerLL.addView(trailingCircularDotsLoader)
     }
 
 

@@ -347,31 +347,32 @@ RotatingCircularDotsLoader loader = new RotatingCircularDotsLoader(this,
 
 * Kotlin
 ```
-var cirLoader = CircularDotsLoader(this)
-        cirLoader.defaultColor = ContextCompat.getColor(this, R.color.blue_delfault)
-        cirLoader.selectedColor = ContextCompat.getColor(this, R.color.blue_selected)
-        cirLoader.bigCircleRadius = 120
-        cirLoader.radius = 40
-        cirLoader.animDur = 100
-        cirLoader.firstShadowColor = ContextCompat.getColor(this, R.color.pink_selected)
-        cirLoader.secondShadowColor = ContextCompat.getColor(this, R.color.purple_selected)
-        cirLoader.showRunningShadow = true
+var trailingCircularDotsLoader = TrailingCircularDotsLoader(
+                this,
+                24,
+                ContextCompat.getColor(this, android.R.color.holo_green_light),
+                100,
+                5)
+                .apply {
+                    animDuration = 1200
+                    animDelay = 200
+                }
 
-        containerLL.addView(cirLoader)
-        
+        containerLL.addView(trailingCircularDotsLoader)
 ```
 
 * Java
 ```
-CircularDotsLoader loader = new CircularDotsLoader(this);
-        loader.setDefaultColor(ContextCompat.getColor(this,R.color.blue_delfault));
-        loader.setSelectedColor(ContextCompat.getColor(this,R.color.blue_selected));
-        loader.setBigCircleRadius(80);
-        loader.setRadius(24);
-        loader.setAnimDur(300);
-        loader.setShowRunningShadow(true);
-        loader.setFirstShadowColor(ContextCompat.getColor(this, R.color.blue_selected));
-        loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.blue_delfault));
+TrailingCircularDotsLoader trailingCircularDotsLoader = new TrailingCircularDotsLoader(
+                this,
+                24,
+                ContextCompat.getColor(this, android.R.color.holo_green_light),
+                100,
+                5);
+        trailingCircularDotsLoader.setAnimDuration(1200);
+        trailingCircularDotsLoader.setAnimDelay(200);
+
+        containerLL.addView(trailingCircularDotsLoader);
 ```
 
 Please take a 2 mins survey to make this library better [here](https://goo.gl/forms/81Cf63sL2X1WhXHl2).

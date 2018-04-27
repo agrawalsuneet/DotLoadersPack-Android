@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import com.agrawalsuneet.dotsloader.loaders.RotatingCircularDotsLoader;
 import com.agrawalsuneet.dotsloader.loaders.SlidingLoader;
 import com.agrawalsuneet.dotsloader.loaders.TashieLoader;
+import com.agrawalsuneet.dotsloader.loaders.TrailingCircularDotsLoader;
 
 /**
  * Created by suneet on 9/22/17.
@@ -59,5 +60,18 @@ public class MainActivityJava extends AppCompatActivity {
         loader.setAnimDuration(3000);
 
         containerLL.addView(loader);
+
+
+        //trailingCircularDotsLoader
+        TrailingCircularDotsLoader trailingCircularDotsLoader = new TrailingCircularDotsLoader(
+                this,
+                24,
+                ContextCompat.getColor(this, android.R.color.holo_green_light),
+                100,
+                5);
+        trailingCircularDotsLoader.setAnimDuration(1200);
+        trailingCircularDotsLoader.setAnimDelay(200);
+
+        containerLL.addView(trailingCircularDotsLoader);
     }
 }

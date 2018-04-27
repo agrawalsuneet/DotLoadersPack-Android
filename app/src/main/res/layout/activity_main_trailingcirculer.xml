@@ -11,7 +11,7 @@
     tools:context="com.agrawalsuneet.loaders.MainActivity">
 
 
-    <com.agrawalsuneet.dotsloader.loaders.TrailingCircularDotsLoader
+    <!--<com.agrawalsuneet.dotsloader.loaders.TrailingCircularDotsLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -20,7 +20,7 @@
         app:trailingcircular_bigCircleRadius="40dp"
         app:trailingcircular_dotsColor="@color/loader_selected"
         app:trailingcircular_dotsRadius="11dp"
-        app:trailingcircular_noOfTrailingDots="5" />
+        app:trailingcircular_noOfTrailingDots="5" />-->
 
 
 </LinearLayout>

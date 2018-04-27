@@ -42,6 +42,14 @@ class TrailingCircularDotsLoader : LinearLayout, LoaderContract {
         initView()
     }
 
+    constructor(context: Context?, dotsRadius: Int, circleColor: Int, bigCircleRadius: Int, noOfTrailingDots: Int) : super(context) {
+        this.dotsRadius = dotsRadius
+        this.circleColor = circleColor
+        this.bigCircleRadius = bigCircleRadius
+        this.noOfTrailingDots = noOfTrailingDots
+        initView()
+    }
+
 
     override fun initAttributes(attrs: AttributeSet) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.TrailingCircularDotsLoader, 0, 0)
