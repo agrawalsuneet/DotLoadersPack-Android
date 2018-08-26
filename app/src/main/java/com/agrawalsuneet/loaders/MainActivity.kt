@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initZeeLoader() {
-        var zeeLoader = ZeeLoader(
+        val zeeLoader = ZeeLoader(
                 this,
                 60,
                 4,

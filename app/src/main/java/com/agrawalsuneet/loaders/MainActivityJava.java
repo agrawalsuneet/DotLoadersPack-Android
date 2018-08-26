@@ -11,6 +11,7 @@ import com.agrawalsuneet.dotsloader.loaders.RotatingCircularDotsLoader;
 import com.agrawalsuneet.dotsloader.loaders.SlidingLoader;
 import com.agrawalsuneet.dotsloader.loaders.TashieLoader;
 import com.agrawalsuneet.dotsloader.loaders.TrailingCircularDotsLoader;
+import com.agrawalsuneet.dotsloader.loaders.ZeeLoader;
 
 /**
  * Created by suneet on 9/22/17.
@@ -73,5 +74,18 @@ public class MainActivityJava extends AppCompatActivity {
         trailingCircularDotsLoader.setAnimDelay(200);
 
         containerLL.addView(trailingCircularDotsLoader);
+
+
+        //zeeloader
+        ZeeLoader zeeLoader = new ZeeLoader(
+                this,
+                60,
+                4,
+                ContextCompat.getColor(this, R.color.red),
+                ContextCompat.getColor(this, R.color.red));
+
+        zeeLoader.setAnimDuration(200);
+
+        containerLL.addView(zeeLoader);
     }
 }

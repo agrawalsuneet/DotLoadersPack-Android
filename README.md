@@ -33,6 +33,7 @@
 
 
 ### TrailingCircularDotsLoader
+![zeeloader](https://user-images.githubusercontent.com/12999622/44630261-8ba41980-a952-11e8-9ba5-45f4cafb473b.gif)
 
 
 Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/)
@@ -40,7 +41,7 @@ Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/ope
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-compile 'com.agrawalsuneet.androidlibs:dotsloader:0.9'
+implementation 'com.agrawalsuneet.androidlibs:dotsloader:1.0'
 ```
 
 ### LinearDotsLoader
@@ -376,6 +377,51 @@ TrailingCircularDotsLoader trailingCircularDotsLoader = new TrailingCircularDots
         trailingCircularDotsLoader.setAnimDelay(200);
 
         containerLL.addView(trailingCircularDotsLoader);
+```
+
+### ZeeLoader
+##### Through XML
+```
+<com.agrawalsuneet.dotsloader.loaders.ZeeLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:zee_animDuration="300"
+        app:zee_distanceMultiplier="4"
+        app:zee_dotsRadius="24dp"
+        app:zee_firstDotsColor="@color/blue_selected"
+        app:zee_secondDotsColor="@color/blue_delfault" />
+```
+
+#####  Through Code
+
+* Kotlin
+```
+val zeeLoader = ZeeLoader(
+                this,
+                60,
+                4,
+                ContextCompat.getColor(this, R.color.red),
+                ContextCompat.getColor(this, R.color.red))
+                .apply {
+                    animDuration = 200
+                }
+
+        containerLL.addView(zeeLoader)
+        
+```
+
+* Java
+```
+ZeeLoader zeeLoader = new ZeeLoader(
+                this,
+                60,
+                4,
+                ContextCompat.getColor(this, R.color.red),
+                ContextCompat.getColor(this, R.color.red));
+
+        zeeLoader.setAnimDuration(200);
+        
+        containerLL.addView(zeeLoader);
 ```
 
 Please take a 2 mins survey to make this library better [here](https://goo.gl/forms/81Cf63sL2X1WhXHl2).
