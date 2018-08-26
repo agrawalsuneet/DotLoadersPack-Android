@@ -1,8 +1,9 @@
 # DotsLoader
-> Android dotsloader   
-
+> Android dotsloader
 
 > A replacement of default android material progressbar with dots loader
+
+latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/androidlibs/dotsloader/images/download.svg?version=1.0) ](https://bintray.com/agrawalsuneet/androidlibs/dotsloader/1.0/link)
 
 ### LinearDotsLoader
 ![lineardotsloader](https://user-images.githubusercontent.com/12999622/35482391-54665328-042c-11e8-954b-93a92ebe2b0c.gif)
