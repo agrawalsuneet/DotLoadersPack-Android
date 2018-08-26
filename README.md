@@ -1,5 +1,5 @@
 # DotsLoader
-> Android dotsloader       [![BuddyBuild](https://dashboard.buddybuild.com/api/statusImage?appID=5961db7fc335c70001c8d324&branch=master&build=latest)](https://dashboard.buddybuild.com/apps/5961db7fc335c70001c8d324/build/latest?branch=master)
+> Android dotsloader   
 
 
 > A replacement of default android material progressbar with dots loader
@@ -41,7 +41,7 @@ Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/ope
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-implementation 'com.agrawalsuneet.androidlibs:dotsloader:1.0'
+compile 'com.agrawalsuneet.androidlibs:dotsloader:1.0'
 ```
 
 ### LinearDotsLoader
