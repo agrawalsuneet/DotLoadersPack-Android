@@ -32,6 +32,9 @@
 ![trailingcirculardotsloader](https://user-images.githubusercontent.com/12999622/39367184-f3bb706a-4a2d-11e8-9120-5027bbef2861.gif)
 
 
+### TrailingCircularDotsLoader
+
+
 Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/)
 
 ## How To use
