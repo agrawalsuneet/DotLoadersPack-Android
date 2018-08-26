@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.agrawalsuneet.loaders.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.agrawalsuneet.dotsloader.loaders.ZeeLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:zee_animDuration="300"
+            app:zee_distanceMultiplier="3"
+            app:zee_dotsRadius="10dp"
+            app:zee_firstDotsColor="@color/red"
+            app:zee_secondDotsColor="@color/red_default" />
+
+        <com.agrawalsuneet.dotsloader.loaders.ZeeLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:zee_animDuration="300"
+            app:zee_distanceMultiplier="3"
+            app:zee_dotsRadius="10dp"
+            app:zee_firstDotsColor="@color/amber"
+            app:zee_secondDotsColor="@color/amber_default" />
+
+
+        <com.agrawalsuneet.dotsloader.loaders.ZeeLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:zee_animDuration="300"
+            app:zee_distanceMultiplier="3"
+            app:zee_dotsRadius="10dp"
+            app:zee_firstDotsColor="@color/green"
+            app:zee_secondDotsColor="@color/green_default" />
+
+    </LinearLayout>
+
+    <com.agrawalsuneet.dotsloader.loaders.ZeeLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:zee_animDuration="300"
+        app:zee_distanceMultiplier="4"
+        app:zee_dotsRadius="24dp"
+        app:zee_firstDotsColor="@color/blue_selected"
+        app:zee_secondDotsColor="@color/blue_delfault" />
+
+    <com.agrawalsuneet.dotsloader.loaders.ZeeLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:zee_animDuration="300"
+        app:zee_distanceMultiplier="3"
+        app:zee_dotsRadius="10dp"
+        app:zee_firstDotsColor="@color/grey"
+        app:zee_secondDotsColor="@color/grey_default" />
+
+
+</LinearLayout>

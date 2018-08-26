@@ -14,9 +14,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_trailingcirculer)
+        setContentView(R.layout.activity_main_zee)
 
-        supportActionBar!!.title = "TrailingCircularDotsLoader"
+        supportActionBar!!.title = "ZeeLoader"
 
         containerLL = findViewById(R.id.container) as LinearLayout
 
@@ -28,6 +28,22 @@ class MainActivity : AppCompatActivity() {
         //initRotatingCircularDotsLoader()
 
         //initTrailingCirculerDotsLoader()
+
+        //initZeeLoader()
+    }
+
+    private fun initZeeLoader() {
+        val zeeLoader = ZeeLoader(
+                this,
+                60,
+                4,
+                ContextCompat.getColor(this, R.color.red),
+                ContextCompat.getColor(this, R.color.red))
+                .apply {
+                    animDuration = 200
+                }
+
+        containerLL.addView(zeeLoader)
     }
 
     private fun initTrailingCirculerDotsLoader() {
