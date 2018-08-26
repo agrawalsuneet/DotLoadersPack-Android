@@ -20,7 +20,7 @@ buildscript {
 ext {
     PUBLISH_GROUP_ID = 'com.agrawalsuneet.androidlibs'
     PUBLISH_ARTIFACT_ID = 'dotsloader'
-    PUBLISH_VERSION = '0.9'
+    PUBLISH_VERSION = '1.0'
 }
 
 configurations {
