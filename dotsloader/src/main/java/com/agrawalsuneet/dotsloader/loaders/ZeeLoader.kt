@@ -21,17 +21,17 @@ class ZeeLoader : LinearLayout, LoaderContract {
 
     var dotsRadius: Int = 50
 
-    var distanceMultiplier: Float = 4.0f
+    var distanceMultiplier: Int = 4
         set(value) {
-            if (value < 1.0f) {
-                field = 1.0f
+            if (value < 1) {
+                field = 1
             } else {
                 field = value
             }
         }
 
-    var firstCircleColor: Int = resources.getColor(R.color.loader_selected)
-    var secondCircleColor: Int = resources.getColor(R.color.loader_selected)
+    var firsDotColor: Int = resources.getColor(R.color.loader_selected)
+    var secondDotColor: Int = resources.getColor(R.color.loader_selected)
 
     var animDuration: Int = 500
 
@@ -56,17 +56,29 @@ class ZeeLoader : LinearLayout, LoaderContract {
         initView()
     }
 
+    constructor(context: Context, dotsRadius: Int, distanceMultiplier: Int, firsDotColor: Int, secondDotColor: Int) : super(context) {
+        this.dotsRadius = dotsRadius
+        this.distanceMultiplier = distanceMultiplier
+        this.firsDotColor = firsDotColor
+        this.secondDotColor = secondDotColor
+        initView()
+    }
+
 
     override fun initAttributes(attrs: AttributeSet) {
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.TrailingCircularDotsLoader, 0, 0)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ZeeLoader, 0, 0)
 
-        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.TrailingCircularDotsLoader_trailingcircular_dotsRadius, 50)
+        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.ZeeLoader_zee_dotsRadius, 50)
 
-        /*this.circleColor = typedArray.getColor(R.styleable.TrailingCircularDotsLoader_trailingcircular_dotsColor,
-                resources.getColor(R.color.loader_selected))*/
+        this.distanceMultiplier = typedArray.getInteger(R.styleable.ZeeLoader_zee_distanceMultiplier, 4)
 
+        this.firsDotColor = typedArray.getColor(R.styleable.ZeeLoader_zee_firstDotsColor,
+                resources.getColor(R.color.loader_selected))
 
-        this.animDuration = typedArray.getInt(R.styleable.TrailingCircularDotsLoader_trailingcircular_animDuration, 2000)
+        this.secondDotColor = typedArray.getColor(R.styleable.ZeeLoader_zee_secondDotsColor,
+                resources.getColor(R.color.loader_selected))
+
+        this.animDuration = typedArray.getInt(R.styleable.ZeeLoader_zee_animDuration, 500)
 
         typedArray.recycle()
     }
@@ -75,7 +87,7 @@ class ZeeLoader : LinearLayout, LoaderContract {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
         if (calWidthHeight == 0) {
-            calWidthHeight = (2 * dotsRadius * distanceMultiplier).toInt()
+            calWidthHeight = (2 * dotsRadius * distanceMultiplier)
         }
 
         setMeasuredDimension(calWidthHeight, calWidthHeight)
@@ -92,17 +104,17 @@ class ZeeLoader : LinearLayout, LoaderContract {
 
 
         if (calWidthHeight == 0) {
-            calWidthHeight = (2 * dotsRadius * distanceMultiplier).toInt()
+            calWidthHeight = (2 * dotsRadius * distanceMultiplier)
         }
 
-        firstCircle = CircleView(context, dotsRadius, firstCircleColor)
+        firstCircle = CircleView(context, dotsRadius, firsDotColor)
         val firstParam = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
         firstParam.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE)
         firstParam.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE)
 
         relativeLayout.addView(firstCircle, firstParam)
 
-        secondCircle = CircleView(context, dotsRadius, secondCircleColor)
+        secondCircle = CircleView(context, dotsRadius, secondDotColor)
         val secondParam = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
         secondParam.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE)
         secondParam.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE)
@@ -157,7 +169,7 @@ class ZeeLoader : LinearLayout, LoaderContract {
     private fun getTranslateAnim(circleCount: Int): TranslateAnimation {
 
         val circleDiameter = 2 * dotsRadius
-        val finalDistance = (distanceMultiplier - 1) * circleDiameter
+        val finalDistance = ((distanceMultiplier - 1) * circleDiameter).toFloat()
 
 
         var fromXPos = 0.0f

@@ -9,6 +9,8 @@
     <color name="black">#000000</color>
     <color name="grey">#A9A9A9</color>
 
+    <color name="grey_default">#77A9A9A9</color>
+
     <color name="loader_defalut">#44ffffff</color>
     <color name="loader_selected">#ffffff</color>
 
@@ -26,5 +28,9 @@
     <color name="green">#00e500</color>
     <color name="yellow">#ffff00</color>
     <color name="amber">#FFC200</color>
+
+    <color name="red_default">#77ff0000</color>
+    <color name="amber_default">#77FFC200</color>
+    <color name="green_default">#7700e500</color>
 
 </resources>
