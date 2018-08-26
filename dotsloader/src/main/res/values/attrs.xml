@@ -77,4 +77,12 @@
         <attr name="trailingcircular_animDelay" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="ZeeLoader">
+        <attr name="zee_dotsRadius" format="dimension" />
+        <attr name="zee_distanceMultiplier" format="integer" />
+        <attr name="zee_firstDotsColor" format="color" />
+        <attr name="zee_secondDotsColor" format="color" />
+        <attr name="zee_animDuration" format="integer" />
+    </declare-styleable>
+
 </resources>
