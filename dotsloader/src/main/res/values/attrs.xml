@@ -26,6 +26,8 @@
     <declare-styleable name="CircleView">
         <attr name="circleRadius" format="dimension" />
         <attr name="circleColor" format="color" />
+        <attr name="circleDrawOnlystroke" format="boolean" />
+        <attr name="circleStrokeWidth" format="dimension" />
     </declare-styleable>
 
     <declare-styleable name="LazyLoader">
