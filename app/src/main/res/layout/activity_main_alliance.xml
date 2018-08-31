@@ -15,7 +15,7 @@
         app:circleColor="@color/white"
         app:circleDrawOnlystroke="true"
         app:circleRadius="50dp"
-        app:circleStrokeWidth="10dp"/>
+        app:circleStrokeWidth="20dp"/>
 
 
     <!--<LinearLayout

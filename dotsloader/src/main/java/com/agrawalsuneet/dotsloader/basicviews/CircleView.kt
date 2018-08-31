@@ -19,6 +19,8 @@ class CircleView : View {
     var circleColor: Int = 0
     var drawOnlyStroke: Boolean = false
 
+    private val paint: Paint = Paint()
+
     constructor(context: Context, circleRadius: Int, circleColor: Int) : super(context) {
         this.circleRadius = circleRadius
         this.circleColor = circleColor
@@ -38,7 +40,9 @@ class CircleView : View {
         initAttributes(attrs)
     }
 
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+        initAttributes(attrs)
+    }
 
 
     fun initAttributes(attrs: AttributeSet) {
@@ -59,7 +63,7 @@ class CircleView : View {
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-
+        
         val widthHeight = (2 * (circleRadius)) + strokeWidth
 
         setMeasuredDimension(widthHeight, widthHeight)
@@ -69,7 +73,6 @@ class CircleView : View {
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
-        var paint = Paint()
         paint.isAntiAlias = true
 
         if (drawOnlyStroke) {
@@ -80,6 +83,8 @@ class CircleView : View {
         }
         paint.color = circleColor
 
+        //adding half of strokeWidth because
+        //the stroke will be half inside the drawing circle and half outside
         val xyCordinates = (circleRadius + (strokeWidth / 2)).toFloat()
 
         canvas!!.drawCircle(xyCordinates, xyCordinates, circleRadius.toFloat(), paint)
