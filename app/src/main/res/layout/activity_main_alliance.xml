@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,13 +8,13 @@
     android:orientation="vertical">
 
 
-    <com.agrawalsuneet.dotsloader.basicviews.CircleView
+    <!--<com.agrawalsuneet.dotsloader.basicviews.CircleView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:circleColor="@color/white"
         app:circleDrawOnlystroke="true"
         app:circleRadius="50dp"
-        app:circleStrokeWidth="20dp"/>
+        app:circleStrokeWidth="20dp"/>-->
 
 
     <!--<LinearLayout
@@ -77,6 +76,38 @@
         app:zee_dotsRadius="10dp"
         app:zee_firstDotsColor="@color/grey"
         app:zee_secondDotsColor="@color/grey_default" />-->
+
+
+    <!--<RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="300dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="Button 1" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:text="Button 2" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="Button 3" />
+    </RelativeLayout>-->
+
+
+    <com.agrawalsuneet.dotsloader.loaders.AllianceLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>
