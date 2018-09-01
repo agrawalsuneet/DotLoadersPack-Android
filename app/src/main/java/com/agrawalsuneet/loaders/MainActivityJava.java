@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.animation.LinearInterpolator;
 import android.widget.LinearLayout;
 
+import com.agrawalsuneet.dotsloader.loaders.AllianceLoader;
 import com.agrawalsuneet.dotsloader.loaders.RotatingCircularDotsLoader;
 import com.agrawalsuneet.dotsloader.loaders.SlidingLoader;
 import com.agrawalsuneet.dotsloader.loaders.TashieLoader;
@@ -87,5 +88,21 @@ public class MainActivityJava extends AppCompatActivity {
         zeeLoader.setAnimDuration(200);
 
         containerLL.addView(zeeLoader);
+
+
+        AllianceLoader allianceLoader = new AllianceLoader(
+                this,
+                40,
+                6,
+                true,
+                10,
+                ContextCompat.getColor(this, R.color.red),
+                ContextCompat.getColor(this, R.color.amber),
+                ContextCompat.getColor(this, R.color.green));
+
+        allianceLoader.setAnimDuration(500);
+
+        containerLL.addView(allianceLoader);
     }
+
 }

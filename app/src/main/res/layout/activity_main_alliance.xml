@@ -9,7 +9,7 @@
     android:orientation="vertical">
 
 
-    <!--<LinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -79,7 +79,7 @@
         app:alliance_firstDotsColor="@color/blue_selected"
         app:alliance_secondDotsColor="@color/blue_selected"
         app:alliance_strokeWidth="6dp"
-        app:alliance_thirdDotsColor="@color/blue_selected" />-->
+        app:alliance_thirdDotsColor="@color/blue_selected" />
 
 
 </LinearLayout>

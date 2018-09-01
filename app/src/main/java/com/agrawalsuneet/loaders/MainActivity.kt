@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         //initZeeLoader()
 
-        initAllianceLoader()
+        //initAllianceLoader()
     }
 
     private fun initAllianceLoader() {
