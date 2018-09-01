@@ -11,7 +11,7 @@ repositories {
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion '27.0.3'
     defaultConfig {
         applicationId "com.agrawalsuneet.loaders"
         minSdkVersion 16
@@ -32,6 +32,6 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile project(':dotsloader')
-    //compile 'com.agrawalsuneet.androidlibs:dotsloader:0.9'
+    //compile 'com.agrawalsuneet.androidlibs:dotsloader:1.0'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }

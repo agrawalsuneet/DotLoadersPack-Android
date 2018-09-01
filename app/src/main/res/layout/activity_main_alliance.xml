@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.agrawalsuneet.dotsloader.loaders.AllianceLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:alliance_animDuration="500"
+            app:alliance_distanceMultiplier="4"
+            app:alliance_dotsRadius="8dp"
+            app:alliance_firstDotsColor="@color/red"
+            app:alliance_secondDotsColor="@color/red"
+            app:alliance_thirdDotsColor="@color/red" />
+
+
+        <com.agrawalsuneet.dotsloader.loaders.AllianceLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:alliance_animDuration="500"
+            app:alliance_distanceMultiplier="4"
+            app:alliance_dotsRadius="8dp"
+            app:alliance_firstDotsColor="@color/amber"
+            app:alliance_secondDotsColor="@color/amber"
+            app:alliance_thirdDotsColor="@color/amber" />
+
+
+        <com.agrawalsuneet.dotsloader.loaders.AllianceLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:alliance_animDuration="500"
+            app:alliance_distanceMultiplier="4"
+            app:alliance_dotsRadius="8dp"
+            app:alliance_firstDotsColor="@color/green"
+            app:alliance_secondDotsColor="@color/green"
+            app:alliance_thirdDotsColor="@color/green" />
+
+    </LinearLayout>
+
+
+    <com.agrawalsuneet.dotsloader.loaders.AllianceLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:alliance_animDuration="500"
+        app:alliance_distanceMultiplier="4"
+        app:alliance_dotsRadius="20dp"
+        app:alliance_drawOnlyStroke="true"
+        app:alliance_firstDotsColor="@color/red"
+        app:alliance_secondDotsColor="@color/amber"
+        app:alliance_strokeWidth="8dp"
+        app:alliance_thirdDotsColor="@color/green" />
+
+
+    <com.agrawalsuneet.dotsloader.loaders.AllianceLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:alliance_animDuration="500"
+        app:alliance_distanceMultiplier="4"
+        app:alliance_dotsRadius="16dp"
+        app:alliance_drawOnlyStroke="true"
+        app:alliance_firstDotsColor="@color/blue_selected"
+        app:alliance_secondDotsColor="@color/blue_selected"
+        app:alliance_strokeWidth="6dp"
+        app:alliance_thirdDotsColor="@color/blue_selected" />
+
+
+</LinearLayout>

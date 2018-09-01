@@ -5,14 +5,6 @@
 
 latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/androidlibs/dotsloader/images/download.svg?version=1.0) ](https://bintray.com/agrawalsuneet/androidlibs/dotsloader/1.0/link)
 
-### LinearDotsLoader
-![lineardotsloader](https://user-images.githubusercontent.com/12999622/35482391-54665328-042c-11e8-954b-93a92ebe2b0c.gif)
-
-
-### CircularDotsLoader
-![circulardotsloader](https://user-images.githubusercontent.com/12999622/36224573-f274b956-11bf-11e8-8f97-e4c031959465.gif)
-
-
 ### LazyLoader
 ![lazyloader](https://user-images.githubusercontent.com/12999622/36225792-b7044432-11c3-11e8-8e22-5bbdcafa2312.gif)
 
@@ -37,127 +29,25 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 ![zeeloader](https://user-images.githubusercontent.com/12999622/44630261-8ba41980-a952-11e8-9ba5-45f4cafb473b.gif)
 
 
+### AllianceLoader
+![allianceloader](https://user-images.githubusercontent.com/12999622/44946787-d1e9f480-adfa-11e8-82ff-23e5f19a656b.gif)
+
+
+### LinearDotsLoader
+![lineardotsloader](https://user-images.githubusercontent.com/12999622/35482391-54665328-042c-11e8-954b-93a92ebe2b0c.gif)
+
+
+### CircularDotsLoader
+![circulardotsloader](https://user-images.githubusercontent.com/12999622/36224573-f274b956-11bf-11e8-8f97-e4c031959465.gif)
+
 Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/)
 
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-compile 'com.agrawalsuneet.androidlibs:dotsloader:1.0'
+compile 'com.agrawalsuneet.androidlibs:dotsloader:1.1'
 ```
 
-### LinearDotsLoader
-##### Through XML
-```
-<com.agrawalsuneet.dotsloader.loaders.LinearDotsLoader
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:loader_animDur="1000"
-        app:loader_noOfDots="8"
-        app:loader_circleRadius="6dp"
-        app:loader_defaultColor="@color/pink_default"
-        app:loader_selectedColor="@color/pink_selected"
-        app:loader_dotsDist="3dp"
-        app:loader_expandOnSelect="false"
-        app:loader_isSingleDir="false"
-        app:loader_selectedRadius="10dp"
-        app:loader_showRunningShadow="true"
-        app:loader_firstShadowColor="@color/blue_selected"
-        app:loader_secondShadowColor="@color/blue_delfault"/>
-```
-
-##### Through Code
-
-* Kotlin
-```
-        var loader = LinearDotsLoader(this)
-        loader.defaultColor = ContextCompat.getColor(this, R.color.loader_defalut)
-        loader.selectedColor = ContextCompat.getColor(this, R.color.loader_selected)
-        loader.isSingleDir = false
-        loader.noOfDots = 5
-        loader.selRadius = 60
-        loader.expandOnSelect = false
-        loader.radius = 40
-        loader.dotsDistance = 20
-        loader.animDur = 1000
-        loader.firstShadowColor = ContextCompat.getColor(this, R.color.pink_selected)
-        loader.secondShadowColor = ContextCompat.getColor(this, R.color.purple_selected)
-        loader.showRunningShadow = true
-        containerLL.addView(loader)
-```
-
-
-* Java
-```
-        LinearLayout containerLL = (LinearLayout) findViewById(R.id.container);
-
-        LinearDotsLoader loader = new LinearDotsLoader(this);
-        loader.setDefaultColor(ContextCompat.getColor(this, R.color.loader_defalut));
-        loader.setSelectedColor(ContextCompat.getColor(this, R.color.loader_selected));
-        loader.setSingleDir(true);
-        loader.setNoOfDots(5);
-        loader.setSelRadius(40);
-        loader.setExpandOnSelect(true);
-        loader.setRadius(30);
-        loader.setDotsDistance(20);
-        loader.setAnimDur(500);
-        loader.setShowRunningShadow(true);
-        loader.setFirstShadowColor(ContextCompat.getColor(this, R.color.blue_selected));
-        loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.blue_delfault));
-        
-        containerLL.addView(loader);
-```
-
-
-### CircularDotsLoader
-##### Through XML
-```
-<com.agrawalsuneet.dotsloader.loaders.CircularDotsLoader
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:loader_animDur="100"
-        app:loader_bigCircleRadius="42dp"
-        app:loader_circleRadius="14dp"
-        app:loader_defaultColor="@color/purple_default"
-        app:loader_firstShadowColor="@color/pink_selected"
-        app:loader_secondShadowColor="@color/pink_default"
-        app:loader_selectedColor="@color/purple_selected"
-        app:loader_showRunningShadow="true" />
-```
-
-#####  Through Code
-
-* Kotlin
-```
-var cirLoader = CircularDotsLoader(this)
-        cirLoader.defaultColor = ContextCompat.getColor(this, R.color.blue_delfault)
-        cirLoader.selectedColor = ContextCompat.getColor(this, R.color.blue_selected)
-        cirLoader.bigCircleRadius = 120
-        cirLoader.radius = 40
-        cirLoader.animDur = 100
-        cirLoader.firstShadowColor = ContextCompat.getColor(this, R.color.pink_selected)
-        cirLoader.secondShadowColor = ContextCompat.getColor(this, R.color.purple_selected)
-        cirLoader.showRunningShadow = true
-
-        containerLL.addView(cirLoader)
-        
-```
-
-* Java
-```
-CircularDotsLoader loader = new CircularDotsLoader(this);
-        loader.setDefaultColor(ContextCompat.getColor(this,R.color.blue_delfault));
-        loader.setSelectedColor(ContextCompat.getColor(this,R.color.blue_selected));
-        loader.setBigCircleRadius(80);
-        loader.setRadius(24);
-        loader.setAnimDur(300);
-        loader.setShowRunningShadow(true);
-        loader.setFirstShadowColor(ContextCompat.getColor(this, R.color.blue_selected));
-        loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.blue_delfault));
-```
-
-> For avoiding overlapping in CircularDotsLoader, set BigCircleLoader nearly four times of dotsRadius.
-
-> If the showRunningShadow is true and no firstShadowColor and secondShadowColor provided, it'll take 0.7f and 0.5f alpha of selectedColor
 
 ### LazyLoader
 ##### Through XML
@@ -424,6 +314,178 @@ ZeeLoader zeeLoader = new ZeeLoader(
         
         containerLL.addView(zeeLoader);
 ```
+
+
+### AllianceLoader
+##### Through XML
+```
+<com.agrawalsuneet.dotsloader.loaders.AllianceLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:alliance_animDuration="500"
+        app:alliance_distanceMultiplier="4"
+        app:alliance_dotsRadius="20dp"
+        app:alliance_drawOnlyStroke="true"
+        app:alliance_firstDotsColor="@color/red"
+        app:alliance_secondDotsColor="@color/amber"
+        app:alliance_strokeWidth="8dp"
+        app:alliance_thirdDotsColor="@color/green" />
+```
+
+#####  Through Code
+
+* Kotlin
+```
+private fun initAllianceLoader() {
+        val allianceLoader = AllianceLoader(
+                this,
+                40,
+                6,
+                true,
+                10,
+                ContextCompat.getColor(this, R.color.red),
+                ContextCompat.getColor(this, R.color.amber),
+                ContextCompat.getColor(this, R.color.green)
+        ).apply {
+            animDuration = 5000
+        }
+
+        containerLL.addView(allianceLoader)
+        
+```
+
+* Java
+```
+AllianceLoader allianceLoader = new AllianceLoader(
+                this,
+                40,
+                6,
+                true,
+                10,
+                ContextCompat.getColor(this, R.color.red),
+                ContextCompat.getColor(this, R.color.amber),
+                ContextCompat.getColor(this, R.color.green));
+
+        allianceLoader.setAnimDuration(500);
+
+        containerLL.addView(allianceLoader);
+```
+
+
+### LinearDotsLoader
+##### Through XML
+```
+<com.agrawalsuneet.dotsloader.loaders.LinearDotsLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:loader_animDur="1000"
+        app:loader_noOfDots="8"
+        app:loader_circleRadius="6dp"
+        app:loader_defaultColor="@color/pink_default"
+        app:loader_selectedColor="@color/pink_selected"
+        app:loader_dotsDist="3dp"
+        app:loader_expandOnSelect="false"
+        app:loader_isSingleDir="false"
+        app:loader_selectedRadius="10dp"
+        app:loader_showRunningShadow="true"
+        app:loader_firstShadowColor="@color/blue_selected"
+        app:loader_secondShadowColor="@color/blue_delfault"/>
+```
+
+##### Through Code
+
+* Kotlin
+```
+        var loader = LinearDotsLoader(this)
+        loader.defaultColor = ContextCompat.getColor(this, R.color.loader_defalut)
+        loader.selectedColor = ContextCompat.getColor(this, R.color.loader_selected)
+        loader.isSingleDir = false
+        loader.noOfDots = 5
+        loader.selRadius = 60
+        loader.expandOnSelect = false
+        loader.radius = 40
+        loader.dotsDistance = 20
+        loader.animDur = 1000
+        loader.firstShadowColor = ContextCompat.getColor(this, R.color.pink_selected)
+        loader.secondShadowColor = ContextCompat.getColor(this, R.color.purple_selected)
+        loader.showRunningShadow = true
+        containerLL.addView(loader)
+```
+
+
+* Java
+```
+        LinearLayout containerLL = (LinearLayout) findViewById(R.id.container);
+
+        LinearDotsLoader loader = new LinearDotsLoader(this);
+        loader.setDefaultColor(ContextCompat.getColor(this, R.color.loader_defalut));
+        loader.setSelectedColor(ContextCompat.getColor(this, R.color.loader_selected));
+        loader.setSingleDir(true);
+        loader.setNoOfDots(5);
+        loader.setSelRadius(40);
+        loader.setExpandOnSelect(true);
+        loader.setRadius(30);
+        loader.setDotsDistance(20);
+        loader.setAnimDur(500);
+        loader.setShowRunningShadow(true);
+        loader.setFirstShadowColor(ContextCompat.getColor(this, R.color.blue_selected));
+        loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.blue_delfault));
+        
+        containerLL.addView(loader);
+```
+
+
+### CircularDotsLoader
+##### Through XML
+```
+<com.agrawalsuneet.dotsloader.loaders.CircularDotsLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:loader_animDur="100"
+        app:loader_bigCircleRadius="42dp"
+        app:loader_circleRadius="14dp"
+        app:loader_defaultColor="@color/purple_default"
+        app:loader_firstShadowColor="@color/pink_selected"
+        app:loader_secondShadowColor="@color/pink_default"
+        app:loader_selectedColor="@color/purple_selected"
+        app:loader_showRunningShadow="true" />
+```
+
+#####  Through Code
+
+* Kotlin
+```
+var cirLoader = CircularDotsLoader(this)
+        cirLoader.defaultColor = ContextCompat.getColor(this, R.color.blue_delfault)
+        cirLoader.selectedColor = ContextCompat.getColor(this, R.color.blue_selected)
+        cirLoader.bigCircleRadius = 120
+        cirLoader.radius = 40
+        cirLoader.animDur = 100
+        cirLoader.firstShadowColor = ContextCompat.getColor(this, R.color.pink_selected)
+        cirLoader.secondShadowColor = ContextCompat.getColor(this, R.color.purple_selected)
+        cirLoader.showRunningShadow = true
+
+        containerLL.addView(cirLoader)
+        
+```
+
+* Java
+```
+CircularDotsLoader loader = new CircularDotsLoader(this);
+        loader.setDefaultColor(ContextCompat.getColor(this,R.color.blue_delfault));
+        loader.setSelectedColor(ContextCompat.getColor(this,R.color.blue_selected));
+        loader.setBigCircleRadius(80);
+        loader.setRadius(24);
+        loader.setAnimDur(300);
+        loader.setShowRunningShadow(true);
+        loader.setFirstShadowColor(ContextCompat.getColor(this, R.color.blue_selected));
+        loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.blue_delfault));
+```
+
+> For avoiding overlapping in CircularDotsLoader, set BigCircleLoader nearly four times of dotsRadius.
+
+> If the showRunningShadow is true and no firstShadowColor and secondShadowColor provided, it'll take 0.7f and 0.5f alpha of selectedColor
+
 
 Please take a 2 mins survey to make this library better [here](https://goo.gl/forms/81Cf63sL2X1WhXHl2).
 It won't take more than 2 mins I promise :) or feel free to drop an email at agrawalsuneet@gmail.com if face any issue or require any additional functionality in it.

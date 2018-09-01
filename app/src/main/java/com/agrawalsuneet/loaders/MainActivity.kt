@@ -14,9 +14,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_zee)
+        setContentView(R.layout.activity_main_alliance)
 
-        supportActionBar!!.title = "ZeeLoader"
+        supportActionBar!!.title = "AllianceLoader"
 
         containerLL = findViewById(R.id.container) as LinearLayout
 
@@ -30,6 +30,25 @@ class MainActivity : AppCompatActivity() {
         //initTrailingCirculerDotsLoader()
 
         //initZeeLoader()
+
+        //initAllianceLoader()
+    }
+
+    private fun initAllianceLoader() {
+        val allianceLoader = AllianceLoader(
+                this,
+                40,
+                6,
+                true,
+                10,
+                ContextCompat.getColor(this, R.color.red),
+                ContextCompat.getColor(this, R.color.amber),
+                ContextCompat.getColor(this, R.color.green)
+        ).apply {
+            animDuration = 5000
+        }
+
+        containerLL.addView(allianceLoader)
     }
 
     private fun initZeeLoader() {
