@@ -93,10 +93,10 @@ class AllianceLoader : LinearLayout, LoaderContract {
         this.thirdDotColor = typedArray.getColor(R.styleable.AllianceLoader_alliance_thirdDotsColor,
                 resources.getColor(R.color.loader_selected))
 
-        this.drawOnlyStroke = typedArray.getBoolean(R.styleable.CircleView_circleDrawOnlystroke, false)
+        this.drawOnlyStroke = typedArray.getBoolean(R.styleable.AllianceLoader_alliance_drawOnlyStroke, false)
 
         if (drawOnlyStroke) {
-            this.strokeWidth = typedArray.getDimensionPixelSize(R.styleable.CircleView_circleStrokeWidth, 20)
+            this.strokeWidth = typedArray.getDimensionPixelSize(R.styleable.AllianceLoader_alliance_strokeWidth, 20)
         }
 
         this.animDuration = typedArray.getInt(R.styleable.AllianceLoader_alliance_animDuration, 500)
