@@ -20,7 +20,7 @@ import com.agrawalsuneet.dotsloader.basicviews.LoaderContract
 class AllianceLoader : LinearLayout, LoaderContract {
 
 
-    var dotsRadius: Int = 80
+    var dotsRadius: Int = 50
     var strokeWidth: Int = 0
 
     var drawOnlyStroke: Boolean = false
@@ -65,8 +65,43 @@ class AllianceLoader : LinearLayout, LoaderContract {
         initView()
     }
 
-    override fun initAttributes(attrs: AttributeSet) {
+    constructor(context: Context?, dotsRadius: Int, strokeWidth: Int, drawOnlyStroke: Boolean, distanceMultiplier: Int, firsDotColor: Int, secondDotColor: Int, thirdDotColor: Int) : super(context) {
+        this.dotsRadius = dotsRadius
+        this.strokeWidth = strokeWidth
+        this.drawOnlyStroke = drawOnlyStroke
+        this.distanceMultiplier = distanceMultiplier
+        this.firsDotColor = firsDotColor
+        this.secondDotColor = secondDotColor
+        this.thirdDotColor = thirdDotColor
 
+        initView()
+    }
+
+    override fun initAttributes(attrs: AttributeSet) {
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.AllianceLoader, 0, 0)
+
+        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.AllianceLoader_alliance_dotsRadius, 50)
+
+        this.distanceMultiplier = typedArray.getInteger(R.styleable.AllianceLoader_alliance_distanceMultiplier, 4)
+
+        this.firsDotColor = typedArray.getColor(R.styleable.AllianceLoader_alliance_firstDotsColor,
+                resources.getColor(R.color.loader_selected))
+
+        this.secondDotColor = typedArray.getColor(R.styleable.AllianceLoader_alliance_secondDotsColor,
+                resources.getColor(R.color.loader_selected))
+
+        this.thirdDotColor = typedArray.getColor(R.styleable.AllianceLoader_alliance_thirdDotsColor,
+                resources.getColor(R.color.loader_selected))
+
+        this.drawOnlyStroke = typedArray.getBoolean(R.styleable.CircleView_circleDrawOnlystroke, false)
+
+        if (drawOnlyStroke) {
+            this.strokeWidth = typedArray.getDimensionPixelSize(R.styleable.CircleView_circleStrokeWidth, 20)
+        }
+
+        this.animDuration = typedArray.getInt(R.styleable.AllianceLoader_alliance_animDuration, 500)
+
+        typedArray.recycle()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {

@@ -87,4 +87,16 @@
         <attr name="zee_animDuration" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="AllianceLoader">
+        <attr name="alliance_dotsRadius" format="dimension" />
+        <attr name="alliance_drawOnlyStroke" format="boolean" />
+        <attr name="alliance_strokeWidth" format="dimension" />
+
+        <attr name="alliance_distanceMultiplier" format="integer" />
+        <attr name="alliance_firstDotsColor" format="color" />
+        <attr name="alliance_secondDotsColor" format="color" />
+        <attr name="alliance_thirdDotsColor" format="color" />
+        <attr name="alliance_animDuration" format="integer" />
+    </declare-styleable>
+
 </resources>
