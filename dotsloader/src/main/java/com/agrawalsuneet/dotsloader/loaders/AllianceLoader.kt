@@ -65,11 +65,11 @@ class AllianceLoader : LinearLayout, LoaderContract {
         initView()
     }
 
-    constructor(context: Context?, dotsRadius: Int, strokeWidth: Int, drawOnlyStroke: Boolean, distanceMultiplier: Int, firsDotColor: Int, secondDotColor: Int, thirdDotColor: Int) : super(context) {
+    constructor(context: Context?, dotsRadius: Int, distanceMultiplier: Int, drawOnlyStroke: Boolean, strokeWidth: Int, firsDotColor: Int, secondDotColor: Int, thirdDotColor: Int) : super(context) {
         this.dotsRadius = dotsRadius
-        this.strokeWidth = strokeWidth
-        this.drawOnlyStroke = drawOnlyStroke
         this.distanceMultiplier = distanceMultiplier
+        this.drawOnlyStroke = drawOnlyStroke
+        this.strokeWidth = strokeWidth
         this.firsDotColor = firsDotColor
         this.secondDotColor = secondDotColor
         this.thirdDotColor = thirdDotColor
