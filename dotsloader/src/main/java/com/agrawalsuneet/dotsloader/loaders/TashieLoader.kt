@@ -42,7 +42,7 @@ class TashieLoader : AnimatingLinearLayout {
     }
 
     override fun initAttributes(attrs: AttributeSet) {
-        with(context.obtainStyledAttributes(attrs, R.styleable.TashieLoader, 0, 0)){
+        with(context.obtainStyledAttributes(attrs, R.styleable.TashieLoader, 0, 0)) {
             dotsRadius = getDimensionPixelSize(R.styleable.TashieLoader_tashieloader_dotsRadius, 30)
             dotsDist = getDimensionPixelSize(R.styleable.TashieLoader_tashieloader_dotsDist, 15)
             dotsColor = getColor(R.styleable.TashieLoader_tashieloader_dotsColor,

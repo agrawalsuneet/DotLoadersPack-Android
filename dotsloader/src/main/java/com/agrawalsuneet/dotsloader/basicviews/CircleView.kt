@@ -45,7 +45,7 @@ class CircleView : View {
     }
 
     fun initAttributes(attrs: AttributeSet) {
-        with(context.obtainStyledAttributes(attrs, R.styleable.CircleView, 0, 0)){
+        with(context.obtainStyledAttributes(attrs, R.styleable.CircleView, 0, 0)) {
             circleRadius = getDimensionPixelSize(R.styleable.CircleView_circleRadius, 30)
             circleColor = getColor(R.styleable.CircleView_circleColor, 0)
 
@@ -61,7 +61,7 @@ class CircleView : View {
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-        
+
         val widthHeight = (2 * (circleRadius)) + strokeWidth
 
         setMeasuredDimension(widthHeight, widthHeight)

@@ -39,7 +39,7 @@ class LinearDotsLoader : DotsLoaderBaseView {
     override fun initAttributes(attrs: AttributeSet) {
         super.initAttributes(attrs)
 
-        with(context.obtainStyledAttributes(attrs, R.styleable.LinearDotsLoader, 0, 0)){
+        with(context.obtainStyledAttributes(attrs, R.styleable.LinearDotsLoader, 0, 0)) {
             noOfDots = getInt(R.styleable.LinearDotsLoader_loader_noOfDots, 3)
 
             selRadius = getDimensionPixelSize(R.styleable.LinearDotsLoader_loader_selectedRadius, radius + 10)
@@ -49,8 +49,8 @@ class LinearDotsLoader : DotsLoaderBaseView {
             isSingleDir = getBoolean(R.styleable.LinearDotsLoader_loader_isSingleDir, false)
             expandOnSelect = getBoolean(R.styleable.LinearDotsLoader_loader_expandOnSelect, false)
 
-            recycle()  
-        }       
+            recycle()
+        }
     }
 
     override fun initCoordinates() {

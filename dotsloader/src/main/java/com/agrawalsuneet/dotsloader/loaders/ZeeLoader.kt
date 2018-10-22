@@ -67,7 +67,7 @@ class ZeeLoader : LinearLayout, LoaderContract {
 
 
     override fun initAttributes(attrs: AttributeSet) {
-        with(context.obtainStyledAttributes(attrs, R.styleable.ZeeLoader, 0, 0)){
+        with(context.obtainStyledAttributes(attrs, R.styleable.ZeeLoader, 0, 0)) {
             dotsRadius = getDimensionPixelSize(R.styleable.ZeeLoader_zee_dotsRadius, 50)
 
             distanceMultiplier = getInteger(R.styleable.ZeeLoader_zee_distanceMultiplier, 4)
