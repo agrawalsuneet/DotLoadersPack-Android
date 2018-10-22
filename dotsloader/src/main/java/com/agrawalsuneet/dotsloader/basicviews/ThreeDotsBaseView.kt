@@ -1,6 +1,7 @@
 package com.agrawalsuneet.dotsloader.basicviews
 
 import android.content.Context
+import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import com.agrawalsuneet.dotsloader.R
 
@@ -9,11 +10,11 @@ import com.agrawalsuneet.dotsloader.R
  */
 abstract class ThreeDotsBaseView : AnimatingLinearLayout {
 
-    var firstDotColor: Int = resources.getColor(R.color.loader_defalut)
+    var firstDotColor: Int = ContextCompat.getColor(context, R.color.loader_defalut)
 
-    var secondDotColor: Int = resources.getColor(R.color.loader_defalut)
+    var secondDotColor: Int = ContextCompat.getColor(context, R.color.loader_defalut)
 
-    var thirdDotColor: Int = resources.getColor(R.color.loader_defalut)
+    var thirdDotColor: Int = ContextCompat.getColor(context, R.color.loader_defalut)
 
     protected lateinit var firstCircle: CircleView
     protected lateinit var secondCircle: CircleView
@@ -26,16 +27,11 @@ abstract class ThreeDotsBaseView : AnimatingLinearLayout {
         this.firstDotColor = firstDotColor
         this.secondDotColor = secondDotColor
         this.thirdDotColor = thirdDotColor
-        initView()
+        this.initView()
     }
 
-    constructor(context: Context?) : super(context) {
-    }
-
-    constructor(context: Context?, attrs: AttributeSet) : super(context, attrs) {
-    }
-
-    constructor(context: Context?, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-    }
+    constructor(context: Context?) : super(context)
+    constructor(context: Context?, attrs: AttributeSet) : super(context, attrs)
+    constructor(context: Context?, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 }
 

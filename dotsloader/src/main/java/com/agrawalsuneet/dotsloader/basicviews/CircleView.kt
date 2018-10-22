@@ -44,21 +44,19 @@ class CircleView : View {
         initAttributes(attrs)
     }
 
-
     fun initAttributes(attrs: AttributeSet) {
+        with(context.obtainStyledAttributes(attrs, R.styleable.CircleView, 0, 0)){
+            circleRadius = getDimensionPixelSize(R.styleable.CircleView_circleRadius, 30)
+            circleColor = getColor(R.styleable.CircleView_circleColor, 0)
 
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CircleView, 0, 0)
+            drawOnlyStroke = getBoolean(R.styleable.CircleView_circleDrawOnlystroke, false)
 
-        this.circleRadius = typedArray.getDimensionPixelSize(R.styleable.CircleView_circleRadius, 30)
-        this.circleColor = typedArray.getColor(R.styleable.CircleView_circleColor, 0)
+            if (drawOnlyStroke) {
+                strokeWidth = getDimensionPixelSize(R.styleable.CircleView_circleStrokeWidth, 0)
+            }
 
-        this.drawOnlyStroke = typedArray.getBoolean(R.styleable.CircleView_circleDrawOnlystroke, false)
-
-        if (drawOnlyStroke) {
-            this.strokeWidth = typedArray.getDimensionPixelSize(R.styleable.CircleView_circleStrokeWidth, 0)
+            recycle()
         }
-
-        typedArray.recycle()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -69,8 +67,7 @@ class CircleView : View {
         setMeasuredDimension(widthHeight, widthHeight)
     }
 
-
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
         paint.isAntiAlias = true
@@ -81,13 +78,14 @@ class CircleView : View {
         } else {
             paint.style = Paint.Style.FILL
         }
+
         paint.color = circleColor
 
         //adding half of strokeWidth because
         //the stroke will be half inside the drawing circle and half outside
-        val xyCordinates = (circleRadius + (strokeWidth / 2)).toFloat()
+        val xyCoordinates = (circleRadius + (strokeWidth / 2)).toFloat()
 
-        canvas!!.drawCircle(xyCordinates, xyCordinates, circleRadius.toFloat(), paint)
+        canvas.drawCircle(xyCoordinates, xyCoordinates, circleRadius.toFloat(), paint)
     }
 
 

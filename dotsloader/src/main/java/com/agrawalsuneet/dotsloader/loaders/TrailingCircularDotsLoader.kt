@@ -2,6 +2,7 @@ package com.agrawalsuneet.dotsloader.loaders
 
 import android.content.Context
 import android.os.Handler
+import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.ViewTreeObserver
@@ -17,7 +18,7 @@ class TrailingCircularDotsLoader : LinearLayout, LoaderContract {
     var dotsRadius: Int = 50
     var bigCircleRadius: Int = 200
 
-    var circleColor: Int = resources.getColor(R.color.loader_selected)
+    var circleColor: Int = ContextCompat.getColor(context, R.color.loader_selected)
     var noOfTrailingDots: Int = 6
 
     var animDuration: Int = 2000
@@ -52,21 +53,21 @@ class TrailingCircularDotsLoader : LinearLayout, LoaderContract {
 
 
     override fun initAttributes(attrs: AttributeSet) {
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.TrailingCircularDotsLoader, 0, 0)
+        with(context.obtainStyledAttributes(attrs, R.styleable.TrailingCircularDotsLoader, 0, 0)) {
+            dotsRadius = getDimensionPixelSize(R.styleable.TrailingCircularDotsLoader_trailingcircular_dotsRadius, 50)
+            bigCircleRadius = getDimensionPixelSize(R.styleable.TrailingCircularDotsLoader_trailingcircular_bigCircleRadius, 200)
 
-        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.TrailingCircularDotsLoader_trailingcircular_dotsRadius, 50)
-        this.bigCircleRadius = typedArray.getDimensionPixelSize(R.styleable.TrailingCircularDotsLoader_trailingcircular_bigCircleRadius, 200)
+            circleColor = getColor(R.styleable.TrailingCircularDotsLoader_trailingcircular_dotsColor,
+                    ContextCompat.getColor(context, R.color.loader_selected))
 
-        this.circleColor = typedArray.getColor(R.styleable.TrailingCircularDotsLoader_trailingcircular_dotsColor,
-                resources.getColor(R.color.loader_selected))
-
-        this.noOfTrailingDots = typedArray.getInt(R.styleable.TrailingCircularDotsLoader_trailingcircular_noOfTrailingDots, 6)
+            noOfTrailingDots = getInt(R.styleable.TrailingCircularDotsLoader_trailingcircular_noOfTrailingDots, 6)
 
 
-        this.animDuration = typedArray.getInt(R.styleable.TrailingCircularDotsLoader_trailingcircular_animDuration, 2000)
-        this.animDelay = typedArray.getInt(R.styleable.TrailingCircularDotsLoader_trailingcircular_animDelay, animDuration / 10)
+            animDuration = getInt(R.styleable.TrailingCircularDotsLoader_trailingcircular_animDuration, 2000)
+            animDelay = getInt(R.styleable.TrailingCircularDotsLoader_trailingcircular_animDelay, animDuration / 10)
 
-        typedArray.recycle()
+            recycle()
+        }
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -83,10 +84,11 @@ class TrailingCircularDotsLoader : LinearLayout, LoaderContract {
         removeAllViews()
         removeAllViewsInLayout()
 
-        this.gravity = Gravity.CENTER_HORIZONTAL
+        gravity = Gravity.CENTER_HORIZONTAL
 
-        relativeLayout = RelativeLayout(context)
-        relativeLayout.gravity = Gravity.CENTER_HORIZONTAL
+        relativeLayout = RelativeLayout(context).apply {
+            gravity = Gravity.CENTER_HORIZONTAL
+        }
 
 
         if (calWidthHeight == 0) {
@@ -100,7 +102,6 @@ class TrailingCircularDotsLoader : LinearLayout, LoaderContract {
 
         this.addView(relativeLayout, relParam)
 
-
         trailingCirclesArray = arrayOfNulls(noOfTrailingDots)
 
         for (i in 0 until noOfTrailingDots) {
@@ -110,7 +111,6 @@ class TrailingCircularDotsLoader : LinearLayout, LoaderContract {
         }
 
         val loaderView = this
-
 
         viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
@@ -128,7 +128,7 @@ class TrailingCircularDotsLoader : LinearLayout, LoaderContract {
         mainCircle.startAnimation(mainCircleAnim)
 
         for (i in 1..noOfTrailingDots) {
-            val animSet = getTrainlingAnim(i, ((animDuration * (2 + i)) / 20))
+            val animSet = getTrailingAnim(i, ((animDuration * (2 + i)) / 20))
             trailingCirclesArray[i - 1]!!.startAnimation(animSet)
 
             if (i == noOfTrailingDots - 1) {
@@ -149,40 +149,35 @@ class TrailingCircularDotsLoader : LinearLayout, LoaderContract {
         }
     }
 
-    private fun getRotateAnimation(): RotateAnimation {
-
-        val rotateAnim = RotateAnimation(0f, 360f,
-                Animation.RELATIVE_TO_SELF, 0.5f,
-                Animation.RELATIVE_TO_PARENT, 0.5f)
-        rotateAnim.duration = animDuration.toLong()
-        rotateAnim.fillAfter = true
-        rotateAnim.interpolator = AccelerateDecelerateInterpolator()
-        rotateAnim.startOffset = (animDuration / 10).toLong()
-
-        return rotateAnim
+    private fun getRotateAnimation() = RotateAnimation(0f, 360f,
+            Animation.RELATIVE_TO_SELF, 0.5f,
+            Animation.RELATIVE_TO_PARENT, 0.5f).apply {
+        duration = animDuration.toLong()
+        fillAfter = true
+        interpolator = AccelerateDecelerateInterpolator()
+        startOffset = (animDuration / 10).toLong()
     }
 
-    private fun getTrainlingAnim(count: Int, delay: Int): AnimationSet {
+    private fun getTrailingAnim(count: Int, delay: Int): AnimationSet {
         val animSet = AnimationSet(true)
 
         val scaleFactor: Float = 1.00f - (count.toFloat() / 20)
 
         val scaleAnim = ScaleAnimation(scaleFactor, scaleFactor, scaleFactor, scaleFactor,
                 Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
-        animSet.addAnimation(scaleAnim)
-
 
         val rotateAnim = RotateAnimation(0f, 360f,
                 Animation.RELATIVE_TO_SELF, 0.5f,
                 Animation.RELATIVE_TO_PARENT, 0.5f)
         rotateAnim.duration = animDuration.toLong()
 
-        animSet.addAnimation(rotateAnim)
-        animSet.duration = animDuration.toLong()
-        animSet.fillAfter = false
-        animSet.interpolator = AccelerateDecelerateInterpolator()
-        animSet.startOffset = delay.toLong()
-
-        return animSet
+        return animSet.apply {
+            addAnimation(scaleAnim)
+            addAnimation(rotateAnim)
+            duration = animDuration.toLong()
+            fillAfter = false
+            interpolator = AccelerateDecelerateInterpolator()
+            startOffset = delay.toLong()
+        }
     }
 }

@@ -11,18 +11,21 @@ import com.agrawalsuneet.dotsloader.R
 open class CircularLoaderBaseView : DotsLoaderBaseView {
 
     protected val mNoOfDots = 8
-    private val SIN_45 = 0.7071f
+
+    companion object {
+        private val SIN_45 = Math.sin(45.0).toFloat()
+    }
 
     lateinit var dotsYCorArr: FloatArray
 
     var bigCircleRadius: Int = 60
         set(bigCircleRadius) {
             field = bigCircleRadius
-            initCordinates()
+            initCoordinates()
         }
 
     constructor(context: Context) : super(context) {
-        initCordinates()
+        initCoordinates()
         initPaints()
     }
 
@@ -31,41 +34,40 @@ open class CircularLoaderBaseView : DotsLoaderBaseView {
         this.bigCircleRadius = bigCircleRadius
         this.defaultColor = dotsColor
 
-        initCordinates()
+        initCoordinates()
         initPaints()
     }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         initAttributes(attrs)
-        initCordinates()
+        initCoordinates()
         initPaints()
         initShadowPaints()
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         initAttributes(attrs)
-        initCordinates()
+        initCoordinates()
         initPaints()
         initShadowPaints()
     }
 
-    override fun initAttributes(attrs: AttributeSet) {
+    final override fun initAttributes(attrs: AttributeSet) {
         super.initAttributes(attrs)
 
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CircularLoaderBaseView, 0, 0)
-
-        this.bigCircleRadius = typedArray.getDimensionPixelSize(R.styleable.CircularLoaderBaseView_loader_bigCircleRadius, 60)
-
-        typedArray.recycle()
+        with(context.obtainStyledAttributes(attrs, R.styleable.CircularLoaderBaseView, 0, 0)) {
+            bigCircleRadius = getDimensionPixelSize(R.styleable.CircularLoaderBaseView_loader_bigCircleRadius, 60)
+            recycle()
+        }
     }
 
-    override fun initCordinates() {
+    final override fun initCoordinates() {
         val sin45Radius = SIN_45 * this.bigCircleRadius
 
         dotsXCorArr = FloatArray(mNoOfDots)
         dotsYCorArr = FloatArray(mNoOfDots)
 
-        for (i in 0..mNoOfDots - 1) {
+        for (i in 0 until mNoOfDots) {
             dotsYCorArr[i] = (this.bigCircleRadius + radius).toFloat()
             dotsXCorArr[i] = dotsYCorArr[i]
         }
@@ -91,15 +93,14 @@ open class CircularLoaderBaseView : DotsLoaderBaseView {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
         val calWidth = 2 * this.bigCircleRadius + 2 * radius
-        val calHeight = calWidth
 
-        setMeasuredDimension(calWidth, calHeight)
+        setMeasuredDimension(calWidth, calWidth)
     }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        for (i in 0..mNoOfDots - 1) {
-            canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], radius.toFloat(), defaultCirclePaint)
+        for (i in 0 until mNoOfDots) {
+            canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], radius.toFloat(), defaultCirclePaint!!)
         }
     }
 }

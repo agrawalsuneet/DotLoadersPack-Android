@@ -1,6 +1,7 @@
 package com.agrawalsuneet.dotsloader.loaders
 
 import android.content.Context
+import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.ViewTreeObserver
@@ -30,8 +31,8 @@ class ZeeLoader : LinearLayout, LoaderContract {
             }
         }
 
-    var firsDotColor: Int = resources.getColor(R.color.loader_selected)
-    var secondDotColor: Int = resources.getColor(R.color.loader_selected)
+    var firsDotColor: Int = ContextCompat.getColor(context, R.color.loader_selected)
+    var secondDotColor: Int = ContextCompat.getColor(context, R.color.loader_selected)
 
     var animDuration: Int = 500
 
@@ -66,21 +67,21 @@ class ZeeLoader : LinearLayout, LoaderContract {
 
 
     override fun initAttributes(attrs: AttributeSet) {
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ZeeLoader, 0, 0)
+        with(context.obtainStyledAttributes(attrs, R.styleable.ZeeLoader, 0, 0)){
+            dotsRadius = getDimensionPixelSize(R.styleable.ZeeLoader_zee_dotsRadius, 50)
 
-        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.ZeeLoader_zee_dotsRadius, 50)
+            distanceMultiplier = getInteger(R.styleable.ZeeLoader_zee_distanceMultiplier, 4)
 
-        this.distanceMultiplier = typedArray.getInteger(R.styleable.ZeeLoader_zee_distanceMultiplier, 4)
+            firsDotColor = getColor(R.styleable.ZeeLoader_zee_firstDotsColor,
+                    ContextCompat.getColor(context, R.color.loader_selected))
 
-        this.firsDotColor = typedArray.getColor(R.styleable.ZeeLoader_zee_firstDotsColor,
-                resources.getColor(R.color.loader_selected))
+            secondDotColor = getColor(R.styleable.ZeeLoader_zee_secondDotsColor,
+                    ContextCompat.getColor(context, R.color.loader_selected))
 
-        this.secondDotColor = typedArray.getColor(R.styleable.ZeeLoader_zee_secondDotsColor,
-                resources.getColor(R.color.loader_selected))
+            animDuration = getInt(R.styleable.ZeeLoader_zee_animDuration, 500)
 
-        this.animDuration = typedArray.getInt(R.styleable.ZeeLoader_zee_animDuration, 500)
-
-        typedArray.recycle()
+            recycle()
+        }
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -97,36 +98,36 @@ class ZeeLoader : LinearLayout, LoaderContract {
         removeAllViews()
         removeAllViewsInLayout()
 
-        this.gravity = Gravity.CENTER_HORIZONTAL
+        gravity = Gravity.CENTER_HORIZONTAL
 
-        relativeLayout = RelativeLayout(context)
-        relativeLayout.gravity = Gravity.CENTER_HORIZONTAL
-
+        relativeLayout = RelativeLayout(context).apply {
+            gravity = Gravity.CENTER_HORIZONTAL
+        }
 
         if (calWidthHeight == 0) {
             calWidthHeight = (2 * dotsRadius * distanceMultiplier)
         }
 
         firstCircle = CircleView(context, dotsRadius, firsDotColor)
-        val firstParam = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
-        firstParam.addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE)
-        firstParam.addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE)
+        val firstParam = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT).apply {
+            addRule(RelativeLayout.ALIGN_PARENT_TOP, RelativeLayout.TRUE)
+            addRule(RelativeLayout.ALIGN_PARENT_LEFT, RelativeLayout.TRUE)
+        }
 
         relativeLayout.addView(firstCircle, firstParam)
 
         secondCircle = CircleView(context, dotsRadius, secondDotColor)
-        val secondParam = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
-        secondParam.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE)
-        secondParam.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE)
+        val secondParam = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT).apply {
+            addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE)
+            addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE)
+        }
 
         relativeLayout.addView(secondCircle, secondParam)
 
         val relParam = RelativeLayout.LayoutParams(calWidthHeight, calWidthHeight)
         this.addView(relativeLayout, relParam)
 
-
         val loaderView = this
-
 
         viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
@@ -140,8 +141,7 @@ class ZeeLoader : LinearLayout, LoaderContract {
 
     private fun startLoading() {
 
-        val firstCircleAnim = getTranslateAnim(1)
-        firstCircle.startAnimation(firstCircleAnim)
+        firstCircle.startAnimation(getTranslateAnim(1))
 
         val secondCircleAnim = getTranslateAnim(2)
 
@@ -149,9 +149,11 @@ class ZeeLoader : LinearLayout, LoaderContract {
 
             override fun onAnimationEnd(p0: Animation?) {
                 step++
+
                 if (step > 3) {
                     step = 0
                 }
+
                 startLoading()
             }
 
@@ -171,7 +173,6 @@ class ZeeLoader : LinearLayout, LoaderContract {
         val circleDiameter = 2 * dotsRadius
         val finalDistance = ((distanceMultiplier - 1) * circleDiameter).toFloat()
 
-
         var fromXPos = 0.0f
         var fromYPos = 0.0f
 
@@ -179,15 +180,13 @@ class ZeeLoader : LinearLayout, LoaderContract {
         var toYPos = 0.0f
 
         when (step) {
-
             0 -> {
-                if (circleCount == 1) {
-                    toXPos = finalDistance
+                toXPos = if (circleCount == 1) {
+                    finalDistance
                 } else {
-                    toXPos = -1 * finalDistance
+                    -1 * finalDistance
                 }
             }
-
             1 -> {
                 if (circleCount == 1) {
                     fromXPos = finalDistance
@@ -197,7 +196,6 @@ class ZeeLoader : LinearLayout, LoaderContract {
                     toYPos = -1 * finalDistance
                 }
             }
-
             2 -> {
                 if (circleCount == 1) {
                     toXPos = finalDistance
@@ -209,7 +207,6 @@ class ZeeLoader : LinearLayout, LoaderContract {
                     toYPos = fromYPos
                 }
             }
-
             3 -> {
                 if (circleCount == 1) {
                     fromXPos = finalDistance
@@ -221,14 +218,13 @@ class ZeeLoader : LinearLayout, LoaderContract {
             }
         }
 
-        val transAnim = TranslateAnimation(fromXPos, toXPos,
-                fromYPos, toYPos)
-        transAnim.duration = animDuration.toLong()
-        transAnim.fillAfter = true
-        transAnim.interpolator = AccelerateDecelerateInterpolator()
-        transAnim.repeatCount = 0
-
-        return transAnim
+        return TranslateAnimation(fromXPos, toXPos,
+                fromYPos, toYPos).apply {
+            duration = animDuration.toLong()
+            fillAfter = true
+            interpolator = AccelerateDecelerateInterpolator()
+            repeatCount = 0
+        }
     }
 
 }

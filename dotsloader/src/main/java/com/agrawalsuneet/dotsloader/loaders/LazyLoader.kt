@@ -2,6 +2,7 @@ package com.agrawalsuneet.dotsloader.loaders
 
 import android.content.Context
 import android.os.Handler
+import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.ViewTreeObserver
@@ -41,28 +42,23 @@ class LazyLoader : ThreeDotsBaseView {
     }
 
     override fun initAttributes(attrs: AttributeSet) {
-
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.LazyLoader, 0, 0)
-
-        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.LazyLoader_lazyloader_dotsRadius, 30)
-        this.dotsDist = typedArray.getDimensionPixelSize(R.styleable.LazyLoader_lazyloader_dotsDist, 15)
-        this.firstDotColor = typedArray.getColor(R.styleable.LazyLoader_lazyloader_firstDotColor,
-                resources.getColor(R.color.loader_selected))
-        this.secondDotColor = typedArray.getColor(R.styleable.LazyLoader_lazyloader_secondDotColor,
-                resources.getColor(R.color.loader_selected))
-        this.thirdDotColor = typedArray.getColor(R.styleable.LazyLoader_lazyloader_thirdDotColor,
-                resources.getColor(R.color.loader_selected))
-
-        this.animDuration = typedArray.getInt(R.styleable.LazyLoader_lazyloader_animDur, 500)
-
-        this.interpolator = AnimationUtils.loadInterpolator(context,
-                typedArray.getResourceId(R.styleable.LazyLoader_lazyloader_interpolator,
-                        android.R.anim.linear_interpolator))
-        
-        this.firstDelayDuration = typedArray.getInt(R.styleable.LazyLoader_lazyloader_firstDelayDur, 100)
-        this.secondDelayDuration = typedArray.getInt(R.styleable.LazyLoader_lazyloader_secondDelayDur, 200)
-
-        typedArray.recycle()
+        with(context.obtainStyledAttributes(attrs, R.styleable.LazyLoader, 0, 0)) {
+            dotsRadius = getDimensionPixelSize(R.styleable.LazyLoader_lazyloader_dotsRadius, 30)
+            dotsDist = getDimensionPixelSize(R.styleable.LazyLoader_lazyloader_dotsDist, 15)
+            firstDotColor = getColor(R.styleable.LazyLoader_lazyloader_firstDotColor,
+                    ContextCompat.getColor(context, R.color.loader_selected))
+            secondDotColor = getColor(R.styleable.LazyLoader_lazyloader_secondDotColor,
+                    ContextCompat.getColor(context, R.color.loader_selected))
+            thirdDotColor = getColor(R.styleable.LazyLoader_lazyloader_thirdDotColor,
+                    ContextCompat.getColor(context, R.color.loader_selected))
+            animDuration = getInt(R.styleable.LazyLoader_lazyloader_animDur, 500)
+            interpolator = AnimationUtils.loadInterpolator(context,
+                    getResourceId(R.styleable.LazyLoader_lazyloader_interpolator,
+                            android.R.anim.linear_interpolator))
+            firstDelayDuration = getInt(R.styleable.LazyLoader_lazyloader_firstDelayDur, 100)
+            secondDelayDuration = getInt(R.styleable.LazyLoader_lazyloader_secondDelayDur, 200)
+            recycle()
+        }
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -82,15 +78,15 @@ class LazyLoader : ThreeDotsBaseView {
         secondCircle = CircleView(context, dotsRadius, secondDotColor)
         thirdCircle = CircleView(context, dotsRadius, thirdDotColor)
 
-        val params = LinearLayout.LayoutParams((2 * dotsRadius), 2 * dotsRadius)
-        params.leftMargin = dotsDist
+        val params = LinearLayout.LayoutParams((2 * dotsRadius), 2 * dotsRadius).apply {
+            leftMargin = dotsDist
+        }
 
         setVerticalGravity(Gravity.BOTTOM)
 
         addView(firstCircle)
         addView(secondCircle, params)
         addView(thirdCircle, params)
-
 
         val loaderView = this
 
@@ -106,16 +102,11 @@ class LazyLoader : ThreeDotsBaseView {
     }
 
     private fun startLoading() {
-
-        val trans1Anim = getTranslateAnim()
-        firstCircle.startAnimation(trans1Anim)
-
-        val trans2Anim = getTranslateAnim()
+        firstCircle.startAnimation(getTranslateAnim())
 
         Handler().postDelayed({
-            secondCircle.startAnimation(trans2Anim)
+            secondCircle.startAnimation(getTranslateAnim())
         }, firstDelayDuration.toLong())
-
 
         val trans3Anim = getTranslateAnim()
 
@@ -136,14 +127,12 @@ class LazyLoader : ThreeDotsBaseView {
         })
     }
 
-    private fun getTranslateAnim(): TranslateAnimation {
-        val transAnim = TranslateAnimation(0f, 0f, 0f, (-(4 * dotsRadius).toFloat()))
-        transAnim.duration = animDuration.toLong()
-        transAnim.fillAfter = true
-        transAnim.repeatCount = 1
-        transAnim.repeatMode = Animation.REVERSE
-        transAnim.interpolator = interpolator
-
-        return transAnim
-    }
+    private fun getTranslateAnim() =
+            TranslateAnimation(0f, 0f, 0f, (-(4 * dotsRadius).toFloat())).apply {
+                duration = animDuration.toLong()
+                fillAfter = true
+                repeatCount = 1
+                repeatMode = Animation.REVERSE
+                interpolator = interpolator
+            }
 }

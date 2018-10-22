@@ -2,7 +2,6 @@ package com.agrawalsuneet.dotsloader.loaders
 
 import android.content.Context
 import android.graphics.Canvas
-import android.os.Handler
 import android.util.AttributeSet
 import com.agrawalsuneet.dotsloader.R
 import com.agrawalsuneet.dotsloader.basicviews.DotsLoaderBaseView
@@ -19,20 +18,20 @@ class LinearDotsLoader : DotsLoaderBaseView {
     private var isFwdDir = true
 
     constructor(context: Context) : super(context) {
-        initCordinates()
+        initCoordinates()
         initPaints()
     }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         initAttributes(attrs)
-        initCordinates()
+        initCoordinates()
         initPaints()
         initShadowPaints()
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         initAttributes(attrs)
-        initCordinates()
+        initCoordinates()
         initPaints()
         initShadowPaints()
     }
@@ -40,26 +39,27 @@ class LinearDotsLoader : DotsLoaderBaseView {
     override fun initAttributes(attrs: AttributeSet) {
         super.initAttributes(attrs)
 
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.LinearDotsLoader, 0, 0)
-        this.noOfDots = typedArray.getInt(R.styleable.LinearDotsLoader_loader_noOfDots, 3)
+        with(context.obtainStyledAttributes(attrs, R.styleable.LinearDotsLoader, 0, 0)){
+            noOfDots = getInt(R.styleable.LinearDotsLoader_loader_noOfDots, 3)
 
-        this.selRadius = typedArray.getDimensionPixelSize(R.styleable.LinearDotsLoader_loader_selectedRadius, radius + 10)
+            selRadius = getDimensionPixelSize(R.styleable.LinearDotsLoader_loader_selectedRadius, radius + 10)
 
-        this.dotsDistance = typedArray.getDimensionPixelSize(R.styleable.LinearDotsLoader_loader_dotsDist, 15)
+            dotsDistance = getDimensionPixelSize(R.styleable.LinearDotsLoader_loader_dotsDist, 15)
 
-        this.isSingleDir = typedArray.getBoolean(R.styleable.LinearDotsLoader_loader_isSingleDir, false)
-        this.expandOnSelect = typedArray.getBoolean(R.styleable.LinearDotsLoader_loader_expandOnSelect, false)
+            isSingleDir = getBoolean(R.styleable.LinearDotsLoader_loader_isSingleDir, false)
+            expandOnSelect = getBoolean(R.styleable.LinearDotsLoader_loader_expandOnSelect, false)
 
-        typedArray.recycle()
+            recycle()  
+        }       
     }
 
-    override fun initCordinates() {
+    override fun initCoordinates() {
         diffRadius = this.selRadius - radius
 
         dotsXCorArr = FloatArray(this.noOfDots)
 
         //init X cordinates for all dots
-        for (i in 0..this.noOfDots - 1) {
+        for (i in 0 until this.noOfDots) {
             dotsXCorArr[i] = (i * dotsDistance + (i * 2 + 1) * radius).toFloat()
         }
     }
@@ -77,6 +77,7 @@ class LinearDotsLoader : DotsLoaderBaseView {
             calHeight = 2 * radius
             calWidth = (2 * this.noOfDots * radius + (this.noOfDots - 1) * dotsDistance)
         }
+
         setMeasuredDimension(calWidth, calHeight)
     }
 
@@ -86,7 +87,7 @@ class LinearDotsLoader : DotsLoaderBaseView {
         drawCircle(canvas)
 
         if (shouldAnimate) {
-            Handler().postDelayed({
+            postDelayed({
                 if (System.currentTimeMillis() - logTime >= animDur) {
 
                     if (isSingleDir) {
@@ -116,7 +117,7 @@ class LinearDotsLoader : DotsLoaderBaseView {
     }
 
     private fun drawCircle(canvas: Canvas) {
-        for (i in 0..this.noOfDots - 1) {
+        for (i in 0 until this.noOfDots) {
 
             var xCor = dotsXCorArr[i]
             if (expandOnSelect) {
@@ -138,61 +139,53 @@ class LinearDotsLoader : DotsLoaderBaseView {
                 secondShadowPos = firstShadowPos + 1
             }
 
-            if (i + 1 == selectedDotPos) {
-                canvas.drawCircle(
+            when {
+                i + 1 == selectedDotPos -> canvas.drawCircle(
                         xCor,
                         (if (expandOnSelect) this.selRadius else radius).toFloat(),
                         (if (expandOnSelect) this.selRadius else radius).toFloat(),
-                        selectedCirclePaint)
-            } else if (showRunningShadow && i + 1 == firstShadowPos) {
-                canvas.drawCircle(
+                        selectedCirclePaint!!)
+                showRunningShadow && i + 1 == firstShadowPos -> canvas.drawCircle(
                         xCor,
                         (if (expandOnSelect) this.selRadius else radius).toFloat(),
                         radius.toFloat(),
                         firstShadowPaint)
-            } else if (showRunningShadow && i + 1 == secondShadowPos) {
-                canvas.drawCircle(
+                showRunningShadow && i + 1 == secondShadowPos -> canvas.drawCircle(
                         xCor,
                         (if (expandOnSelect) this.selRadius else radius).toFloat(),
                         radius.toFloat(),
                         secondShadowPaint)
-            } else {
-                canvas.drawCircle(
+                else -> canvas.drawCircle(
                         xCor,
                         (if (expandOnSelect) this.selRadius else radius).toFloat(),
                         radius.toFloat(),
-                        defaultCirclePaint)
+                        defaultCirclePaint!!)
             }
-
         }
     }
 
     var dotsDistance: Int = 15
-        get() = field
         set(value) {
             field = value
-            initCordinates()
+            initCoordinates()
         }
 
     var noOfDots: Int = 3
-        get() = field
         set(noOfDots) {
             field = noOfDots
-            initCordinates()
+            initCoordinates()
         }
 
     var selRadius: Int = 38
-        get() = field
         set(selRadius) {
             field = selRadius
-            initCordinates()
+            initCoordinates()
         }
 
     var expandOnSelect: Boolean = false
-        get() = field
         set(expandOnSelect) {
             field = expandOnSelect
-            initCordinates()
+            initCoordinates()
         }
 
 }

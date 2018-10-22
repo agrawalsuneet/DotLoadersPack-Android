@@ -2,6 +2,7 @@ package com.agrawalsuneet.dotsloader.basicviews
 
 import android.content.Context
 import android.graphics.Paint
+import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.view.View
 import com.agrawalsuneet.dotsloader.R
@@ -28,7 +29,7 @@ abstract class DotsLoaderBaseView : View, LoaderContract {
 
     protected var selectedDotPos = 1
 
-    protected var logTime: Long = 0
+    protected var logTime = 0L
 
     constructor(context: Context) : super(context)
 
@@ -38,39 +39,41 @@ abstract class DotsLoaderBaseView : View, LoaderContract {
 
 
     override fun initAttributes(attrs: AttributeSet) {
+        with(context.obtainStyledAttributes(attrs, R.styleable.DotsLoaderBaseView, 0, 0)) {
+            defaultColor = getColor(R.styleable.DotsLoaderBaseView_loader_defaultColor,
+                    ContextCompat.getColor(context, R.color.loader_defalut))
+            selectedColor = getColor(R.styleable.DotsLoaderBaseView_loader_selectedColor,
+                    ContextCompat.getColor(context, R.color.loader_selected))
 
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.DotsLoaderBaseView, 0, 0)
+            radius = getDimensionPixelSize(R.styleable.DotsLoaderBaseView_loader_circleRadius, 30)
 
-        this.defaultColor = typedArray.getColor(R.styleable.DotsLoaderBaseView_loader_defaultColor,
-                resources.getColor(R.color.loader_defalut))
-        this.selectedColor = typedArray.getColor(R.styleable.DotsLoaderBaseView_loader_selectedColor,
-                resources.getColor(R.color.loader_selected))
+            animDur = getInt(R.styleable.DotsLoaderBaseView_loader_animDur, 500)
 
-        this.radius = typedArray.getDimensionPixelSize(R.styleable.DotsLoaderBaseView_loader_circleRadius, 30)
+            showRunningShadow = getBoolean(R.styleable.DotsLoaderBaseView_loader_showRunningShadow, true)
 
-        this.animDur = typedArray.getInt(R.styleable.DotsLoaderBaseView_loader_animDur, 500)
+            firstShadowColor = getColor(R.styleable.DotsLoaderBaseView_loader_firstShadowColor, 0)
+            secondShadowColor = getColor(R.styleable.DotsLoaderBaseView_loader_secondShadowColor, 0)
 
-        this.showRunningShadow = typedArray.getBoolean(R.styleable.DotsLoaderBaseView_loader_showRunningShadow, true)
+            recycle()
+        }
 
-        this.firstShadowColor = typedArray.getColor(R.styleable.DotsLoaderBaseView_loader_firstShadowColor, 0)
-        this.secondShadowColor = typedArray.getColor(R.styleable.DotsLoaderBaseView_loader_secondShadowColor, 0)
-
-        typedArray.recycle()
     }
 
-    protected abstract fun initCordinates()
+    protected abstract fun initCoordinates()
 
     //init paints for drawing dots
     fun initPaints() {
-        defaultCirclePaint = Paint()
-        defaultCirclePaint!!.isAntiAlias = true
-        defaultCirclePaint!!.style = Paint.Style.FILL
-        defaultCirclePaint!!.color = defaultColor
+        defaultCirclePaint = Paint().apply {
+            isAntiAlias = true
+            style = Paint.Style.FILL
+            color = defaultColor
+        }
 
-        selectedCirclePaint = Paint()
-        selectedCirclePaint!!.isAntiAlias = true
-        selectedCirclePaint!!.style = Paint.Style.FILL
-        selectedCirclePaint!!.color = selectedColor
+        selectedCirclePaint = Paint().apply {
+            isAntiAlias = true
+            style = Paint.Style.FILL
+            color = selectedColor
+        }
     }
 
     //init paints for drawing shadow dots
@@ -82,15 +85,17 @@ abstract class DotsLoaderBaseView : View, LoaderContract {
                 isShadowColorSet = true
             }
 
-            firstShadowPaint = Paint()
-            firstShadowPaint.isAntiAlias = true
-            firstShadowPaint.style = Paint.Style.FILL
-            firstShadowPaint.color = firstShadowColor
+            firstShadowPaint = Paint().apply {
+                isAntiAlias = true
+                style = Paint.Style.FILL
+                color = firstShadowColor
+            }
 
-            secondShadowPaint = Paint()
-            secondShadowPaint.isAntiAlias = true
-            secondShadowPaint.style = Paint.Style.FILL
-            secondShadowPaint.color = secondShadowColor
+            secondShadowPaint = Paint().apply {
+                isAntiAlias = true
+                style = Paint.Style.FILL
+                color = secondShadowColor
+            }
         }
     }
 
@@ -104,19 +109,19 @@ abstract class DotsLoaderBaseView : View, LoaderContract {
         invalidate()
     }
 
-    var defaultColor: Int = resources.getColor(R.color.loader_defalut)
+    var defaultColor: Int = ContextCompat.getColor(context, R.color.loader_defalut)
         set(defaultColor) {
             field = defaultColor
-            if (defaultCirclePaint != null) {
-                defaultCirclePaint!!.color = defaultColor
+            defaultCirclePaint?.let {
+                it.color = defaultColor
             }
         }
 
-    open var selectedColor: Int = resources.getColor(R.color.loader_selected)
+    open var selectedColor: Int = ContextCompat.getColor(context, R.color.loader_selected)
         set(selectedColor) {
             field = selectedColor
-            if (selectedCirclePaint != null) {
-                selectedCirclePaint!!.color = selectedColor
+            selectedCirclePaint?.let {
+                it.color = selectedColor
                 initShadowPaints()
             }
         }
@@ -124,7 +129,7 @@ abstract class DotsLoaderBaseView : View, LoaderContract {
     var radius: Int = 30
         set(radius) {
             field = radius
-            initCordinates()
+            initCoordinates()
         }
 
     var showRunningShadow: Boolean = true

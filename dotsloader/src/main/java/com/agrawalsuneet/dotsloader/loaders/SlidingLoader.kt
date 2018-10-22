@@ -2,9 +2,13 @@ package com.agrawalsuneet.dotsloader.loaders
 
 import android.content.Context
 import android.os.Handler
+import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.view.ViewTreeObserver
-import android.view.animation.*
+import android.view.animation.Animation
+import android.view.animation.AnticipateOvershootInterpolator
+import android.view.animation.Interpolator
+import android.view.animation.TranslateAnimation
 import android.widget.LinearLayout
 import com.agrawalsuneet.dotsloader.R
 import com.agrawalsuneet.dotsloader.basicviews.CircleView
@@ -55,24 +59,23 @@ class SlidingLoader : ThreeDotsBaseView {
     }
 
     override fun initAttributes(attrs: AttributeSet) {
-
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.SlidingLoader, 0, 0)
-
-        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.SlidingLoader_slidingloader_dotsRadius, 30)
-        this.dotsDist = typedArray.getDimensionPixelSize(R.styleable.SlidingLoader_slidingloader_dotsDist, 15)
-        this.firstDotColor = typedArray.getColor(R.styleable.SlidingLoader_slidingloader_firstDotColor,
-                resources.getColor(R.color.loader_selected))
-        this.secondDotColor = typedArray.getColor(R.styleable.SlidingLoader_slidingloader_secondDotColor,
-                resources.getColor(R.color.loader_selected))
-        this.thirdDotColor = typedArray.getColor(R.styleable.SlidingLoader_slidingloader_thirdDotColor,
-                resources.getColor(R.color.loader_selected))
+        with(context.obtainStyledAttributes(attrs, R.styleable.SlidingLoader, 0, 0)) {
+            dotsRadius = getDimensionPixelSize(R.styleable.SlidingLoader_slidingloader_dotsRadius, 30)
+            dotsDist = getDimensionPixelSize(R.styleable.SlidingLoader_slidingloader_dotsDist, 15)
+            firstDotColor = getColor(R.styleable.SlidingLoader_slidingloader_firstDotColor,
+                    ContextCompat.getColor(context, R.color.loader_selected))
+            secondDotColor = getColor(R.styleable.SlidingLoader_slidingloader_secondDotColor,
+                    ContextCompat.getColor(context, R.color.loader_selected))
+            thirdDotColor = getColor(R.styleable.SlidingLoader_slidingloader_thirdDotColor,
+                    ContextCompat.getColor(context, R.color.loader_selected))
 
 
-        this.animDuration = typedArray.getInt(R.styleable.SlidingLoader_slidingloader_animDur, 500)
+            animDuration = getInt(R.styleable.SlidingLoader_slidingloader_animDur, 500)
 
-        this.distanceToMove = typedArray.getInteger(R.styleable.SlidingLoader_slidingloader_distanceToMove, 12)
+            distanceToMove = getInteger(R.styleable.SlidingLoader_slidingloader_distanceToMove, 12)
 
-        typedArray.recycle()
+            recycle()
+        }
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -98,9 +101,10 @@ class SlidingLoader : ThreeDotsBaseView {
         val paramsSecondCircle = LinearLayout.LayoutParams((2 * dotsRadius), 2 * dotsRadius)
         paramsSecondCircle.leftMargin = dotsDist
 
-        val paramsThirdCircle = LinearLayout.LayoutParams((2 * dotsRadius), 2 * dotsRadius)
-        paramsThirdCircle.leftMargin = dotsDist
-        paramsThirdCircle.rightMargin = (2 * dotsRadius)
+        val paramsThirdCircle = LinearLayout.LayoutParams((2 * dotsRadius), 2 * dotsRadius).apply {
+            leftMargin = dotsDist
+            rightMargin = (2 * dotsRadius)
+        }
 
         addView(firstCircle, paramsFirstCircle)
         addView(secondCircle, paramsSecondCircle)
@@ -123,12 +127,11 @@ class SlidingLoader : ThreeDotsBaseView {
     private fun startLoading(isForwardDir: Boolean) {
 
         val trans1Anim = getTranslateAnim(isForwardDir)
+
         if (isForwardDir) thirdCircle.startAnimation(trans1Anim) else firstCircle.startAnimation(trans1Anim)
 
-        val trans2Anim = getTranslateAnim(isForwardDir)
-
-        Handler().postDelayed({
-            secondCircle.startAnimation(trans2Anim)
+        postDelayed({
+            secondCircle.startAnimation(getTranslateAnim(isForwardDir))
         }, firstDelayDuration.toLong())
 
 
@@ -152,14 +155,11 @@ class SlidingLoader : ThreeDotsBaseView {
     }
 
 
-    private fun getTranslateAnim(isForwardDir: Boolean): TranslateAnimation {
-        val transAnim = TranslateAnimation(if (isForwardDir) 0f else (distanceToMove * dotsRadius).toFloat(),
-                if (isForwardDir) (distanceToMove * dotsRadius).toFloat() else 0f,
-                0f, 0f)
-        transAnim.duration = animDuration.toLong()
-        transAnim.fillAfter = true
-        transAnim.interpolator = interpolator
-
-        return transAnim
+    private fun getTranslateAnim(isForwardDir: Boolean) = TranslateAnimation(if (isForwardDir) 0f else (distanceToMove * dotsRadius).toFloat(),
+            if (isForwardDir) (distanceToMove * dotsRadius).toFloat() else 0f,
+            0f, 0f).apply {
+        duration = animDuration.toLong()
+        fillAfter = true
+        interpolator = interpolator
     }
 }

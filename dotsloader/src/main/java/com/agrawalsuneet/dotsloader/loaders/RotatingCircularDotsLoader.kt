@@ -1,6 +1,7 @@
 package com.agrawalsuneet.dotsloader.loaders
 
 import android.content.Context
+import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.view.ViewTreeObserver
 import android.view.animation.Animation
@@ -17,7 +18,7 @@ import com.agrawalsuneet.dotsloader.basicviews.LoaderContract
 class RotatingCircularDotsLoader : LinearLayout, LoaderContract {
 
     var dotsRadius: Int = 30
-    var dotsColor: Int = resources.getColor(R.color.loader_selected)
+    var dotsColor: Int = ContextCompat.getColor(context, R.color.loader_selected)
     var bigCircleRadius: Int = 90
 
     var animDuration: Int = 5000
@@ -48,25 +49,24 @@ class RotatingCircularDotsLoader : LinearLayout, LoaderContract {
     }
 
     override fun initAttributes(attrs: AttributeSet) {
+        with(context.obtainStyledAttributes(attrs, R.styleable.RotatingCircularDotsLoader, 0, 0)) {
+            dotsRadius = getDimensionPixelSize(R.styleable.RotatingCircularDotsLoader_rotatingcircular_dotsRadius, 30)
 
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.RotatingCircularDotsLoader, 0, 0)
+            dotsColor = getColor(R.styleable.RotatingCircularDotsLoader_rotatingcircular_dotsColor,
+                    ContextCompat.getColor(context, R.color.loader_selected))
 
-        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.RotatingCircularDotsLoader_rotatingcircular_dotsRadius, 30)
+            bigCircleRadius = getDimensionPixelSize(R.styleable.RotatingCircularDotsLoader_rotatingcircular_bigCircleRadius, 90)
 
-        this.dotsColor = typedArray.getColor(R.styleable.RotatingCircularDotsLoader_rotatingcircular_dotsColor,
-                resources.getColor(R.color.loader_selected))
+            animDuration = getInt(R.styleable.RotatingCircularDotsLoader_rotatingcircular_animDur, 5000)
 
-        this.bigCircleRadius = typedArray.getDimensionPixelSize(R.styleable.RotatingCircularDotsLoader_rotatingcircular_bigCircleRadius, 90)
-
-        this.animDuration = typedArray.getInt(R.styleable.RotatingCircularDotsLoader_rotatingcircular_animDur, 5000)
-
-        typedArray.recycle()
+            recycle()
+        }
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        val calWidth = 2 * this.bigCircleRadius + 2 * dotsRadius
+        val calWidth = 2 * bigCircleRadius + 2 * dotsRadius
         val calHeight = calWidth
 
         setMeasuredDimension(calWidth, calHeight)
@@ -99,19 +99,13 @@ class RotatingCircularDotsLoader : LinearLayout, LoaderContract {
         circularLoaderBaseView.startAnimation(rotationAnim)
     }
 
-    private fun getRotateAnimation(): RotateAnimation {
-
-        val transAnim = RotateAnimation(0f, 360f,
-                Animation.RELATIVE_TO_SELF, 0.5f,
-                Animation.RELATIVE_TO_SELF, 0.5f)
-        transAnim.duration = animDuration.toLong()
-        transAnim.fillAfter = true
-        transAnim.repeatCount = Animation.INFINITE
-        transAnim.repeatMode = Animation.RESTART
-        transAnim.interpolator = LinearInterpolator()
-
-        return transAnim
+    private fun getRotateAnimation() = RotateAnimation(0f, 360f,
+            Animation.RELATIVE_TO_SELF, 0.5f,
+            Animation.RELATIVE_TO_SELF, 0.5f).apply {
+        duration = animDuration.toLong()
+        fillAfter = true
+        repeatCount = Animation.INFINITE
+        repeatMode = Animation.RESTART
+        interpolator = LinearInterpolator()
     }
-
-
 }

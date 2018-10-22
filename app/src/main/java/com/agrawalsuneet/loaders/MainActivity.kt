@@ -20,18 +20,18 @@ class MainActivity : AppCompatActivity() {
 
         containerLL = findViewById(R.id.container) as LinearLayout
 
-        //initLinearDotsLoader()
-        //initCircularDotsLoader()
-        //initLazyLoader()
-        //initTashieLoader()
-        //initSlidongLoader()
-        //initRotatingCircularDotsLoader()
-
-        //initTrailingCirculerDotsLoader()
-
-        //initZeeLoader()
-
-        //initAllianceLoader()
+        initLinearDotsLoader()
+        initCircularDotsLoader()
+        initLazyLoader()
+        initTashieLoader()
+        initSlidongLoader()
+        initRotatingCircularDotsLoader()
+//
+        initTrailingCirculerDotsLoader()
+//
+        initZeeLoader()
+//
+        initAllianceLoader()
     }
 
     private fun initAllianceLoader() {
@@ -111,7 +111,7 @@ class MainActivity : AppCompatActivity() {
                     dotsRadius = 30
                     animDuration = 500
                     animDelay = 100
-                    dotsColor = resources.getColor(R.color.green)
+                    dotsColor = ContextCompat.getColor(context, R.color.green)
                     interpolator = LinearInterpolator()
                 }
         containerLL.addView(tashie)

@@ -1,6 +1,7 @@
 package com.agrawalsuneet.dotsloader.loaders
 
 import android.content.Context
+import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
@@ -41,24 +42,23 @@ class TashieLoader : AnimatingLinearLayout {
     }
 
     override fun initAttributes(attrs: AttributeSet) {
+        with(context.obtainStyledAttributes(attrs, R.styleable.TashieLoader, 0, 0)){
+            dotsRadius = getDimensionPixelSize(R.styleable.TashieLoader_tashieloader_dotsRadius, 30)
+            dotsDist = getDimensionPixelSize(R.styleable.TashieLoader_tashieloader_dotsDist, 15)
+            dotsColor = getColor(R.styleable.TashieLoader_tashieloader_dotsColor,
+                    ContextCompat.getColor(context, R.color.loader_selected))
 
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.TashieLoader, 0, 0)
+            animDuration = getInt(R.styleable.TashieLoader_tashieloader_animDur, 500)
 
-        this.dotsRadius = typedArray.getDimensionPixelSize(R.styleable.TashieLoader_tashieloader_dotsRadius, 30)
-        this.dotsDist = typedArray.getDimensionPixelSize(R.styleable.TashieLoader_tashieloader_dotsDist, 15)
-        this.dotsColor = typedArray.getColor(R.styleable.TashieLoader_tashieloader_dotsColor,
-                resources.getColor(R.color.loader_selected))
+            interpolator = AnimationUtils.loadInterpolator(context,
+                    getResourceId(R.styleable.TashieLoader_tashieloader_interpolator,
+                            android.R.anim.linear_interpolator))
 
-        this.animDuration = typedArray.getInt(R.styleable.TashieLoader_tashieloader_animDur, 500)
+            noOfDots = getInt(R.styleable.TashieLoader_tashieloader_noOfDots, 8)
+            animDelay = getInt(R.styleable.TashieLoader_tashieloader_animDelay, 100)
 
-        this.interpolator = AnimationUtils.loadInterpolator(context,
-                typedArray.getResourceId(R.styleable.TashieLoader_tashieloader_interpolator,
-                        android.R.anim.linear_interpolator))
-
-        this.noOfDots = typedArray.getInt(R.styleable.TashieLoader_tashieloader_noOfDots, 8)
-        this.animDelay = typedArray.getInt(R.styleable.TashieLoader_tashieloader_animDelay, 100)
-
-        typedArray.recycle()
+            recycle()
+        }
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -76,10 +76,11 @@ class TashieLoader : AnimatingLinearLayout {
         setVerticalGravity(Gravity.BOTTOM)
 
         dotsArray = arrayOfNulls<CircleView?>(noOfDots)
+
         for (iCount in 0 until noOfDots) {
             val circle = CircleView(context, dotsRadius, dotsColor)
 
-            var params = LinearLayout.LayoutParams(2 * dotsRadius, 2 * dotsRadius)
+            val params = LinearLayout.LayoutParams(2 * dotsRadius, 2 * dotsRadius)
 
             if (iCount != noOfDots - 1) {
                 params.rightMargin = dotsDist
@@ -102,9 +103,8 @@ class TashieLoader : AnimatingLinearLayout {
     }
 
     private fun startLoading() {
-
         for (iCount in 0 until noOfDots) {
-            var anim = getScaleAnimation(isDotsExpanding, iCount)
+            val anim = getScaleAnimation(isDotsExpanding, iCount)
             dotsArray[iCount]!!.startAnimation(anim)
 
             setAnimationListener(anim, iCount)
@@ -113,29 +113,28 @@ class TashieLoader : AnimatingLinearLayout {
     }
 
     private fun getScaleAnimation(isExpanding: Boolean, delay: Int): AnimationSet {
-        var anim = AnimationSet(true);
+        val anim = AnimationSet(true)
 
-        var scaleAnim: ScaleAnimation
-
-        when (isExpanding) {
+        val scaleAnim: ScaleAnimation = when (isExpanding) {
             true -> {
-                scaleAnim = ScaleAnimation(0f, 1f, 0f, 1f,
+                ScaleAnimation(0f, 1f, 0f, 1f,
                         Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
             }
 
             false -> {
-                scaleAnim = ScaleAnimation(1f, 0f, 1f, 0f,
+                ScaleAnimation(1f, 0f, 1f, 0f,
                         Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
             }
+        }.apply {
+            duration = animDuration.toLong()
+            fillAfter = true
+            repeatCount = 0
+            startOffset = (animDelay * delay).toLong()
         }
 
-        scaleAnim.duration = animDuration.toLong()
-        scaleAnim.fillAfter = true
-        scaleAnim.repeatCount = 0
-        scaleAnim.startOffset = (animDelay * delay).toLong()
         anim.addAnimation(scaleAnim)
-
         anim.interpolator = interpolator
+
         return anim
     }
 
@@ -173,7 +172,6 @@ class TashieLoader : AnimatingLinearLayout {
 
                 override fun onAnimationStart(p0: Animation?) {
                 }
-
             })
         }
     }
