@@ -1,4 +1,4 @@
-package com.agrawalsuneet.dotsloader.basicviews
+package com.agrawalsuneet.dotsloader.contracts
 
 import android.util.AttributeSet
 

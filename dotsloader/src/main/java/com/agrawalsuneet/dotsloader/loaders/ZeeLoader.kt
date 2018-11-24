@@ -11,7 +11,7 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import com.agrawalsuneet.dotsloader.R
 import com.agrawalsuneet.dotsloader.basicviews.CircleView
-import com.agrawalsuneet.dotsloader.basicviews.LoaderContract
+import com.agrawalsuneet.dotsloader.contracts.LoaderContract
 
 /**
  * Created by agrawalsuneet on 8/26/18.

@@ -5,6 +5,7 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 import com.agrawalsuneet.dotsloader.R
+import com.agrawalsuneet.dotsloader.contracts.LoaderContract
 import com.agrawalsuneet.dotsloader.utils.Helper
 
 /**

@@ -26,7 +26,6 @@ abstract class ThreeDotsBaseView : AnimatingLinearLayout {
         this.firstDotColor = firstDotColor
         this.secondDotColor = secondDotColor
         this.thirdDotColor = thirdDotColor
-        initView()
     }
 
     constructor(context: Context?) : super(context) {

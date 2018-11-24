@@ -40,6 +40,16 @@ class TashieLoader : AnimatingLinearLayout {
         initView()
     }
 
+    constructor(context: Context?, noOfDots: Int, dotsRadius: Int, dotsDist: Int, dotsColor: Int) : super(context) {
+        this.noOfDots = noOfDots
+        this.dotsRadius = dotsRadius
+        this.dotsDist = dotsDist
+        this.dotsColor = dotsColor
+
+        initView()
+    }
+
+
     override fun initAttributes(attrs: AttributeSet) {
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.TashieLoader, 0, 0)
@@ -89,14 +99,10 @@ class TashieLoader : AnimatingLinearLayout {
             dotsArray[iCount] = circle
         }
 
-        val loaderView = this
-
         viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
+                this@TashieLoader.viewTreeObserver.removeOnGlobalLayoutListener(this)
                 startLoading()
-
-                val vto = loaderView.viewTreeObserver
-                vto.removeOnGlobalLayoutListener(this)
             }
         })
     }
