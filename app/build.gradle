@@ -1,21 +1,12 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
-repositories {
-    mavenCentral()
-    maven {
-        url 'https://maven.google.com/'
-        name 'Google'
-    }
-}
-
 android {
-    compileSdkVersion 25
-    buildToolsVersion '27.0.3'
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.agrawalsuneet.loaders"
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -30,7 +21,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:25.1.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation project(':dotsloader')
     //implementation 'com.agrawalsuneet.androidlibs:dotsloader:1.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
