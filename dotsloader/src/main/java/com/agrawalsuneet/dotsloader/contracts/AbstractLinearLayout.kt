@@ -1,4 +1,4 @@
-package com.agrawalsuneet.dotsloader.basicviews
+package com.agrawalsuneet.dotsloader.contracts
 
 import android.content.Context
 import android.util.AttributeSet
@@ -12,7 +12,7 @@ import com.agrawalsuneet.dotsloader.contracts.LoaderContract
  * Created by suneet on 10/10/17.
  */
 
-abstract class AnimatingLinearLayout : LinearLayout, LoaderContract {
+abstract class AbstractLinearLayout : LinearLayout, LoaderContract {
 
     open var animDuration: Int = 500
 
@@ -26,13 +26,10 @@ abstract class AnimatingLinearLayout : LinearLayout, LoaderContract {
 
     abstract fun initView()
 
-    constructor(context: Context?) : super(context) {
-    }
+    constructor(context: Context?) : super(context)
 
-    constructor(context: Context?, attrs: AttributeSet) : super(context, attrs) {
-    }
+    constructor(context: Context?, attrs: AttributeSet) : super(context, attrs)
 
-    constructor(context: Context?, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
-    }
+    constructor(context: Context?, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
 }

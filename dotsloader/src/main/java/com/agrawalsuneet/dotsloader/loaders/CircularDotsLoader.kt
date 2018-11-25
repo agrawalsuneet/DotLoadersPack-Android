@@ -29,7 +29,7 @@ class CircularDotsLoader : CircularLoaderBaseView {
 
                     selectedDotPos++
 
-                    if (selectedDotPos > mNoOfDots) {
+                    if (selectedDotPos > noOfDots) {
                         selectedDotPos = 1
                     }
 
@@ -44,7 +44,7 @@ class CircularDotsLoader : CircularLoaderBaseView {
         val firstShadowPos = if (selectedDotPos == 1) 8 else selectedDotPos - 1
         val secondShadowPos = if (firstShadowPos == 1) 8 else firstShadowPos - 1
 
-        for (i in 0..mNoOfDots - 1) {
+        for (i in 0..noOfDots - 1) {
             //boolean isSelected = (i + 1 == selectedDotPos);
             //canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], radius, isSelected ? selectedCirclePaint : defaultCirclePaint);
 

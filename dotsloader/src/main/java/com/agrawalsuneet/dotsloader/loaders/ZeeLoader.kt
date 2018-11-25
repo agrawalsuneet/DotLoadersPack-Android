@@ -125,15 +125,10 @@ class ZeeLoader : LinearLayout, LoaderContract {
         this.addView(relativeLayout, relParam)
 
 
-        val loaderView = this
-
-
         viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 startLoading()
-
-                val vto = loaderView.viewTreeObserver
-                vto.removeOnGlobalLayoutListener(this)
+                this@ZeeLoader.viewTreeObserver.removeOnGlobalLayoutListener(this)
             }
         })
     }

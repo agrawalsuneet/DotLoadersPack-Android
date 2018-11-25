@@ -11,13 +11,13 @@ import android.view.animation.AnimationUtils
 import android.view.animation.ScaleAnimation
 import android.widget.LinearLayout
 import com.agrawalsuneet.dotsloader.R
-import com.agrawalsuneet.dotsloader.basicviews.AnimatingLinearLayout
+import com.agrawalsuneet.dotsloader.contracts.AbstractLinearLayout
 import com.agrawalsuneet.dotsloader.basicviews.CircleView
 
 /**
  * Created by suneet on 10/10/17.
  */
-class TashieLoader : AnimatingLinearLayout {
+class TashieLoader : AbstractLinearLayout {
 
     var noOfDots: Int = 8
     var animDelay: Int = 100

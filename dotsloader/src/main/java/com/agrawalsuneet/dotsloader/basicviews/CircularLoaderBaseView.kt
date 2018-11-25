@@ -10,7 +10,7 @@ import com.agrawalsuneet.dotsloader.R
  */
 open class CircularLoaderBaseView : DotsLoaderBaseView {
 
-    protected val mNoOfDots = 8
+    protected val noOfDots = 8
     private val SIN_45 = 0.7071f
 
     lateinit var dotsYCorArr: FloatArray
@@ -62,10 +62,10 @@ open class CircularLoaderBaseView : DotsLoaderBaseView {
     override fun initCordinates() {
         val sin45Radius = SIN_45 * this.bigCircleRadius
 
-        dotsXCorArr = FloatArray(mNoOfDots)
-        dotsYCorArr = FloatArray(mNoOfDots)
+        dotsXCorArr = FloatArray(noOfDots)
+        dotsYCorArr = FloatArray(noOfDots)
 
-        for (i in 0..mNoOfDots - 1) {
+        for (i in 0..noOfDots - 1) {
             dotsYCorArr[i] = (this.bigCircleRadius + radius).toFloat()
             dotsXCorArr[i] = dotsYCorArr[i]
         }
@@ -98,7 +98,7 @@ open class CircularLoaderBaseView : DotsLoaderBaseView {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        for (i in 0..mNoOfDots - 1) {
+        for (i in 0..noOfDots - 1) {
             canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], radius.toFloat(), defaultCirclePaint)
         }
     }

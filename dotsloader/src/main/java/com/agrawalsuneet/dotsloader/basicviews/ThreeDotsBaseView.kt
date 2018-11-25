@@ -3,11 +3,12 @@ package com.agrawalsuneet.dotsloader.basicviews
 import android.content.Context
 import android.util.AttributeSet
 import com.agrawalsuneet.dotsloader.R
+import com.agrawalsuneet.dotsloader.contracts.AbstractLinearLayout
 
 /**
  * Created by suneet on 12/14/17.
  */
-abstract class ThreeDotsBaseView : AnimatingLinearLayout {
+abstract class ThreeDotsBaseView : AbstractLinearLayout {
 
     var firstDotColor: Int = resources.getColor(R.color.loader_defalut)
 
