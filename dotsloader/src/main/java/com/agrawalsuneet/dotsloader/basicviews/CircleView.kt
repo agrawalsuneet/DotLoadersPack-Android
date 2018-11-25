@@ -96,9 +96,9 @@ class CircleView : View {
     }
 
 
-    override fun onDraw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        canvas?.drawCircle(xyCordinates, xyCordinates, circleRadius.toFloat(), paint)
+        canvas.drawCircle(xyCordinates, xyCordinates, circleRadius.toFloat(), paint)
     }
 
 
