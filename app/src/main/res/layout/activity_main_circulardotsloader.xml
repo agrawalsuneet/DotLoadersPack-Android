@@ -8,7 +8,7 @@
     android:gravity="center"
     android:orientation="vertical">
 
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -80,7 +80,7 @@
         app:loader_firstShadowColor="#aaA9A9A9"
         app:loader_secondShadowColor="#99A9A9A9"
         app:loader_selectedColor="#A9A9A9"
-        app:loader_showRunningShadow="true" />
+        app:loader_showRunningShadow="true" />-->
 
 
 </LinearLayout>

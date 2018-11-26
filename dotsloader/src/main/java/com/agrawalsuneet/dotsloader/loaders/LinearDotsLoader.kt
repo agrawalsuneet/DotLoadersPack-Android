@@ -5,7 +5,7 @@ import android.graphics.Canvas
 import android.os.Handler
 import android.util.AttributeSet
 import com.agrawalsuneet.dotsloader.R
-import com.agrawalsuneet.dotsloader.basicviews.DotsLoaderBaseView
+import com.agrawalsuneet.dotsloader.contracts.DotsLoaderBaseView
 
 /**
  * Created by ballu on 04/07/17.
@@ -38,17 +38,32 @@ class LinearDotsLoader : DotsLoaderBaseView {
     }
 
     override fun initAttributes(attrs: AttributeSet) {
-        super.initAttributes(attrs)
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.LinearDotsLoader, 0, 0)
-        this.noOfDots = typedArray.getInt(R.styleable.LinearDotsLoader_loader_noOfDots, 3)
 
-        this.selRadius = typedArray.getDimensionPixelSize(R.styleable.LinearDotsLoader_loader_selectedRadius, radius + 10)
 
-        this.dotsDistance = typedArray.getDimensionPixelSize(R.styleable.LinearDotsLoader_loader_dotsDist, 15)
+        this.defaultColor = typedArray.getColor(R.styleable.LinearDotsLoader_linear_defaultColor,
+                resources.getColor(R.color.loader_defalut))
+        this.selectedColor = typedArray.getColor(R.styleable.LinearDotsLoader_linear_selectedColor,
+                resources.getColor(R.color.loader_selected))
 
-        this.isSingleDir = typedArray.getBoolean(R.styleable.LinearDotsLoader_loader_isSingleDir, false)
-        this.expandOnSelect = typedArray.getBoolean(R.styleable.LinearDotsLoader_loader_expandOnSelect, false)
+        this.radius = typedArray.getDimensionPixelSize(R.styleable.LinearDotsLoader_linear_circleRadius, 30)
+
+        this.animDur = typedArray.getInt(R.styleable.LinearDotsLoader_linear_animDur, 500)
+
+        this.showRunningShadow = typedArray.getBoolean(R.styleable.LinearDotsLoader_linear_showRunningShadow, true)
+
+        this.firstShadowColor = typedArray.getColor(R.styleable.LinearDotsLoader_linear_firstShadowColor, 0)
+        this.secondShadowColor = typedArray.getColor(R.styleable.LinearDotsLoader_linear_secondShadowColor, 0)
+
+        this.noOfDots = typedArray.getInt(R.styleable.LinearDotsLoader_linear_noOfDots, 3)
+
+        this.selRadius = typedArray.getDimensionPixelSize(R.styleable.LinearDotsLoader_linear_selectedRadius, radius + 10)
+
+        this.dotsDistance = typedArray.getDimensionPixelSize(R.styleable.LinearDotsLoader_linear_dotsDist, 15)
+
+        this.isSingleDir = typedArray.getBoolean(R.styleable.LinearDotsLoader_linear_isSingleDir, false)
+        this.expandOnSelect = typedArray.getBoolean(R.styleable.LinearDotsLoader_linear_expandOnSelect, false)
 
         typedArray.recycle()
     }

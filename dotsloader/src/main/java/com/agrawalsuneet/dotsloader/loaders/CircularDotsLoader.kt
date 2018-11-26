@@ -4,19 +4,39 @@ import android.content.Context
 import android.graphics.Canvas
 import android.os.Handler
 import android.util.AttributeSet
-import com.agrawalsuneet.dotsloader.basicviews.CircularLoaderBaseView
+import com.agrawalsuneet.dotsloader.R
+import com.agrawalsuneet.dotsloader.contracts.CircularAbstractView
 
 /**
  * Created by ballu on 04/07/17.
  */
 
-class CircularDotsLoader : CircularLoaderBaseView {
+class CircularDotsLoader : CircularAbstractView {
 
-    constructor(context: Context) : super(context)
+    constructor(context: Context) : super(context){
+        initCordinates()
+        initPaints()
+    }
 
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs){
+        initCordinates()
+        initPaints()
+    }
 
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr){
+        initCordinates()
+        initPaints()
+    }
+
+    override fun initAttributes(attrs: AttributeSet) {
+        super.initAttributes(attrs)
+
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CircularDotsLoader, 0, 0)
+
+        this.bigCircleRadius = typedArray.getDimensionPixelSize(R.styleable.CircularDotsLoader_loader_bigCircleRadius, 60)
+
+        typedArray.recycle()
+    }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
