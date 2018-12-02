@@ -378,17 +378,17 @@ AllianceLoader allianceLoader = new AllianceLoader(
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:loader_animDur="1000"
-        app:linear_noOfDots="8"
-        app:linear_circleRadius="6dp"
-        app:linear_defaultColor="@color/pink_default"
-        app:linear_selectedColor="@color/pink_selected"
-        app:linear_dotsDist="3dp"
-        app:linear_expandOnSelect="false"
-        app:linear_isSingleDir="false"
-        app:linear_selectedRadius="10dp"
-        app:linear_showRunningShadow="true"
-        app:linear_firstShadowColor="@color/blue_selected"
-        app:linear_secondShadowColor="@color/blue_delfault"/>
+        app:loader_noOfDots="8"
+        app:loader_circleRadius="6dp"
+        app:loader_defaultColor="@color/pink_default"
+        app:loader_selectedColor="@color/pink_selected"
+        app:loader_dotsDist="3dp"
+        app:loader_expandOnSelect="false"
+        app:loader_isSingleDir="false"
+        app:loader_selectedRadius="10dp"
+        app:loader_showRunningShadow="true"
+        app:loader_firstShadowColor="@color/blue_selected"
+        app:loader_secondShadowColor="@color/blue_delfault"/>
 ```
 
 ##### Through Code

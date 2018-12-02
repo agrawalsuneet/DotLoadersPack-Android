@@ -1,11 +1,13 @@
 package com.agrawalsuneet.dotsloader.loaders
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.Canvas
-import android.os.Handler
 import android.util.AttributeSet
 import com.agrawalsuneet.dotsloader.R
 import com.agrawalsuneet.dotsloader.contracts.CircularAbstractView
+import java.util.*
+import android.view.View
 
 /**
  * Created by ballu on 04/07/17.
@@ -13,17 +15,19 @@ import com.agrawalsuneet.dotsloader.contracts.CircularAbstractView
 
 class CircularDotsLoader : CircularAbstractView {
 
-    constructor(context: Context) : super(context){
+    private var timer: Timer? = null
+
+    constructor(context: Context) : super(context) {
         initCordinates()
         initPaints()
     }
 
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs){
+    constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         initCordinates()
         initPaints()
     }
 
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr){
+    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         initCordinates()
         initPaints()
     }
@@ -38,26 +42,36 @@ class CircularDotsLoader : CircularAbstractView {
         typedArray.recycle()
     }
 
+
+    override fun onVisibilityChanged(changedView: View, visibility: Int) {
+        super.onVisibilityChanged(changedView, visibility)
+
+        if (visibility != VISIBLE) {
+            timer?.cancel()
+        } else if (shouldAnimate) {
+            scheduleTimer()
+        }
+    }
+
+    private fun scheduleTimer() {
+        timer = Timer()
+        timer?.scheduleAtFixedRate(object : TimerTask() {
+            override fun run() {
+                selectedDotPos++
+
+                if (selectedDotPos > noOfDots) {
+                    selectedDotPos = 1
+                }
+
+                (context as Activity).runOnUiThread { invalidate() }
+            }
+        }, 0, animDur.toLong())
+    }
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
         drawCircle(canvas)
-
-        if (shouldAnimate) {
-            Handler().postDelayed({
-                if (System.currentTimeMillis() - logTime >= animDur) {
-
-                    selectedDotPos++
-
-                    if (selectedDotPos > noOfDots) {
-                        selectedDotPos = 1
-                    }
-
-                    invalidate()
-                    logTime = System.currentTimeMillis()
-                }
-            }, animDur.toLong())
-        }
     }
 
     private fun drawCircle(canvas: Canvas) {
