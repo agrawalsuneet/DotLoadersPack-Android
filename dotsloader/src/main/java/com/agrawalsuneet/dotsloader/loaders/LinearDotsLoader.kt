@@ -1,17 +1,21 @@
 package com.agrawalsuneet.dotsloader.loaders
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.Canvas
-import android.os.Handler
 import android.util.AttributeSet
+import android.view.View
 import com.agrawalsuneet.dotsloader.R
 import com.agrawalsuneet.dotsloader.contracts.DotsLoaderBaseView
+import java.util.*
 
 /**
  * Created by ballu on 04/07/17.
  */
 
 class LinearDotsLoader : DotsLoaderBaseView {
+
+    private var timer: Timer? = null
 
     var isSingleDir = true
 
@@ -82,39 +86,48 @@ class LinearDotsLoader : DotsLoaderBaseView {
         setMeasuredDimension(calWidth, calHeight)
     }
 
+    override fun onVisibilityChanged(changedView: View, visibility: Int) {
+        super.onVisibilityChanged(changedView, visibility)
+
+        if (visibility != VISIBLE) {
+            timer?.cancel()
+        } else if (shouldAnimate) {
+            scheduleTimer()
+        }
+    }
+
+    private fun scheduleTimer() {
+        timer = Timer()
+        timer?.scheduleAtFixedRate(object : TimerTask() {
+            override fun run() {
+                if (isSingleDir) {
+                    selectedDotPos++
+                    if (selectedDotPos > noOfDots) {
+                        selectedDotPos = 1
+                    }
+                } else {
+                    if (isFwdDir) {
+                        selectedDotPos++
+                        if (selectedDotPos == noOfDots) {
+                            isFwdDir = !isFwdDir
+                        }
+                    } else {
+                        selectedDotPos--
+                        if (selectedDotPos == 1) {
+                            isFwdDir = !isFwdDir
+                        }
+                    }
+                }
+
+                (context as Activity).runOnUiThread { invalidate() }
+            }
+        }, 0, animDur.toLong())
+    }
+
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         drawCircle(canvas)
-
-        if (shouldAnimate) {
-            Handler().postDelayed({
-                if (System.currentTimeMillis() - logTime >= animDur) {
-
-                    if (isSingleDir) {
-                        selectedDotPos++
-                        if (selectedDotPos > noOfDots) {
-                            selectedDotPos = 1
-                        }
-                    } else {
-                        if (isFwdDir) {
-                            selectedDotPos++
-                            if (selectedDotPos == noOfDots) {
-                                isFwdDir = !isFwdDir
-                            }
-                        } else {
-                            selectedDotPos--
-                            if (selectedDotPos == 1) {
-                                isFwdDir = !isFwdDir
-                            }
-                        }
-                    }
-
-                    invalidate()
-                    logTime = System.currentTimeMillis()
-                }
-            }, animDur.toLong())
-        }
     }
 
     private fun drawCircle(canvas: Canvas) {
