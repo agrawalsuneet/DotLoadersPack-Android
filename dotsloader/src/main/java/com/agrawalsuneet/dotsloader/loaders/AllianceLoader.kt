@@ -235,11 +235,11 @@ class AllianceLoader : LinearLayout, LoaderContract {
             nextStep = 0
         }
 
-        val fromXPos = posArrayList.get(circleCount - 1).get(step).first
-        val fromYPos = posArrayList.get(circleCount - 1).get(step).second
+        val fromXPos = posArrayList[circleCount - 1][step].first
+        val fromYPos = posArrayList[circleCount - 1][step].second
 
-        val toXPos = posArrayList.get(circleCount - 1).get(nextStep).first
-        val toYPos = posArrayList.get(circleCount - 1).get(nextStep).second
+        val toXPos = posArrayList[circleCount - 1][nextStep].first
+        val toYPos = posArrayList[circleCount - 1][nextStep].second
 
         val transAnim = TranslateAnimation(fromXPos, toXPos, fromYPos, toYPos)
         transAnim.duration = animDuration.toLong()

@@ -4,10 +4,10 @@ import android.app.Activity
 import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
+import android.view.View
 import com.agrawalsuneet.dotsloader.R
 import com.agrawalsuneet.dotsloader.contracts.CircularAbstractView
 import java.util.*
-import android.view.View
 
 /**
  * Created by ballu on 04/07/17.
@@ -79,8 +79,6 @@ class CircularDotsLoader : CircularAbstractView {
         val secondShadowPos = if (firstShadowPos == 1) 8 else firstShadowPos - 1
 
         for (i in 0..noOfDots - 1) {
-            //boolean isSelected = (i + 1 == selectedDotPos);
-            //canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], radius, isSelected ? selectedCirclePaint : defaultCirclePaint);
 
             if (i + 1 == selectedDotPos) {
                 canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], radius.toFloat(), selectedCirclePaint)

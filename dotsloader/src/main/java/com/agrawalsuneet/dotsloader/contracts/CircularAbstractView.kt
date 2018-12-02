@@ -3,7 +3,6 @@ package com.agrawalsuneet.dotsloader.contracts
 import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
-import com.agrawalsuneet.dotsloader.R
 
 abstract class CircularAbstractView : DotsLoaderBaseView {
 
@@ -21,7 +20,7 @@ abstract class CircularAbstractView : DotsLoaderBaseView {
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
     override fun initCordinates() {
-        val sin45Radius = SIN_45 * this.bigCircleRadius
+        val sin45Radius = SIN_45 * bigCircleRadius
 
         dotsXCorArr = FloatArray(noOfDots)
         dotsYCorArr = FloatArray(noOfDots)
@@ -32,14 +31,14 @@ abstract class CircularAbstractView : DotsLoaderBaseView {
         }
 
         dotsXCorArr[1] = dotsXCorArr[1] + sin45Radius
-        dotsXCorArr[2] = dotsXCorArr[2] + this.bigCircleRadius
+        dotsXCorArr[2] = dotsXCorArr[2] + bigCircleRadius
         dotsXCorArr[3] = dotsXCorArr[3] + sin45Radius
 
         dotsXCorArr[5] = dotsXCorArr[5] - sin45Radius
-        dotsXCorArr[6] = dotsXCorArr[6] - this.bigCircleRadius
+        dotsXCorArr[6] = dotsXCorArr[6] - bigCircleRadius
         dotsXCorArr[7] = dotsXCorArr[7] - sin45Radius
 
-        dotsYCorArr[0] = dotsYCorArr[0] - this.bigCircleRadius
+        dotsYCorArr[0] = dotsYCorArr[0] - bigCircleRadius
         dotsYCorArr[1] = dotsYCorArr[1] - sin45Radius
         dotsYCorArr[3] = dotsYCorArr[3] + sin45Radius
 
@@ -51,10 +50,8 @@ abstract class CircularAbstractView : DotsLoaderBaseView {
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        val calWidth = 2 * this.bigCircleRadius + 2 * radius
-        val calHeight = calWidth
-
-        setMeasuredDimension(calWidth, calHeight)
+        val calWidthHeight = 2 * bigCircleRadius + 2 * radius
+        setMeasuredDimension(calWidthHeight, calWidthHeight)
     }
 
     override fun onDraw(canvas: Canvas) {

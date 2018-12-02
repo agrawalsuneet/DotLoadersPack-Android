@@ -65,7 +65,7 @@ class LinearDotsLoader : DotsLoaderBaseView {
         dotsXCorArr = FloatArray(this.noOfDots)
 
         //init X cordinates for all dots
-        for (i in 0..this.noOfDots - 1) {
+        for (i in 0 until noOfDots) {
             dotsXCorArr[i] = (i * dotsDistance + (i * 2 + 1) * radius).toFloat()
         }
     }
@@ -131,7 +131,7 @@ class LinearDotsLoader : DotsLoaderBaseView {
     }
 
     private fun drawCircle(canvas: Canvas) {
-        for (i in 0..this.noOfDots - 1) {
+        for (i in 0 until noOfDots) {
 
             var xCor = dotsXCorArr[i]
             if (expandOnSelect) {
@@ -183,28 +183,24 @@ class LinearDotsLoader : DotsLoaderBaseView {
     }
 
     var dotsDistance: Int = 15
-        get() = field
         set(value) {
             field = value
             initCordinates()
         }
 
     var noOfDots: Int = 3
-        get() = field
         set(noOfDots) {
             field = noOfDots
             initCordinates()
         }
 
     var selRadius: Int = 38
-        get() = field
         set(selRadius) {
             field = selRadius
             initCordinates()
         }
 
     var expandOnSelect: Boolean = false
-        get() = field
         set(expandOnSelect) {
             field = expandOnSelect
             initCordinates()
