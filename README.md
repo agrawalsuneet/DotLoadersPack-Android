@@ -3,7 +3,11 @@
 
 > A replacement of default android material progressbar with dots loader
 
-latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/androidlibs/dotsloader/images/download.svg?version=1.0) ](https://bintray.com/agrawalsuneet/androidlibs/dotsloader/1.0/link)
+latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/androidlibs/dotsloader/images/download.svg) ](https://bintray.com/agrawalsuneet/androidlibs/dotsloader/_latestVersion)
+
+[![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-DotLoadersPack-green.svg?style=flat )]( https://android-arsenal.com/details/1/7244 )
+
+
 
 ### LazyLoader
 ![lazyloader](https://user-images.githubusercontent.com/12999622/36225792-b7044432-11c3-11e8-8e22-5bbdcafa2312.gif)
