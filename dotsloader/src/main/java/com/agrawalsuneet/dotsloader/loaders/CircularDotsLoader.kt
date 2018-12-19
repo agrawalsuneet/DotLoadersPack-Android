@@ -20,16 +20,21 @@ class CircularDotsLoader : CircularAbstractView {
     constructor(context: Context) : super(context) {
         initCordinates()
         initPaints()
+        initShadowPaints()
     }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
+        initAttributes(attrs)
         initCordinates()
         initPaints()
+        initShadowPaints()
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
+        initAttributes(attrs)
         initCordinates()
         initPaints()
+        initShadowPaints()
     }
 
     override fun initAttributes(attrs: AttributeSet) {
@@ -70,7 +75,6 @@ class CircularDotsLoader : CircularAbstractView {
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-
         drawCircle(canvas)
     }
 
@@ -78,7 +82,7 @@ class CircularDotsLoader : CircularAbstractView {
         val firstShadowPos = if (selectedDotPos == 1) 8 else selectedDotPos - 1
         val secondShadowPos = if (firstShadowPos == 1) 8 else firstShadowPos - 1
 
-        for (i in 0..noOfDots - 1) {
+        for (i in 0 until noOfDots) {
 
             if (i + 1 == selectedDotPos) {
                 canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], radius.toFloat(), selectedCirclePaint)

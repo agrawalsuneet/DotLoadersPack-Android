@@ -14,11 +14,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_lineardotsloader)
+        setContentView(R.layout.main_circulardotsloader)
 
-        supportActionBar!!.title = "AllianceLoader"
+        supportActionBar?.title = "AllianceLoader"
 
-        containerLL = findViewById(R.id.container) as LinearLayout
+        //containerLL = findViewById(R.id.container) as LinearLayout
 
         //initLinearDotsLoader()
         //initCircularDotsLoader()
