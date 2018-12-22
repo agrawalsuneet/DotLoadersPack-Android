@@ -2,9 +2,15 @@ package com.agrawalsuneet.dotsloader.loaders
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Range
+import android.view.ViewTreeObserver
+import android.view.animation.AlphaAnimation
+import android.view.animation.Animation
 import android.widget.LinearLayout
 import com.agrawalsuneet.dotsloader.basicviews.CircleView
 import com.agrawalsuneet.dotsloader.contracts.LoaderContract
+import com.agrawalsuneet.dotsloader.utils.random
+import java.util.ArrayList
 
 class LightsLoader : LinearLayout, LoaderContract {
 
@@ -18,6 +24,8 @@ class LightsLoader : LinearLayout, LoaderContract {
     var circleDistance: Int = 10
 
     private var calWidthHeight: Int = 0
+
+    private lateinit var circlesList: ArrayList<CircleView>
 
 
     constructor(context: Context) : super(context) {
@@ -55,6 +63,8 @@ class LightsLoader : LinearLayout, LoaderContract {
 
         orientation = LinearLayout.VERTICAL
 
+        circlesList = ArrayList()
+
         if (calWidthHeight == 0) {
             calWidthHeight = (2 * circleRadius * noOfCircles) + ((noOfCircles - 1) * circleDistance)
         }
@@ -82,9 +92,40 @@ class LightsLoader : LinearLayout, LoaderContract {
                 }
 
                 linearLayout.addView(circleView, innerParam)
+                circlesList.add(circleView)
             }
 
             addView(linearLayout)
         }
+
+        viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                startLoading()
+                this@LightsLoader.viewTreeObserver.removeOnGlobalLayoutListener(this)
+            }
+        })
+    }
+
+    private fun startLoading() {
+        for (count in 0 until noOfCircles) {
+            for (item in circlesList) {
+                item.startAnimation(getAlphaAnimation())
+            }
+        }
+    }
+
+    private fun getAlphaAnimation(): Animation {
+        val fromAplha = (0.1f..0.9f).random()
+        val toAplha = (0.1f..0.9f).random()
+
+        val alphaAnim = AlphaAnimation(fromAplha, toAplha)
+                .apply {
+                    duration = (100..1000).random().toLong()
+                    repeatMode = Animation.REVERSE
+                    repeatCount = Animation.INFINITE
+                }
+
+        return alphaAnim
     }
 }
+
