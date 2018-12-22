@@ -14,9 +14,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_circulardotsloader)
+        setContentView(R.layout.main_lights)
 
-        supportActionBar?.title = "AllianceLoader"
+        supportActionBar?.title = "Lightsloader"
 
         //containerLL = findViewById(R.id.container) as LinearLayout
 
