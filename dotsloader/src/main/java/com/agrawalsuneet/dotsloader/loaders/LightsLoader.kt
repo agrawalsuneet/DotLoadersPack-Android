@@ -15,6 +15,7 @@ class LightsLoader : LinearLayout, LoaderContract {
 
     var circleRadius: Int = 30
     var circleColor: Int = resources.getColor(android.R.color.holo_purple)
+    var circleDistance: Int = 10
 
     private var calWidthHeight: Int = 0
 
@@ -41,7 +42,7 @@ class LightsLoader : LinearLayout, LoaderContract {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
         if (calWidthHeight == 0) {
-            calWidthHeight = (2 * circleRadius * noOfCircles)
+            calWidthHeight = (2 * circleRadius * noOfCircles) + ((noOfCircles - 1) * circleDistance)
         }
 
         setMeasuredDimension(calWidthHeight, calWidthHeight)
@@ -55,7 +56,7 @@ class LightsLoader : LinearLayout, LoaderContract {
         orientation = LinearLayout.VERTICAL
 
         if (calWidthHeight == 0) {
-            calWidthHeight = (2 * circleRadius * noOfCircles)
+            calWidthHeight = (2 * circleRadius * noOfCircles) + ((noOfCircles - 1) * circleDistance)
         }
 
         for (countI in 0 until noOfCircles) {
@@ -64,11 +65,23 @@ class LightsLoader : LinearLayout, LoaderContract {
             val params = LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
 
+            if (countI != 0) {
+                params.topMargin = circleDistance
+            }
+
             linearLayout.layoutParams = params
 
             for (countJ in 0 until noOfCircles) {
                 val circleView = CircleView(context, circleRadius, circleColor)
-                linearLayout.addView(circleView)
+
+                val innerParam = LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+
+                if (countJ != 0) {
+                    innerParam.leftMargin = circleDistance
+                }
+
+                linearLayout.addView(circleView, innerParam)
             }
 
             addView(linearLayout)
