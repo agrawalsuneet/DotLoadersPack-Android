@@ -9,57 +9,61 @@
     android:orientation="vertical">
 
 
-    <!--<LinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:gravity="center"
         android:orientation="horizontal">
 
-        <com.agrawalsuneet.dotsloader.loaders.AllianceLoader
+        <com.agrawalsuneet.dotsloader.loaders.LightsLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            app:alliance_animDuration="500"
-            app:alliance_distanceMultiplier="4"
-            app:alliance_dotsRadius="8dp"
-            app:alliance_firstDotsColor="@color/red"
-            app:alliance_secondDotsColor="@color/red"
-            app:alliance_thirdDotsColor="@color/red" />
+            app:lights_circleColor="@color/red"
+            app:lights_circleDistance="4dp"
+            app:lights_circleRadius="8dp"
+            app:lights_noOfCircles="3" />
 
-
-        <com.agrawalsuneet.dotsloader.loaders.AllianceLoader
+        <com.agrawalsuneet.dotsloader.loaders.LightsLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            app:alliance_animDuration="500"
-            app:alliance_distanceMultiplier="4"
-            app:alliance_dotsRadius="8dp"
-            app:alliance_firstDotsColor="@color/amber"
-            app:alliance_secondDotsColor="@color/amber"
-            app:alliance_thirdDotsColor="@color/amber" />
+            app:lights_circleColor="@color/amber"
+            app:lights_circleDistance="4dp"
+            app:lights_circleRadius="8dp"
+            app:lights_noOfCircles="3" />
 
-
-        <com.agrawalsuneet.dotsloader.loaders.AllianceLoader
+        <com.agrawalsuneet.dotsloader.loaders.LightsLoader
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            app:alliance_animDuration="500"
-            app:alliance_distanceMultiplier="4"
-            app:alliance_dotsRadius="8dp"
-            app:alliance_firstDotsColor="@color/green"
-            app:alliance_secondDotsColor="@color/green"
-            app:alliance_thirdDotsColor="@color/green" />
+            app:lights_circleColor="@color/green"
+            app:lights_circleDistance="4dp"
+            app:lights_circleRadius="8dp"
+            app:lights_noOfCircles="3" />
 
-    </LinearLayout>-->
+    </LinearLayout>
 
 
     <com.agrawalsuneet.dotsloader.loaders.LightsLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:lighst_circleColor="@color/red"
+        android:layout_margin="16dp"
+        app:lights_circleColor="@color/blue_selected"
+        app:lights_circleDistance="4dp"
+        app:lights_circleRadius="12dp"
+        app:lights_noOfCircles="5" />
+
+
+    <com.agrawalsuneet.dotsloader.loaders.LightsLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:lights_circleColor="@color/purple_selected"
+        app:lights_circleDistance="6dp"
         app:lights_circleRadius="10dp"
-        />
+        app:lights_noOfCircles="4" />
 
 
 </LinearLayout>
