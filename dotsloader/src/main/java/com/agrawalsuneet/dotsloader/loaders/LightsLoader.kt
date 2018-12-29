@@ -6,7 +6,9 @@ import android.util.Range
 import android.view.ViewTreeObserver
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.LinearLayout
+import com.agrawalsuneet.dotsloader.R
 import com.agrawalsuneet.dotsloader.basicviews.CircleView
 import com.agrawalsuneet.dotsloader.contracts.LoaderContract
 import com.agrawalsuneet.dotsloader.utils.random
@@ -20,8 +22,9 @@ class LightsLoader : LinearLayout, LoaderContract {
         }
 
     var circleRadius: Int = 30
-    var circleColor: Int = resources.getColor(android.R.color.holo_purple)
     var circleDistance: Int = 10
+
+    var circleColor: Int = resources.getColor(android.R.color.holo_purple)
 
     private var calWidthHeight: Int = 0
 
@@ -43,7 +46,17 @@ class LightsLoader : LinearLayout, LoaderContract {
     }
 
     override fun initAttributes(attrs: AttributeSet) {
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.LightsLoader, 0, 0)
 
+        noOfCircles = typedArray.getInteger(R.styleable.LightsLoader_lights_noOfCircles, 3)
+
+        circleRadius = typedArray.getDimensionPixelSize(R.styleable.LightsLoader_lights_circleRadius, 30)
+        circleDistance = typedArray.getDimensionPixelSize(R.styleable.LightsLoader_lights_circleDistance, 10)
+
+        circleColor = typedArray.getColor(R.styleable.LightsLoader_lights_circleColor,
+                resources.getColor(android.R.color.holo_purple))
+
+        typedArray.recycle()
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
@@ -115,8 +128,8 @@ class LightsLoader : LinearLayout, LoaderContract {
     }
 
     private fun getAlphaAnimation(): Animation {
-        val fromAplha = (0.1f..0.9f).random()
-        val toAplha = (0.1f..0.9f).random()
+        val fromAplha = (0.5f..1.0f).random()
+        val toAplha = (0.1f..0.5f).random()
 
         val alphaAnim = AlphaAnimation(fromAplha, toAplha)
                 .apply {

@@ -100,4 +100,11 @@
         <attr name="alliance_animDuration" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="LightsLoader">
+        <attr name="lights_noOfCircles" format="integer" />
+        <attr name="lights_circleRadius" format="dimension" />
+        <attr name="lights_circleDistance" format="dimension" />
+        <attr name="lights_circleColor" format="color" />
+    </declare-styleable>
+
 </resources>

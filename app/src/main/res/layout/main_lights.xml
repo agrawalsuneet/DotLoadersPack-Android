@@ -56,7 +56,10 @@
 
     <com.agrawalsuneet.dotsloader.loaders.LightsLoader
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:lighst_circleColor="@color/red"
+        app:lights_circleRadius="10dp"
+        />
 
 
 </LinearLayout>
