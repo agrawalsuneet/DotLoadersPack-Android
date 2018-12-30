@@ -8,6 +8,7 @@ import android.view.animation.LinearInterpolator;
 import android.widget.LinearLayout;
 
 import com.agrawalsuneet.dotsloader.loaders.AllianceLoader;
+import com.agrawalsuneet.dotsloader.loaders.LightsLoader;
 import com.agrawalsuneet.dotsloader.loaders.RotatingCircularDotsLoader;
 import com.agrawalsuneet.dotsloader.loaders.SlidingLoader;
 import com.agrawalsuneet.dotsloader.loaders.TashieLoader;
@@ -104,6 +105,14 @@ public class MainActivityJava extends AppCompatActivity {
         allianceLoader.setAnimDuration(500);
 
         containerLL.addView(allianceLoader);
+
+        LightsLoader lightsLoader = new LightsLoader(
+                this, 5,
+                30, 10,
+                ContextCompat.getColor(this, R.color.red));
+
+
+        containerLL.addView(lightsLoader);
     }
 
 }

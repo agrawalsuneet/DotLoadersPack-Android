@@ -14,9 +14,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_lineardotsloader)
+        setContentView(R.layout.main_lights)
 
-        supportActionBar!!.title = "AllianceLoader"
+        supportActionBar?.title = "Lightsloader"
 
         containerLL = findViewById(R.id.container) as LinearLayout
 
@@ -32,6 +32,17 @@ class MainActivity : AppCompatActivity() {
         //initZeeLoader()
 
         //initAllianceLoader()
+        //initLightsLoader()
+    }
+
+    private fun initLightsLoader() {
+        val lightsLoader = LightsLoader(
+                this, 5,
+                30, 10,
+                ContextCompat.getColor(this, R.color.red))
+
+
+        containerLL.addView(lightsLoader)
     }
 
     private fun initAllianceLoader() {
