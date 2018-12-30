@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.title = "Lightsloader"
 
-        //containerLL = findViewById(R.id.container) as LinearLayout
+        containerLL = findViewById(R.id.container) as LinearLayout
 
         //initLinearDotsLoader()
         //initCircularDotsLoader()
@@ -32,6 +32,17 @@ class MainActivity : AppCompatActivity() {
         //initZeeLoader()
 
         //initAllianceLoader()
+        //initLightsLoader()
+    }
+
+    private fun initLightsLoader() {
+        val lightsLoader = LightsLoader(
+                this, 5,
+                30, 10,
+                ContextCompat.getColor(this, R.color.red))
+
+
+        containerLL.addView(lightsLoader)
     }
 
     private fun initAllianceLoader() {

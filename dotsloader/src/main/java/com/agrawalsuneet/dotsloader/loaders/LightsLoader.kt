@@ -45,6 +45,15 @@ class LightsLoader : LinearLayout, LoaderContract {
         initView()
     }
 
+    constructor(context: Context, noOfCircles: Int, circleRadius: Int, circleDistance: Int, circleColor: Int) : super(context) {
+        this.noOfCircles = noOfCircles
+        this.circleRadius = circleRadius
+        this.circleDistance = circleDistance
+        this.circleColor = circleColor
+
+        initView()
+    }
+
     override fun initAttributes(attrs: AttributeSet) {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.LightsLoader, 0, 0)
 
