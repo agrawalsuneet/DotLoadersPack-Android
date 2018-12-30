@@ -14,9 +14,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_alliance)
+        setContentView(R.layout.main_lights)
 
-        supportActionBar!!.title = "AllianceLoader"
+        supportActionBar?.title = "LightsLoader"
 
         containerLL = findViewById(R.id.container) as LinearLayout
 
@@ -32,6 +32,17 @@ class MainActivity : AppCompatActivity() {
         //initZeeLoader()
 
         //initAllianceLoader()
+        //initLightsLoader()
+    }
+
+    private fun initLightsLoader() {
+        val lightsLoader = LightsLoader(
+                this, 5,
+                30, 10,
+                ContextCompat.getColor(this, R.color.red))
+
+
+        containerLL.addView(lightsLoader)
     }
 
     private fun initAllianceLoader() {
@@ -104,14 +115,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initTashieLoader() {
-        var tashie = TashieLoader(this)
+        var tashie = TashieLoader(
+                this, 5,
+                30, 10,
+                ContextCompat.getColor(this, R.color.green))
                 .apply {
-                    noOfDots = 5
-                    dotsDist = 10
-                    dotsRadius = 30
                     animDuration = 500
                     animDelay = 100
-                    dotsColor = resources.getColor(R.color.green)
                     interpolator = LinearInterpolator()
                 }
         containerLL.addView(tashie)

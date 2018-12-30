@@ -19,11 +19,15 @@ class CircleView : View {
     var circleColor: Int = 0
     var drawOnlyStroke: Boolean = false
 
+    private var xyCordinates: Float = 0.0f
+
     private val paint: Paint = Paint()
 
     constructor(context: Context, circleRadius: Int, circleColor: Int) : super(context) {
         this.circleRadius = circleRadius
         this.circleColor = circleColor
+
+        initValues()
     }
 
     constructor(context: Context, circleRadius: Int, circleColor: Int, drawOnlyStroke: Boolean, strokeWidth: Int) : super(context) {
@@ -32,16 +36,22 @@ class CircleView : View {
 
         this.drawOnlyStroke = drawOnlyStroke
         this.strokeWidth = strokeWidth
+
+        initValues()
     }
 
-    constructor(context: Context) : super(context)
+    constructor(context: Context) : super(context) {
+        initValues()
+    }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         initAttributes(attrs)
+        initValues()
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         initAttributes(attrs)
+        initValues()
     }
 
 
@@ -63,16 +73,13 @@ class CircleView : View {
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-        
+
         val widthHeight = (2 * (circleRadius)) + strokeWidth
 
         setMeasuredDimension(widthHeight, widthHeight)
     }
 
-
-    override fun onDraw(canvas: Canvas?) {
-        super.onDraw(canvas)
-
+    private fun initValues() {
         paint.isAntiAlias = true
 
         if (drawOnlyStroke) {
@@ -85,9 +92,13 @@ class CircleView : View {
 
         //adding half of strokeWidth because
         //the stroke will be half inside the drawing circle and half outside
-        val xyCordinates = (circleRadius + (strokeWidth / 2)).toFloat()
+        xyCordinates = (circleRadius + (strokeWidth / 2)).toFloat()
+    }
 
-        canvas!!.drawCircle(xyCordinates, xyCordinates, circleRadius.toFloat(), paint)
+
+    override fun onDraw(canvas: Canvas) {
+        super.onDraw(canvas)
+        canvas.drawCircle(xyCordinates, xyCordinates, circleRadius.toFloat(), paint)
     }
 
 

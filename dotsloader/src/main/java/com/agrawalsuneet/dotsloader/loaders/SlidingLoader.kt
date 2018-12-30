@@ -38,7 +38,9 @@ class SlidingLoader : ThreeDotsBaseView {
 
     constructor(context: Context, dotsRadius: Int, dotsDist: Int,
                 firstDotColor: Int, secondDotColor: Int, thirdDotColor: Int)
-            : super(context, dotsRadius, dotsDist, firstDotColor, secondDotColor, thirdDotColor)
+            : super(context, dotsRadius, dotsDist, firstDotColor, secondDotColor, thirdDotColor) {
+        initView()
+    }
 
     constructor(context: Context?) : super(context) {
         initView()

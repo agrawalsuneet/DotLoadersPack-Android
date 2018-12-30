@@ -11,13 +11,13 @@ import android.view.animation.AnimationUtils
 import android.view.animation.ScaleAnimation
 import android.widget.LinearLayout
 import com.agrawalsuneet.dotsloader.R
-import com.agrawalsuneet.dotsloader.basicviews.AnimatingLinearLayout
 import com.agrawalsuneet.dotsloader.basicviews.CircleView
+import com.agrawalsuneet.dotsloader.contracts.AbstractLinearLayout
 
 /**
  * Created by suneet on 10/10/17.
  */
-class TashieLoader : AnimatingLinearLayout {
+class TashieLoader : AbstractLinearLayout {
 
     var noOfDots: Int = 8
     var animDelay: Int = 100
@@ -39,6 +39,16 @@ class TashieLoader : AnimatingLinearLayout {
         initAttributes(attrs)
         initView()
     }
+
+    constructor(context: Context?, noOfDots: Int, dotsRadius: Int, dotsDist: Int, dotsColor: Int) : super(context) {
+        this.noOfDots = noOfDots
+        this.dotsRadius = dotsRadius
+        this.dotsDist = dotsDist
+        this.dotsColor = dotsColor
+
+        initView()
+    }
+
 
     override fun initAttributes(attrs: AttributeSet) {
 
@@ -79,7 +89,7 @@ class TashieLoader : AnimatingLinearLayout {
         for (iCount in 0 until noOfDots) {
             val circle = CircleView(context, dotsRadius, dotsColor)
 
-            var params = LinearLayout.LayoutParams(2 * dotsRadius, 2 * dotsRadius)
+            val params = LinearLayout.LayoutParams(2 * dotsRadius, 2 * dotsRadius)
 
             if (iCount != noOfDots - 1) {
                 params.rightMargin = dotsDist
@@ -89,14 +99,10 @@ class TashieLoader : AnimatingLinearLayout {
             dotsArray[iCount] = circle
         }
 
-        val loaderView = this
-
         viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
+                this@TashieLoader.viewTreeObserver.removeOnGlobalLayoutListener(this)
                 startLoading()
-
-                val vto = loaderView.viewTreeObserver
-                vto.removeOnGlobalLayoutListener(this)
             }
         })
     }
@@ -104,7 +110,7 @@ class TashieLoader : AnimatingLinearLayout {
     private fun startLoading() {
 
         for (iCount in 0 until noOfDots) {
-            var anim = getScaleAnimation(isDotsExpanding, iCount)
+            val anim = getScaleAnimation(isDotsExpanding, iCount)
             dotsArray[iCount]!!.startAnimation(anim)
 
             setAnimationListener(anim, iCount)
@@ -113,18 +119,16 @@ class TashieLoader : AnimatingLinearLayout {
     }
 
     private fun getScaleAnimation(isExpanding: Boolean, delay: Int): AnimationSet {
-        var anim = AnimationSet(true);
+        val anim = AnimationSet(true)
 
-        var scaleAnim: ScaleAnimation
-
-        when (isExpanding) {
+        val scaleAnim: ScaleAnimation = when (isExpanding) {
             true -> {
-                scaleAnim = ScaleAnimation(0f, 1f, 0f, 1f,
+                ScaleAnimation(0f, 1f, 0f, 1f,
                         Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
             }
 
             false -> {
-                scaleAnim = ScaleAnimation(1f, 0f, 1f, 0f,
+                ScaleAnimation(1f, 0f, 1f, 0f,
                         Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
             }
         }

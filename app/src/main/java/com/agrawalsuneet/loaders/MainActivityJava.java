@@ -8,6 +8,7 @@ import android.view.animation.LinearInterpolator;
 import android.widget.LinearLayout;
 
 import com.agrawalsuneet.dotsloader.loaders.AllianceLoader;
+import com.agrawalsuneet.dotsloader.loaders.LightsLoader;
 import com.agrawalsuneet.dotsloader.loaders.RotatingCircularDotsLoader;
 import com.agrawalsuneet.dotsloader.loaders.SlidingLoader;
 import com.agrawalsuneet.dotsloader.loaders.TashieLoader;
@@ -35,11 +36,12 @@ public class MainActivityJava extends AppCompatActivity {
         loader.setInterpolator(new LinearInterpolator());*/
 
 
-        TashieLoader tashie = new TashieLoader(this);
-        tashie.setNoOfDots(8);
-        tashie.setDotsRadius(20);
-        tashie.setDotsDist(10);
-        tashie.setDotsColor(ContextCompat.getColor(this, R.color.blue_selected));
+
+        TashieLoader tashie = new TashieLoader(
+                this, 5,
+                30, 10,
+                ContextCompat.getColor(this, R.color.green));
+
         tashie.setAnimDuration(500);
         tashie.setAnimDelay(100);
         tashie.setInterpolator(new LinearInterpolator());
@@ -103,6 +105,14 @@ public class MainActivityJava extends AppCompatActivity {
         allianceLoader.setAnimDuration(500);
 
         containerLL.addView(allianceLoader);
+
+        LightsLoader lightsLoader = new LightsLoader(
+                this, 5,
+                30, 10,
+                ContextCompat.getColor(this, R.color.red));
+
+
+        containerLL.addView(lightsLoader);
     }
 
 }

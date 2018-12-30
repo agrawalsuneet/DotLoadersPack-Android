@@ -1,10 +1,11 @@
-package com.agrawalsuneet.dotsloader.basicviews
+package com.agrawalsuneet.dotsloader.contracts
 
 import android.content.Context
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
 import com.agrawalsuneet.dotsloader.R
+import com.agrawalsuneet.dotsloader.contracts.LoaderContract
 import com.agrawalsuneet.dotsloader.utils.Helper
 
 /**
@@ -22,7 +23,7 @@ abstract class DotsLoaderBaseView : View, LoaderContract {
     protected lateinit var firstShadowPaint: Paint
     protected lateinit var secondShadowPaint: Paint
 
-    protected var isShadowColorSet = false
+    private var isShadowColorSet = false
 
     protected var shouldAnimate = true
 
@@ -63,14 +64,14 @@ abstract class DotsLoaderBaseView : View, LoaderContract {
     //init paints for drawing dots
     fun initPaints() {
         defaultCirclePaint = Paint()
-        defaultCirclePaint!!.isAntiAlias = true
-        defaultCirclePaint!!.style = Paint.Style.FILL
-        defaultCirclePaint!!.color = defaultColor
+        defaultCirclePaint?.isAntiAlias = true
+        defaultCirclePaint?.style = Paint.Style.FILL
+        defaultCirclePaint?.color = defaultColor
 
         selectedCirclePaint = Paint()
-        selectedCirclePaint!!.isAntiAlias = true
-        selectedCirclePaint!!.style = Paint.Style.FILL
-        selectedCirclePaint!!.color = selectedColor
+        selectedCirclePaint?.isAntiAlias = true
+        selectedCirclePaint?.style = Paint.Style.FILL
+        selectedCirclePaint?.color = selectedColor
     }
 
     //init paints for drawing shadow dots
@@ -107,16 +108,14 @@ abstract class DotsLoaderBaseView : View, LoaderContract {
     var defaultColor: Int = resources.getColor(R.color.loader_defalut)
         set(defaultColor) {
             field = defaultColor
-            if (defaultCirclePaint != null) {
-                defaultCirclePaint!!.color = defaultColor
-            }
+            defaultCirclePaint?.color = defaultColor
         }
 
     open var selectedColor: Int = resources.getColor(R.color.loader_selected)
         set(selectedColor) {
             field = selectedColor
-            if (selectedCirclePaint != null) {
-                selectedCirclePaint!!.color = selectedColor
+            selectedCirclePaint?.let {
+                it.color = selectedColor
                 initShadowPaints()
             }
         }

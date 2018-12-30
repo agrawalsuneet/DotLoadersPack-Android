@@ -9,39 +9,33 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 
 
 
-### LazyLoader
 ![lazyloader](https://user-images.githubusercontent.com/12999622/36225792-b7044432-11c3-11e8-8e22-5bbdcafa2312.gif)
 
 
-### TashieLoader
 ![tashieloader](https://user-images.githubusercontent.com/12999622/36225793-b71f694c-11c3-11e8-9a81-8414bafb26c5.gif)
 
 
-### SlidingLoader
 ![slidingloader](https://user-images.githubusercontent.com/12999622/34130222-f58ba220-e43e-11e7-8f60-4971918fecde.gif)
 
 
-### RotatingCircularDotsLoader
 ![RotatingCircularDotsLoader](https://user-images.githubusercontent.com/12999622/34453427-d9aa8294-ed4c-11e7-8b1d-fe98d0c2c3dc.gif)
 
 
-### TrailingCircularDotsLoader
 ![trailingcirculardotsloader](https://user-images.githubusercontent.com/12999622/39367184-f3bb706a-4a2d-11e8-9120-5027bbef2861.gif)
 
 
-### ZeeLoader
 ![zeeloader](https://user-images.githubusercontent.com/12999622/44630261-8ba41980-a952-11e8-9ba5-45f4cafb473b.gif)
 
 
-### AllianceLoader
 ![allianceloader](https://user-images.githubusercontent.com/12999622/44946787-d1e9f480-adfa-11e8-82ff-23e5f19a656b.gif)
 
 
-### LinearDotsLoader
+![lightsloader](https://user-images.githubusercontent.com/12999622/50548389-bb9d5980-0c71-11e9-8803-f25d1175ced0.gif)
+
+
 ![lineardotsloader](https://user-images.githubusercontent.com/12999622/35482391-54665328-042c-11e8-954b-93a92ebe2b0c.gif)
 
 
-### CircularDotsLoader
 ![circulardotsloader](https://user-images.githubusercontent.com/12999622/36224573-f274b956-11bf-11e8-8f97-e4c031959465.gif)
 
 Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/)
@@ -49,7 +43,7 @@ Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/ope
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-compile 'com.agrawalsuneet.androidlibs:dotsloader:1.1'
+implementation 'com.agrawalsuneet.androidlibs:dotsloader:1.2'
 ```
 
 
@@ -122,14 +116,13 @@ compile 'com.agrawalsuneet.androidlibs:dotsloader:1.1'
 
 * Kotlin
 ```
-var tashie = TashieLoader(this)
+var tashie = TashieLoader(
+                this, 5,
+                30, 10,
+                ContextCompat.getColor(this, R.color.green))
                 .apply {
-                    noOfDots = 5
-                    dotsDist = 10
-                    dotsRadius = 30
                     animDuration = 500
                     animDelay = 100
-                    dotsColor = resources.getColor(R.color.green)
                     interpolator = LinearInterpolator()
                 }
         containerLL.addView(tashie)
@@ -138,15 +131,15 @@ var tashie = TashieLoader(this)
 
 * Java
 ```
-TashieLoader tashie = new TashieLoader(this);
-        tashie.setNoOfDots(8);
-        tashie.setDotsRadius(20);
-        tashie.setDotsDist(10);
-        tashie.setDotsColor(ContextCompat.getColor(this, R.color.blue_selected));
+TashieLoader tashie = new TashieLoader(
+                this, 5,
+                30, 10,
+                ContextCompat.getColor(this, R.color.green));
+
         tashie.setAnimDuration(500);
         tashie.setAnimDelay(100);
         tashie.setInterpolator(new LinearInterpolator());
-        
+
         containerLL.addView(tashie);
 ```
 
@@ -373,6 +366,44 @@ AllianceLoader allianceLoader = new AllianceLoader(
         allianceLoader.setAnimDuration(500);
 
         containerLL.addView(allianceLoader);
+```
+
+### LightsLoader
+##### Through XML
+```
+<com.agrawalsuneet.dotsloader.loaders.LightsLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:lights_circleColor="@color/blue_selected"
+        app:lights_circleDistance="4dp"
+        app:lights_circleRadius="12dp"
+        app:lights_noOfCircles="5" />
+```
+
+#####  Through Code
+
+* Kotlin
+```
+val lightsLoader = LightsLoader(
+                this, 5,
+                30, 10,
+                ContextCompat.getColor(this, R.color.red))
+
+
+        containerLL.addView(lightsLoader)
+
+```
+
+* Java
+```
+LightsLoader lightsLoader = new LightsLoader(
+                this, 5,
+                30, 10,
+                ContextCompat.getColor(this, R.color.red));
+
+
+        containerLL.addView(lightsLoader);
 ```
 
 

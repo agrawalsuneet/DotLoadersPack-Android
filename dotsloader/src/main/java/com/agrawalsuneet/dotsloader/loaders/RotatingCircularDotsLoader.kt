@@ -9,7 +9,7 @@ import android.view.animation.RotateAnimation
 import android.widget.LinearLayout
 import com.agrawalsuneet.dotsloader.R
 import com.agrawalsuneet.dotsloader.basicviews.CircularLoaderBaseView
-import com.agrawalsuneet.dotsloader.basicviews.LoaderContract
+import com.agrawalsuneet.dotsloader.contracts.LoaderContract
 
 /**
  * Created by suneet on 12/29/17.
