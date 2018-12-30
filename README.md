@@ -3,40 +3,26 @@
 
 > A replacement of default android material progressbar with dots loader
 
-latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/androidlibs/dotsloader/images/download.svg) ](https://bintray.com/agrawalsuneet/androidlibs/dotsloader/_latestVersion)
+latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/androidlibs/dotloaderspack/images/download.svg) ](https://bintray.com/agrawalsuneet/androidlibs/dotloaderspack/_latestVersion)
 
 [![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-DotLoadersPack-green.svg?style=flat )]( https://android-arsenal.com/details/1/7244 )
 
 
 
-![lazyloader](https://user-images.githubusercontent.com/12999622/36225792-b7044432-11c3-11e8-8e22-5bbdcafa2312.gif)
+![lazyloader](https://user-images.githubusercontent.com/12999622/36225792-b7044432-11c3-11e8-8e22-5bbdcafa2312.gif)      ![tashieloader](https://user-images.githubusercontent.com/12999622/36225793-b71f694c-11c3-11e8-9a81-8414bafb26c5.gif)
 
 
-![tashieloader](https://user-images.githubusercontent.com/12999622/36225793-b71f694c-11c3-11e8-9a81-8414bafb26c5.gif)
+![slidingloader](https://user-images.githubusercontent.com/12999622/34130222-f58ba220-e43e-11e7-8f60-4971918fecde.gif)      ![RotatingCircularDotsLoader](https://user-images.githubusercontent.com/12999622/34453427-d9aa8294-ed4c-11e7-8b1d-fe98d0c2c3dc.gif)
 
 
-![slidingloader](https://user-images.githubusercontent.com/12999622/34130222-f58ba220-e43e-11e7-8f60-4971918fecde.gif)
+![trailingcirculardotsloader](https://user-images.githubusercontent.com/12999622/39367184-f3bb706a-4a2d-11e8-9120-5027bbef2861.gif)      ![zeeloader](https://user-images.githubusercontent.com/12999622/44630261-8ba41980-a952-11e8-9ba5-45f4cafb473b.gif)
 
 
-![RotatingCircularDotsLoader](https://user-images.githubusercontent.com/12999622/34453427-d9aa8294-ed4c-11e7-8b1d-fe98d0c2c3dc.gif)
+![allianceloader](https://user-images.githubusercontent.com/12999622/44946787-d1e9f480-adfa-11e8-82ff-23e5f19a656b.gif)      ![lightsloader](https://user-images.githubusercontent.com/12999622/50548389-bb9d5980-0c71-11e9-8803-f25d1175ced0.gif)
+  
 
 
-![trailingcirculardotsloader](https://user-images.githubusercontent.com/12999622/39367184-f3bb706a-4a2d-11e8-9120-5027bbef2861.gif)
-
-
-![zeeloader](https://user-images.githubusercontent.com/12999622/44630261-8ba41980-a952-11e8-9ba5-45f4cafb473b.gif)
-
-
-![allianceloader](https://user-images.githubusercontent.com/12999622/44946787-d1e9f480-adfa-11e8-82ff-23e5f19a656b.gif)
-
-
-![lightsloader](https://user-images.githubusercontent.com/12999622/50548389-bb9d5980-0c71-11e9-8803-f25d1175ced0.gif)
-
-
-![lineardotsloader](https://user-images.githubusercontent.com/12999622/35482391-54665328-042c-11e8-954b-93a92ebe2b0c.gif)
-
-
-![circulardotsloader](https://user-images.githubusercontent.com/12999622/36224573-f274b956-11bf-11e8-8f97-e4c031959465.gif)
+![lineardotsloader](https://user-images.githubusercontent.com/12999622/35482391-54665328-042c-11e8-954b-93a92ebe2b0c.gif)      ![circulardotsloader](https://user-images.githubusercontent.com/12999622/36224573-f274b956-11bf-11e8-8f97-e4c031959465.gif)
 
 Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/)
 
