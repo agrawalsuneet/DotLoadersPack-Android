@@ -9,7 +9,6 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 
 
 
-
 ![lazyloader](https://user-images.githubusercontent.com/12999622/36225792-b7044432-11c3-11e8-8e22-5bbdcafa2312.gif)
 
 
@@ -29,6 +28,9 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 
 
 ![allianceloader](https://user-images.githubusercontent.com/12999622/44946787-d1e9f480-adfa-11e8-82ff-23e5f19a656b.gif)
+
+
+![lightsloader](https://user-images.githubusercontent.com/12999622/50548389-bb9d5980-0c71-11e9-8803-f25d1175ced0.gif)
 
 
 ![lineardotsloader](https://user-images.githubusercontent.com/12999622/35482391-54665328-042c-11e8-954b-93a92ebe2b0c.gif)

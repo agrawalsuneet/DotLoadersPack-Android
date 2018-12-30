@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_lights)
 
-        supportActionBar?.title = "Lightsloader"
+        supportActionBar?.title = "LightsLoader"
 
         containerLL = findViewById(R.id.container) as LinearLayout
 
