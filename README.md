@@ -8,6 +8,8 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 [![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-DotLoadersPack-green.svg?style=flat )]( https://android-arsenal.com/details/1/7244 )
 
 
+
+
 ![lazyloader](https://user-images.githubusercontent.com/12999622/36225792-b7044432-11c3-11e8-8e22-5bbdcafa2312.gif)
 
 
@@ -39,7 +41,7 @@ Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/ope
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-compile 'com.agrawalsuneet.androidlibs:dotsloader:1.1'
+implementation 'com.agrawalsuneet.androidlibs:dotsloader:1.2'
 ```
 
 
