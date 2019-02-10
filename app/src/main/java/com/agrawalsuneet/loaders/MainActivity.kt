@@ -14,25 +14,46 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_lights)
+        setContentView(R.layout.main_pullin)
 
-        supportActionBar?.title = "LightsLoader"
+        supportActionBar?.title = "PullInLoader"
 
         containerLL = findViewById(R.id.container) as LinearLayout
 
         //initLinearDotsLoader()
         //initCircularDotsLoader()
+
         //initLazyLoader()
         //initTashieLoader()
+
         //initSlidongLoader()
         //initRotatingCircularDotsLoader()
 
         //initTrailingCirculerDotsLoader()
-
         //initZeeLoader()
 
         //initAllianceLoader()
         //initLightsLoader()
+
+        //initPullInLoader()
+    }
+
+    private fun initPullInLoader() {
+        val pullInLoader = PullInLoader(this,
+                20, 100, ContextCompat.getColor(this, R.color.red))
+                .apply {
+                    animDuration = 2000
+                }
+
+        containerLL.addView(pullInLoader)
+
+        val pullInLoader2 = PullInLoader(this,
+                30, 160, resources.getIntArray(R.array.vibgyorg))
+                .apply {
+                    animDuration = 2000
+                }
+
+        containerLL.addView(pullInLoader2)
     }
 
     private fun initLightsLoader() {
