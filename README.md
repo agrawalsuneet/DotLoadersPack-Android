@@ -8,28 +8,24 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 [![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-DotLoadersPack-green.svg?style=flat )]( https://android-arsenal.com/details/1/7244 )
 
 
-
 ![lazyloader](https://user-images.githubusercontent.com/12999622/36225792-b7044432-11c3-11e8-8e22-5bbdcafa2312.gif)      ![tashieloader](https://user-images.githubusercontent.com/12999622/36225793-b71f694c-11c3-11e8-9a81-8414bafb26c5.gif)
-
 
 ![slidingloader](https://user-images.githubusercontent.com/12999622/34130222-f58ba220-e43e-11e7-8f60-4971918fecde.gif)      ![RotatingCircularDotsLoader](https://user-images.githubusercontent.com/12999622/34453427-d9aa8294-ed4c-11e7-8b1d-fe98d0c2c3dc.gif)
 
-
 ![trailingcirculardotsloader](https://user-images.githubusercontent.com/12999622/39367184-f3bb706a-4a2d-11e8-9120-5027bbef2861.gif)      ![zeeloader](https://user-images.githubusercontent.com/12999622/44630261-8ba41980-a952-11e8-9ba5-45f4cafb473b.gif)
 
-
 ![allianceloader](https://user-images.githubusercontent.com/12999622/44946787-d1e9f480-adfa-11e8-82ff-23e5f19a656b.gif)      ![lightsloader](https://user-images.githubusercontent.com/12999622/50548389-bb9d5980-0c71-11e9-8803-f25d1175ced0.gif)
-  
 
+![pullinloader](https://user-images.githubusercontent.com/12999622/52536021-80676d80-2d7b-11e9-9b06-8135d6d15dbb.gif)     ![lineardotsloader](https://user-images.githubusercontent.com/12999622/35482391-54665328-042c-11e8-954b-93a92ebe2b0c.gif)
 
-![lineardotsloader](https://user-images.githubusercontent.com/12999622/35482391-54665328-042c-11e8-954b-93a92ebe2b0c.gif)      ![circulardotsloader](https://user-images.githubusercontent.com/12999622/36224573-f274b956-11bf-11e8-8f97-e4c031959465.gif)
+![circulardotsloader](https://user-images.githubusercontent.com/12999622/36224573-f274b956-11bf-11e8-8f97-e4c031959465.gif)
 
 Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/)
 
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-implementation 'com.agrawalsuneet.androidlibs:dotsloader:1.2'
+implementation 'com.agrawalsuneet.androidlibs:dotsloader:1.3'
 ```
 
 
@@ -390,6 +386,65 @@ LightsLoader lightsLoader = new LightsLoader(
 
 
         containerLL.addView(lightsLoader);
+```
+
+### PullInLoader
+##### Through XML
+```
+<com.agrawalsuneet.dotsloader.loaders.PullInLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:pullin_animDur="3000"
+        app:pullin_bigCircleRadius="42dp"
+        app:pullin_dotsColor="@color/blue_selected"
+        app:pullin_dotsRadius="10dp"
+        app:pullin_useMultipleColors="true"
+        app:pullin_colorsArray="@array/vibgyorg"/>
+
+    <com.agrawalsuneet.dotsloader.loaders.PullInLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:pullin_animDur="2500"
+        app:pullin_bigCircleRadius="36dp"
+        app:pullin_dotsColor="@color/blue_selected"
+        app:pullin_dotsRadius="8dp"/>
+```
+
+##### Through Code
+
+* Kotlin
+```
+        val pullInLoader = PullInLoader(this,
+            20, 100, ContextCompat.getColor(this, R.color.red))
+            .apply {
+                animDuration = 2000
+            }
+
+        containerLL.addView(pullInLoader)
+
+        val pullInLoader2 = PullInLoader(this,
+            30, 160, resources.getIntArray(R.array.vibgyorg))
+            .apply {
+                animDuration = 2000
+            }
+
+        containerLL.addView(pullInLoader2)
+```
+
+
+* Java
+```
+        PullInLoader pullInLoader = new PullInLoader(this,
+                20, 100, ContextCompat.getColor(this, R.color.red));
+        pullInLoader.setAnimDuration(2000);
+
+        containerLL.addView(pullInLoader);
+
+        PullInLoader pullInLoader2 = new PullInLoader(this,
+                30, 160, getResources().getIntArray(R.array.vibgyorg));
+        pullInLoader.setAnimDuration(2000);
+
+        containerLL.addView(pullInLoader2);
 ```
 
 

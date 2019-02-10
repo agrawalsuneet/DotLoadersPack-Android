@@ -105,7 +105,7 @@ abstract class DotsLoaderBaseView : View, LoaderContract {
         invalidate()
     }
 
-    var defaultColor: Int = resources.getColor(R.color.loader_defalut)
+    var defaultColor: Int = resources.getColor(android.R.color.darker_gray)
         set(defaultColor) {
             field = defaultColor
             defaultCirclePaint?.color = defaultColor

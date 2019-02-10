@@ -107,4 +107,14 @@
         <attr name="lights_circleColor" format="color" />
     </declare-styleable>
 
+    <declare-styleable name="PullInLoader">
+        <attr name="pullin_dotsColor" format="color" />
+        <attr name="pullin_colorsArray" format="reference" />
+        <attr name="pullin_useMultipleColors" format="boolean" />
+
+        <attr name="pullin_dotsRadius" format="dimension" />
+        <attr name="pullin_bigCircleRadius" format="dimension" />
+        <attr name="pullin_animDur" format="integer" />
+    </declare-styleable>
+
 </resources>

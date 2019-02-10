@@ -33,4 +33,21 @@
     <color name="amber_default">#77FFC200</color>
     <color name="green_default">#7700e500</color>
 
+    <color name="violet">#9400D3</color>
+    <color name="indigo">#4B0082</color>
+    <color name="blue">#0000FF</color>
+    <color name="orange">#FF7F00</color>
+
+
+    <integer-array name="vibgyorg">
+        <item>@color/violet</item>
+        <item>@color/indigo</item>
+        <item>@color/blue</item>
+        <item>@color/green</item>
+        <item>@color/amber</item>
+        <item>@color/orange</item>
+        <item>@color/red</item>
+        <item>@color/grey</item>
+    </integer-array>
+
 </resources>

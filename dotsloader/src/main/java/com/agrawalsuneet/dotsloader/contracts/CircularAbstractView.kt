@@ -4,7 +4,7 @@ import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
 
-abstract class CircularAbstractView : DotsLoaderBaseView {
+open class CircularAbstractView : DotsLoaderBaseView {
 
     protected val noOfDots = 8
     private val SIN_45 = 0.7071f
@@ -12,6 +12,9 @@ abstract class CircularAbstractView : DotsLoaderBaseView {
     lateinit var dotsYCorArr: FloatArray
 
     var bigCircleRadius: Int = 60
+
+    var useMultipleColors: Boolean = false
+    var dotsColorsArray = IntArray(8) { resources.getColor(android.R.color.darker_gray) }
 
     constructor(context: Context) : super(context)
 
@@ -57,7 +60,14 @@ abstract class CircularAbstractView : DotsLoaderBaseView {
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         for (i in 0 until noOfDots) {
-            canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], radius.toFloat(), defaultCirclePaint)
+
+            if (useMultipleColors) {
+                defaultCirclePaint?.color = if (dotsColorsArray.size > i) dotsColorsArray[i] else defaultColor
+            }
+
+            defaultCirclePaint?.let {
+                canvas.drawCircle(dotsXCorArr[i], dotsYCorArr[i], radius.toFloat(), it)
+            }
         }
     }
 }

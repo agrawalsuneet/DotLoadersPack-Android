@@ -2,6 +2,7 @@ package com.agrawalsuneet.dotsloader.loaders
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
 import android.view.ViewTreeObserver
 import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
@@ -80,17 +81,23 @@ class RotatingCircularDotsLoader : LinearLayout, LoaderContract {
 
         addView(circularLoaderBaseView)
 
-        val loaderView = this
-
         viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
             override fun onGlobalLayout() {
                 startLoading()
-
-                val vto = loaderView.viewTreeObserver
-                vto.removeOnGlobalLayoutListener(this)
+                this@RotatingCircularDotsLoader.viewTreeObserver.removeOnGlobalLayoutListener(this)
             }
         })
 
+    }
+
+    override fun onVisibilityChanged(changedView: View, visibility: Int) {
+        super.onVisibilityChanged(changedView, visibility)
+
+        if (visibility != View.VISIBLE) {
+            initView()
+        } else {
+            circularLoaderBaseView.clearAnimation()
+        }
     }
 
     private fun startLoading() {
