@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 
 import com.agrawalsuneet.dotsloader.loaders.AllianceLoader;
 import com.agrawalsuneet.dotsloader.loaders.LightsLoader;
+import com.agrawalsuneet.dotsloader.loaders.PullInLoader;
 import com.agrawalsuneet.dotsloader.loaders.RotatingCircularDotsLoader;
 import com.agrawalsuneet.dotsloader.loaders.SlidingLoader;
 import com.agrawalsuneet.dotsloader.loaders.TashieLoader;
@@ -113,6 +114,18 @@ public class MainActivityJava extends AppCompatActivity {
 
 
         containerLL.addView(lightsLoader);
+
+        PullInLoader pullInLoader = new PullInLoader(this,
+                20, 100, ContextCompat.getColor(this, R.color.red));
+        pullInLoader.setAnimDuration(2000);
+
+        containerLL.addView(pullInLoader);
+
+        PullInLoader pullInLoader2 = new PullInLoader(this,
+                30, 160, getResources().getIntArray(R.array.vibgyorg));
+        pullInLoader.setAnimDuration(2000);
+
+        containerLL.addView(pullInLoader2);
     }
 
 }

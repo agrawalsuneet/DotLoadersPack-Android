@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.agrawalsuneet.dotsloader.loaders.PullInLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:pullin_animDur="2000"
+            app:pullin_bigCircleRadius="24dp"
+            app:pullin_dotsColor="@color/red"
+            app:pullin_dotsRadius="6dp"/>
+
+        <com.agrawalsuneet.dotsloader.loaders.PullInLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:pullin_animDur="2000"
+            app:pullin_bigCircleRadius="24dp"
+            app:pullin_dotsColor="@color/amber"
+            app:pullin_dotsRadius="6dp"/>
+
+        <com.agrawalsuneet.dotsloader.loaders.PullInLoader
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:pullin_animDur="2000"
+            app:pullin_bigCircleRadius="24dp"
+            app:pullin_dotsColor="@color/green"
+            app:pullin_dotsRadius="6dp"/>
+
+    </LinearLayout>
+
+    <com.agrawalsuneet.dotsloader.loaders.PullInLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:pullin_animDur="3000"
+        app:pullin_bigCircleRadius="42dp"
+        app:pullin_dotsColor="@color/blue_selected"
+        app:pullin_dotsRadius="10dp"
+        app:pullin_useMultipleColors="true"
+        app:pullin_colorsArray="@array/vibgyorg"/>
+
+    <com.agrawalsuneet.dotsloader.loaders.PullInLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:pullin_animDur="2500"
+        app:pullin_bigCircleRadius="36dp"
+        app:pullin_dotsColor="@color/blue_selected"
+        app:pullin_dotsRadius="8dp"/>
+
+</LinearLayout>

@@ -24,6 +24,16 @@ class CircularLoaderBaseView : CircularAbstractView {
         initPaints()
     }
 
+    constructor(context: Context, dotsRadius: Int, bigCircleRadius: Int, dotsColorsArray: IntArray) : super(context) {
+        this.radius = dotsRadius
+        this.bigCircleRadius = bigCircleRadius
+        this.dotsColorsArray = dotsColorsArray
+        this.useMultipleColors = true
+
+        initCordinates()
+        initPaints()
+    }
+
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         initAttributes(attrs)
         initCordinates()
