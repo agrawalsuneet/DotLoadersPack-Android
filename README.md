@@ -10,12 +10,9 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 
 ![lazyloader](https://user-images.githubusercontent.com/12999622/36225792-b7044432-11c3-11e8-8e22-5bbdcafa2312.gif)      ![tashieloader](https://user-images.githubusercontent.com/12999622/36225793-b71f694c-11c3-11e8-9a81-8414bafb26c5.gif)
 
-
 ![slidingloader](https://user-images.githubusercontent.com/12999622/34130222-f58ba220-e43e-11e7-8f60-4971918fecde.gif)      ![RotatingCircularDotsLoader](https://user-images.githubusercontent.com/12999622/34453427-d9aa8294-ed4c-11e7-8b1d-fe98d0c2c3dc.gif)
 
-
 ![trailingcirculardotsloader](https://user-images.githubusercontent.com/12999622/39367184-f3bb706a-4a2d-11e8-9120-5027bbef2861.gif)      ![zeeloader](https://user-images.githubusercontent.com/12999622/44630261-8ba41980-a952-11e8-9ba5-45f4cafb473b.gif)
-
 
 ![allianceloader](https://user-images.githubusercontent.com/12999622/44946787-d1e9f480-adfa-11e8-82ff-23e5f19a656b.gif)      ![lightsloader](https://user-images.githubusercontent.com/12999622/50548389-bb9d5980-0c71-11e9-8803-f25d1175ced0.gif)
 
