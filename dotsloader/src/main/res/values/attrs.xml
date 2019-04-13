@@ -117,4 +117,14 @@
         <attr name="pullin_animDur" format="integer" />
     </declare-styleable>
 
+
+    <declare-styleable name="BounceLoader">
+        <attr name="bounce_ballRadius" format="dimension" />
+        <attr name="bounce_ballColor" format="color" />
+        <attr name="bounce_shadowColor" format="color" />
+
+        <attr name="bounce_showShadow" format="boolean" />
+        <attr name="bounce_animDuration" format="integer" />
+    </declare-styleable>
+
 </resources>
