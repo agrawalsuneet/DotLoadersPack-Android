@@ -14,9 +14,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_pullin)
+        setContentView(R.layout.main_bounce)
 
-        supportActionBar?.title = "PullInLoader"
+        supportActionBar?.title = "BounceLoader"
 
         containerLL = findViewById(R.id.container) as LinearLayout
 

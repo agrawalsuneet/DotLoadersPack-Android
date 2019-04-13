@@ -19,13 +19,15 @@ class CircleView : View {
     var circleColor: Int = 0
     var drawOnlyStroke: Boolean = false
 
-    private var xyCordinates: Float = 0.0f
+    var isAntiAlias: Boolean = true
 
+    private var xyCordinates: Float = 0.0f
     private val paint: Paint = Paint()
 
-    constructor(context: Context, circleRadius: Int, circleColor: Int) : super(context) {
+    constructor(context: Context, circleRadius: Int, circleColor: Int, isAntiAlias: Boolean = true) : super(context) {
         this.circleRadius = circleRadius
         this.circleColor = circleColor
+        this.isAntiAlias = isAntiAlias
 
         initValues()
     }
@@ -75,12 +77,11 @@ class CircleView : View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
         val widthHeight = (2 * (circleRadius)) + strokeWidth
-
         setMeasuredDimension(widthHeight, widthHeight)
     }
 
     private fun initValues() {
-        paint.isAntiAlias = true
+        paint.isAntiAlias = isAntiAlias
 
         if (drawOnlyStroke) {
             paint.style = Paint.Style.STROKE
@@ -100,6 +101,4 @@ class CircleView : View {
         super.onDraw(canvas)
         canvas.drawCircle(xyCordinates, xyCordinates, circleRadius.toFloat(), paint)
     }
-
-
 }
