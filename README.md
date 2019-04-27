@@ -10,7 +10,7 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 
 ![lazyloader](https://user-images.githubusercontent.com/12999622/36225792-b7044432-11c3-11e8-8e22-5bbdcafa2312.gif)      ![tashieloader](https://user-images.githubusercontent.com/12999622/36225793-b71f694c-11c3-11e8-9a81-8414bafb26c5.gif)
 
-![slidingloader](https://user-images.githubusercontent.com/12999622/34130222-f58ba220-e43e-11e7-8f60-4971918fecde.gif)      ![RotatingCircularDotsLoader](https://user-images.githubusercontent.com/12999622/34453427-d9aa8294-ed4c-11e7-8b1d-fe98d0c2c3dc.gif)
+![slidingloader](https://user-images.githubusercontent.com/12999622/34130222-f58ba220-e43e-11e7-8f60-4971918fecde.gif)      ![bounceloader](https://user-images.githubusercontent.com/12999622/56847870-1d5b9080-68ff-11e9-952f-b0414771d580.gif)
 
 ![trailingcirculardotsloader](https://user-images.githubusercontent.com/12999622/39367184-f3bb706a-4a2d-11e8-9120-5027bbef2861.gif)      ![zeeloader](https://user-images.githubusercontent.com/12999622/44630261-8ba41980-a952-11e8-9ba5-45f4cafb473b.gif)
 
@@ -18,7 +18,7 @@ latest version : [ ![Download](https://api.bintray.com/packages/agrawalsuneet/an
 
 ![pullinloader](https://user-images.githubusercontent.com/12999622/52536021-80676d80-2d7b-11e9-9b06-8135d6d15dbb.gif)     ![lineardotsloader](https://user-images.githubusercontent.com/12999622/35482391-54665328-042c-11e8-954b-93a92ebe2b0c.gif)
 
-![circulardotsloader](https://user-images.githubusercontent.com/12999622/36224573-f274b956-11bf-11e8-8f97-e4c031959465.gif)
+![circulardotsloader](https://user-images.githubusercontent.com/12999622/36224573-f274b956-11bf-11e8-8f97-e4c031959465.gif)    ![RotatingCircularDotsLoader](https://user-images.githubusercontent.com/12999622/34453427-d9aa8294-ed4c-11e7-8b1d-fe98d0c2c3dc.gif)
 
 Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/opensourcecontribution/)
 
@@ -174,7 +174,6 @@ SlidingLoader sliding = new SlidingLoader(this, 40, 10,
 <com.agrawalsuneet.dotsloader.loaders.BounceLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
         app:bounce_animDuration="1200"
         app:bounce_ballColor="@color/blue_selected"
         app:bounce_ballRadius="22dp"
