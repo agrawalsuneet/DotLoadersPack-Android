@@ -25,7 +25,7 @@ Check all other loaders [here](https://agrawalsuneet.github.io/agrawalsuneet/ope
 ## How To use
 include below dependency in build.gradle of application and compile it
 ```
-implementation 'com.agrawalsuneet.androidlibs:dotsloader:1.3'
+implementation 'com.agrawalsuneet.androidlibs:dotsloader:1.4'
 ```
 
 
@@ -168,39 +168,47 @@ SlidingLoader sliding = new SlidingLoader(this, 40, 10,
         containerLL.addView(sliding);
 ```
 
-### RotatingCircularDotsLoader
+### BounceLoader
 ##### Through XML
 ```
-<com.agrawalsuneet.dotsloader.loaders.RotatingCircularDotsLoader
+<com.agrawalsuneet.dotsloader.loaders.BounceLoader
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:rotatingcircular_animDur="3000"
-        app:rotatingcircular_bigCircleRadius="42dp"
-        app:rotatingcircular_dotsColor="@color/blue_selected"
-        app:rotatingcircular_dotsRadius="14dp" />
+        android:layout_margin="4dp"
+        app:bounce_animDuration="1200"
+        app:bounce_ballColor="@color/blue_selected"
+        app:bounce_ballRadius="22dp"
+        app:bounce_shadowColor="@color/black"
+        app:bounce_showShadow="true" />
 ```
 
 #####  Through Code
 
 * Kotlin
 ```
-val loader = RotatingCircularDotsLoader(this,
-                20, 60, ContextCompat.getColor(this, R.color.red))
+val bounceLoader = BounceLoader(context = this,
+                ballRadius = 60,
+                ballColor = ContextCompat.getColor(this, R.color.red),
+                showShadow = true,
+                shadowColor = ContextCompat.getColor(this, R.color.black))
                 .apply {
-                    animDuration = 3000
+                    animDuration = 1000
                 }
 
-        containerLL.addView(loader)
-        
+        containerLL.addView(bounceLoader)
+
 ```
 
 * Java
 ```
-RotatingCircularDotsLoader loader = new RotatingCircularDotsLoader(this,
-                20, 60, ContextCompat.getColor(this, R.color.red));
-        loader.setAnimDuration(3000);
+BounceLoader bounceLoader = new BounceLoader(this,
+                60,
+                ContextCompat.getColor(this, R.color.red),
+                true,
+                ContextCompat.getColor(this, R.color.black));
 
-        containerLL.addView(loader);
+        bounceLoader.setAnimDuration(1000);
+        containerLL.addView(bounceLoader);
 ```
 
 ### TrailingCircularDotsLoader
@@ -556,6 +564,42 @@ CircularDotsLoader loader = new CircularDotsLoader(this);
         loader.setShowRunningShadow(true);
         loader.setFirstShadowColor(ContextCompat.getColor(this, R.color.blue_selected));
         loader.setSecondShadowColor(ContextCompat.getColor(this, R.color.blue_delfault));
+```
+
+
+### RotatingCircularDotsLoader
+##### Through XML
+```
+<com.agrawalsuneet.dotsloader.loaders.RotatingCircularDotsLoader
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:rotatingcircular_animDur="3000"
+        app:rotatingcircular_bigCircleRadius="42dp"
+        app:rotatingcircular_dotsColor="@color/blue_selected"
+        app:rotatingcircular_dotsRadius="14dp" />
+```
+
+#####  Through Code
+
+* Kotlin
+```
+val loader = RotatingCircularDotsLoader(this,
+                20, 60, ContextCompat.getColor(this, R.color.red))
+                .apply {
+                    animDuration = 3000
+                }
+
+        containerLL.addView(loader)
+
+```
+
+* Java
+```
+RotatingCircularDotsLoader loader = new RotatingCircularDotsLoader(this,
+                20, 60, ContextCompat.getColor(this, R.color.red));
+        loader.setAnimDuration(3000);
+
+        containerLL.addView(loader);
 ```
 
 > For avoiding overlapping in CircularDotsLoader, set BigCircleLoader nearly four times of dotsRadius.
