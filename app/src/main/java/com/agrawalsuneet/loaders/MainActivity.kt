@@ -36,6 +36,20 @@ class MainActivity : AppCompatActivity() {
         //initLightsLoader()
 
         //initPullInLoader()
+        //initBounceLoader()
+    }
+
+    private fun initBounceLoader() {
+        val bounceLoader = BounceLoader(context = this,
+                ballRadius = 60,
+                ballColor = ContextCompat.getColor(this, R.color.red),
+                showShadow = true,
+                shadowColor = ContextCompat.getColor(this, R.color.black))
+                .apply {
+                    animDuration = 1000
+                }
+
+        containerLL.addView(bounceLoader)
     }
 
     private fun initPullInLoader() {

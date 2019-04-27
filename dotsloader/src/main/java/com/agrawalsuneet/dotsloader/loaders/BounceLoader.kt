@@ -20,10 +20,14 @@ class BounceLoader : LinearLayout, LoaderContract {
 
     var ballRadius: Int = 60
     var ballColor: Int = resources.getColor(android.R.color.holo_red_dark)
-    var shadowColor: Int = resources.getColor(android.R.color.black)
 
     var showShadow: Boolean = true
+    var shadowColor: Int = resources.getColor(android.R.color.black)
+
     var animDuration: Int = 1500
+        set(value) {
+            field = if (value <= 0) 1000 else value
+        }
 
     private var relativeLayout: RelativeLayout? = null
 
@@ -51,6 +55,13 @@ class BounceLoader : LinearLayout, LoaderContract {
 
     constructor(context: Context?, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         initAttributes(attrs)
+        initView()
+    }
+
+    constructor(context: Context?, ballRadius: Int, ballColor: Int, showShadow: Boolean, shadowColor: Int = 0) : super(context) {
+        this.ballRadius = ballRadius
+        this.ballColor = ballColor
+        this.shadowColor = shadowColor
         initView()
     }
 
@@ -175,7 +186,7 @@ class BounceLoader : LinearLayout, LoaderContract {
                 ScaleAnimation(1.0f, 1.0f, 1.0f, 0.85f
                         , ballRadius.toFloat(), (2 * ballRadius).toFloat())
                         .apply {
-                            duration = (animDuration / 10).toLong()
+                            duration = (animDuration / 20).toLong()
                             interpolator = AccelerateInterpolator()
                         }
             }
@@ -184,7 +195,7 @@ class BounceLoader : LinearLayout, LoaderContract {
                 ScaleAnimation(1.0f, 1.0f, 0.85f, 1.0f
                         , ballRadius.toFloat(), (2 * ballRadius).toFloat())
                         .apply {
-                            duration = (animDuration / 10).toLong()
+                            duration = (animDuration / 20).toLong()
                             interpolator = DecelerateInterpolator()
                         }
             }

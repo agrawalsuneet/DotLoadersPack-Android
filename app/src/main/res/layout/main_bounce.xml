@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            app:bounce_animDuration="1500"
+            app:bounce_animDuration="1000"
             app:bounce_ballColor="@color/red"
             app:bounce_ballRadius="16dp"
             app:bounce_showShadow="false" />
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            app:bounce_animDuration="1500"
+            app:bounce_animDuration="1000"
             app:bounce_ballColor="@color/amber"
             app:bounce_ballRadius="16dp"
             app:bounce_showShadow="false" />
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            app:bounce_animDuration="1500"
+            app:bounce_animDuration="1000"
             app:bounce_ballColor="@color/green"
             app:bounce_ballRadius="16dp"
             app:bounce_showShadow="false" />
@@ -50,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        app:bounce_animDuration="1000"
+        app:bounce_animDuration="1200"
         app:bounce_ballColor="@color/blue_selected"
         app:bounce_ballRadius="22dp"
         app:bounce_shadowColor="@color/black"
@@ -61,10 +61,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
-        app:bounce_animDuration="1200"
+        app:bounce_animDuration="800"
         app:bounce_ballColor="@color/violet"
         app:bounce_ballRadius="18dp"
         app:bounce_shadowColor="@color/black"
-        app:bounce_showShadow="true" />
+        app:bounce_showShadow="true" />-->
 
 </LinearLayout>
