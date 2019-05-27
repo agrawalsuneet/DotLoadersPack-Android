@@ -1,6 +1,5 @@
 package com.agrawalsuneet.dotsloader.loaders
 
-import android.app.Activity
 import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
@@ -119,7 +118,10 @@ class LinearDotsLoader : DotsLoaderBaseView {
                     }
                 }
 
-                (context as Activity).runOnUiThread { invalidate() }
+                handler?.let {
+                    it.post { invalidate() }
+                }
+
             }
         }, 0, animDur.toLong())
     }
