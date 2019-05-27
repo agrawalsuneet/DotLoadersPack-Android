@@ -1,6 +1,5 @@
 package com.agrawalsuneet.dotsloader.loaders
 
-import android.app.Activity
 import android.content.Context
 import android.graphics.Canvas
 import android.util.AttributeSet
@@ -68,7 +67,7 @@ class CircularDotsLoader : CircularAbstractView {
                     selectedDotPos = 1
                 }
 
-                (context as Activity).runOnUiThread { invalidate() }
+                handler.post { invalidate() }
             }
         }, 0, animDur.toLong())
     }
