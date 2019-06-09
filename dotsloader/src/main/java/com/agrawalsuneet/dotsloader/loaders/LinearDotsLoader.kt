@@ -7,6 +7,7 @@ import android.util.AttributeSet
 import android.view.View
 import com.agrawalsuneet.dotsloader.R
 import com.agrawalsuneet.dotsloader.contracts.DotsLoaderBaseView
+import com.agrawalsuneet.dotsloader.utils.Utils
 import java.util.*
 
 /**
@@ -119,7 +120,7 @@ class LinearDotsLoader : DotsLoaderBaseView {
                     }
                 }
 
-                (context as Activity).runOnUiThread { invalidate() }
+                (Utils.scanForActivity(context))?.runOnUiThread { invalidate() }
             }
         }, 0, animDur.toLong())
     }
