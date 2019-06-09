@@ -7,6 +7,7 @@ import android.util.AttributeSet
 import android.view.View
 import com.agrawalsuneet.dotsloader.R
 import com.agrawalsuneet.dotsloader.contracts.CircularAbstractView
+import com.agrawalsuneet.dotsloader.utils.Utils
 import java.util.*
 
 /**
@@ -68,7 +69,7 @@ class CircularDotsLoader : CircularAbstractView {
                     selectedDotPos = 1
                 }
 
-                (context as Activity).runOnUiThread { invalidate() }
+                (Utils.scanForActivity(context))?.runOnUiThread { invalidate() }
             }
         }, 0, animDur.toLong())
     }
